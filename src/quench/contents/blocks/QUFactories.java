@@ -59,10 +59,10 @@ public class QUFactories implements ContentList
                 updateEffect = QUFx.re_thunder_charging;
 				drawer = new QUImpactFactory() {
 					{
-				printColor = Color.valueOf("#D3806A");
-				lightColor = Color.valueOf("#ec745855");
-				lightColor2 = Color.valueOf("#ff9c5a");
-				lightColor3 = Color.valueOf("#ec7458aa");
+				printColor = Pal.lancerLaser;
+				lightColor = Color.white;
+				lightColor2 = Color.valueOf("#F0F0F0");
+				lightColor3 = Color.valueOf("#f2f2f2");
 				moveLength = 6.2f;
 				time = 40f;
 					}

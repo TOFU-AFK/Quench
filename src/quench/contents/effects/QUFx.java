@@ -32,19 +32,19 @@ public class QUFx implements ContentList {
 	@Override
 	public void load() {
 		re_thunder_charging = new Effect(25f, e -> {
-		 Draw.color(Color.valueOf("D3806A"), Color.valueOf("ec7458aa"),e.fin());
+		 Draw.color(Pal.lancerLaser, Color.white,e.fin());
 	     randLenVectors(e.id, 2, 1f + 20f * e.fout(), e.rotation, 120f, (x, y) -> {
 	    int edge = Mathf.random(1,3);
         Lines.stroke(e.fout() * 1.7f);
-	    Lines.poly(e.x + x, e.y + y, 3 + edge,10);
-	    Lines.poly(e.x - x, e.y - y, 3 + edge,10);
+	    Lines.poly(e.x + x, e.y + y, 3 + edge,5);
+	    Lines.poly(e.x - x, e.y - y, 3 + edge,5);
         });
 		});
 		
 		
 		
         highEnergyShockWave = new Effect(25f, e -> {
-		 Draw.color(Color.valueOf("D3806A"), Color.valueOf("ec7458aa"),e.fin());
+		 Draw.color(Pal.lancerLaser, Color.white,e.fin());
         randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
 			Fill.circle(e.x + x, e.y + y, e.fout() * 5f);
 					});
