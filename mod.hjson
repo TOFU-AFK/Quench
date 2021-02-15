@@ -1,0 +1,7 @@
+name: "Quench"
+displayName: "淬火"
+author: "画盒豆腐，2356"
+main: "quench.Quench"
+description: "A jar mod"
+version: 1.0
+minGameVersion: 106
