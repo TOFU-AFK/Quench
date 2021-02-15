@@ -151,7 +151,7 @@ public class QUBullets implements ContentList {
 		};
 		
 //=========================================
-        smallcurvebomb = new ArtilleryBulletType(4f, 200f) {
+        smallcurvebomb = new ArtilleryBulletType(4f, 35f) {
 			@Override
 			public void init(Bullet b) {
 				if (b == null)return;
@@ -348,16 +348,16 @@ public class QUBullets implements ContentList {
             @Override
             public void update(Bullet b){
               new Effect(25f, e -> {
-	Draw.color(Color.valueOf("#ffd280"));
+	Draw.color(Pal.lancerLaser);
     Fill.circle(e.x, e.y, e.fout() * 7);
-    Draw.color(Color.valueOf("#ffffff"));
+    Draw.color(Color.white);
     Fill.circle(e.x, e.y, e.fout() * 3.5f);
         }).at(b);
             }
 
 			@Override
 			public void draw(Bullet b) {
-				Draw.color(Color.valueOf("#ffd280"), Color.valueOf("#ffffff"),b.fin());
+				Draw.color(Pal.lancerLaser, Color.white,b.fin());
 			Fill.circle(b.x, b.y,7f);
 				reset();
 			}
@@ -367,7 +367,7 @@ public class QUBullets implements ContentList {
 				Effect.shake(3f, 1f,b);
 				despawnEffect.at(b);
                                 new Effect(32f, e -> {
-					Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+					Draw.color(Pal.lancerLaser, Color.white,e.fin());
 	randLenVectors(e.id, 5, 5 + 15 * e.fin(), (x, y) -> {
 		Drawf.tri(e.x + x, e.y + y, 4* e.fout(), 9* e.fout(), 90);
 		Drawf.tri(e.x + x, e.y + y, 4* e.fout(), 9*e.fout(), 180);
@@ -386,7 +386,7 @@ public class QUBullets implements ContentList {
 				drawSize = 400;
  
 				shootEffect = new Effect(12f, e -> {
-                Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+                Draw.color(Pal.lancerLaser, Color.white,e.fin());
                 Drawf.tri(e.x, e.y, 5, 15, 90);
 		Drawf.tri(e.x, e.y, 5, 15, 180);
 		Drawf.tri(e.x, e.y, 5, 15, 270);
@@ -395,7 +395,7 @@ public class QUBullets implements ContentList {
 				});
  
 				despawnEffect = new Effect(32f, e -> {
-					Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+					Draw.color(Pal.lancerLaser, Color.white,e.fin());
 					stroke(e.fout() * 2);
 					circle(e.x, e.y, e.fin() * 40);
 					Fill.circle(e.x, e.y, e.fout() * e.fout() * 10);
@@ -405,7 +405,7 @@ public class QUBullets implements ContentList {
 				});
  
 				smokeEffect = new Effect(12f, e -> {
-                Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+                Draw.color(Pal.lancerLaser, Color.white,e.fin());
                 Drawf.tri(e.x, e.y, 5, 15, 90);
 		Drawf.tri(e.x, e.y, 5, 15, 180);
 		Drawf.tri(e.x, e.y, 5, 15, 270);
@@ -424,16 +424,16 @@ smallCircularMissile = new BulletType(4f, 5f) {
             @Override
             public void update(Bullet b){
               new Effect(25f, e -> {
-	Draw.color(Color.valueOf("#ffd280"));
+	Draw.color(Pal.lancerLaser);
     Fill.circle(e.x, e.y, e.fout() * 3.5f);
-    Draw.color(Color.valueOf("#ffffff"));
+    Draw.color(Color.white);
     Fill.circle(e.x, e.y, e.fout() * 1.75f);
         }).at(b);
             }
 
 			@Override
 			public void draw(Bullet b) {
-				Draw.color(Color.valueOf("#ffd280"), Color.valueOf("#ffffff"),b.fin());
+				Draw.color(Pal.lancerLaser, Color.white,b.fin());
 			Fill.circle(b.x, b.y,3.5f);
 				reset();
 			}
@@ -443,7 +443,7 @@ smallCircularMissile = new BulletType(4f, 5f) {
 				Effect.shake(3f, 1f,b);
 				despawnEffect.at(b);
                                 new Effect(32f, e -> {
-					Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+					Draw.color(Pal.lancerLaser, Color.white,e.fin());
 	randLenVectors(e.id, 5, 5 + 15 * e.fin(), (x, y) -> {
 		Drawf.tri(e.x + x, e.y + y, 4* e.fout(), 9* e.fout(), 90);
 		Drawf.tri(e.x + x, e.y + y, 4* e.fout(), 9*e.fout(), 180);
@@ -462,7 +462,7 @@ smallCircularMissile = new BulletType(4f, 5f) {
 				drawSize = 400;
  
 				shootEffect = new Effect(12f, e -> {
-                Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+                Draw.color(Pal.lancerLaser, Color.white,e.fin());
                 Drawf.tri(e.x, e.y, 5, 15, 90);
 		Drawf.tri(e.x, e.y, 5, 15, 180);
 		Drawf.tri(e.x, e.y, 5, 15, 270);
@@ -471,7 +471,7 @@ smallCircularMissile = new BulletType(4f, 5f) {
 				});
  
 				despawnEffect = new Effect(32f, e -> {
-					Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+					Draw.color(Color.white, Pal.lancerLaser,e.fin());
 					stroke(e.fout() * 2);
 					circle(e.x, e.y, e.fin() * 40);
 					Fill.circle(e.x, e.y, e.fout() * e.fout() * 10);
@@ -481,7 +481,7 @@ smallCircularMissile = new BulletType(4f, 5f) {
 				});
  
 				smokeEffect = new Effect(12f, e -> {
-                Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
+                Draw.color(Pal.lancerLaser, Color.white,e.fin());
                 Drawf.tri(e.x, e.y, 5, 15, 90);
 		Drawf.tri(e.x, e.y, 5, 15, 180);
 		Drawf.tri(e.x, e.y, 5, 15, 270);

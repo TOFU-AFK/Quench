@@ -54,7 +54,7 @@ public class QUTurrets implements ContentList {
 				);
 				baseRegion = Core.atlas.find("quench-block-" + size);
 				size = 2;
-				range = 340;
+				range = 280;
 				reloadTime = 50f;
 				shootCone = 15f;
 				ammoUseEffect = QUFx.grenadeLaunch;

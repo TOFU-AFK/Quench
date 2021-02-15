@@ -49,7 +49,7 @@ public class QUFactories implements ContentList
 		re_thunderImpactFactory = new QUAdvancedFactory("re-thunder-Impactfactory")
 		{
 			{
-            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+            requirements(Category.crafting, with(Items.silicon, 65, Items.phasefabric, 35,Items.titanium, 45));
 				hasItems = hasPower = true;
 				craftTime = 60f;
 				outputItem = new ItemStack(QUItems.re_thunder, 1);

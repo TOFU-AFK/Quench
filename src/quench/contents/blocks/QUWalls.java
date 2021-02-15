@@ -51,8 +51,8 @@ public class QUWalls implements ContentList
 		{
 			{
             requirements(Category.defense, with(Items.silicon, 45, QUItems.re_thunder, 15,Items.titanium, 25));
-				size = 3;
-				health = 3320;
+				size = 2;
+				health = 420*size*size;
                 ownerBullet = QUBullets.circularMissile;
                 smallBullet = QUBullets.smallCircularMissile;
 			}
