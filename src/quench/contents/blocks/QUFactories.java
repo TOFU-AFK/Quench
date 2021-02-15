@@ -60,9 +60,9 @@ public class QUFactories implements ContentList
 				drawer = new QUImpactFactory() {
 					{
 				printColor = Pal.lancerLaser;
-				lightColor = Color.white;
-				lightColor2 = Color.valueOf("#F0F0F0");
-				lightColor3 = Color.valueOf("#f2f2f2");
+				lightColor = Color.valueOf("#9CCAFF");
+				lightColor2 = Color.valueOf("#8CB6E4");
+				lightColor3 = Color.valueOf("#7EA3CD");
 				moveLength = 6.2f;
 				time = 40f;
 					}
