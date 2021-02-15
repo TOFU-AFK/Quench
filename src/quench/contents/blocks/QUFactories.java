@@ -41,8 +41,7 @@ import static mindustry.Vars.*;
 
 public class QUFactories implements ContentList
 {
-	public static Block R
-	re_thunderImpactFactory;
+	public static Block re_thunderImpactFactory;
 	
 	@Override
 	public void load()
