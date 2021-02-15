@@ -50,7 +50,7 @@ public class QUWalls implements ContentList
 		re_thunderWall = new EnergizedCounterattackWall("re-thunderWall")
 		{
 			{
-            requirements(Category.defense, with(Items.silicon, 45, QUItems.re_thunder, 15,Items.titanium, 25));
+            requirements(Category.defense, with(Items.silicon, 65, Items.phaseFabric, 35,Items.titanium, 45, QUItems.re_thunder, 15));
 				size = 2;
 				health = 420*size*size;
                 ownerBullet = QUBullets.circularMissile;
