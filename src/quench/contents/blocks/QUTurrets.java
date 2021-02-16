@@ -42,7 +42,7 @@ import static mindustry.type.ItemStack.*;
 public class QUTurrets implements ContentList {
  
   // Load Mod Turrets
-  public static Block smallCurvilinearHowitzer;
+  public static Block smallCurvilinearHowitzer,vigorous;
  
   @Override
   public void load() {
@@ -58,6 +58,29 @@ public class QUTurrets implements ContentList {
 				reloadTime = 50f;
 				shootCone = 15f;
 				ammoUseEffect = QUFx.grenadeLaunch;
+				health = 150 * size * size;
+				shootSound = Sounds.laser;
+			}
+		};
+		
+		vigorous = new ChargeTurret("vigorous"){
+			{
+				requirements(Category.turret, with(Items.titanium, 85,QUItems.re_thunder,45,Items.silicon,55));
+				baseRegion = Core.atlas.find("quench-block-" + size);
+				size = 3;
+				range = 300;
+				shootType = QUBullets.circularMissile;
+				chargeTime = 120f;
+                chargeMaxDelay = 30f;
+                reloadTime = 120f;
+                cooldown = 0.03f;
+                powerUse = 4f;
+                shootShake = 3f;
+                shootEffect = Fx.lancerLaserShoot;
+                smokeEffect = Fx.none;
+                chargeEffect = QUFx.highlightBall;
+                chargeBeginEffect = Fx.lancerLaserChargeBegin;
+                heatColor = Color.blue;
 				health = 150 * size * size;
 				shootSound = Sounds.laser;
 			}

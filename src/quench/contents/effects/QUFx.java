@@ -27,7 +27,7 @@ import static arc.math.Angles.*;
 public class QUFx implements ContentList {
 	public static
 	//复雷充能,高能冲击波
-	Effect re_thunder_charging,highEnergyShockWave,grenadeLaunch;
+	Effect re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall;
  
 	@Override
 	public void load() {
@@ -62,6 +62,15 @@ public class QUFx implements ContentList {
 					randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
 						Fill.circle(e.x + x, e.y + y, e.fout() * 5f);
 					});
+				});
+				
+		highlightBall = new Effect(64f, e -> {
+					Draw.color(Pal.lancerLaser, Color.white,e.fin());
+					Fill.circle(e.x, e.y, e.fout() * 20);
+					Draw.color(Color.white,Pal.lancerLaser,e.fin());
+					Fill.circle(e.x, e.y, e.fin() * 20);
+					Drawf.tri(e.x, e.y, 8, 28 * e.fout(), e.rotation + 90);
+					Drawf.tri(e.x, e.y, 8, 28 * e.fout(), e.rotation - 90);
 				});
 	}
 }
