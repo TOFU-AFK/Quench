@@ -42,7 +42,7 @@ import static mindustry.type.ItemStack.*;
 public class QUTurrets implements ContentList {
  
   // Load Mod Turrets
-  public static Block smallCurvilinearHowitzer,vigorous;
+  public static Block smallCurvilinearHowitzer,thunderHowitzer;
  
   @Override
   public void load() {
@@ -63,7 +63,7 @@ public class QUTurrets implements ContentList {
 			}
 		};
 		
-		vigorous = new PowerTurret("vigorous"){
+		thunderHowitzer = new PowerTurret("thunderHowitzer"){
 			{
 				requirements(Category.turret, with(Items.titanium, 85,QUItems.re_thunder,45,Items.silicon,55));
 				baseRegion = Core.atlas.find("quench-block-" + size);
