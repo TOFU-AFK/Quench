@@ -66,11 +66,11 @@ public class QUFx implements ContentList {
 				
 		highlightBall = new Effect(64f, e -> {
 					Draw.color(Pal.lancerLaser, Color.white,e.fin());
-					Fill.circle(e.x, e.y, e.fout() * 20);
+					Fill.circle(e.x, e.y, e.fout() * 15);
 					Draw.color(Color.white,Pal.lancerLaser,e.fin());
-					Fill.circle(e.x, e.y, e.fin() * 10);
-					Drawf.tri(e.x, e.y, 24, 84 * e.fout(), e.rotation + 90);
-					Drawf.tri(e.x, e.y, 24, 84 * e.fout(), e.rotation - 90);
+					Fill.circle(e.x, e.y, e.fin() * 12);
+					Drawf.tri(e.x, e.y, 16, 32 * e.fout(), e.rotation + 90);
+					Drawf.tri(e.x, e.y, 16, 32 * e.fout(), e.rotation - 90);
 				});
 	}
 }
