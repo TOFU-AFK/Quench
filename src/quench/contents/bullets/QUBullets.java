@@ -414,6 +414,7 @@ public class QUBullets implements ContentList {
                 Draw.reset();
 				});
 				pierce = false;
+				lifetime = 120;
 				hitSize = 10;
 				splashDamage = 200f;
 			}

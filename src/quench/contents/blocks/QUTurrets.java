@@ -71,7 +71,7 @@ public class QUTurrets implements ContentList {
 				range = 300;
 				shootType = QUBullets.bigCircularMissile;
 				chargeTime = 120f;
-                reloadTime = 30f;
+                reloadTime = 80f;
                 powerUse = 4f;
                 shootShake = 3f;
                 shootEffect = Fx.lancerLaserShoot;
