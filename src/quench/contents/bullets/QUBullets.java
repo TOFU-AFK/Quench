@@ -376,7 +376,7 @@ public class QUBullets implements ContentList {
 					});
 				}).at(b);
 				//Sounds.explosionbig.at(b, Mathf.random(0.9f, 1.1f));
-           for (int num = 0; num < 3; num ++) {
+           for (int num = 0; num < 4; num ++) {
 		Lightning.create(b.team(), Color.valueOf("#FFFF8F"), 50, b.x, b.y, Mathf.random(360), Mathf.random(6, 12));
 		smallCircularMissile.create(b,b.x,b.y,90*num);
 	   }
