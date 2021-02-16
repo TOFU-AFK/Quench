@@ -71,6 +71,10 @@ public class QUFx implements ContentList {
 					Fill.circle(e.x, e.y, e.fin() * 12);
 					Drawf.tri(e.x, e.y, 16, 128 * e.fout(), e.rotation + 90);
 					Drawf.tri(e.x, e.y, 16, 128 * e.fout(), e.rotation - 90);
+					Drawf.tri(e.x, e.y, 8, 32 * e.fout(), 0 - Time.time());
+					Drawf.tri(e.x, e.y, 8, 32 * e.fout(), 180 + Time.time());
+					Drawf.tri(e.x, e.y, 8, 32 * e.fout(), 270 - Time.time());
+					Drawf.tri(e.x, e.y, 8, 32 * e.fout(), 90 + Time.time());
 				});
 	}
 }
