@@ -150,7 +150,7 @@ public class QUBullets implements ContentList {
 		};
 		
 //=========================================
-        smallcurvebomb = new ArtilleryBulletType(4f, 35f) {
+        smallcurvebomb = new ArtilleryBulletType(4f, 20f) {
 			@Override
 			public void init(Bullet b) {
 				if (b == null)return;
@@ -253,7 +253,7 @@ public class QUBullets implements ContentList {
 				});
 				pierce = false;
 				hitSize = 10;
-				splashDamage = 50f;
+				splashDamage = 20f;
 			}
  
 		};
