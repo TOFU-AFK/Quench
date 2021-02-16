@@ -377,7 +377,7 @@ public class QUBullets implements ContentList {
 				}).at(b);
 				//Sounds.explosionbig.at(b, Mathf.random(0.9f, 1.1f));
            for (int num = 0; num < 4; num ++) {
-		Lightning.create(b.team(), Color.valueOf("#FFFF8F"), 50, b.x, b.y, Mathf.random(360), Mathf.random(6, 12));
+		Lightning.create(b.team(), Pal.lancerLaser, 50, b.x, b.y, Mathf.random(360), Mathf.random(6, 12));
 		smallCircularMissile.create(b,b.x,b.y,90*num);
 	   }
 				Damage.damage(b.team(), b.x, b.y, this.splashDamageRadius, this.splashDamage * b.damageMultiplier());
@@ -455,7 +455,7 @@ public class QUBullets implements ContentList {
 				}).at(b);
 				//Sounds.explosionbig.at(b, Mathf.random(0.9f, 1.1f));
            for (int num = 0; num < 3; num ++) {
-		Lightning.create(b.team(), Color.valueOf("#FFFF8F"), 50, b.x, b.y, Mathf.random(360), Mathf.random(3, 6));
+		Lightning.create(b.team(), Pal.lancerLaser, 50, b.x, b.y, Mathf.random(360), Mathf.random(3, 6));
 	   }
 				Damage.damage(b.team(), b.x, b.y, this.splashDamageRadius, this.splashDamage * b.damageMultiplier());
 			}
@@ -531,7 +531,7 @@ smallCircularMissile = new BulletType(4f, 5f) {
 				}).at(b);
 				//Sounds.explosionbig.at(b, Mathf.random(0.9f, 1.1f));
            for (int num = 0; num < 3; num ++) {
-		Lightning.create(b.team(), Color.valueOf("#FFFF8F"), 50, b.x, b.y, Mathf.random(360), Mathf.random(3, 6));
+		Lightning.create(b.team(), Pal.lancerLaser, 50, b.x, b.y, Mathf.random(360), Mathf.random(3, 6));
 	   }
 				Damage.damage(b.team(), b.x, b.y, this.splashDamageRadius, this.splashDamage * b.damageMultiplier());
 			}
