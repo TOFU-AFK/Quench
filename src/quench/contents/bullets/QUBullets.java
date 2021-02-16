@@ -28,7 +28,7 @@ import static arc.math.Angles.*;
  
 public class QUBullets implements ContentList {
 	public static
-	BulletType curvebomb, smallcurvebomb,curvedmissile,circularMissile,smallCircularMissile;
+	BulletType curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
  
 	@Override
 	public void load() {
@@ -341,6 +341,85 @@ public class QUBullets implements ContentList {
 			}
  
 		};
+
+//=========================================
+        bigCircularMissile = new BulletType(4f, 80f) {
+
+            @Override
+            public void update(Bullet b){
+              new Effect(25f, e -> {
+	Draw.color(Pal.lancerLaser);
+    Fill.circle(e.x, e.y, e.fout() * 14);
+    Draw.color(Color.white);
+    Fill.circle(e.x, e.y, e.fout() * 7f);
+        }).at(b);
+            }
+
+			@Override
+			public void draw(Bullet b) {
+				Draw.color(Pal.lancerLaser, Color.white,b.fin());
+			Fill.circle(b.x, b.y,14f);
+				reset();
+			}
+ 
+			@Override
+			public void despawned(Bullet b) {
+				Effect.shake(6f, 2f,b);
+				despawnEffect.at(b);
+                                new Effect(32f, e -> {
+					Draw.color(Pal.lancerLaser, Color.white,e.fin());
+	randLenVectors(e.id, 5, 5 + 15 * e.fin(), (x, y) -> {
+		Drawf.tri(e.x + x, e.y + y, 8* e.fout(), 18* e.fout(), 90);
+		Drawf.tri(e.x + x, e.y + y, 8* e.fout(), 18*e.fout(), 180);
+		Drawf.tri(e.x + x, e.y + y, 8* e.fout(), 18* e.fout(), 270);
+		Drawf.tri(e.x + x, e.y + y, 8* e.fout(), 18* e.fout(), 360);
+					});
+				}).at(b);
+				//Sounds.explosionbig.at(b, Mathf.random(0.9f, 1.1f));
+           for (int num = 0; num < 3; num ++) {
+		Lightning.create(b.team(), Color.valueOf("#FFFF8F"), 50, b.x, b.y, Mathf.random(360), Mathf.random(6, 12));
+		smallCircularMissile.create(this,b.x,b.y,90*num);
+	   }
+				Damage.damage(b.team(), b.x, b.y, this.splashDamageRadius, this.splashDamage * b.damageMultiplier());
+			}
+ 
+			{
+				drawSize = 400;
+ 
+				shootEffect = new Effect(12f, e -> {
+                Draw.color(Pal.lancerLaser, Color.white,e.fin());
+                Drawf.tri(e.x, e.y, 10, 30, 90);
+		Drawf.tri(e.x, e.y, 10, 30, 180);
+		Drawf.tri(e.x, e.y, 10, 30, 270);
+		Drawf.tri(e.x, e.y, 10, 30, 360);
+                Draw.reset();
+				});
+ 
+				despawnEffect = new Effect(32f, e -> {
+					Draw.color(Pal.lancerLaser, Color.white,e.fin());
+					stroke(e.fout() * 4);
+					circle(e.x, e.y, e.fin() * 80);
+					Fill.circle(e.x, e.y, e.fout() * e.fout() * 20);
+					randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
+						Fill.circle(e.x + x, e.y + y, e.fout() * 10f);
+					});
+				});
+ 
+				smokeEffect = new Effect(12f, e -> {
+                Draw.color(Pal.lancerLaser, Color.white,e.fin());
+                Drawf.tri(e.x, e.y, 10, 30, 90);
+		Drawf.tri(e.x, e.y, 10, 30, 180);
+		Drawf.tri(e.x, e.y, 10, 30, 270);
+		Drawf.tri(e.x, e.y, 10, 30, 360);
+                Draw.reset();
+				});
+				pierce = false;
+				hitSize = 10;
+				splashDamage = 200f;
+			}
+ 
+		};
+
 //=========================================
         circularMissile = new BulletType(4f, 50f) {
 
@@ -413,7 +492,7 @@ public class QUBullets implements ContentList {
 				});
 				pierce = false;
 				hitSize = 10;
-				splashDamage = 200f;
+				splashDamage = 100f;
 			}
  
 		};

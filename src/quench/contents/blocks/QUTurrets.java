@@ -69,11 +69,10 @@ public class QUTurrets implements ContentList {
 				baseRegion = Core.atlas.find("quench-block-" + size);
 				size = 3;
 				range = 300;
-				shootType = QUBullets.circularMissile;
+				shootType = QUBullets.bigCircularMissile;
 				chargeTime = 120f;
                 reloadTime = 90f;
                 powerUse = 4f;
-                shots = 3;
                 shootShake = 3f;
                 shootEffect = Fx.lancerLaserShoot;
                 smokeEffect = Fx.none;
