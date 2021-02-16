@@ -72,7 +72,7 @@ public class QUTurrets implements ContentList {
 				shootType = QUBullets.circularMissile;
 				chargeTime = 120f;
                 chargeMaxDelay = 30f;
-                reloadTime = 120f;
+                reloadTime = 90f;
                 cooldown = 0.03f;
                 powerUse = 4f;
                 shootShake = 3f;

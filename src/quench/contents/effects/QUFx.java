@@ -68,9 +68,9 @@ public class QUFx implements ContentList {
 					Draw.color(Pal.lancerLaser, Color.white,e.fin());
 					Fill.circle(e.x, e.y, e.fout() * 20);
 					Draw.color(Color.white,Pal.lancerLaser,e.fin());
-					Fill.circle(e.x, e.y, e.fin() * 20);
-					Drawf.tri(e.x, e.y, 8, 28 * e.fout(), e.rotation + 90);
-					Drawf.tri(e.x, e.y, 8, 28 * e.fout(), e.rotation - 90);
+					Fill.circle(e.x, e.y, e.fin() * 10);
+					Drawf.tri(e.x, e.y, 24, 84 * e.fout(), e.rotation + 90);
+					Drawf.tri(e.x, e.y, 24, 84 * e.fout(), e.rotation - 90);
 				});
 	}
 }
