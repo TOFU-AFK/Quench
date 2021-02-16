@@ -63,7 +63,7 @@ public class QUTurrets implements ContentList {
 			}
 		};
 		
-		vigorous = new ChargeTurret("vigorous"){
+		vigorous = new PowerTurret("vigorous"){
 			{
 				requirements(Category.turret, with(Items.titanium, 85,QUItems.re_thunder,45,Items.silicon,55));
 				baseRegion = Core.atlas.find("quench-block-" + size);
