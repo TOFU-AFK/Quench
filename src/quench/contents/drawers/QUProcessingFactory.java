@@ -7,6 +7,10 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.ctype.*;
 import mindustry.content.*;
+import static arc.graphics.g2d.Draw.rect;
+import static arc.graphics.g2d.Draw.*;
+import static arc.graphics.g2d.Lines.*;
+import static arc.math.Angles.*;
 
 import mindustry.entities.bullet.*;
 import mindustry.gen.*;
@@ -45,10 +49,11 @@ public class QUProcessingFactory extends DrawBlock {
 	private float warmup;
 	public float warmupSpeed = 0.001f;
 	public float timeScale = 0.01f;
-	public TextureRegion[] plasmaRegions;
+	public Color plasma1;
+	public Color plasma2;
 	@Override
 	public void draw(GenericCrafterBuild entity) {
-		Draw.rect(bottom, x, y);
+		Draw.rect(bottom, entity.x, entity.y);
 		
 		if(entity.power.status >= 0.99f){
 
@@ -60,13 +65,13 @@ public class QUProcessingFactory extends DrawBlock {
                 warmup = Mathf.lerpDelta(warmup, 0f, 0.01f);
             }
 
-            for(int i = 0; i < plasmaRegions.length; i++){
-                float r = size * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
+            for(int i = 0; i < plasmaCollection.size(); i++){
+                float r = entity.block().size * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
 
-                Draw.color(plasma1, plasma2, (float)i / plasmaRegions.length);
+                Draw.color(plasma1, plasma2, (float)i / plasmaCollection.size());
                 Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * warmup);
                 Draw.blend(Blending.additive);
-                Draw.rect(plasmaRegions[i], x, y, r, r, Time.time * (12 + i * 6f) * warmup);
+                Draw.rect(plasmaCollection.get(i), entity.x, entity.y, r, r, Time.time * (12 + i * 6f) * warmup);
                 Draw.blend();
             }
 
@@ -86,7 +91,6 @@ public class QUProcessingFactory extends DrawBlock {
 		for(int i=1;i<=plasmaQuantity;i++){
 		    plasmaCollection.add(Core.atlas.find(block.name + "-plasma-" + i));
 		}
-		plasmaRegions = plasmaCollection.toArray();
 	}
 
 	@Override
