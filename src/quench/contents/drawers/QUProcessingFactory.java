@@ -54,18 +54,16 @@ public class QUProcessingFactory extends DrawBlock {
 		Draw.rect(bottom, entity.x, entity.y);
 
             for(int i = 0; i < plasmaQuantity; i++){
-                float r = entity.block().size * 2 - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
+                float r = entity.block().size * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
 
                 Draw.color(plasma1, plasma2, (float)i / plasmaQuantity);
-                Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * entity.warmup);
+                Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * entity.warmup*10);
                 Draw.blend(Blending.additive);
-                Draw.rect(plasmaCollection.get(i), entity.x, entity.y, r, r, Time.time * (12 + i * 6f) * entity.warmup);
+                Draw.rect(plasmaCollection.get(i), entity.x, entity.y, r, r, Time.time * (12 + i * 6f) * entity.warmup*10);
                 Draw.blend();
             }
-
             Draw.color();
-            Draw.rect(entity.block.region, entity.x, entity.y);
-            Draw.color();
+            //Draw.color();
 	}
 
 
