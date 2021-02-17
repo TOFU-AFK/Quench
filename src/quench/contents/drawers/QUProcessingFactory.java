@@ -45,10 +45,9 @@ import static mindustry.Vars.*;
 public class QUProcessingFactory extends DrawBlock {
 	public float moveLength = 8f;
 	public float time;
-	public TextureRegion bottom,region;
+	public TextureRegion bottom;
 	public int plasmaQuantity = 2;//plasma的数量，从一开始
 	public ArrayList<TextureRegion> plasmaCollection;
-	private float warmup;
 	public float warmupSpeed = 0.001f;
 	public float timeScale = 0.01f;
 	public Color plasma1;
@@ -56,31 +55,19 @@ public class QUProcessingFactory extends DrawBlock {
 	@Override
 	public void draw(GenericCrafterBuild entity) {
 		Draw.rect(bottom, entity.x, entity.y);
-		
-		if(entity.power.status >= 0.99f){
-
-                warmup = Mathf.lerpDelta(warmup, 1f, warmupSpeed * timeScale);
-                if(Mathf.equal(warmup, 1f, 0.001f)){
-                    warmup = 1f;
-                }
-            }else{
-                warmup = Mathf.lerpDelta(warmup, 0f, 0.01f);
-            }
 
             for(int i = 0; i < plasmaQuantity; i++){
-                float r = entity.block().size * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
+                float r = entity.block().size * 2 - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
 
                 Draw.color(plasma1, plasma2, (float)i / plasmaQuantity);
-                Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * warmup);
+                Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * entity.warmup);
                 Draw.blend(Blending.additive);
-                Draw.rect(plasmaCollection.get(i), entity.x, entity.y, r, r, Time.time * (12 + i * 6f) * warmup);
+                Draw.rect(plasmaCollection.get(i), entity.x, entity.y, r, r, Time.time * (12 + i * 6f) * entity.warmup);
                 Draw.blend();
             }
 
             Draw.color();
-
-            //Draw.rect(region, entity.x, entity.y);
-
+            Draw.rect(entity.block.region, entity.x, entity.y);
             Draw.color();
 	}
 
@@ -89,7 +76,6 @@ public class QUProcessingFactory extends DrawBlock {
 	public void load(Block block) {
 	    plasmaCollection = new ArrayList<TextureRegion>();
 		bottom = Core.atlas.find(block.name + "-bottom");
-		region = Core.atlas.find(block.name);
 		for(int i=1;i<=plasmaQuantity;i++){
 		    plasmaCollection.add(Core.atlas.find(block.name + "-plasma-" + i));
 		}
