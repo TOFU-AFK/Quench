@@ -5,7 +5,7 @@ import arc.math.geom.*;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
-import arc.struct.*;//导入Time.time方法
+import arc.audio.*;//导入Time.time方法
 
 import mindustry.ctype.*;
 import mindustry.content.*;
