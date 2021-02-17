@@ -6,7 +6,7 @@ import mindustry.type.*;
 
 public class QUItems implements ContentList
 {
-	public static Item re_thunder;
+	public static Item re_thunder,carbonFibre;
 	
   @Override
   public void load()
@@ -17,6 +17,11 @@ public class QUItems implements ContentList
       hardness = 4;
       radioactivity = 1f;
       cost = 1.1f;
+    }};
+    carbonFibre = new Item("carbonFibre",Color.valueOf("ffd280"))
+	 {{
+      hardness = 2;
+      cost = 0.5f;
     }};
   }
 }

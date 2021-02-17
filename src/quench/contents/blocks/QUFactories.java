@@ -41,7 +41,7 @@ import static mindustry.Vars.*;
 
 public class QUFactories implements ContentList
 {
-	public static Block re_thunderImpactFactory;
+	public static Block re_thunderImpactFactory,carbonFiberProcessingFactory;
 	
 	@Override
 	public void load()
@@ -54,7 +54,33 @@ public class QUFactories implements ContentList
 				craftTime = 60f;
 				outputItem = new ItemStack(QUItems.re_thunder, 1);
 				size = 3;
-				health = 320;
+				health = 40*size*size;
+				craftEffect = QUFx.highEnergyShockWave;
+                updateEffect = QUFx.re_thunder_charging;
+				drawer = new QUImpactFactory() {
+					{
+				printColor = Pal.lancerLaser;
+				lightColor = Color.valueOf("#9CCAFF");
+				lightColor2 = Color.valueOf("#8CB6E4");
+				lightColor3 = Color.valueOf("#7EA3CD");
+				moveLength = 6.2f;
+				time = 40f;
+					}
+				};
+				consumes.power(3f);
+				consumes.items(new ItemStack(Items.titanium, 2), new ItemStack(Items.graphite, 1));
+			}
+		};
+		
+        carbonFiberProcessingFactory = new QUAdvancedFactory("carbonFiberProcessingFactory")
+		{
+			{
+            requirements(Category.crafting, with(Items.lead, 45, Items.copper, 85,Items.graphite, 15));
+				hasItems = hasPower = true;
+				craftTime = 60f;
+				outputItem = new ItemStack(QUItems.carbonFibre, 1);
+				size = 2;
+				health = 40*size*size;
 				craftEffect = QUFx.highEnergyShockWave;
                 updateEffect = QUFx.re_thunder_charging;
 				drawer = new QUImpactFactory() {
