@@ -83,18 +83,17 @@ public class QUFactories implements ContentList
 				health = 40*size*size;
 				craftEffect = QUFx.highEnergyShockWave;
                 updateEffect = QUFx.re_thunder_charging;
-				drawer = new QUImpactFactory() {
+				drawer = new QUProcessingFactory() {
 					{
-				printColor = Pal.lancerLaser;
-				lightColor = Color.valueOf("#9CCAFF");
-				lightColor2 = Color.valueOf("#8CB6E4");
-				lightColor3 = Color.valueOf("#7EA3CD");
+				plasmaQuantity = 3;
+				plasma1 = Color.valueOf("#9CCAFF");
+				plasma2 = Color.valueOf("#8CB6E4");
 				moveLength = 6.2f;
 				time = 40f;
 					}
 				};
-				consumes.power(3f);
-				consumes.items(new ItemStack(Items.titanium, 2), new ItemStack(Items.graphite, 1));
+				consumes.power(1f);
+				consumes.items(new ItemStack(Items.coal, 3));
 			}
 		};
 	}
