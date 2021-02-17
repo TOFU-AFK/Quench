@@ -5,7 +5,6 @@ import arc.math.geom.*;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
-import arc.audio.*;//导入Time.time方法
 
 import mindustry.ctype.*;
 import mindustry.content.*;
@@ -32,6 +31,13 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
+
+import mindustry.annotations.Annotations.*;
+import mindustry.content.*;
+import mindustry.entities.units.*;
+import mindustry.game.EventType.*;
+import mindustry.game.*;
+import mindustry.gen.*;
 
 import static mindustry.Vars.*;
 
