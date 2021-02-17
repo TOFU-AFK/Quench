@@ -1,43 +1,25 @@
-package quench.contents.types;
+package mindustry.world.blocks.power;
 
-import mindustry.entities.*;
 import arc.*;
-import arc.math.*;
-import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
-import mindustry.ui.*;
-import mindustry.ctype.*;
+import arc.math.*;
+import arc.struct.*;
+import arc.util.*;
+import arc.util.io.*;
+import mindustry.annotations.Annotations.*;
 import mindustry.content.*;
-import mindustry.world.blocks.defense.turrets.*;
-import mindustry.entities.bullet.*;
+import mindustry.entities.*;
+import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
-import mindustry.type.*;
-import mindustry.world.*;
-import mindustry.world.blocks.*;
-import mindustry.world.blocks.campaign.*;
-import mindustry.world.blocks.defense.*;
-import mindustry.world.blocks.defense.turrets.*;
-import mindustry.world.blocks.distribution.*;
-import mindustry.world.blocks.environment.*;
-import mindustry.world.blocks.experimental.*;
-import mindustry.world.blocks.legacy.*;
-import mindustry.world.blocks.liquid.*;
-import mindustry.world.blocks.logic.*;
-import mindustry.world.blocks.power.*;
-import mindustry.world.blocks.production.*;
-import mindustry.world.blocks.sandbox.*;
-import mindustry.world.blocks.storage.*;
-import mindustry.world.blocks.units.*;
-import mindustry.world.consumers.*;
-import mindustry.world.draw.*;
+import mindustry.logic.*;
+import mindustry.ui.*;
 import mindustry.world.meta.*;
 
 import static mindustry.Vars.*;
 
-//冲击工厂(碳纤维加工厂)
-public class QUImpactFactory extends GenericCrafter{
+public class ImpactReactor extends PowerGenerator{
     public final int timerUse = timers++;
 
     public float warmupSpeed = 0.001f;
@@ -50,11 +32,34 @@ public class QUImpactFactory extends GenericCrafter{
     public @Load("@-bottom") TextureRegion bottomRegion;
     public @Load(value = "@-plasma-#", length = 4) TextureRegion[] plasmaRegions;
 
-    public QUImpactFactory(String name){
+    public ImpactReactor(String name){
         super(name);
         hasPower = true;
+        hasLiquids = true;
+        liquidCapacity = 30f;
         hasItems = true;
+        outputsPower = consumesPower = true;
         flags = EnumSet.of(BlockFlag.reactor, BlockFlag.generator);
+    }
+
+    @Override
+    public void setBars(){
+        super.setBars();
+
+        bars.add("poweroutput", (GeneratorBuild entity) -> new Bar(() ->
+        Core.bundle.format("bar.poweroutput",
+        Strings.fixed(Math.max(entity.getPowerProduction() - consumes.getPower().usage, 0) * 60 * entity.timeScale, 1)),
+        () -> Pal.powerBar,
+        () -> entity.productionEfficiency));
+    }
+
+    @Override
+    public void setStats(){
+        super.setStats();
+
+        if(hasItems){
+            stats.add(Stat.productionTime, itemDuration / 60f, StatUnit.seconds);
+        }
     }
 
     @Override
@@ -62,16 +67,21 @@ public class QUImpactFactory extends GenericCrafter{
         return new TextureRegion[]{bottomRegion, region};
     }
 
-    public class QUAdvancedFactory extends QUAdvancedFactoryBuild{
+    public class ImpactReactorBuild extends GeneratorBuild{
         public float warmup;
 
         @Override
         public void updateTile(){
             if(consValid() && power.status >= 0.99f){
+                boolean prevOut = getPowerProduction() <= consumes.getPower().requestedPower(this);
 
                 warmup = Mathf.lerpDelta(warmup, 1f, warmupSpeed * timeScale);
                 if(Mathf.equal(warmup, 1f, 0.001f)){
                     warmup = 1f;
+                }
+
+                if(!prevOut && (getPowerProduction() > consumes.getPower().requestedPower(this))){
+                    Events.fire(Trigger.impactPower);
                 }
 
                 if(timer(timerUse, itemDuration / timeScale)){
@@ -80,6 +90,8 @@ public class QUImpactFactory extends GenericCrafter{
             }else{
                 warmup = Mathf.lerpDelta(warmup, 0f, 0.01f);
             }
+
+            productionEfficiency = Mathf.pow(warmup, 5f);
         }
 
         @Override

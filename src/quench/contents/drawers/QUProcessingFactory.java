@@ -32,40 +32,61 @@ import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
+import java.util.ArrayList;
+
 import static mindustry.Vars.*;
 
 public class QUProcessingFactory extends DrawBlock {
-	public Color printColor;
 	public float moveLength = 8f;
 	public float time;
-	public TextureRegion bottom, lightRegion, item;
+	public TextureRegion bottom,region;
+	public int plasmaQuantity = 2//plasma的数量，从一开始
+	public ArrayList<TextureRegion> plasmaCollection;
+	private float warmup;
+	public float warmupSpeed = 0.001f;
+	public float timeScale = 0.01f;
+	public TextureRegion[] plasmaRegions;
 	@Override
 	public void draw(GenericCrafterBuild entity) {
-		Draw.rect(bottom, entity.x, entity.y);
-		Draw.color(printColor);
-		Draw.alpha(entity.warmup);
-		float sin = Mathf.sin(entity.totalProgress, time, moveLength);
-		for (int i : Mathf.signs) {
-			Lines.lineAngleCenter(entity.x + i * sin, entity.y, 90, 16);
-			Lines.lineAngleCenter(entity.x, entity.y + i * sin, 0, 16);
-            Lines.poly(entity.x + i * sin, entity.y, 6, 4);
-            Lines.poly(entity.x, entity.y + i * sin, 6, 4);
-		}
-		Draw.reset();
-		Draw.rect(entity.block.region, entity.x, entity.y);
+		Draw.rect(bottom, x, y);
+		
+		if(entity.power.status >= 0.99f){
 
-			Draw.color(lightColor, lightColor2,lightColor3, entity.warmup);
-			Draw.blend(Blending.additive);
-			Draw.rect(lightRegion, entity.x, entity.y);
-			Draw.blend();
-			Draw.reset();
+                warmup = Mathf.lerpDelta(warmup, 1f, warmupSpeed * timeScale);
+                if(Mathf.equal(warmup, 1f, 0.001f)){
+                    warmup = 1f;
+                }
+            }else{
+                warmup = Mathf.lerpDelta(warmup, 0f, 0.01f);
+            }
+
+            for(int i = 0; i < plasmaRegions.length; i++){
+                float r = size * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
+
+                Draw.color(plasma1, plasma2, (float)i / plasmaRegions.length);
+                Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * warmup);
+                Draw.blend(Blending.additive);
+                Draw.rect(plasmaRegions[i], x, y, r, r, Time.time * (12 + i * 6f) * warmup);
+                Draw.blend();
+            }
+
+            Draw.color();
+
+            Draw.rect(region, x, y);
+
+            Draw.color();
 	}
 
 
 	@Override
 	public void load(Block block) {
+	    plasmaCollection = new ArrayList<TextureRegion>();
 		bottom = Core.atlas.find(block.name + "-bottom");
-		lightRegion = Core.atlas.find(block.name + "-light");
+		region = Core.atlas.find(block.name);
+		for(int i=1;i<=plasmaQuantity;i++){
+		    plasmaCollection.add(Core.atlas.find(block.name + "-plasma-" + i));
+		}
+		plasmaRegions = plasmaCollection.toArray();
 	}
 
 	@Override
