@@ -67,7 +67,7 @@ public class QUProcessingFactory extends DrawBlock {
                 warmup = Mathf.lerpDelta(warmup, 0f, 0.01f);
             }
 
-            for(int i = 0; i <= plasmaQuantity; i++){
+            for(int i = 0; i < plasmaQuantity; i++){
                 float r = entity.block().size * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
 
                 Draw.color(plasma1, plasma2, (float)i / plasmaQuantity);
