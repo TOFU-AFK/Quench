@@ -5,13 +5,12 @@ import arc.math.geom.*;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import arc.audio.*;
+import arc.util.*;
+import arc.struct.*;
+
 import mindustry.ctype.*;
 import mindustry.content.*;
-import static arc.graphics.g2d.Draw.rect;
-import static arc.graphics.g2d.Draw.*;
-import static arc.graphics.g2d.Lines.*;
-import static arc.math.Angles.*;
-
 import mindustry.entities.bullet.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
@@ -35,6 +34,9 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
+import mindustry.entities.*;
+import mindustry.io.*;
+import mindustry.game.*;
 
 import java.util.ArrayList;
 
@@ -77,7 +79,7 @@ public class QUProcessingFactory extends DrawBlock {
 
             Draw.color();
 
-            Draw.rect(region, x, y);
+            Draw.rect(region, entity.x, entity.y);
 
             Draw.color();
 	}
