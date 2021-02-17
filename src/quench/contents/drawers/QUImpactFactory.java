@@ -5,9 +5,10 @@ import arc.math.geom.*;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import arc.struct.*;//导入Time.time方法
+
 import mindustry.ctype.*;
 import mindustry.content.*;
-
 import mindustry.entities.bullet.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
@@ -31,8 +32,6 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
-import mindustry.entities.*;//导入Time.time方法
-
 
 import static mindustry.Vars.*;
 

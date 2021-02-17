@@ -34,9 +34,6 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
-import mindustry.entities.*;
-import mindustry.io.*;
-import mindustry.game.*;
 
 import java.util.ArrayList;
 
