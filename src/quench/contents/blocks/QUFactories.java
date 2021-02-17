@@ -86,7 +86,7 @@ public class QUFactories implements ContentList
 				drawer = new QUProcessingFactory() {
 					{
 				plasmaQuantity = 3;
-				plasma1 = Color.valueOf("#9CCAFF");
+				plasma1 = Pal.lancerLaser;
 				plasma2 = Color.valueOf("#8CB6E4");
 				moveLength = 6.2f;
 				time = 40f;

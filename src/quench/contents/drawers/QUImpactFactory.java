@@ -61,7 +61,7 @@ public class QUImpactFactory extends DrawBlock {
 		Draw.rect(entity.block.region, entity.x, entity.y);
 
 			Draw.color(lightColor, lightColor2,lightColor3, entity.warmup);
-			Draw.alpha((0.3f + Mathf.absin(Time.time, 2f  * 2f, 0.3f * 0.05f)) * entity.warmup);
+			Draw.alpha((0.3f + Mathf.absin(Time.time, 2f  * 2f, 0.3f * 0.05f)) * entity.warmup);//使用它可以形成渐变效果
 			Draw.blend(Blending.additive);
 			Draw.rect(lightRegion, entity.x, entity.y);
 			Draw.blend();
