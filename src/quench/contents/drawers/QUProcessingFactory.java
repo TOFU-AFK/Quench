@@ -40,7 +40,7 @@ public class QUProcessingFactory extends DrawBlock {
 	public float moveLength = 8f;
 	public float time;
 	public TextureRegion bottom,region;
-	public int plasmaQuantity = 2//plasma的数量，从一开始
+	public int plasmaQuantity = 2;//plasma的数量，从一开始
 	public ArrayList<TextureRegion> plasmaCollection;
 	private float warmup;
 	public float warmupSpeed = 0.001f;
