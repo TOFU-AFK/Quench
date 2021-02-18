@@ -47,7 +47,7 @@ public class QUUnitType extends UnitType{
     @Override
     public void drawBody(Unit unit){
         //判断是否已经加载了资源，是的话就不在调用load方法
-        if(!loader){
+        if(!drawer.loader){
         drawer.load(this);
         }
         drawer.draw(unit);
