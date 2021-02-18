@@ -78,11 +78,12 @@ public class QUFx implements ContentList {
 				});
 
 		smallHighlightBall = new Effect(64f, e -> {
-		    randLenVectors(e.id, 10, 5 + 25 * e.fin(), (x, y) -> {
+		    //10为次数
+		    randLenVectors(e.id, 5, 5 + 65 * e.fin(), (x, y) -> {
 					Draw.color(Color.valueOf("FFFF8F"), Color.white,e.fin());
 					Fill.circle(e.x + x, e.y + y, e.fout() * 1.628f);
 					Draw.color(Color.white,Color.valueOf("FFFF8F"),e.fin());
-					Fill.circle(e.x + x, e.y + y, e.fin() * 1.5f);
+					Fill.circle(e.x + x, e.y + y, e.fout() * 1.5f);
 					Drawf.tri(e.x + x, e.y + y, 2, 16 * e.fout(), e.rotation + 180);
 					Drawf.tri(e.x + x, e.y + y, 2, 16 * e.fout(), e.rotation);
 		    });
