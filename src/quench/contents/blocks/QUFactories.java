@@ -81,8 +81,8 @@ public class QUFactories implements ContentList
 				outputItem = new ItemStack(QUItems.carbonFibre, 1);
 				size = 2;
 				health = 40*size*size;
-				craftEffect = QUFx.highEnergyShockWave;
-                updateEffect = QUFx.re_thunder_charging;
+				craftEffect = Fx.none;
+                updateEffect = QUFx.smallHighlightBall;
 				drawer = new QUProcessingFactory() {
 					{
 				plasmaQuantity = 3;
