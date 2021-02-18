@@ -42,6 +42,7 @@ public class QUUnitType extends UnitType{
     public QUUnitType(String name){
         super(name);
         drawer = null;
+        constructor = EntityMapping.map(name);
     }
     
     @Override

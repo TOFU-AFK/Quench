@@ -69,8 +69,8 @@ public class QUWhirlpoolUnit extends DrawEntity {
                 Draw.blend();
             }
             Draw.color();
-            Draw.rect(region, unit.x, unit.y);
-            Draw.color();
+            Draw.rect(region, unit.x, unit.y,unit.rotation - 90);
+            Draw.reset();
 	}
 
 
