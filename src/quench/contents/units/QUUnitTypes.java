@@ -5,6 +5,10 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.ctype.*;
 import mindustry.content.*;
+import arc.math.geom.*;
+import arc.audio.*;
+import arc.util.*;
+import arc.struct.*;
 
 import mindustry.entities.*;
 import mindustry.entities.bullet.*;
@@ -36,6 +40,8 @@ import quench.contents.types.*;
 import quench.contents.items.*;
 import quench.contents.drawers.*;
 import quench.contents.effects.*;
+
+import java.util.ArrayList;
 
 import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
@@ -82,7 +88,6 @@ public class QUUnitTypes implements ContentList{
 	};
 	
 	public void loadRegion(UnitType unit) {
-	    super.load(unit);
 	    plasmaCollection = new ArrayList<TextureRegion>();
 	    region = Core.atlas.find(unit.name);
 	    //用循环来给等离子集合加入贴图
