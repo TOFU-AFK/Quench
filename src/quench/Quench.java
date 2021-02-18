@@ -38,6 +38,7 @@ public class Quench extends Mod{
 	  new QUTurrets().load();
 	  new QUFactories().load();
 	  new QUWalls().load();
+	  new QUUnitTypes().load();
 	  new QUPlanets().load();
     }
 	
