@@ -47,7 +47,7 @@ public class QUUnitType extends UnitType{
     @Override
     public void drawBody(Unit unit){
         applyColor(unit);
-        drawer.load(unit);
-        drawer.draw(this);
+        drawer.load(this);
+        drawer.draw(unit);
     }
 }
