@@ -30,6 +30,7 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
+import mindustry.ai.types.*;
 
 import quench.contents.types.*;
 import quench.contents.items.*;
@@ -40,7 +41,7 @@ import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
 
 public class QUUnitTypes implements ContentList{
-    public static UnitTypes exterminator;
+    public static UnitType exterminator;
     @Override
 	public void load()
 	{

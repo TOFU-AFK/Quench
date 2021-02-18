@@ -37,7 +37,7 @@ import quench.contents.types.draw.*;
 import static mindustry.Vars.*;
 
 public class QUUnitType extends UnitType{
-    DrawEntity drawer;
+    public DrawEntity drawer;
     
     public QUUnitType(String name){
         super(name);
