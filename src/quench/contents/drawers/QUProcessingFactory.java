@@ -63,7 +63,6 @@ public class QUProcessingFactory extends DrawBlock {
                 Draw.blend();
             }
             Draw.color();
-            //Draw.color();
 	}
 
 
