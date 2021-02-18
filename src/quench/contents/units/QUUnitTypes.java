@@ -56,12 +56,14 @@ public class QUUnitTypes implements ContentList{
             engineSize = 1.8f;
             engineOffset = 5.7f;
             range = 50f;
-            isCounted = false;
-
-            ammoType = AmmoTypes.powerLow;
-
-            mineTier = 1;
-            mineSpeed = 2.5f;
+            weapons.add(new Weapon("large-weapon"){{
+                reload = 14f;
+                x = 4f;
+                y = 2f;
+                top = false;
+                ejectEffect = Fx.casing1;
+                bullet = Bullets.standardCopper;
+            }});
             drawer = new QUWhirlpoolUnit() {
 					{
 				plasmaQuantity = 3;
