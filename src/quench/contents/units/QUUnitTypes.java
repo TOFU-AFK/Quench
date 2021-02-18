@@ -78,7 +78,7 @@ public class QUUnitTypes implements ContentList{
 	@Override
     public void drawBody(Unit unit){
     loadRegion(this);
-    drawUnit(unit)
+    drawUnit(unit);
 	};
 	
 	public void loadRegion(UnitType unit) {
@@ -110,5 +110,6 @@ public class QUUnitTypes implements ContentList{
             Draw.rect(region, unit.x, unit.y,unit.rotation - 90);
             Draw.reset();
 	}
+};
 }
 }
