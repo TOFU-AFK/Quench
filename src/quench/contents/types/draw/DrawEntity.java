@@ -41,7 +41,7 @@ public class DrawEntity{
 
     }
 
-    public void load(Unit unit){
+    public void load(UnitType unit){
 
     }
 }

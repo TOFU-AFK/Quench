@@ -75,7 +75,7 @@ public class QUWhirlpoolUnit extends DrawEntity {
 
 
 	@Override
-	public void load(Unit unit) {
+	public void load(UnitType unit) {
 	    plasmaCollection = new ArrayList<TextureRegion>();
 	    region = Core.atlas.find(unit.name);
 	    //用循环来给等离子集合加入贴图
