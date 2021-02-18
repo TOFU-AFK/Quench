@@ -72,7 +72,7 @@ public class QUProcessingFactory extends DrawBlock {
 	@Override
 	public void load(Block block) {
 	    plasmaCollection = new ArrayList<TextureRegion>();
-		bottom = Core.atlas.find("bottom-"+block.size);
+		bottom = Core.atlas.find(block.name + "-bottom");
 		for(int i=1;i<=plasmaQuantity;i++){
 		    plasmaCollection.add(Core.atlas.find(block.name + "-plasma-" + i));
 		}
