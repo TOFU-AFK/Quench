@@ -79,7 +79,7 @@ public class QUFx implements ContentList {
 
 		smallHighlightBall = new Effect(64f, e -> {
 					Draw.color(Color.valueOf("FFFF8F"), Color.white,e.fin());
-					Fill.circle(e.x, e.y, e.fout() * 7.5);
+					Fill.circle(e.x, e.y, e.fout() * 7.5f);
 					Draw.color(Color.white,Color.valueOf("FFFF8F"),e.fin());
 					Fill.circle(e.x, e.y, e.fin() * 6);
 					Drawf.tri(e.x, e.y, 8, 64 * e.fout(), e.rotation + 90);
