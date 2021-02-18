@@ -26,8 +26,8 @@ import static arc.math.Angles.*;
  
 public class QUFx implements ContentList {
 	public static
-	//复雷充能，高能冲击波，榴弹发射，荧光球，小型荧光球
-	Effect re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall,smallHighlightBall;
+	//复雷充能，高能冲击波，榴弹发射，荧光球，小型荧光球,小型冲击波
+	Effect re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall,smallHighlightBall,smallShockWave;
  
 	@Override
 	public void load() {
@@ -82,12 +82,23 @@ public class QUFx implements ContentList {
 					Fill.circle(e.x, e.y, e.fout() * 7.5f);
 					Draw.color(Color.white,Color.valueOf("FFFF8F"),e.fin());
 					Fill.circle(e.x, e.y, e.fin() * 6);
-					Drawf.tri(e.x, e.y, 8, 64 * e.fout(), e.rotation + 90);
-					Drawf.tri(e.x, e.y, 8, 64 * e.fout(), e.rotation - 90);
+					Drawf.tri(e.x, e.y, 8, 64 * e.fout(), e.rotation + 180);
+					Drawf.tri(e.x, e.y, 8, 64 * e.fout(), e.rotation);
 					Drawf.tri(e.x, e.y, 4, 16 * e.fout(), 0 - Time.time);
 					Drawf.tri(e.x, e.y, 4, 16 * e.fout(), 180 + Time.time);
 					Drawf.tri(e.x, e.y, 4, 16 * e.fout(), 270 - Time.time);
 					Drawf.tri(e.x, e.y, 4, 16 * e.fout(), 90 + Time.time);
+					Lines.stroke(e.fout() * 3f);
+                    Lines.circle(e.x, e.y, e.fin() * 50f);
 				});
+				
+		smallShockWave = new Effect(25f, e -> {
+		 Draw.color(Color.valueOf("FFFF8F"), Color.white,e.fin());
+        randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
+			Fill.circle(e.x + x, e.y + y, e.fout() * 2.5f);
+					});
+        Lines.stroke(e.fout() * 2f);
+        Lines.circle(e.x, e.y, e.fin() * 10f);
+		});
 	}
 }
