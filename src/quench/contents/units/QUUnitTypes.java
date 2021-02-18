@@ -67,7 +67,8 @@ public class QUUnitTypes implements ContentList{
 				plasma1 = Color.valueOf("#FFFF8F");
 				plasma2 = Color.valueOf("#D3806A");
 					}
-	        }
-	    };
-	}
+	        };
+	    }
+	};
+}
 }
