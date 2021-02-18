@@ -36,7 +36,7 @@ import static mindustry.Vars.*;
 
 //用于绘制单位
 public class DrawEntity{
-    public loader = false;//判断load方法是否执行
+    public boolean loader = false;//判断load方法是否执行
     public void draw(Unit unit){
 
     }
