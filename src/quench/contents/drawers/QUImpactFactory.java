@@ -71,7 +71,7 @@ public class QUImpactFactory extends DrawBlock {
 
 	@Override
 	public void load(Block block) {
-		bottom = Core.atlas.find(block.name + "-bottom");
+		bottom = Core.atlas.find("bottom-"+block.size);
 		lightRegion = Core.atlas.find(block.name + "-light");
 	}
 
