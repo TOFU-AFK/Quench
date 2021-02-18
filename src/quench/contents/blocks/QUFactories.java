@@ -87,7 +87,7 @@ public class QUFactories implements ContentList
 					{
 				plasmaQuantity = 3;
 				plasma1 = Color.valueOf("#FFFF8F");
-				plasma2 = Color.valueOf("#8CB6E4");
+				plasma2 = Color.valueOf("#D3806A");
 				moveLength = 6.2f;
 				time = 40f;
 					}
