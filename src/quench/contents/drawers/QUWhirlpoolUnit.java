@@ -53,7 +53,7 @@ public class QUWhirlpoolUnit extends DrawEntity {
 	public TextureRegion region;//单位主贴图
 	
 	@Override
-	public void draw(UnitType unit) {
+	public void draw(Unit unit) {
 		warmup = Mathf.lerpDelta(warmup, 1f, warmupSpeed * timeScale);
         if(Mathf.equal(warmup, 1f, 0.001f)){
             warmup = 1f;
@@ -75,7 +75,7 @@ public class QUWhirlpoolUnit extends DrawEntity {
 
 
 	@Override
-	public void load(UnitType unit) {
+	public void load(Unit unit) {
 	    plasmaCollection = new ArrayList<TextureRegion>();
 	    region = Core.atlas.find(unit.name);
 	    //用循环来给等离子集合加入贴图

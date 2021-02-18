@@ -37,11 +37,11 @@ import static mindustry.Vars.*;
 //用于绘制单位
 public class DrawEntity{
     
-    public void draw(UnitType unit){
+    public void draw(Unit unit){
 
     }
 
-    public void load(UnitType unit){
+    public void load(Unit unit){
 
     }
 }
