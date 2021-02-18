@@ -47,7 +47,7 @@ public class QUUnitTypes implements ContentList{
 	{
 	    exterminator = new QUUnitType("exterminator"){
 	        {
-	        defaultController = MinerAI::new;
+	        //defaultController = MinerAI::new;
             flying = true;
             drag = 0.06f;
             accel = 0.12f;
