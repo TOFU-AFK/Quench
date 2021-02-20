@@ -15,6 +15,7 @@ import mindustry.mod.*;
 import mindustry.ui.Styles;
 import mindustry.ui.dialogs.*;
 
+//导入模组内容
 import quench.contents.items.*;
 import quench.contents.effects.*;
 import quench.contents.blocks.*;
@@ -39,7 +40,6 @@ public class Quench extends Mod{
 	  new QUTurrets().load();
 	  new QUFactories().load();
 	  new QUWalls().load();
-	  new QUUnitTypes().load();
 	  new QUPlanets().load();
     }
 	

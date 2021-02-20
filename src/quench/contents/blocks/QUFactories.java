@@ -93,7 +93,7 @@ public class QUFactories implements ContentList
 					}
 				};
 				consumes.power(1f);
-				consumes.items(new ItemStack(Items.coal, 3));
+				consumes.items(new ItemStack(Items.coal, 3));		
 			}
 		};
 	}
