@@ -1,7 +1,4 @@
-package quench.contents.largeMachinery;
-
-import fuleikeindustry.contents.types.structure.blueprint.*;
-
+package quench.contents.blocks;
 import arc.*;
 import arc.math.*;
 import arc.graphics.*;
@@ -34,29 +31,28 @@ import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
-import java.util.*;
+import quench.contents.types.*;
+import quench.contents.items.*;
+import quench.contents.drawers.*;
+import quench.contents.effects.*;
 
 import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
 
-public class QUBlueprints implements ContentList
+public class QULargeMachinery implements ContentList
 {
-	public static Blueprint hydroelectricGenerator;
-	public static ArrayList<Blueprint> blueprints;
+	public static Block hydroelectricGeneratorCore;
 	
 	@Override
 	public void load()
 	{
-	    blueprints = new ArrayList<Blueprint>();
-		hydroelectricGenerator = new Blueprint("hydroelectricGenerator")
+		hydroelectricGeneratorCore = new MechanicalCore("hydroelectricGeneratorCore")
 		{
 			{
-			    //结构的信息(null为换行)
-			    structure = {QUStructureBlock.mechanicalShell,QUStructureBlock.mechanicalShell,QUStructureBlock.mechanicalShell,null,QUStructureBlock.mechanicalShell,QUStructureBlock.structuralCore,QUStructureBlock.mechanicalShell,null,QUStructureBlock.mechanicalShell,QUStructureBlock.mechanicalShell,QUStructureBlock.mechanicalShell};
-			    x = {-1,0,1,-1,0-1,-1,0,1}
-			    y = {1,1,1,0,0,0,-1,-1,-1}
+            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+			size = 1;
+			health = 40*size*size;
 			}
 		};
-		blueprints.add(hydroelectricGenerator);
 	}
 }

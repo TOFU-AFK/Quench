@@ -1,7 +1,7 @@
 /*
-*多方块结构的基础type
+*大型机械的核心type
 */
-package quench.contents.types.largeMachinery;
+package quench.contents.types;
 
 import mindustry.world.*;
 import mindustry.entities.*;
@@ -40,26 +40,44 @@ import mindustry.world.meta.*;
 
 import static mindustry.Vars.*;
 
-public class MultipleBlock extends Block{
-    public MultipleBlock(String name){
+public class MechanicalCore extends LargeMachinery{
+    public TextureRegion condition;
+    public MechanicalCore(String name){
         super(name);
         solid = true;
         destructible = true;
         group = BlockGroup.walls;
-        buildCostMultiplier = 5f;
     }
 
     @Override
     public void load(){
         super.load();
-    }
-    
-    //设置名称
-    public void setName(String name){
-        this.localizedName = name;
+        condition = Core.atlas.find("status-mistake");
     }
 	 
-    public class MultipleBlockBuild extends Building{
+    public class MechanicalCoreBuild extends LargeMachineryBuild{
+        public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
+        //旋转按钮
+        @Override
+        public void buildConfiguration(Table table){
+            Table cont = new Table();
+            cont.defaults().size(40);
+            cont.button(Icon.add, Styles.clearTransi, () -> {
+                rotate();
+            });
+            cont.row();
+            cont.add(Core.bundle.get("largeMachinery.rotate"));
+            table.add(cont);
+        }
+        
+        public void rotate(){
+           if(direction<3){
+               direction++;
+           }else{
+               direction = 0;
+           }
+        }
+        
         @Override
         public void update(){
             super.update();
@@ -68,6 +86,7 @@ public class MultipleBlock extends Block{
         @Override
         public void draw(){
             super.draw();
+            Draw.rect(condition,x,y-tilesize-condition.getRegionHeight());
         }
     }
 }
