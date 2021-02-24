@@ -110,6 +110,7 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void drawConfigure(){
         for(BlockData data:structure.datas){
+        Draw.alpha(0.5f);
         Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
         Lines.stroke(1);
         Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
