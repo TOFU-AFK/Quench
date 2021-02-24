@@ -105,7 +105,7 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void drawConfigure(){
             BlockData[] datas = structure.datas;
-            for(int i==0;datas.length;i++){
+            for(int i=0;i<datas.length;i++){
             Draw.rect(datas[i].block.region,x+datas[i].x,y+datas[i].y);
             }
         }
