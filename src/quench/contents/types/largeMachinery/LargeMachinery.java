@@ -48,15 +48,13 @@ public class LargeMachinery extends Block{
         group = BlockGroup.walls;
         buildCostMultiplier = 5f;
     }
-    
-    public TextureRegion getRegion(){
-        return Core.atlas.find(name);
-    }
 
     @Override
     public void load(){
         super.load();
     }
+    
+    public void draw
 	 
     public class LargeMachineryBuild extends Building{
         public boolean start = false;//是否启动，由控制核心控制
