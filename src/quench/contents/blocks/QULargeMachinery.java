@@ -52,7 +52,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
-			structure = new Structure(new BlockData[]{new BlockData(hydroelectricGeneratorCore,32,32)});
+			structure = new Structure(new BlockData[]{new BlockData(hydroelectricGeneratorCore,32,32),new BlockData(hydroelectricGeneratorCore,64,32)});
 			}
 		};
 	}
