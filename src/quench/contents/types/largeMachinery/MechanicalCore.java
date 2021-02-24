@@ -110,15 +110,10 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void drawConfigure(){
         for(BlockData data:structure.datas){
+        Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
         Lines.stroke(1);
         Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
         }
-        BaseDialog material = new BaseDialog(Core.bundle.get("ui.material"),Styles.defaultDialog);
-        material.setFillParent = false;
-        material.setSize(60,100);
-        material.setX(x-150);
-        material.setY(y);
-        material.show();
         }
     }
 }
