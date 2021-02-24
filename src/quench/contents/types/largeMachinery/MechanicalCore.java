@@ -125,7 +125,7 @@ public class MechanicalCore extends LargeMachinery{
         if(datas!=null){
         for(BlockData data:datas){
         Tile tile = Vars.world.tile(x+data.x, y+data.y);
-        if(tile.block.name.equals(data.name){
+        if(tile.block.name.equals(data.name)){
         }else{
         Draw.alpha(0.5f);
         Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
@@ -141,7 +141,7 @@ public class MechanicalCore extends LargeMachinery{
         ArrayList<BlockData> datas = new ArrayList<BlockData>();
         for(BlockData data:structure.datas){
         Tile tile = Vars.world.tile(x+data.x, y+data.y);
-        if(!tile.block.name.equals(data.name){
+        if(!tile.block.name.equals(data.name)){
             datas.add(new BlockData(data.name,data.x,data.y));
         }
         }
