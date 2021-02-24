@@ -95,7 +95,7 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
-            Draw.rect(condition,x,y-tilesize*2);
+            Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
     }
 }
