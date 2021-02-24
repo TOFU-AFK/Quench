@@ -56,11 +56,6 @@ public class MechanicalCore extends LargeMachinery{
         solid = true;
         destructible = true;
         group = BlockGroup.walls;
-    }
-
-    @Override
-    public void load(){
-        super.load();
         condition = Core.atlas.find("status-mistake");
     }
 	 
