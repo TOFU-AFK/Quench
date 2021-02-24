@@ -56,7 +56,12 @@ public class MechanicalCore extends LargeMachinery{
         solid = true;
         destructible = true;
         group = BlockGroup.walls;
-        condition = Core.atlas.find("status-mistake");
+    }
+    
+    @Override
+    public void load(){
+        super.load();
+        condition = Core.atlas.find("quench-status-mistake");
     }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
