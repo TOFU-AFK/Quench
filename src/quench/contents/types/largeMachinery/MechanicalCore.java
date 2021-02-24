@@ -51,11 +51,13 @@ import static mindustry.Vars.*;
 
 public class MechanicalCore extends LargeMachinery{
     public TextureRegion condition;
+    public Structure structure;
     public MechanicalCore(String name){
         super(name);
         solid = true;
         destructible = true;
-        group = BlockGroup.walls;
+        group = BlockGroup.none;
+        configurable = true;
     }
     
     @Override
@@ -66,6 +68,7 @@ public class MechanicalCore extends LargeMachinery{
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
+        
         //旋转按钮
         @Override
         public void buildConfiguration(Table table){
@@ -97,5 +100,14 @@ public class MechanicalCore extends LargeMachinery{
             super.draw();
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
+        
+        //用于绘制结构
+        @Override
+        public void drawConfigure(){
+            for(BlockData data : structure.datas){
+            Draw.rect(data.block.region,x+data.x,y+data.y);
+            }
+        }
+        
     }
 }
