@@ -48,6 +48,10 @@ public class LargeMachinery extends Block{
         group = BlockGroup.walls;
         buildCostMultiplier = 5f;
     }
+    
+    public TextureRegion getRegion(){
+        return Core.atlas.find(name);
+    }
 
     @Override
     public void load(){
