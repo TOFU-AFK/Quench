@@ -106,7 +106,7 @@ public class MechanicalCore extends LargeMachinery{
         public void drawConfigure(){
         for(BlockData data:structure.datas){
         Lines.stroke(1);
-        Lines.square(x+data.x, y+data.y,tilesize,0);
+        Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
         }
         }
     }
