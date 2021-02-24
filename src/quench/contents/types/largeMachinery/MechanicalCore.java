@@ -124,7 +124,7 @@ public class MechanicalCore extends LargeMachinery{
         BlockData[] datas = JDraw();
         if(datas!=null){
         for(BlockData data:datas){
-        Tile tile = Vars.world.tile(x+data.x, y+data.y);
+        Tile tile = Vars.world.tile((int)x+data.x, (int)y+data.y);
         if(tile.build.block.name.equals(data.name)){
         }else{
         Draw.alpha(0.5f);
@@ -140,7 +140,7 @@ public class MechanicalCore extends LargeMachinery{
         public BlockData[] JDraw(){
         ArrayList<BlockData> datas = new ArrayList<BlockData>();
         for(BlockData data:structure.datas){
-        Tile tile = Vars.world.tile(x+data.x, y+data.y);
+        Tile tile = Vars.world.tile((int)x+data.x, (int)y+data.y);
         if(!tile.build.block.name.equals(data.name)){
             datas.add(new BlockData(data.name,data.x,data.y));
         }
@@ -148,7 +148,7 @@ public class MechanicalCore extends LargeMachinery{
         if(datas.size()<1){
             return null;
         }else{
-            return datas.toArray();
+            return (BlockData[]) datas.toArray();
         }
         }
         
