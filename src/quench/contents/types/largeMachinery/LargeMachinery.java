@@ -53,8 +53,6 @@ public class LargeMachinery extends Block{
     public void load(){
         super.load();
     }
-    
-    public void draw
 	 
     public class LargeMachineryBuild extends Building{
         public boolean start = false;//是否启动，由控制核心控制
