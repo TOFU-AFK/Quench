@@ -52,6 +52,8 @@ import mindustry.world.meta.*;
 import mindustry.core.*;
 import mindustry.*;
 
+import java.util.*;
+
 import static mindustry.Vars.*;
 
 public class MechanicalCore extends LargeMachinery{
@@ -109,12 +111,56 @@ public class MechanicalCore extends LargeMachinery{
         //用于绘制结构
         @Override
         public void drawConfigure(){
-        for(BlockData data:structure.datas){
+        /*for(BlockData data:structure.datas){
+        Tile tile = Vars.world.tile(x+data.x, y+data.y);
+        if(tile.block.name.equals(data.name){
+        }else{
+        Draw.alpha(0.5f);
+        Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
+        Lines.stroke(1);
+        Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
+        }
+        }*/
+        BlockData[] datas = JDraw();
+        if(datas!=null){
+        for(BlockData data:datas){
+        Tile tile = Vars.world.tile(x+data.x, y+data.y);
+        if(tile.block.name.equals(data.name){
+        }else{
         Draw.alpha(0.5f);
         Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
         Lines.stroke(1);
         Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
         }
         }
+        }
+        }
+        
+        //判断需要绘制哪些
+        public BlockData[] JDraw(){
+        ArrayList<BlockData> datas = new ArrayList<BlockData>();
+        for(BlockData data:structure.datas){
+        Tile tile = Vars.world.tile(x+data.x, y+data.y);
+        if(!tile.block.name.equals(data.name){
+            datas.add(new BlockData(data.name,data.x,data.y));
+        }
+        }
+        if(datas.size()<1){
+            return null;
+        }else{
+            return datas.toArray();
+        }
+        }
+        
+/*        //继续绘制
+        public boolean continueDraw(){
+        for(BlockData data:structure.datas){
+        Tile tile = Vars.world.tile(x+data.x, y+data.y);
+        if(!tile.block.name.equals(data.name){
+        return true;
+        }
+        }
+        return false;
+        }*/
     }
 }
