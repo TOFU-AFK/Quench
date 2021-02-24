@@ -41,7 +41,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore;
+	public static LargeMachinery hydroelectricGeneratorCore,basicBlock;
 	
 	@Override
 	public void load()
@@ -52,7 +52,16 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
-			structure = new Structure(new BlockData[]{new BlockData(hydroelectricGeneratorCore,32,32),new BlockData(hydroelectricGeneratorCore,64,32)});
+			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8)});//每次偏移8像素，就偏移一格
+			}
+		};
+		
+		basicBlock = new LargeMachinery("basicBlock")
+		{
+			{
+            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+			size = 1;
+			health = 40*size*size;
 			}
 		};
 	}

@@ -1,10 +1,10 @@
 package quench.contents.types;
 
 public class BlockData{
-    public LargeMachinery block;
+    public String name;
     public int x,y;
-    public BlockData(LargeMachinery blocks,int x,int y){
-        this.block = block;
+    public BlockData(String name,int x,int y){
+        this.name = name;
         this.x = x;
         this.y = y;
     }
