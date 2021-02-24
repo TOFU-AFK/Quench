@@ -18,6 +18,7 @@ import arc.struct.Bits;
 import arc.struct.*;
 import arc.util.io.*;
 import mindustry.ui.*;
+import mindustry.ui.dialogs.*;
 import mindustry.ctype.*;
 import mindustry.content.*;
 import mindustry.world.blocks.defense.turrets.*;
