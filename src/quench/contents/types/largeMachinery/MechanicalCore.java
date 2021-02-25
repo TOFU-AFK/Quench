@@ -84,8 +84,11 @@ public class MechanicalCore extends LargeMachinery{
             cont.button(Icon.add, Styles.clearTransi, () -> {
                 rotate();
             });
+            cont.button(Icon.add, Styles.clearTransi, () -> {
+                rotate();
+            });
             cont.row();
-            cont.add(Core.bundle.get("largeMachinery.rotate"));
+            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+Core.bundle.get("largeMachinery.construct"));
             table.add(cont);
         }
         
@@ -132,7 +135,7 @@ public class MechanicalCore extends LargeMachinery{
             case 3:
         Draw.rect(Core.atlas.find(data.name), x-data.x, y-data.y);
         Lines.stroke(1);
-        Lines.square(x-data.y, y-data.x,tilesize/2+2,0);
+        Lines.square(x-data.x, y-data.y,tilesize/2+2,0);
         break;
         }
         }
