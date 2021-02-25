@@ -158,7 +158,7 @@ public class MechanicalCore extends LargeMachinery{
         public void controlStart(){
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile(tile().x,tile().y);
-                LargeMachinery block = tile.block();
+                LargeMachinery block = (LargeMachinery) tile.block();
                 block.core = core;
             }
         }
