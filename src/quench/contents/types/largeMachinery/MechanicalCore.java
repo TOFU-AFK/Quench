@@ -131,6 +131,7 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile((int)data.x/8,(int)data.y/8);//一格八像素，所以除8
                 if(!tile.block().name.equals(data.name)) return false;
             }
+            return true;
         }
         
         //用于绘制结构
