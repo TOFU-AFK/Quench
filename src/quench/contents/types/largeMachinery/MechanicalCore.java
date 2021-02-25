@@ -89,7 +89,7 @@ public class MechanicalCore extends LargeMachinery{
                 construct();
             });
             cont.row();
-            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+Core.bundle.get("largeMachinery.construct")+"0"+test);
+            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+Core.bundle.get("largeMachinery.construct")+" "+test);
             table.add(cont);
         }
         
@@ -115,11 +115,8 @@ public class MechanicalCore extends LargeMachinery{
         public void construct(){
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile(tile().x,tile().y);
-                try{
-                test = tile.block().name;
-                }catch(Exception e){
-                test = e.toString();
-                }
+                //test = tile.block().name;
+                test = tile().x +" " + tile().y +"\n" + x +" " + y;
             }
         }
         
