@@ -56,6 +56,14 @@ public class LargeMachinery extends Block{
     }
 	 
     public class LargeMachineryBuild extends Building{
+        
+        @Override
+        public void buildConfiguration(Table table){
+            Table cont = new Table();
+            cont.add(core.name);
+            table.add(cont);
+        }
+        
         @Override
         public void update(){
             super.update();
