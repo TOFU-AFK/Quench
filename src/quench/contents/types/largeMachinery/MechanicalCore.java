@@ -59,13 +59,14 @@ import static mindustry.Vars.*;
 public class MechanicalCore extends LargeMachinery{
     public TextureRegion condition;
     public Structure structure;
-    public boolean start = false;
+    MechanicalCore core;
     public MechanicalCore(String name){
         super(name);
         solid = true;
         destructible = true;
         group = BlockGroup.none;
         configurable = true;
+        core = this;
     }
     
     @Override
@@ -73,14 +74,10 @@ public class MechanicalCore extends LargeMachinery{
         super.load();
         condition = Core.atlas.find("quench-status-mistake");
     }
-    
-    public MechanicalCore getCore(){
-        return this;
-    }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
-        public String test = "";
+        public boolean start = false;
         
         //旋转按钮
         @Override
@@ -91,7 +88,7 @@ public class MechanicalCore extends LargeMachinery{
                 rotate();
             });
             cont.row();
-            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+test);
+            cont.add(Core.bundle.get("largeMachinery.rotate"));
             table.add(cont);
         }
         
@@ -106,10 +103,9 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void update(){
             super.update();
-            if(construct()){
-                generate();
-            }else{
-                start = false;
+            start = construct();
+            if(start){
+                
             }
         }
 
@@ -119,16 +115,9 @@ public class MechanicalCore extends LargeMachinery{
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         
-        public void generate(){
-            start = true;
-            for(BlockData data:structure.datas){
-                data.block.core = getCore();
-            }
-        }
-        
         public boolean construct(){
             for(BlockData data:structure.datas){
-                Tile tile = Vars.world.tile((int)data.x/8,(int)data.y/8);//一格八像素，所以除8
+                Tile tile = Vars.world.tile(tile().x,tile().y);
                 if(!tile.block().name.equals(data.name)) return false;
             }
             return true;
@@ -164,6 +153,13 @@ public class MechanicalCore extends LargeMachinery{
         }
         }
         }
+        }
+        
+        public void controlStart(){
+            for(BlockData data:structure.datas){
+                Tile tile = Vars.world.tile(tile().x,tile().y);
+                (LargeMachinery) tile.block().core = core;
+            }
         }
         
 /*        //继续绘制
