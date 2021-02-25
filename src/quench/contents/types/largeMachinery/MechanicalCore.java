@@ -118,18 +118,22 @@ public class MechanicalCore extends LargeMachinery{
         Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
         Lines.stroke(1);
         Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
+        break;
             case 1:
         Draw.rect(Core.atlas.find(data.name), x+data.y, y+data.x);
         Lines.stroke(1);
         Lines.square(x+data.y, y+data.x,tilesize/2+2,0);
+        break;
             case 2:
         Draw.rect(Core.atlas.find(data.name), x-data.x, y-data.y);
         Lines.stroke(1);
         Lines.square(x-data.x, y-data.y,tilesize/2+2,0);
+        break;
             case 3:
         Draw.rect(Core.atlas.find(data.name), x-data.x, y-data.y);
         Lines.stroke(1);
         Lines.square(x-data.y, y-data.x,tilesize/2+2,0);
+        break;
         }
         }
         }
