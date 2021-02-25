@@ -116,7 +116,7 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int)x,(int)y);
                 try{
-                test = Tile.block().name;
+                test = tile.block().name;
                 }catch(Exception e){
                 test = e.toString();
                 }
