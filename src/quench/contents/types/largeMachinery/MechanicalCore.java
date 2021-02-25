@@ -114,7 +114,7 @@ public class MechanicalCore extends LargeMachinery{
         
         public void construct(){
             for(BlockData data:structure.datas){
-                Tile tile = Vars.world.tile((int)x,(int)y);
+                Tile tile = Vars.world.tile(tile().x,tile().y);
                 try{
                 test = tile.block().name;
                 }catch(Exception e){
