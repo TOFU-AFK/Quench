@@ -52,7 +52,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
-			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0)});//每次偏移8像素，就偏移一格
+			structure = new Structure(new BlockData[]{new BlockData(basicBlock,8,8),new BlockData(basicBlock,-8,8),new BlockData(basicBlock,8,16),new BlockData(basicBlock,-8,16),new BlockData(basicBlock,8,24),new BlockData(basicBlock,-8,24),new BlockData(basicBlock,8,-8),new BlockData(basicBlock,-8,-8),new BlockData(basicBlock,0,-8),new BlockData(basicBlock,8,0),new BlockData(basicBlock,-8,0)});//每次偏移8像素，就偏移一格
 			}
 		};
 		

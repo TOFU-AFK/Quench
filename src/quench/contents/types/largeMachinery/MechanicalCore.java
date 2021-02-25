@@ -59,6 +59,7 @@ import static mindustry.Vars.*;
 public class MechanicalCore extends LargeMachinery{
     public TextureRegion condition;
     public Structure structure;
+    public boolean start = false;
     public MechanicalCore(String name){
         super(name);
         solid = true;
@@ -71,6 +72,10 @@ public class MechanicalCore extends LargeMachinery{
     public void load(){
         super.load();
         condition = Core.atlas.find("quench-status-mistake");
+    }
+    
+    public MechanicalCore getCore(){
+        return this;
     }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
@@ -85,11 +90,8 @@ public class MechanicalCore extends LargeMachinery{
             cont.button(Icon.add, Styles.clearTransi, () -> {
                 rotate();
             });
-            cont.button(Icon.add, Styles.clearTransi, () -> {
-                construct();
-            });
             cont.row();
-            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+Core.bundle.get("largeMachinery.construct")+" "+test);
+            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+test);
             table.add(cont);
         }
         
@@ -104,6 +106,11 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void update(){
             super.update();
+            if(construct()){
+                generate();
+            }else{
+                start = false;
+            }
         }
 
         @Override
@@ -112,17 +119,24 @@ public class MechanicalCore extends LargeMachinery{
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         
-        public void construct(){
+        public void generate(){
+            start = true;
             for(BlockData data:structure.datas){
-                Tile tile = Vars.world.tile(tile().x,tile().y);
-                //test = tile.block().name;
-                test = tile().x +" " + tile().y +"\n" + x +" " + y;
+                data.block.core = getCore();
+            }
+        }
+        
+        public boolean construct(){
+            for(BlockData data:structure.datas){
+                Tile tile = Vars.world.tile((int)data.x/8,(int)data.y/8);//一格八像素，所以除8
+                if(!tile.block().name.equals(data.name)) return false;
             }
         }
         
         //用于绘制结构
         @Override
         public void drawConfigure(){
+        if(!start){
         for(BlockData data:structure.datas){
         Draw.alpha(0.5f);
         switch (direction){
@@ -146,6 +160,7 @@ public class MechanicalCore extends LargeMachinery{
         Lines.stroke(1);
         Lines.square(x-data.y, y-data.x,tilesize/2+2,0);
         break;
+        }
         }
         }
         }

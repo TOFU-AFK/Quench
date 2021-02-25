@@ -55,7 +55,8 @@ public class LargeMachinery extends Block{
     }
 	 
     public class LargeMachineryBuild extends Building{
-        public boolean start = false;//是否启动，由控制核心控制
+        //public boolean start = false;//是否启动，由控制核心控制
+        public MechanicalCore core//请传入控制核心
         @Override
         public void update(){
             super.update();
