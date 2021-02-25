@@ -64,6 +64,7 @@ public class LargeMachinery extends Block{
         destructible = true;
         group = BlockGroup.walls;
         buildCostMultiplier = 5f;
+        configurable = true;
     }
 
     @Override
