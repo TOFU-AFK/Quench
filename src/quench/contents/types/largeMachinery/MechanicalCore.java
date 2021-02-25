@@ -75,6 +75,7 @@ public class MechanicalCore extends LargeMachinery{
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
+        public String test = "";
         
         //旋转按钮
         @Override
@@ -85,10 +86,10 @@ public class MechanicalCore extends LargeMachinery{
                 rotate();
             });
             cont.button(Icon.add, Styles.clearTransi, () -> {
-                rotate();
+                construct();
             });
             cont.row();
-            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+Core.bundle.get("largeMachinery.construct"));
+            cont.add(Core.bundle.get("largeMachinery.rotate")+" "+Core.bundle.get("largeMachinery.construct")+"0"+test);
             table.add(cont);
         }
         
@@ -109,6 +110,17 @@ public class MechanicalCore extends LargeMachinery{
         public void draw(){
             super.draw();
             Draw.rect(condition,x-tilesize/2,y+tilesize);
+        }
+        
+        public void construct(){
+            for(BlockData data:structure.datas){
+                Tile tile = Vars.world.tile(x,y);
+                try{
+                test = Tile.build.name;
+                }catch(Exception e){
+                test = e.toString();
+                }
+            }
         }
         
         //用于绘制结构
