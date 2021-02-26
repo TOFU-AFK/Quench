@@ -1,11 +1,20 @@
 package quench.contents.types;
+import quench.contents.blocks.*;
 
 public class BlockData{
     public String name;
     public LargeMachinery block;
     int x,y;
-    public BlockData(LargeMachinery block,int x,int y){
-        this.name = block.name;
+    public BlockData(LargeMachinery block,String name,int x,int y){
+        this.block = block;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+    
+    public BlockData(String name,int x,int y){
+        this.block = QULargeMachinery.basicBlock;
+        this.name = name;
         this.x = x;
         this.y = y;
     }
