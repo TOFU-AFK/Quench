@@ -59,7 +59,7 @@ import static mindustry.Vars.*;
 public class MechanicalCore extends LargeMachinery{
     public TextureRegion condition;
     public Structure structure;
-    MechanicalCore core;
+    public MechanicalCore core;
     public MechanicalCore(String name){
         super(name);
         solid = true;
@@ -129,35 +129,17 @@ public class MechanicalCore extends LargeMachinery{
         if(!start){
         for(BlockData data:structure.datas){
         Draw.alpha(0.5f);
-        switch (direction){
-            case 0:
-        Draw.rect(Core.atlas.find(data.name), x+data.x, y+data.y);
+        Draw.rect(Core.atlas.find(data.name), x+data.x(direction), y+data.y(direction));
         Lines.stroke(1);
-        Lines.square(x+data.x, y+data.y,tilesize/2+2,0);
-        break;
-            case 1:
-        Draw.rect(Core.atlas.find(data.name), x+data.y, y+data.x);
-        Lines.stroke(1);
-        Lines.square(x+data.y, y+data.x,tilesize/2+2,0);
-        break;
-            case 2:
-        Draw.rect(Core.atlas.find(data.name), x-data.x, y-data.y);
-        Lines.stroke(1);
-        Lines.square(x-data.x, y-data.y,tilesize/2+2,0);
-        break;
-            case 3:
-        Draw.rect(Core.atlas.find(data.name), x-data.y, y-data.x);
-        Lines.stroke(1);
-        Lines.square(x-data.y, y-data.x,tilesize/2+2,0);
-        break;
-        }
+        Lines.square(x+data.x(direction), y+data.y(direction),tilesize/2+2,0);
         }
         }
         }
         
         public void controlStart(){
             for(BlockData data:structure.datas){
-                data.block
+                data.block.core = core;
+                Vars.world.tiles.set(x+data.x(direction)/8, y+data.y(direction)/8,data.block.tile());
             }
         }
         
