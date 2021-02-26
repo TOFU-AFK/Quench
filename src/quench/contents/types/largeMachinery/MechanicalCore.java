@@ -105,7 +105,7 @@ public class MechanicalCore extends LargeMachinery{
             super.update();
             start = construct();
             if(start){
-                
+                controlStart();
             }
         }
 
