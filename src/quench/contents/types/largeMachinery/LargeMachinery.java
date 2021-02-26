@@ -72,13 +72,13 @@ public class LargeMachinery extends Block{
     public void load(){
         super.load();
     }
+    
+    public LargeMachineryBuild getBuild(){
+        return LargeMachineryBuild.this;
+    }
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCore core;
-        
-        public LargeMachinery getBlock(){
-            return LargeMachinery.this;
-        }
         
         @Override
         public void buildConfiguration(Table table){

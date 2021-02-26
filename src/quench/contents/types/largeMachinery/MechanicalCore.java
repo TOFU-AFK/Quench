@@ -157,7 +157,7 @@ public class MechanicalCore extends LargeMachinery{
         
         public void controlStart(){
             for(BlockData data:structure.datas){
-                block.core = core;
+                data.block.getBuild().core = core;
             }
         }
         
