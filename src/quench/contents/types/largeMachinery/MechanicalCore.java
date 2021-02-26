@@ -116,9 +116,9 @@ public class MechanicalCore extends LargeMachinery{
         
         public boolean construct(){
             for(BlockData data:structure.datas){
-                Tile tile = Vars.world.tile(tile().x,tile().y);
-                Log.info("[淬火] tile: ",tile.block().name);
-                Log.info("[淬火] tile: ",tile.block().name.equals(data.name));
+                Tile tile = Vars.world.tile((int) (tile().x+data.x(direction))/8,(int) (tile().y+data.y(direction))/8);
+                Log.info("[淬火] tile: "+tile.block().name,"");
+                Log.info("[淬火] tile: "+tile.block().name.equals(data.name),"");
                 if(!tile.block().name.equals(data.name)) return false;
             }
             return true;
@@ -138,7 +138,6 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void controlStart(){
-            Log.info("[淬火] 设置: ","方块核心");
             for(BlockData data:structure.datas){
                 data.block.core = core;
                 Tile tile = Vars.world.tile(tile().x,tile().y);
@@ -146,16 +145,5 @@ public class MechanicalCore extends LargeMachinery{
                 tile.setNet(data.block,team(),0);
             }
         }
-        
-/*        //继续绘制
-        public boolean continueDraw(){
-        for(BlockData data:structure.datas){
-        Tile tile = Vars.world.tile(x+data.x, y+data.y);
-        if(!tile.block.name.equals(data.name){
-        return true;
-        }
-        }
-        return false;
-        }*/
     }
 }
