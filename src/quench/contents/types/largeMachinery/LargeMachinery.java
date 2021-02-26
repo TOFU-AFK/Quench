@@ -80,7 +80,7 @@ public class LargeMachinery extends Block{
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(c.name);
+            cont.add(c.toString());
             table.add(cont);
         }
         
