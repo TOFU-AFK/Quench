@@ -116,7 +116,7 @@ public class MechanicalCore extends LargeMachinery{
         
         public boolean construct(){
             for(BlockData data:structure.datas){
-                Tile tile = Vars.world.tile((int) (tile().x+data.x(direction))/8,(int) (tile().y+data.y(direction))/8);
+                Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 Log.info("[淬火] tile: "+tile.block().name,"");
                 Log.info("[淬火] tile: "+tile.block().name.equals(data.name),"");
                 if(!tile.block().name.equals(data.name)) return false;
