@@ -58,8 +58,10 @@ import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
     public MechanicalCore core;
+    public String name;
     public LargeMachinery(String name){
         super(name);
+        this.name = name;
         solid = true;
         destructible = true;
         group = BlockGroup.walls;
