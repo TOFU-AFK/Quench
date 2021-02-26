@@ -104,7 +104,6 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            Log.info("[淬火] 执行: ","update()");
             start = construct();
             if(start){
                 controlStart();
