@@ -57,8 +57,8 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
-    public String name;
-    public LargeMachineryBuild build;
+    public String name = "quench-basicBlock";
+    public MechanicalCore core;
     public LargeMachinery(String name){
         super(name);
         this.name = name;
@@ -75,19 +75,19 @@ public class LargeMachinery extends Block{
     }
 	 
     public class LargeMachineryBuild extends Building{
-        public MechanicalCore core;
+        public MechanicalCore c;
         
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(core.name);
+            cont.add(c.name);
             table.add(cont);
         }
         
         @Override
         public void update(){
             super.update();
-            if(build == null) build = this;
+            if(c == null&&core!=null) c = core;
         }
 
         @Override
