@@ -21,6 +21,7 @@ public class BlockData{
             case 3:
                 return -y;
         }
+        return x;
     }
     
     public int y(int direction){
@@ -34,5 +35,6 @@ public class BlockData{
             case 3:
                 return -x;
         }
+        return y;
     }
 }
