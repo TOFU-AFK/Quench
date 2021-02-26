@@ -58,6 +58,7 @@ import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
     public String name;
+    public LargeMachineryBuild build;
     public LargeMachinery(String name){
         super(name);
         this.name = name;
@@ -72,10 +73,6 @@ public class LargeMachinery extends Block{
     public void load(){
         super.load();
     }
-    
-    public LargeMachineryBuild getBuild(){
-        return build();
-    }
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCore core;
@@ -87,13 +84,10 @@ public class LargeMachinery extends Block{
             table.add(cont);
         }
         
-        public LargeMachineryBuild build(){
-        return this;
-    }
-        
         @Override
         public void update(){
             super.update();
+            if(build == null) build = this;
         }
 
         @Override
