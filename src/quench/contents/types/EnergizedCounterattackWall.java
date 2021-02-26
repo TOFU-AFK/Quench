@@ -71,18 +71,20 @@ public class EnergizedCounterattackWall extends Wall{
     public class EnergizedCounterattackWallBuild extends WallBuild{
         public float maxEnergy = 100f;
         public float energy = 0;
-
+        
         @Override
-        public void draw(){
-            super.draw();
+        public void update(){
             Teamc target = Units.closestTarget(team, x, y,range);
-        //把这玩意放进draw方法也是没办法的，我放进update方法时会无效
-        //如果目标为空，能量大于0，血量小于最大血量
         if(target == null&&energy>0&&healthf()<maxHealth()){
             heal(energy);
             energy=0;
             QUFx.re_thunder_charging.at(this);
         }
+        }
+
+        @Override
+        public void draw(){
+            super.draw();
         }
 
         @Override

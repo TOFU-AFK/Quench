@@ -104,18 +104,7 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            super.update();
             Log.info("[淬火] 执行: ","update()");
-            start = construct();
-            if(start){
-                controlStart();
-            }
-        }
-        
-        @Override
-        public void updateTile(){
-            super.updateTile();
-            Log.info("[淬火] 执行: ","updateTile()");
             start = construct();
             if(start){
                 controlStart();
@@ -125,7 +114,6 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
-            Draw.alpha(0.5f);
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         
