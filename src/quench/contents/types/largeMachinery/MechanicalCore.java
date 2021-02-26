@@ -86,8 +86,6 @@ public class MechanicalCore extends LargeMachinery{
             cont.defaults().size(40);
             cont.button(Icon.add, Styles.clearTransi, () -> {
                 rotate();
-                Tile tile = Vars.world.tile(tile().x,tile().y+4);
-                tile.setNet(Blocks.copperWall,team(),0);
             });
             cont.row();
             cont.add(Core.bundle.get("largeMachinery.rotate"));
@@ -142,6 +140,7 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 data.block.core = core;
                 Tile tile = Vars.world.tile(tile().x,tile().y);
+                removeNet();
                 tile.setNet(data.block,team(),0);
             }
         }
