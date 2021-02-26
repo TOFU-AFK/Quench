@@ -73,7 +73,6 @@ public class MechanicalCore extends LargeMachinery{
     public void load(){
         super.load();
         condition = Core.atlas.find("quench-status-mistake");
-        Log.info("[淬火] 加载: ","condition贴图");
     }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
@@ -99,20 +98,19 @@ public class MechanicalCore extends LargeMachinery{
            }else{
                direction = 0;
            }
-           Log.info("[淬火] 旋转核心方向: ",direction);
         }
         
         @Override
         public void update(){
-            start = construct();
-            if(start){
-                controlStart();
-            }
         }
 
         @Override
         public void draw(){
             super.draw();
+            start = construct();
+            if(start){
+                controlStart();
+            }
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         
