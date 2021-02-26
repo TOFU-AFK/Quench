@@ -140,7 +140,7 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 data.block.core = core;
                 Tile tile = Vars.world.tile(tile().x,tile().y);
-                removeNet();
+                tile.removeNet();
                 tile.setNet(data.block,team(),0);
             }
         }
