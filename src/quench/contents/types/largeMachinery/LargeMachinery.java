@@ -80,14 +80,17 @@ public class LargeMachinery extends Block{
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(c.toString());
+            cont.add(c!=null ? c.name:"空值");
+            if(core == null){
+                cont.add("core为空");
+            }
             table.add(cont);
         }
         
         @Override
         public void update(){
             super.update();
-            if(c == null&&core!=null) c = core;
+            if(core!=null&&c==null) c = core;
         }
 
         @Override
