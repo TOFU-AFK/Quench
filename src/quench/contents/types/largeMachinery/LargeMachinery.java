@@ -74,7 +74,7 @@ public class LargeMachinery extends Block{
     }
     
     public LargeMachineryBuild getBuild(){
-        return LargeMachineryBuild.this;
+        return build();
     }
 	 
     public class LargeMachineryBuild extends Building{
@@ -86,6 +86,10 @@ public class LargeMachinery extends Block{
             cont.add(core.name);
             table.add(cont);
         }
+        
+        public LargeMachineryBuild build(){
+        return this;
+    }
         
         @Override
         public void update(){
