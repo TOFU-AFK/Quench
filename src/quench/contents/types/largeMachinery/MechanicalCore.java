@@ -73,6 +73,7 @@ public class MechanicalCore extends LargeMachinery{
     public void load(){
         super.load();
         condition = Core.atlas.find("quench-status-mistake");
+        Log.info("[淬火] 加载: ","condition贴图");
     }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
@@ -98,6 +99,7 @@ public class MechanicalCore extends LargeMachinery{
            }else{
                direction = 0;
            }
+           Log.info("[淬火] 旋转核心方向: ",direction);
         }
         
         @Override
@@ -112,12 +114,15 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
+            Draw.alpha(0.5f);
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         
         public boolean construct(){
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile(tile().x,tile().y);
+                Log.info("[淬火] tile: ",tile.block().name);
+                Log.info("[淬火] tile: ",tile.block().name.equals(data.name));
                 if(!tile.block().name.equals(data.name)) return false;
             }
             return true;
@@ -137,6 +142,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void controlStart(){
+            Log.info("[淬火] 设置: ","方块核心");
             for(BlockData data:structure.datas){
                 data.block.core = core;
                 Tile tile = Vars.world.tile(tile().x,tile().y);
