@@ -89,7 +89,6 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
-            super.update();
             if(core!=null&&c==null) c = core;
         }
 
