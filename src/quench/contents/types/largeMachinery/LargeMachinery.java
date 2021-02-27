@@ -54,6 +54,8 @@ import mindustry.*;
 
 import java.util.*;
 
+import quench.contents.types.MechanicalCoreBuild;
+
 import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
