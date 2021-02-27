@@ -58,6 +58,7 @@ import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
     public MechanicalCore core;
+    public boolean isBattery;
     public LargeMachinery(String name){
         super(name);
         solid = true;
@@ -65,6 +66,8 @@ public class LargeMachinery extends Block{
         group = BlockGroup.walls;
         buildCostMultiplier = 5f;
         configurable = true;
+        hasPower = false;
+        isBattery = false;
     }
 
     @Override

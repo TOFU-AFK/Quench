@@ -65,6 +65,8 @@ public class StructuralBattery extends LargeMachinery{
         //group = BlockGroup.walls;
         buildCostMultiplier = 5f;
         configurable = true;
+        isBattery = true;
+        hasPower = true;
         outputsPower = true;
         consumesPower = true;
     }

@@ -72,10 +72,24 @@ public class MechanicalCore extends LargeMachinery{
         super.load();
         condition = Core.atlas.find("quench-status-mistake");
     }
+    
+    @Override
+	public void setBars(){
+		super.setBars();
+		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
+			(EnergizedCounterattackWallBuild entity) -> new Bar(
+				() -> Core.bundle.get("MechanicalCore.totalEnergy"),
+				() -> Color.valueOf("#6495ED"),
+				() -> entity.power / entity.maxPower
+			)
+		);
+	}
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
+        public float maxPower = 0;
+        public float power = 0;
         
         //旋转按钮
         @Override
@@ -101,11 +115,12 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-        }
-
-        @Override
-        public void draw(){
-            super.draw();
+            maxPower = 0;
+            power = 0;
+            for(int i=0;i<structure.battery.size();i++){
+                maxPower += structure.battery.get(i).consumes.powerBuffered;
+                power += structure.battery.get(i).power.status;
+            }
             start = construct();
             if(start){
                 controlStart();
@@ -115,6 +130,12 @@ public class MechanicalCore extends LargeMachinery{
             }else{
                 condition = Core.atlas.find("quench-status-mistake");
             }
+        }
+
+        @Override
+        public void draw(){
+            super.draw();
+            update();
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         
@@ -143,6 +164,9 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
                 data.block.core = MechanicalCore.this;
+                if(data.block.hasPower&&data.block.isBattery){
+                    structure.battery.add(data.block);
+                }
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
@@ -153,6 +177,7 @@ public class MechanicalCore extends LargeMachinery{
         //清空
         //在核心旋转先，清空原先方块的core值
         public void empty(){
+            structure.battery.clear();
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
