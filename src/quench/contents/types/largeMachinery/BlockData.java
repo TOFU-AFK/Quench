@@ -6,6 +6,7 @@ public class BlockData{
     public LargeMachinery block;
     int x,y;
     public BlockData(LargeMachinery block,String name,int x,int y){
+        QULargeMachinery().load();
         this.block = block;
         this.name = name;
         this.x = x;
@@ -13,6 +14,7 @@ public class BlockData{
     }
     
     public BlockData(String name,int x,int y){
+        QULargeMachinery().load();
         this.block = QULargeMachinery.basicBlock;
         this.name = name;
         this.x = x;
