@@ -70,7 +70,6 @@ public class LargeMachinery extends Block{
         configurable = true;
         hasPower = false;
         isBattery = false;
-        build = LargeMachineryBuild.this;
     }
 
     @Override
@@ -91,6 +90,7 @@ public class LargeMachinery extends Block{
         @Override
         public void update(){
             if(core!=null&&c==null) c = core;
+            if(build==null) build = this;
         }
 
         @Override
