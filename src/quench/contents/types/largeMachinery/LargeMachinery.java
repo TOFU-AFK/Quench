@@ -82,6 +82,7 @@ public class LargeMachinery extends Block{
     }
 	 
     public class LargeMachineryBuild extends Building{
+        public ArrayList<LargeMachinery> battery = new ArrayList<LargeMachinery>();//电池集合
         public MechanicalCoreBuild c;
         
         @Override
