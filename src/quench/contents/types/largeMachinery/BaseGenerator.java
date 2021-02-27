@@ -107,7 +107,7 @@ public class BaseGenerator extends StructuralBattery{
             if(batteries!=null){
           for(int i=0;i<batteries.size();i++){
               Tile tile = batteries.get(i);
-              if(power.status>0&&tile.build.power.status+1<=tile.block().consumes.getPower().capacity){
+              if(power.status>0&&tile.build.power.status+0.001f<=tile.block().consumes.getPower().capacity){
               tile.build.power.status+=0.001f;
               power.status-=0.001f;
               }

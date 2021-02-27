@@ -63,6 +63,7 @@ public class LargeMachinery extends Block{
     public boolean isBattery;
     public ArrayList<Tile> battery;
     public ArrayList<LargeMachinery> generator;
+    public LargeMachineryBuild build;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     public LargeMachinery(String name){
         super(name);
@@ -105,6 +106,7 @@ public class LargeMachinery extends Block{
             batteries = battery;
             battery = null;
             }
+            if(build==null) build=this;
         }
 
         @Override
