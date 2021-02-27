@@ -144,12 +144,12 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
                 data.block.core = this;
-                if(data.block.hasPower&&data.block.isBattery){
-                    battery.add(data.block);
-                }
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
+                if(data.block.hasPower&&data.block.isBattery){
+                    battery.add(data.block);
+                }
                 }
             }
         }
