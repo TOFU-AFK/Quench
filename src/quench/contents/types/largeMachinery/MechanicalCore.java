@@ -57,7 +57,6 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class MechanicalCore extends LargeMachinery{
-    public TextureRegion condition;
     public Structure structure;
     public MechanicalCore(String name){
         super(name);
@@ -70,12 +69,12 @@ public class MechanicalCore extends LargeMachinery{
     @Override
     public void load(){
         super.load();
-        condition = Core.atlas.find("quench-status-mistake");
     }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
+        public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
         
         //旋转按钮
         @Override
@@ -115,7 +114,9 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
+            if(condition!=null){
             Draw.rect(condition,x-tilesize/2,y+tilesize);
+            }
         }
         
         public boolean construct(){
