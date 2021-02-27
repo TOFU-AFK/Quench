@@ -102,13 +102,13 @@ public class BaseGenerator extends StructuralBattery{
             float output = power.status/battery.size();
           for(int i=0;c.battery.size();i++){
           StructuralBattery block = battery.get(i);
-              if(consumes.getPower().capacity<=block.power.status+output){
-              block.power.status+=output;
+              if(consumes.getPower().capacity<=block.build.power.status+output){
+              block.build.power.status+=output;
               power.status-=output;
               }else{
-                  if(!consumes.getPower().capacity-block.power.status<0){
-                      output = consumes.getPower().capacity-block.power.status;
-                      block.power.status+=output;
+                  if(!consumes.getPower().capacity-block.build.power.status<0){
+                      output = consumes.getPower().capacity-block.build.power.status;
+                      block.build.power.status+=output;
                       power.status-=output;
                   }
               }

@@ -6,7 +6,6 @@ public class Structure{
     public int coreX,coreY;
     public Structure(BlockData[] datas)
     {
-        battery = new ArrayList<LargeMachinery>();
         this.datas = datas;
     }
 }
