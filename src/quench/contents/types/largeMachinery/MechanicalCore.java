@@ -154,12 +154,10 @@ public class MechanicalCore extends LargeMachinery{
         //在核心旋转先，清空原先方块的core值
         public void empty(){
             for(BlockData data:structure.datas){
-                if(data.block.core!=null){
-                data.block.core = null;
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
+                data.block.core = null;
                 tile.setNet(data.block,team(),0);
-                }
             }
         }
     }
