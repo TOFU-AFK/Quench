@@ -60,7 +60,7 @@ public class QULargeMachinery implements ContentList
 		};
 	}
 	
-	//在此次实例化非核心方块
+	//在此实例化非核心方块
 	public void instantiation(){
 	    basicBlock = new LargeMachinery("basicBlock")
 		{
