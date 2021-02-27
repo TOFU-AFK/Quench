@@ -73,6 +73,11 @@ public class BaseGenerator extends StructuralBattery{
     public void load(){
         super.load();
     }
+    
+    @Override
+    public StructureType getType(){
+        return StructureType.generator;
+    }
 	 
     public class BaseGeneratorBuild extends StructuralBatteryBuild{
         
@@ -92,19 +97,21 @@ public class BaseGenerator extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
-            if(c.start) power.status+=0.001f;
+            if(c.start&&power.status+0.001f<=consumes.getPower().capacity) power.status+=0.001f;
           }
           outputPower();
         }
         
         //给多方块结构中的电池方块输入电力
         public void outputPower(){
-          for(int i=0;i<c.battery.size();i++){
-          LargeMachinery block = c.battery.get(i);
-              if(consumes.getPower().capacity<=block.build.power.status+1&&block.build.power.status>0){
+          for(BlockData data:c.structure.datas){
+          LargeMachinery block = data.block;
+          if(block.getType()==StructureType.battery){
+              if(power.status>0){
               block.build.power.status+=1;
               power.status-=1;
               }
+          }
           }
         }
 

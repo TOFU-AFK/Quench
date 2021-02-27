@@ -81,17 +81,11 @@ public class LargeMachinery extends Block{
         super.load();
     }
     
-    //与核心连接后将会触发此方法
-    public void connectingCore(MechanicalCoreBuild c){
-        Log.info("[淬火] 执行 connectingCore()", "");
-        if(isBattery){
-            c.battery.add(this);
-            Log.info("[淬火] c.battery.add(this)", "");
-        }
+    public StructureType getType(){
+        return StructureType.block;
     }
 	 
     public class LargeMachineryBuild extends Building{
-        public ArrayList<LargeMachinery> battery = new ArrayList<LargeMachinery>();//电池集合
         public MechanicalCoreBuild c;
         
         @Override

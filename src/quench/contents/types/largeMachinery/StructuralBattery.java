@@ -75,6 +75,11 @@ public class StructuralBattery extends LargeMachinery{
     public void load(){
         super.load();
     }
+    
+    @Override
+    public StructureType getType(){
+        return StructureType.battery;
+    }
 	 
     public class StructuralBatteryBuild extends LargeMachineryBuild{
         

@@ -70,6 +70,11 @@ public class MechanicalCore extends LargeMachinery{
     public void load(){
         super.load();
     }
+    
+    @Override
+    public StructureType getType(){
+        return StructureType.core;
+    }
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
@@ -147,7 +152,6 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
-                data.block.connectingCore(this);
                 }
             }
         }
