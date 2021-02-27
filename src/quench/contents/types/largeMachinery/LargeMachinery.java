@@ -81,20 +81,18 @@ public class LargeMachinery extends Block{
         public void buildConfiguration(Table table){
             Table cont = new Table();
             cont.add(c!=null ? c.name:"空值");
-            if(core == null){
-                cont.add("core为空");
-            }
             table.add(cont);
         }
         
+        //不知道为啥，update方法用不了，只能在draw方法中使用
         @Override
         public void update(){
-            if(core!=null&&c==null) c = core;
         }
 
         @Override
         public void draw(){
             super.draw();
+            if(core!=null&&c==null) c = core;
         }
     }
 }
