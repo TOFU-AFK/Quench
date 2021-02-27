@@ -97,6 +97,7 @@ public class StructuralBattery extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
+            if(core!=null&&c==null) c = core;
         }
     }
 }
