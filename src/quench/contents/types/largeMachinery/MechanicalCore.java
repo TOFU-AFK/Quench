@@ -114,7 +114,6 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            maxPower = 0;
             power = 0;
             for(int i=0;i<structure.battery.size();i++){
                 power += structure.battery.get(i).build.power.status;
