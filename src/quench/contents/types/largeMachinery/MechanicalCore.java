@@ -157,7 +157,7 @@ public class MechanicalCore extends LargeMachinery{
         //清空
         //在核心旋转先，清空原先方块的core值
         public void empty(){
-            if(!start){
+            if(start){
             structure.battery.clear();
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
