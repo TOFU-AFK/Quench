@@ -77,7 +77,7 @@ public class MechanicalCore extends LargeMachinery{
 	public void setBars(){
 		super.setBars();
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
-			(EnergizedCounterattackWallBuild entity) -> new Bar(
+			(MechanicalCoreBuild entity) -> new Bar(
 				() -> Core.bundle.get("MechanicalCore.totalEnergy"),
 				() -> Color.valueOf("#6495ED"),
 				() -> entity.power / entity.maxPower
@@ -118,8 +118,8 @@ public class MechanicalCore extends LargeMachinery{
             maxPower = 0;
             power = 0;
             for(int i=0;i<structure.battery.size();i++){
-                maxPower += structure.battery.get(i).build.consumes.powerBuffered;
-                power += structure.battery.get(i).build.power.status;
+                maxPower += structure.battery.get(i).tile().build.consumes.powerBuffered;
+                power += structure.battery.get(i).tile().build.power.status;
             }
             start = construct();
             if(start){
