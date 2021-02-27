@@ -83,8 +83,10 @@ public class LargeMachinery extends Block{
     
     //与核心连接后将会触发此方法
     public void connectingCore(MechanicalCoreBuild c){
+        Log.info("[淬火] 执行 connectingCore()", "");
         if(isBattery){
             c.battery.add(this);
+            Log.info("[淬火] c.battery.add(this)", "");
         }
     }
 	 
