@@ -78,7 +78,7 @@ public class MechanicalCore extends LargeMachinery{
 		super.setBars();
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
 			(MechanicalCoreBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalEnergy"),
+				() -> Core.bundle.get("MechanicalCore.totalEnergy",entity.power),
 				() -> Color.valueOf("#6495ED"),
 				() -> entity.power / entity.maxPower
 			)
@@ -88,7 +88,6 @@ public class MechanicalCore extends LargeMachinery{
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
-        public float maxPower = 0;
         public float power = 0;
         
         //旋转按钮
@@ -118,7 +117,6 @@ public class MechanicalCore extends LargeMachinery{
             maxPower = 0;
             power = 0;
             for(int i=0;i<structure.battery.size();i++){
-                maxPower += structure.battery.get(i).build.consumes.powerBuffered;
                 power += structure.battery.get(i).build.power.status;
             }
             start = construct();
