@@ -80,7 +80,7 @@ public class LargeMachinery extends Block{
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(c!=null ? c.name:"空值");
+            cont.add(c!=null ? "核心: "+c.name:"核心:null");
             table.add(cont);
         }
         

@@ -91,6 +91,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void rotate(){
+           empty();
            if(direction<3){
                direction++;
            }else{
@@ -108,6 +109,11 @@ public class MechanicalCore extends LargeMachinery{
             start = construct();
             if(start){
                 controlStart();
+            }
+            if(start){
+                condition = Core.atlas.find("quench-status-right");
+            }else{
+                condition = Core.atlas.find("quench-status-mistake");
             }
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
@@ -137,6 +143,19 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
                 data.block.core = MechanicalCore.this;
+                Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
+                tile.remove();
+                tile.setNet(data.block,team(),0);
+                }
+            }
+        }
+        
+        //清空
+        //在核心旋转先，清空原先方块的core值
+        public void empty(){
+            for(BlockData data:structure.datas){
+                if(data.block.core!=null){
+                data.block.core = null;
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
