@@ -72,18 +72,6 @@ public class MechanicalCore extends LargeMachinery{
         super.load();
         condition = Core.atlas.find("quench-status-mistake");
     }
-    
-    @Override
-	public void setBars(){
-		super.setBars();
-		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
-			(MechanicalCoreBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalEnergy",Float.toString(entity.power)),
-				() -> Pal.powerBar,
-				() -> entity.power == 0 ? 0 / 1:1 / 1
-			)
-		);
-	}
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
@@ -114,10 +102,6 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            power = 0;
-            for(int i=0;i<structure.battery.size();i++){
-                power += structure.battery.get(i).build.power.status;
-            }
             start = construct();
             if(start){
                 controlStart();
@@ -173,12 +157,14 @@ public class MechanicalCore extends LargeMachinery{
         //清空
         //在核心旋转先，清空原先方块的core值
         public void empty(){
+            if(!start){
             structure.battery.clear();
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 data.block.core = null;
                 tile.setNet(data.block,team(),0);
+            }
             }
         }
     }

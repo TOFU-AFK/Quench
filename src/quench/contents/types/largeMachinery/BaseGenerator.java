@@ -1,5 +1,5 @@
 /*
-*大型机械的电池type
+*大型机械的基础发电机type
 */
 package quench.contents.types;
 
@@ -56,18 +56,17 @@ import java.util.*;
 
 import static mindustry.Vars.*;
 
-public class StructuralBattery extends LargeMachinery{
-    public StructuralBattery(String name){
+public class BaseGenerator extends StructuralBattery{
+    public BaseGenerator(String name){
         super(name);
         solid = true;
         destructible = true;
-        //group = BlockGroup.walls;
         buildCostMultiplier = 5f;
         configurable = true;
-        isBattery = true;
+        isBattery = false;
         hasPower = true;
         outputsPower = true;
-        consumesPower = true;
+        consumesPower = false;
     }
 
     @Override
@@ -75,7 +74,7 @@ public class StructuralBattery extends LargeMachinery{
         super.load();
     }
 	 
-    public class StructuralBatteryBuild extends LargeMachineryBuild{
+    public class BaseGeneratorBuild extends StructuralBatteryBuild{
         
         @Override
         public void buildConfiguration(Table table){
@@ -86,17 +85,15 @@ public class StructuralBattery extends LargeMachinery{
         
         @Override
         public void overwrote(Seq<Building> previous){
-            for(Building other : previous){
-                if(other.power != null && other.block.consumes.hasPower() && other.block.consumes.getPower().buffered){
-                    float amount = other.block.consumes.getPower().capacity * other.power.status;
-                    power.status = Mathf.clamp(power.status + amount / block.consumes.getPower().capacity);
-                }
-            }
+            super.overwrote(previous);
         }
         
         @Override
         public void update(){
-        super.update();
+          super.update();
+          if(c!=null){
+            if(c.start) power.status+=0.1f;
+          }
         }
 
         @Override
