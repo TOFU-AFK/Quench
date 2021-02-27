@@ -81,6 +81,10 @@ public class MechanicalCore extends LargeMachinery{
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
         
+        public Structure structure(){
+            return structure;
+        }
+        
         //旋转按钮
         @Override
         public void buildConfiguration(Table table){
@@ -160,7 +164,6 @@ public class MechanicalCore extends LargeMachinery{
         //在核心旋转先，清空原先方块的core值
         public void empty(){
             if(start){
-            battery.clear();
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();

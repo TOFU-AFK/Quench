@@ -104,7 +104,8 @@ public class BaseGenerator extends StructuralBattery{
         
         //给多方块结构中的电池方块输入电力
         public void outputPower(){
-          for(BlockData data:c.structure.datas){
+            BlockData[] datas = c.structure();
+          for(BlockData data:datas){
           LargeMachinery block = data.block;
           if(block.getType()==StructureType.battery){
               if(power.status>0){
