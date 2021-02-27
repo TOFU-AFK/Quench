@@ -74,17 +74,17 @@ public class EnergizedCounterattackWall extends Wall{
         
         @Override
         public void update(){
+        }
+
+        @Override
+        public void draw(){
+            super.draw();
             Teamc target = Units.closestTarget(team, x, y,range);
         if(target == null&&energy>0&&healthf()<maxHealth()){
             heal(energy);
             energy=0;
             QUFx.re_thunder_charging.at(this);
         }
-        }
-
-        @Override
-        public void draw(){
-            super.draw();
         }
 
         @Override
