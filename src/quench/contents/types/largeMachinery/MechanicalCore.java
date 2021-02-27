@@ -135,7 +135,6 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
-            update();
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         

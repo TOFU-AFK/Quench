@@ -64,6 +64,7 @@ public class LargeMachinery extends Block{
         solid = true;
         destructible = true;
         group = BlockGroup.walls;
+        update = true;
         buildCostMultiplier = 5f;
         configurable = true;
         hasPower = false;
@@ -85,15 +86,15 @@ public class LargeMachinery extends Block{
             table.add(cont);
         }
         
-        //不知道为啥，update方法用不了，只能在draw方法中使用
         @Override
         public void update(){
+            if(core!=null&&c==null) c = core;
         }
 
         @Override
         public void draw(){
             super.draw();
-            if(core!=null&&c==null) c = core;
+            //if(core!=null&&c==null) c = core;
         }
     }
 }
