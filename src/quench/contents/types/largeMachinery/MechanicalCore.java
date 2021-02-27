@@ -78,9 +78,9 @@ public class MechanicalCore extends LargeMachinery{
 		super.setBars();
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
 			(MechanicalCoreBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalEnergy",entity.power),
-				() -> Color.valueOf(Pal.powerBar),
-				() -> power == 0 ? 0 / 1:1 / 1
+				() -> Core.bundle.get("MechanicalCore.totalEnergy",Float.toString(entity.power)),
+				() -> Pal.powerBar,
+				() -> entity.power == 0 ? 0 / 1:1 / 1
 			)
 		);
 	}
