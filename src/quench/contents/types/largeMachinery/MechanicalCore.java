@@ -59,7 +59,6 @@ import static mindustry.Vars.*;
 public class MechanicalCore extends LargeMachinery{
     public TextureRegion condition;
     public Structure structure;
-    public MechanicalCore core = this;
     public MechanicalCore(String name){
         super(name);
         solid = true;
@@ -136,15 +135,11 @@ public class MechanicalCore extends LargeMachinery{
         
         public void controlStart(){
             for(BlockData data:structure.datas){
-                if(core !=null){
                 LargeMachinery block = data.block;
-                block.core = core;
+                block.core = MechanicalCore.this;
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
-                }else{
-                Log.info("[淬火] core为空","");
-                }
             }
         }
     }
