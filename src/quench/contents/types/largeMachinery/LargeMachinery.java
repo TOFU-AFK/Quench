@@ -80,6 +80,13 @@ public class LargeMachinery extends Block{
     public void load(){
         super.load();
     }
+    
+    //与核心连接后将会触发此方法
+    public void connectingCore(MechanicalCoreBuild c){
+        if(isBattery){
+            c.battery.add(this);
+        }
+    }
 	 
     public class LargeMachineryBuild extends Building{
         public ArrayList<LargeMachinery> battery = new ArrayList<LargeMachinery>();//电池集合
