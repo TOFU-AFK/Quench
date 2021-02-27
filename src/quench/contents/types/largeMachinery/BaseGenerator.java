@@ -114,6 +114,8 @@ public class BaseGenerator extends StructuralBattery{
               power.status--;
               }
           }
+          }else{
+              Log.info("[淬火] batteries为空", "");
           }
         }
 
