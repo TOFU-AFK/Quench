@@ -118,8 +118,8 @@ public class MechanicalCore extends LargeMachinery{
             maxPower = 0;
             power = 0;
             for(int i=0;i<structure.battery.size();i++){
-                maxPower += structure.battery.get(i).consumes.powerBuffered;
-                power += structure.battery.get(i).power.status;
+                maxPower += structure.battery.get(i).build.consumes.powerBuffered;
+                power += structure.battery.get(i).build.power.status;
             }
             start = construct();
             if(start){
