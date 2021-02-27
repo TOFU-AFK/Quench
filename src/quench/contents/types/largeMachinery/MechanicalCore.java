@@ -64,6 +64,8 @@ public class MechanicalCore extends LargeMachinery{
         destructible = true;
         //group = BlockGroup.none;
         configurable = true;
+        battery = new ArrayList<Tile>();
+        generator = new ArrayList<LargeMachinery>();
     }
     
     @Override
@@ -108,6 +110,7 @@ public class MechanicalCore extends LargeMachinery{
             start = construct();
             if(start){
                 controlStart();
+                setContact();
             }
             if(start){
                 condition = Core.atlas.find("quench-status-right");
@@ -146,6 +149,8 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void controlStart(){
+            battery.clear();
+            generator.clear();
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
                 data.block.core = this;
@@ -155,8 +160,21 @@ public class MechanicalCore extends LargeMachinery{
                 Tile t = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 if(data.block.getType()==StructureType.battery){
                 battery.add(t);
-                data.block.battery.add(t);
                 }
+                if(data.block.getType()==StructureType.generator){
+                generator.add(data.block);
+                }
+                }
+            }
+        }
+        
+        public void setContact(){
+            if(battery.size()>0&&generator.size()>0){
+                for(int a=0;a<generator.size();a++){
+            generator.get(a).battery = new ArrayList<Tile>();
+            for(int i=0;i<battery.size();i++){
+            generator.get(a).battery.add(battery.get(i));
+            }
                 }
             }
         }
