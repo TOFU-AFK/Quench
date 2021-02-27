@@ -87,6 +87,7 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
+        public BlockData[] datas//结构方块数组
         
         @Override
         public void buildConfiguration(Table table){
