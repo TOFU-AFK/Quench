@@ -41,7 +41,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,basicBlock;
+	public static LargeMachinery hydroelectricGeneratorCore,basicBlock,smallStructureBattery;
 	
 	@Override
 	public void load()
@@ -55,7 +55,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
-			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0)});//每次偏移8像素，就偏移一格
+			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8)});//每次偏移8像素，就偏移一格
 			}
 		};
 	}
@@ -68,6 +68,16 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
+			}
+		};
+		
+		smallStructureBattery = new StructuralBattery("smallStructureBattery")
+		{
+			{
+            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+			size = 1;
+			health = 40*size*size;
+			consumes.power(100f);
 			}
 		};
 	}

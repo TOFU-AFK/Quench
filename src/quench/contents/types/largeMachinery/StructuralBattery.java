@@ -56,16 +56,18 @@ import java.util.*;
 
 import static mindustry.Vars.*;
 
-public class LargeMachinery extends Block{
+public class StructuralBattery extends LargeMachinery{
     public MechanicalCore core;
-    public LargeMachinery(String name){
+    public StructuralBattery(String name){
         super(name);
         this.name = name;
         solid = true;
         destructible = true;
-        group = BlockGroup.walls;
+        //group = BlockGroup.walls;
         buildCostMultiplier = 5f;
         configurable = true;
+        outputsPower = true;
+        consumesPower = true;
     }
 
     @Override
@@ -73,7 +75,7 @@ public class LargeMachinery extends Block{
         super.load();
     }
 	 
-    public class LargeMachineryBuild extends Building{
+    public class StructuralBatteryBuild extends LargeMachineryBuild{
         public MechanicalCore c;
         
         @Override
@@ -83,15 +85,19 @@ public class LargeMachinery extends Block{
             table.add(cont);
         }
         
-        //不知道为啥，update方法用不了，只能在draw方法中使用
         @Override
-        public void update(){
+        public void overwrote(Seq<Building> previous){
+            for(Building other : previous){
+                if(other.power != null && other.block.consumes.hasPower() && other.block.consumes.getPower().buffered){
+                    float amount = other.block.consumes.getPower().capacity * other.power.status;
+                    power.status = Mathf.clamp(power.status + amount / block.consumes.getPower().capacity);
+                }
+            }
         }
 
         @Override
         public void draw(){
             super.draw();
-            if(core!=null&&c==null) c = core;
         }
     }
 }

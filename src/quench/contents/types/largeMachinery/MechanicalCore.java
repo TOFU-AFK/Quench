@@ -63,7 +63,7 @@ public class MechanicalCore extends LargeMachinery{
         super(name);
         solid = true;
         destructible = true;
-        group = BlockGroup.none;
+        //group = BlockGroup.none;
         configurable = true;
     }
     
