@@ -48,6 +48,7 @@ public class QULargeMachinery implements ContentList
 	{
 	    instantiation();
 	    
+	    //请在这里实例化核心，核心type需要用到LargeMachinery方块，否则将会发生闪退！
 		hydroelectricGeneratorCore = new MechanicalCore("hydroelectricGeneratorCore")
 		{
 			{
@@ -57,17 +58,9 @@ public class QULargeMachinery implements ContentList
 			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0)});//每次偏移8像素，就偏移一格
 			}
 		};
-		
-		/*basicBlock = new LargeMachinery("basicBlock")
-		{
-			{
-            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
-			size = 1;
-			health = 40*size*size;
-			}
-		};*/
 	}
 	
+	//在此次实例化非核心方块
 	public void instantiation(){
 	    basicBlock = new LargeMachinery("basicBlock")
 		{

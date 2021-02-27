@@ -135,14 +135,11 @@ public class MechanicalCore extends LargeMachinery{
         
         public void controlStart(){
             for(BlockData data:structure.datas){
-                /*LargeMachinery block = data.block;
+                LargeMachinery block = data.block;
                 block.core = MechanicalCore.this;
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
-                tile.setNet(data.block,team(),0);*/
-                if(data.block == null){
-                Log.info("[淬火] block值为空","");
-                }
+                tile.setNet(data.block,team(),0);
             }
         }
     }
