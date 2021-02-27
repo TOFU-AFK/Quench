@@ -62,8 +62,8 @@ public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public BlockData[] datas;//结构方块数组
     public boolean isBattery;
+    public ArrayList<Tile> battery = new ArrayList<Tile>();
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
-    public LargeMachineryBuild build;//此变量无用
     public LargeMachinery(String name){
         super(name);
         solid = true;
@@ -88,7 +88,8 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        public BlockData[] ds;
+        public ArrayList<Tile> batteries;
+        
         
         @Override
         public void buildConfiguration(Table table){
@@ -100,8 +101,7 @@ public class LargeMachinery extends Block{
         @Override
         public void update(){
             if(core!=null&&c==null) c = core;
-            if(datas!=null&&ds==null) ds = datas;
-            if(build==null) build = this;
+            if(battery!=null&&batteries==null) batteries = battery;
         }
 
         @Override
