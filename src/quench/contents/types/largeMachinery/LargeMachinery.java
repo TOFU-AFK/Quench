@@ -60,7 +60,6 @@ import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
-    public BlockData[] datas;//结构方块数组
     public boolean isBattery;
     public ArrayList<Tile> battery = new ArrayList<Tile>();
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
