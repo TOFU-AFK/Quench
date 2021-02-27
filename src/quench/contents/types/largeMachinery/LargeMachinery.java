@@ -94,7 +94,6 @@ public class LargeMachinery extends Block{
         @Override
         public void draw(){
             super.draw();
-            //if(core!=null&&c==null) c = core;
         }
     }
 }

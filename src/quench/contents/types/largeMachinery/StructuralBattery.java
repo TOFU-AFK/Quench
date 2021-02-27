@@ -57,7 +57,6 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class StructuralBattery extends LargeMachinery{
-    public MechanicalCore core;
     public StructuralBattery(String name){
         super(name);
         solid = true;
@@ -77,7 +76,6 @@ public class StructuralBattery extends LargeMachinery{
     }
 	 
     public class StructuralBatteryBuild extends LargeMachineryBuild{
-        public MechanicalCore c;
         
         @Override
         public void buildConfiguration(Table table){
@@ -95,11 +93,15 @@ public class StructuralBattery extends LargeMachinery{
                 }
             }
         }
+        
+        @Override
+        public void update(){
+        super.update();
+        }
 
         @Override
         public void draw(){
             super.draw();
-            if(core!=null&&c==null) c = core;
         }
     }
 }
