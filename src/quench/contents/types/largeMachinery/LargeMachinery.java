@@ -57,7 +57,7 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
-    public MechanicalCore core;
+    public MechanicalCoreBuild core;
     public boolean isBattery;
     public LargeMachineryBuild build;
     public LargeMachinery(String name){
@@ -78,12 +78,12 @@ public class LargeMachinery extends Block{
     }
 	 
     public class LargeMachineryBuild extends Building{
-        public MechanicalCore c;
+        public MechanicalCoreBuild c;
         
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(c!=null ? "核心: "+c.name:"核心:null");
+            cont.add(c!=null ? "核心: "+c.block().name:"核心:null");
             table.add(cont);
         }
         

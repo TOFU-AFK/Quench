@@ -76,7 +76,6 @@ public class MechanicalCore extends LargeMachinery{
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
-        public float power = 0;
         
         //旋转按钮
         @Override
@@ -143,7 +142,7 @@ public class MechanicalCore extends LargeMachinery{
         public void controlStart(){
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
-                data.block.core = MechanicalCore.this;
+                data.block.core = this;
                 if(data.block.hasPower&&data.block.isBattery){
                     structure.battery.add(data.block);
                 }
