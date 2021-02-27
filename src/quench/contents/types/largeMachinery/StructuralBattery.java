@@ -57,6 +57,7 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class StructuralBattery extends LargeMachinery{
+        
     public StructuralBattery(String name){
         super(name);
         solid = true;

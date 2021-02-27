@@ -61,6 +61,7 @@ import static mindustry.Vars.*;
 public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public boolean isBattery;
+    public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     public LargeMachineryBuild build;
     public LargeMachinery(String name){
         super(name);
@@ -72,6 +73,7 @@ public class LargeMachinery extends Block{
         configurable = true;
         hasPower = false;
         isBattery = false;
+        canProvidePower = false;
     }
 
     @Override
