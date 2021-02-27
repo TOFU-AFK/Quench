@@ -46,6 +46,8 @@ public class QULargeMachinery implements ContentList
 	@Override
 	public void load()
 	{
+	    instantiation();
+	    
 		hydroelectricGeneratorCore = new MechanicalCore("hydroelectricGeneratorCore")
 		{
 			{
@@ -56,7 +58,18 @@ public class QULargeMachinery implements ContentList
 			}
 		};
 		
-		basicBlock = new LargeMachinery("basicBlock")
+		/*basicBlock = new LargeMachinery("basicBlock")
+		{
+			{
+            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+			size = 1;
+			health = 40*size*size;
+			}
+		};*/
+	}
+	
+	public void instantiation(){
+	    basicBlock = new LargeMachinery("basicBlock")
 		{
 			{
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
