@@ -19,6 +19,10 @@ public class BlockData{
         this.y = y;
     }
     
+    public Tile tile(int coreX,int coreY){
+        return Vars.world.tile((int) coreX+x,(int) coreY+y);
+    }
+    
     public int x(int direction){
         switch (direction){
             case 0:

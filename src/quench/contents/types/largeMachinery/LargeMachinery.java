@@ -62,7 +62,7 @@ public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public boolean isBattery;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
-    public LargeMachineryBuild build;
+    public LargeMachineryBuild build;//此变量无用
     public LargeMachinery(String name){
         super(name);
         solid = true;
