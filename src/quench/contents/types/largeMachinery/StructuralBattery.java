@@ -60,7 +60,6 @@ public class StructuralBattery extends LargeMachinery{
     public MechanicalCore core;
     public StructuralBattery(String name){
         super(name);
-        this.name = name;
         solid = true;
         destructible = true;
         //group = BlockGroup.walls;
