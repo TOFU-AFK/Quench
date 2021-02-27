@@ -104,6 +104,7 @@ public class BaseGenerator extends StructuralBattery{
         
         //给多方块结构中的电池方块输入电力
         public void outputPower(){
+            if(ds!=null){
           for(BlockData data:ds){
           LargeMachinery block = data.block;
           if(block.getType()==StructureType.battery){
@@ -112,6 +113,7 @@ public class BaseGenerator extends StructuralBattery{
               tile.build.power.status++;
               power.status--;
               }
+          }
           }
           }
         }
