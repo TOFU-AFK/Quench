@@ -101,7 +101,10 @@ public class LargeMachinery extends Block{
         @Override
         public void update(){
             if(core!=null&&c==null) c = core;
-            if(battery!=null&&batteries==null) batteries = battery;
+            if(battery!=null&&batteries==null){
+            batteries = battery;
+            battery = null;
+            }
         }
 
         @Override

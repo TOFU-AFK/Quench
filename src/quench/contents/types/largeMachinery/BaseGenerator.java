@@ -98,7 +98,6 @@ public class BaseGenerator extends StructuralBattery{
           super.update();
           if(c!=null){
             if(c.start&&power.status+0.001f<=consumes.getPower().capacity) power.status+=0.001f;
-            //Log.info("[淬火] "+consumes.getPower().capacity, "");
           }
           outputPower();
         }
@@ -106,13 +105,11 @@ public class BaseGenerator extends StructuralBattery{
         //给多方块结构中的电池方块输入电力
         public void outputPower(){
             if(batteries!=null){
-                Log.info("[淬火] batteries"+batteries.size(), "");
           for(int i=0;i<batteries.size();i++){
               Tile tile = batteries.get(i);
-              Log.info("[淬火] "+tile.x+" "+tile.y, "");
               if(power.status>0&&tile.build.power.status+1<=tile.block().consumes.getPower().capacity){
-              tile.build.power.status++;
-              power.status--;
+              tile.build.power.status+=0.001f;
+              power.status-=0.001f;
               }
           }
           }else{
