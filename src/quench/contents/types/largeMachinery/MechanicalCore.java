@@ -190,6 +190,7 @@ public class MechanicalCore extends LargeMachinery{
             super.read(read, revision);
             direction = read.i();
             Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
+            tile.remove();
             tile.setNet(mechanicalCore,team(),0);
         }
     }
