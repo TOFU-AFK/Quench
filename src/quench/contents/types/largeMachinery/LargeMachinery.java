@@ -117,7 +117,7 @@ public class LargeMachinery extends Block{
         public void read(Reads read, byte revision){
             super.read(read, revision);
             power.status = read.f();
-            c = (LargeMachineryBuild) world.build(read.i());
+            c = (MechanicalCoreBuild) world.build(read.i());
         }
     }
 }
