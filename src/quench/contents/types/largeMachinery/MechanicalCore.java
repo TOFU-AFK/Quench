@@ -182,13 +182,13 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void write(Writes write){
             super.write(write);
-            write.f(direction);
+            write.i(direction);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            direction = read.f();
+            direction = read.i();
         }
     }
 }
