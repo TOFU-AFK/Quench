@@ -111,6 +111,7 @@ public class MechanicalCore extends LargeMachinery{
             start = construct();
             if(isRead&&start){
                 empty();
+                isRead=false;
             }
             if(start){
                 controlStart();
