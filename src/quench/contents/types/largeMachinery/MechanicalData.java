@@ -66,7 +66,7 @@ public class MechanicalData{
     public ArrayList<Tile> getBatteryTile(){
         ArrayList<Tile> battery = new ArrayList<Tile>();
         for(BlockData data:structure.datas){
-                Tile t = Vars.world.tile((int) core.tile().x+data.x(core.direction)/8,(int) tile().y+data.y(core.direction)/8);
+                Tile t = Vars.world.tile((int) core.tile().x+data.x(core.direction)/8,(int) core.tile().y+data.y(core.direction)/8);
                 if(data.block.getType()==StructureType.battery){
                 battery.add(t);
                 }
