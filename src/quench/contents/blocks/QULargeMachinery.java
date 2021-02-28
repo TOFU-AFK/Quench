@@ -41,7 +41,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,basicBlock,smallStructureBattery,powerGenerator;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator;
 	
 	@Override
 	public void load()
@@ -58,6 +58,16 @@ public class QULargeMachinery implements ContentList
 			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16)});//每次偏移8像素，就偏移一格
 			}
 		};
+		
+        mediumHydroelectricGeneratorCore = new MechanicalCore("mediumHydroelectricGeneratorCore")
+		{
+			{
+            requirements(Category.crafting, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
+			size = 1;
+			health = 40*size*size;
+			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(mediumBasicBlock,24,8),new BlockData(mediumBasicBlock,-24,8),new BlockData(mediumBasicBlock,24,32),new BlockData(mediumBasicBlock,-24,32),new BlockData(smallStructureBattery,12,16),new BlockData(smallStructureBattery,-12,16),new BlockData(powerGenerator,12,24),new BlockData(powerGenerator,-12,24)});//每次偏移8像素，就偏移一格
+			}
+		};
 	}
 	
 	//在此实例化非核心方块
@@ -67,6 +77,15 @@ public class QULargeMachinery implements ContentList
 			{
             requirements(Category.crafting, with(Items.copper, 25));
 			size = 1;
+			health = 40*size*size;
+			}
+		};
+		
+		mediumBasicBlock = new LargeMachinery("mediumBasicBlock")
+		{
+			{
+            requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
+			size = 2;
 			health = 40*size*size;
 			}
 		};
