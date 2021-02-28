@@ -108,9 +108,8 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            if(structure!=null&&s==null) s=structure;
             start = construct();
-            if(start&&s!=null){
+            if(start){
                 controlStart();
             }
             if(start){
