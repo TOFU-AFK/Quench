@@ -191,7 +191,7 @@ public class MechanicalCore extends LargeMachinery{
             tile.remove();
             tile.setNet(block,team(),0);
             tile.build = build;
-            isRead = false
+            isRead = false;
         }
         
         @Override
