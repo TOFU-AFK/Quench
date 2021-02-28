@@ -59,6 +59,7 @@ import static mindustry.Vars.*;
 
 public class MechanicalCore extends LargeMachinery{
     public Structure structure;
+    public MechanicalCore mechanicalCore = this;
     public MechanicalCore(String name){
         super(name);
         solid = true;
@@ -151,7 +152,6 @@ public class MechanicalCore extends LargeMachinery{
         public void controlStart(){
             for(BlockData data:structure.datas){
                 if(structure.datas.length>mechanicalData.getBlocks().size()){
-                isRead = false;
                 LargeMachinery block = data.block;
                 block.core = this;
                 mechanicalData.addBlock(block);
@@ -193,10 +193,11 @@ public class MechanicalCore extends LargeMachinery{
             direction = read.i();
             MechanicalCoreBuild build = new MechanicalCoreBuild();
             build.direction = direction;
-            this = build;
-            /*Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
+            MechanicalCore block = mechanicalCore;
+            block.MechanicalCoreBuild = build;
+            Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
             tile.remove();
-            tile.setNet(block,team(),0);*/
+            tile.setNet(block,team(),0);
         }
     }
 }
