@@ -110,7 +110,7 @@ public class MechanicalCore extends LargeMachinery{
             start = construct();
             if(start){
                 controlStart();
-                setContact();
+                //setContact();
             }
             if(start){
                 condition = Core.atlas.find("quench-status-right");
@@ -171,11 +171,9 @@ public class MechanicalCore extends LargeMachinery{
         public void setContact(){
             if(battery.size()>0&&generator.size()>0){
                 for(int a=0;a<generator.size();a++){
-            if(generator.get(a).build!=null){
-            generator.get(a).build.batteries = new ArrayList<Tile>();
+            generator.get(a).battery = new ArrayList<Tile>();
             for(int i=0;i<battery.size();i++){
-            generator.get(a).build.batteries.add(battery.get(i));
-            }
+            generator.get(a).battery.add(battery.get(i));
             }
                 }
             }
