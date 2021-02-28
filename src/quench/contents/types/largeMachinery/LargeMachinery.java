@@ -89,7 +89,7 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        public ArrayList<Tile> batteries;
+        public ArrayList<Tile> batteries=new ArrayList<Tile>();
         
         
         @Override
@@ -102,10 +102,6 @@ public class LargeMachinery extends Block{
         @Override
         public void update(){
             if(core!=null&&c==null) c = core;
-            if(battery!=null&&batteries==null){
-            batteries = battery;
-            battery = null;
-            }
             if(build==null) build=this;
         }
 
