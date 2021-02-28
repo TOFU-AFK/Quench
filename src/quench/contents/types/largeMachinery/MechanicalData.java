@@ -60,7 +60,7 @@ public class MechanicalData extends Tile{
     public Structure structure;
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
-    public MechanicalData(int x,int yMechanicalCoreBuild core,Structure structure){
+    public MechanicalData(int x,int y,MechanicalCoreBuild core,Structure structure){
         super(x,y);
         this.core = core;
         this.structure = structure;
