@@ -61,7 +61,6 @@ import static mindustry.Vars.*;
 public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
-    //public MechanicalData data;//大型机械的数据
     public TextureRegion bottom;
     public LargeMachinery(String name){
         super(name);
@@ -87,7 +86,6 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        //public MechanicalData d;
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
@@ -109,13 +107,11 @@ public class LargeMachinery extends Block{
         @Override
         public void write(Writes write){
             super.write(write);
-            write.i(c == null ? -1 : c.pos());
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            c = (MechanicalCoreBuild) world.build(read.i());
         }
     }
 }

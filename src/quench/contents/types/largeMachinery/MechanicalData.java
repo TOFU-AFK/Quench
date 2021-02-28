@@ -73,6 +73,22 @@ public class MechanicalData{
         block.add(b);
     }
     
+    public void setBattery(ArrayList<Tile> b){
+        battery = b;
+    }
+    
+    public void setBlock(ArrayList<LargeMachinery> b){
+        block = b;
+    }
+    
+    public ArrayList<Tile> getBattery(){
+        return battery;
+    }
+    
+    public ArrayList<LargeMachinery> getBlock(){
+        return block;
+    }
+    
     public ArrayList<LargeMachinery> getBlocks(){
         return block;
     }
