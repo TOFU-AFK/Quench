@@ -59,6 +59,7 @@ public class MechanicalData{
     public MechanicalCoreBuild core;
     public Structure structure;
     ArrayList<Tile> battery = new ArrayList<Tile>();;
+    ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;
@@ -66,6 +67,18 @@ public class MechanicalData{
     
     public void addBattery(Tile t){
         battery.add(t);
+    }
+    
+    public void addBlock(LargeMachinery block){
+        block.add(block);
+    }
+    
+    public ArrayList<LargeMachinery> getBlocks(){
+        return block;
+    }
+    
+    public LargeMachinery getBlock(int i){
+        return block.get(i);
     }
     
     public ArrayList<Tile> getBatteryTile(){

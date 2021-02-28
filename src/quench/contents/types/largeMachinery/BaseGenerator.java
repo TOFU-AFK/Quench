@@ -96,7 +96,7 @@ public class BaseGenerator extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
-            if(c.start&&power.status+0.001f<=consumes.getPower().capacity) power.status = power.status+0.001f;
+            if(c.start&&power.status+0.001f<=consumes.getPower().capacity) power.status+=0.001f;
             Log.info("[淬火] 电力"+power.status,"");
             if(c.mechanicalData!=null) outputPower();
           }
@@ -107,9 +107,9 @@ public class BaseGenerator extends StructuralBattery{
             ArrayList<Tile> battery = c.mechanicalData.getBatteryTile();
           for(int i=0;i<battery.size();i++){
               Tile tile = battery.get(i);
-              if(power.status>0&&tile.build.power.status+1<=tile.block().consumes.getPower().capacity){
-              tile.build.power.status = tile.build.power.status + 0.001f;
-              power.status = power.status-0.001f;
+              if(power.status>0&&tile.build.power.status+0.001f<=tile.block().consumes.getPower().capacity){
+              tile.build.power.status+=0.001f;
+              power.status-=0.001f;
               }
           }
         }

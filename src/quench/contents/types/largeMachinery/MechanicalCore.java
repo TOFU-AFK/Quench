@@ -81,7 +81,6 @@ public class MechanicalCore extends LargeMachinery{
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
         public MechanicalData mechanicalData = new MechanicalData(this,structure);
-        public Structure s;
         
         //旋转按钮
         @Override
@@ -107,7 +106,6 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            if(structure!=null&&s==null) s=structure;
             start = construct();
             if(start){
                 controlStart();
@@ -139,7 +137,7 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void drawConfigure(){
         if(!start){
-        for(BlockData data:s.datas){
+        for(BlockData data:structure.datas){
         Draw.alpha(0.5f);
         Draw.rect(Core.atlas.find(data.name), x+data.x(direction), y+data.y(direction));
         Lines.stroke(1);
@@ -149,14 +147,16 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void controlStart(){
-            for(BlockData data:s.datas){
-                if(data.block.core==null){
-                data.block.core = this;
+            for(BlockData data:structure.datas){
+                if(structure.datas.length>mechanicalData.getBlocks.size()){
+                LargeMachinery block = data.block;
+                block.core = this;
                 //data.block.data = mechanicalData; 
+                mechanicalData.addBlock(block);
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
-                tile.setNet(data.block,team(),0);
-                if(data.block.getType()==StructureType.battery){
+                tile.setNet(block,team(),0);
+                if(block.getType()==StructureType.battery){
                     Tile t = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                     
                     mechanicalData.addBattery(t);
@@ -169,12 +169,12 @@ public class MechanicalCore extends LargeMachinery{
         //在核心旋转先，清空原先方块的core值
         public void empty(){
             if(start){
-            for(BlockData data:s.datas){
-                Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
+            for(int i=0;i<mechanicalData.getBlocks.size();i++){
+                Tile tile = Vars.world.tile((int) tile().x+datas[i].x(direction)/8,(int) tile().y+datas[i].y(direction)/8);
                 tile.remove();
-                data.block.core = null;
+                mechanicalData.getBlock(i).core = null;
                 //data.block.data = null;
-                tile.setNet(data.block,team(),0);
+                tile.setNet(mechanicalData.getBlock(i),team(),0);
             }
             }
         }
