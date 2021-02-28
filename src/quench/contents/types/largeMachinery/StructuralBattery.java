@@ -66,7 +66,6 @@ public class StructuralBattery extends LargeMachinery{
         buildCostMultiplier = 5f;
         configurable = true;
         hasPower = true;
-        outputsPower = true;
         consumesPower = true;
     }
 

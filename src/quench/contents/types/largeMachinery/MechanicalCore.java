@@ -107,6 +107,7 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void update(){
             start = construct();
+            Log.info("[淬火] 方块数量 "+mechanicalData.getBlocks().size(),"");
             if(start){
                 controlStart();
             }
@@ -187,8 +188,8 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
+            Log.info("[淬火] 方块数量 "+mechanicalData.getBlocks().size(),"");
             direction = read.i();
-            mechanicalData = new MechanicalData(this,structure);
         }
     }
 }
