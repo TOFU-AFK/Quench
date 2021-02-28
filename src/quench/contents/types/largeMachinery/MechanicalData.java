@@ -64,7 +64,7 @@ public class MechanicalData{
         this.structure = structure;
     }
     
-    public addBattery(Tile t){
+    public void addBattery(Tile t){
         battery.add(t);
     }
     
