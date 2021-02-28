@@ -61,7 +61,7 @@ import static mindustry.Vars.*;
 public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
-    public MechanicalData data//大型机械的数据
+    public MechanicalData data;//大型机械的数据
     public LargeMachinery(String name){
         super(name);
         solid = true;
