@@ -183,7 +183,7 @@ public class MechanicalCore extends LargeMachinery{
         public void write(Writes write){
             super.write(write);
             write.i(direction);
-            write.i(MechanicalData.pos());
+            write.i(mechanicalData.pos());
         }
 
         @Override
