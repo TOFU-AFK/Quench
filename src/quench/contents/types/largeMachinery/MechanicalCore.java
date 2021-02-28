@@ -170,14 +170,14 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void setContact(){
-            if(battery.size()>0&&generator.size()>0){
+            /*if(battery.size()>0&&generator.size()>0){
                 for(int a=0;a<generator.size();a++){
             generator.get(a).battery = new ArrayList<Tile>();
             for(int i=0;i<battery.size();i++){
             generator.get(a).battery.add(battery.get(i));
             }
                 }
-            }
+            }*/
         }
         
         //清空
@@ -188,7 +188,6 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 data.block.core = null;
-                data.block.battery = null;
                 tile.setNet(data.block,team(),0);
             }
             }
