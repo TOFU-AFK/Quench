@@ -109,14 +109,12 @@ public class LargeMachinery extends Block{
         @Override
         public void write(Writes write){
             super.write(write);
-            write.f(power.status);
             write.i(c == null ? -1 : c.pos());
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            power.status = read.f();
             c = (MechanicalCoreBuild) world.build(read.i());
         }
     }
