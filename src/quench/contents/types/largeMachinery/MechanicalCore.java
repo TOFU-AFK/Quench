@@ -148,7 +148,7 @@ public class MechanicalCore extends LargeMachinery{
         
         public void controlStart(){
             for(BlockData data:structure.datas){
-                if(structure.datas.length>mechanicalData.getBlocks.size()){
+                if(structure.datas.length>mechanicalData.getBlocks().size()){
                 LargeMachinery block = data.block;
                 block.core = this;
                 //data.block.data = mechanicalData; 
@@ -169,7 +169,7 @@ public class MechanicalCore extends LargeMachinery{
         //在核心旋转先，清空原先方块的core值
         public void empty(){
             if(start){
-            for(int i=0;i<mechanicalData.getBlocks.size();i++){
+            for(int i=0;i<mechanicalData.getBlocks().size();i++){
                 Tile tile = Vars.world.tile((int) tile().x+structure.datas[i].x(direction)/8,(int) tile().y+structure.datas[i].y(direction)/8);
                 tile.remove();
                 mechanicalData.getBlock(i).core = null;
