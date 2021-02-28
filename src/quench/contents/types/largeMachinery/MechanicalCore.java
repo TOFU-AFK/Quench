@@ -97,7 +97,6 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void rotate(){
-            if(mechanicalData==null) mechanicalData = new MechanicalData(-tile().x,-tile().y,this,structure);
            empty();
            if(direction<3){
                direction++;
@@ -108,6 +107,7 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
+            if(mechanicalData==null) mechanicalData = new MechanicalData(-tile().x,-tile().y,this,structure);
             start = construct();
             if(start){
                 controlStart();
