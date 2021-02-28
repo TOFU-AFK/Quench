@@ -81,7 +81,7 @@ public class MechanicalCore extends LargeMachinery{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
-        public MechanicalData mechanicalData = new MechanicalData(-tile().x,-tile().y,this,structure);
+        public MechanicalData mechanicalData;
         
         //旋转按钮
         @Override
@@ -97,6 +97,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void rotate(){
+            if(mechanicalData==null) new MechanicalData(-tile().x,-tile().y,this,structure);
            empty();
            if(direction<3){
                direction++;
