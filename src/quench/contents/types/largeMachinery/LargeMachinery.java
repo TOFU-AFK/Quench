@@ -105,5 +105,17 @@ public class LargeMachinery extends Block{
             Draw.rect(bottom,x,y);
             Draw.rect(block.region,x,y);
         }
+        
+        @Override
+        public void write(Writes write){
+            super.write(write);
+            write.f(c);
+        }
+
+        @Override
+        public void read(Reads read, byte revision){
+            super.read(read, revision);
+            c = read.f();
+        }
     }
 }

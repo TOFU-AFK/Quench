@@ -178,5 +178,23 @@ public class MechanicalCore extends LargeMachinery{
             }
             }
         }
+        
+        @Override
+        public void write(Writes write){
+            super.write(write);
+            write.f(start);
+            write.f(direction);
+            write.f(condition);
+            write.f(mechanicalData);
+        }
+
+        @Override
+        public void read(Reads read, byte revision){
+            super.read(read, revision);
+            start = read.f();
+            direction = read.f();
+            condition = read.f();
+            mechanicalData = read.f();
+        }
     }
 }

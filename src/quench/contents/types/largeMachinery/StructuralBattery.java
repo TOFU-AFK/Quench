@@ -108,5 +108,17 @@ public class StructuralBattery extends LargeMachinery{
         public void draw(){
             super.draw();
         }
+        
+        @Override
+        public void write(Writes write){
+            super.write(write);
+            write.f(power.status);
+        }
+
+        @Override
+        public void read(Reads read, byte revision){
+            super.read(read, revision);
+            power.status = read.f();
+        }
     }
 }
