@@ -82,6 +82,6 @@ public class MechanicalData{
     }
     
     public ArrayList<Tile> getBatteryTile(){
-            return battery;
-            }
+        return battery;
     }
+}
