@@ -69,8 +69,8 @@ public class MechanicalData{
         battery.add(t);
     }
     
-    public void addBlock(LargeMachinery block){
-        block.add(block);
+    public void addBlock(LargeMachinery b){
+        block.add(b);
     }
     
     public ArrayList<LargeMachinery> getBlocks(){
