@@ -64,8 +64,6 @@ public class MechanicalCore extends LargeMachinery{
         destructible = true;
         //group = BlockGroup.none;
         configurable = true;
-        battery = new ArrayList<Tile>();
-        generator = new ArrayList<LargeMachinery>();
     }
     
     @Override
@@ -82,6 +80,9 @@ public class MechanicalCore extends LargeMachinery{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
+        
+        public ArrayList<Tile> battery = new ArrayList<Tile>();;
+        public ArrayList<LargeMachinery> generator = new ArrayList<LargeMachinery>();
         
         //旋转按钮
         @Override

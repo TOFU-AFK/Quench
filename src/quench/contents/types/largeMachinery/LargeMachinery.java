@@ -61,8 +61,8 @@ import static mindustry.Vars.*;
 public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public boolean isBattery;
-    public ArrayList<Tile> battery;
-    public ArrayList<LargeMachinery> generator;
+    /*public ArrayList<Tile> battery;
+    public ArrayList<LargeMachinery> generator;*/
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     public LargeMachinery(String name){
         super(name);
@@ -88,7 +88,7 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        public ArrayList<Tile> batteries;
+        //public ArrayList<Tile> batteries;
         
         @Override
         public void buildConfiguration(Table table){
