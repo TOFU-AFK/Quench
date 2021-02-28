@@ -108,9 +108,8 @@ public class MechanicalCore extends LargeMachinery{
         public void update(){
             start = construct();
             if(start){
-                data = new MechanicalData(this,structure);
+                mechanicalData = new MechanicalData(this,structure);
                 controlStart();
-                //setContact();
             }
             if(start){
                 condition = Core.atlas.find("quench-status-right");
