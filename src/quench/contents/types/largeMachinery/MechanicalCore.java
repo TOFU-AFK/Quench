@@ -80,7 +80,7 @@ public class MechanicalCore extends LargeMachinery{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
-        public MechanicalData mechanicalData;
+        public MechanicalData mechanicalData = new MechanicalData(this,structure);
         
         //旋转按钮
         @Override
@@ -108,7 +108,6 @@ public class MechanicalCore extends LargeMachinery{
         public void update(){
             start = construct();
             if(start){
-                mechanicalData = new MechanicalData(this,structure);
                 controlStart();
             }
             if(start){
@@ -157,6 +156,7 @@ public class MechanicalCore extends LargeMachinery{
                 tile.setNet(data.block,team(),0);
                 if(data.block.getType()==StructureType.battery){
                     Tile t = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
+                    
                     mechanicalData.addBattery(t);
                 }
                 }
