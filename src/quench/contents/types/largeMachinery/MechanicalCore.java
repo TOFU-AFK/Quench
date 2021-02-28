@@ -196,7 +196,8 @@ public class MechanicalCore extends LargeMachinery{
             MechanicalCore block = mechanicalCore;
             Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
             tile.remove();
-            tile.setBlock(block,team(),0,build);
+            tile.setBlock(block,team(),0);
+            tile.build = build;
         }
     }
 }
