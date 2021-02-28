@@ -51,9 +51,9 @@ import mindustry.*;
 
 import java.util.*;
 
-import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
-
 import static mindustry.Vars.*;
+
+import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 
 public class MechanicalData{
     public MechanicalCoreBuild core;
