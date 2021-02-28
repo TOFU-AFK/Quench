@@ -81,7 +81,7 @@ public class MechanicalCore extends LargeMachinery{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
-        public MechanicalData mechanicalData = new MechanicalData(this,structure);
+        public MechanicalData mechanicalData = new MechanicalData(-tile().x,-tile().y,this,structure);
         
         //旋转按钮
         @Override
@@ -182,14 +182,14 @@ public class MechanicalCore extends LargeMachinery{
         public void write(Writes write){
             super.write(write);
             write.i(direction);
-            write.i(mechanicalData);
+            write.i(MechanicalData.pos());
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
             direction = read.i();
-            mechanicalData = (MechanicalData) read.i();
+            mechanicalData = (MechanicalData) world.tile(read.i());
         }
     }
 }

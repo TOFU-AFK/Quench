@@ -55,12 +55,13 @@ import static mindustry.Vars.*;
 
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 
-public class MechanicalData{
+public class MechanicalData extends Tile{
     public MechanicalCoreBuild core;
     public Structure structure;
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
-    public MechanicalData(MechanicalCoreBuild core,Structure structure){
+    public MechanicalData(int x,int yMechanicalCoreBuild core,Structure structure){
+        super(x,y);
         this.core = core;
         this.structure = structure;
     }
