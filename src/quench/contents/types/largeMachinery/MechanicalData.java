@@ -58,7 +58,7 @@ import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 public class MechanicalData{
     public MechanicalCoreBuild core;
     public Structure structure;
-    ArrayList<Tile> battery = new ArrayList<Tile>();;
+    ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
