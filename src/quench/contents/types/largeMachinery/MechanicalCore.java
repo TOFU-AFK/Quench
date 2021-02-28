@@ -170,7 +170,7 @@ public class MechanicalCore extends LargeMachinery{
         public void empty(){
             if(start){
             for(int i=0;i<mechanicalData.getBlocks.size();i++){
-                Tile tile = Vars.world.tile((int) tile().x+datas[i].x(direction)/8,(int) tile().y+datas[i].y(direction)/8);
+                Tile tile = Vars.world.tile((int) tile().x+structure.datas[i].x(direction)/8,(int) tile().y+structure.datas[i].y(direction)/8);
                 tile.remove();
                 mechanicalData.getBlock(i).core = null;
                 //data.block.data = null;
