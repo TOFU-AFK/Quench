@@ -80,9 +80,7 @@ public class MechanicalCore extends LargeMachinery{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
-        
-        public ArrayList<Tile> battery = new ArrayList<Tile>();;
-        public ArrayList<LargeMachinery> generator = new ArrayList<LargeMachinery>();
+        public MechanicalData data;
         
         //旋转按钮
         @Override
@@ -110,6 +108,7 @@ public class MechanicalCore extends LargeMachinery{
         public void update(){
             start = construct();
             if(start){
+                data = new MechanicalData(this,structure);
                 controlStart();
                 //setContact();
             }
@@ -155,29 +154,12 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
                 data.block.core = this;
+                data.block.data = data; 
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
-                Tile t = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
-                if(data.block.getType()==StructureType.battery){
-                battery.add(t);
-                }
-                if(data.block.getType()==StructureType.generator){
-                generator.add(data.block);
-                }
                 }
             }
-        }
-        
-        public void setContact(){
-            /*if(battery.size()>0&&generator.size()>0){
-                for(int a=0;a<generator.size();a++){
-            generator.get(a).battery = new ArrayList<Tile>();
-            for(int i=0;i<battery.size();i++){
-            generator.get(a).battery.add(battery.get(i));
-            }
-                }
-            }*/
         }
         
         //清空
@@ -188,6 +170,7 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 data.block.core = null;
+                data.block.data = null;
                 tile.setNet(data.block,team(),0);
             }
             }

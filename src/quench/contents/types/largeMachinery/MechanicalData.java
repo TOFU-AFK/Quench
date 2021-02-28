@@ -1,6 +1,3 @@
-/*
-*大型机械的电池type
-*/
 package quench.contents.types;
 
 import mindustry.world.*;
@@ -56,57 +53,23 @@ import java.util.*;
 
 import static mindustry.Vars.*;
 
-public class StructuralBattery extends LargeMachinery{
-        
-    public StructuralBattery(String name){
-        super(name);
-        solid = true;
-        destructible = true;
-        //group = BlockGroup.walls;
-        buildCostMultiplier = 5f;
-        configurable = true;
-        hasPower = true;
-        outputsPower = true;
-        consumesPower = true;
-    }
-
-    @Override
-    public void load(){
-        super.load();
+public class MechanicalData{
+    public MechanicalCoreBuild core;
+    public Structure structure;
+    public MechanicalData(MechanicalCoreBuild core,Structure structure){
+        this.core = core;
+        this.structure = structure;
     }
     
-    @Override
-    public StructureType getType(){
-        return StructureType.battery;
-    }
-	 
-    public class StructuralBatteryBuild extends LargeMachineryBuild{
-        
-        @Override
-        public void buildConfiguration(Table table){
-            Table cont = new Table();
-            cont.add(c!=null ? "核心: "+c.block().name:"核心:null");
-            table.add(cont);
-        }
-        
-        @Override
-        public void overwrote(Seq<Building> previous){
-            for(Building other : previous){
-                if(other.power != null && other.block.consumes.hasPower() && other.block.consumes.getPower().buffered){
-                    float amount = other.block.consumes.getPower().capacity * other.power.status;
-                    power.status = Mathf.clamp(power.status + amount / block.consumes.getPower().capacity);
+    public ArrayList<Tile> getBatteryTile(){
+        ArrayList<Tile> battery = new ArrayList<Tile>();
+        for(BlockData data:structure.datas){
+                Tile t = Vars.world.tile((int) core.tile().x+data.x(core.direction)/8,(int) tile().y+data.y(core.direction)/8);
+                if(data.block.getType()==StructureType.battery){
+                battery.add(t);
                 }
+                }
+                return battery;
             }
-        }
-        
-        @Override
-        public void update(){
-        super.update();
-        }
-
-        @Override
-        public void draw(){
-            super.draw();
-        }
     }
 }
