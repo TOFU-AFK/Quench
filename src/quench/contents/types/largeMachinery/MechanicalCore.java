@@ -109,9 +109,8 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            
-            start = construct();
             if(isRead) delete();
+            start = construct();
             if(start){
                 controlStart();
             }
@@ -184,14 +183,8 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void delete(){
-            MechanicalCoreBuild build = new MechanicalCoreBuild();
-            build.direction = direction;
-            MechanicalCore block = mechanicalCore;
-            Team team = team();
-            Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
-            tile.remove();
-            tile.setNet(block,team,0);
-            tile.build = build;
+            start = false;
+            mechanicalData = new MechanicalData(this,structure);
             isRead = false;
         }
         
