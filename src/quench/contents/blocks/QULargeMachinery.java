@@ -65,7 +65,7 @@ public class QULargeMachinery implements ContentList
 	    basicBlock = new LargeMachinery("basicBlock")
 		{
 			{
-            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+            requirements(Category.crafting, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
 			}
@@ -74,7 +74,7 @@ public class QULargeMachinery implements ContentList
 		smallStructureBattery = new StructuralBattery("smallStructureBattery")
 		{
 			{
-            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+            requirements(Category.crafting, with(Items.silicon, 25, Items.lead, 30));
 			size = 1;
 			health = 40*size*size;
 			consumes.powerBuffered(3500f);

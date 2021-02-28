@@ -190,7 +190,7 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            isRead = true
+            isRead = true;
             direction = read.i();
         }
     }
