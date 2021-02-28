@@ -69,6 +69,11 @@ public class QULargeMachinery implements ContentList
 			size = 1;
 			health = 40*size*size;
 			}
+			
+			@Override
+			public void draw(){
+			    Draw.rect(block.region,x,y);
+			}
 		};
 		
 		smallStructureBattery = new StructuralBattery("smallStructureBattery")
