@@ -75,12 +75,26 @@ public class MechanicalCore extends LargeMachinery{
     public StructureType getType(){
         return StructureType.core;
     }
+    
+    @Override
+	public void setBars(){
+		super.setBars();
+		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
+			(MechanicalCoreBuild entity) -> new Bar(
+				() -> Core.bundle.get("MechanicalCore.totalEnergy"),
+				() -> Pal.powerBar,
+				() -> entity.power / entity.maxPower
+			)
+		);
+	}
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
         public MechanicalData mechanicalData = new MechanicalData(this,structure);
+        public float maxPower = 0;
+        public float power = 0;
         
         //旋转按钮
         @Override
@@ -109,6 +123,7 @@ public class MechanicalCore extends LargeMachinery{
             start = construct();
             if(start){
                 controlStart();
+                statistics();
             }
             if(start){
                 condition = Core.atlas.find("quench-status-right");
@@ -162,6 +177,16 @@ public class MechanicalCore extends LargeMachinery{
                     mechanicalData.addBattery(t);
                 }
                 }
+            }
+        }
+        
+        public void statistics(){
+            maxPower = 0;
+            power = 0;
+            ArrayList<Tile> battery = mechanicalData.getBatteryTile();
+            for(int i=0;i<battery.size();i++){
+                maxPower+=battery.get(i).consumes.getPower().capacity;
+                power+=battery.get(i).power.status;
             }
         }
         
