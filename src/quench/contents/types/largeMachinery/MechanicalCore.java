@@ -83,7 +83,6 @@ public class MechanicalCore extends LargeMachinery{
         public boolean start = false;
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
         public MechanicalData mechanicalData = new MechanicalData(this,structure);
-        public boolean isRead = false;
         
         //旋转按钮
         @Override
@@ -109,7 +108,6 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-            if(isRead) delete();
             start = construct();
             if(start){
                 controlStart();
@@ -182,12 +180,6 @@ public class MechanicalCore extends LargeMachinery{
             }
         }
         
-        public void delete(){
-            start = false;
-            mechanicalData = new MechanicalData(this,structure);
-            isRead = false;
-        }
-        
         @Override
         public void write(Writes write){
             super.write(write);
@@ -198,7 +190,6 @@ public class MechanicalCore extends LargeMachinery{
         public void read(Reads read, byte revision){
             super.read(read, revision);
             direction = read.i();
-            isRead = true;
         }
     }
 }
