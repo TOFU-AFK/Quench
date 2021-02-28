@@ -101,7 +101,8 @@ public class LargeMachinery extends Block{
 
         @Override
         public void draw(){
-            super.draw();
+            //super.draw();
+            Draw.rect(block.region,x,y);
         }
     }
 }
