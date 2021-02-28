@@ -97,6 +97,7 @@ public class BaseGenerator extends StructuralBattery{
           super.update();
           if(c!=null){
             if(c.start&&power.status+0.001f<=consumes.getPower().capacity) power.status+=0.001f;
+            Log.info("[淬火] mechanicalData数量"+c.mechanicalData.getBatteryTile().size(),"");
             if(data!=null) outputPower();
           }
         }

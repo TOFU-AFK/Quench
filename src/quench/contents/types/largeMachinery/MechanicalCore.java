@@ -152,10 +152,14 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 if(data.block.core==null){
                 data.block.core = this;
-                data.block.data = mechanicalData; 
+                //data.block.data = mechanicalData; 
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
+                if(data.block.getType()==StructureType.battery){
+                    Tile t = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
+                    mechanicalData.addBattery(t);
+                }
                 }
             }
         }
@@ -168,7 +172,7 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 data.block.core = null;
-                data.block.data = null;
+                //data.block.data = null;
                 tile.setNet(data.block,team(),0);
             }
             }

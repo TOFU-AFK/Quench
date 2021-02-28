@@ -58,19 +58,17 @@ import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 public class MechanicalData{
     public MechanicalCoreBuild core;
     public Structure structure;
+    ArrayList<Tile> battery = new ArrayList<Tile>();;
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;
     }
     
+    public addBattery(Tile t){
+        battery.add(t);
+    }
+    
     public ArrayList<Tile> getBatteryTile(){
-        ArrayList<Tile> battery = new ArrayList<Tile>();
-        for(BlockData data:structure.datas){
-                Tile t = Vars.world.tile((int) core.tile().x+data.x(core.direction)/8,(int) core.tile().y+data.y(core.direction)/8);
-                if(data.block.getType()==StructureType.battery){
-                battery.add(t);
-                }
-                }
-                return battery;
+            return battery;
             }
     }
