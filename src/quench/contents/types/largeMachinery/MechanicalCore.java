@@ -185,7 +185,7 @@ public class MechanicalCore extends LargeMachinery{
             power = 0;
             ArrayList<Tile> battery = mechanicalData.getBatteryTile();
             for(int i=0;i<battery.size();i++){
-                maxPower+=battery.get(i).build.consumes.getPower().capacity;
+                maxPower+=battery.get(i).block().consumes.getPower().capacity;
                 power+=battery.get(i).build.power.status;
             }
         }
