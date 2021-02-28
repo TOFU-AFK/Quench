@@ -62,6 +62,7 @@ public class LargeMachinery extends Block{
     public MechanicalCoreBuild core;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     //public MechanicalData data;//大型机械的数据
+    public TextureRegion bottom;
     public LargeMachinery(String name){
         super(name);
         solid = true;
@@ -77,6 +78,7 @@ public class LargeMachinery extends Block{
     @Override
     public void load(){
         super.load();
+        bottom = Core.atlas.find("quench-bottom");
     }
     
     public StructureType getType(){
@@ -96,12 +98,11 @@ public class LargeMachinery extends Block{
         @Override
         public void update(){
             if(core!=null&&c==null) c = core;
-            //if(data!=null&&d==null) d = data;
         }
 
         @Override
         public void draw(){
-            //super.draw();
+            Draw.rect(bottom,x,y);
             Draw.rect(block.region,x,y);
         }
     }
