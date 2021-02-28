@@ -190,11 +190,13 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            MechanicalCore block = QULargeMachinery.hydroelectricGeneratorCore;
-            Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
-            block.direction = read.i();
+            direction = read.i();
+            MechanicalCoreBuild build = new MechanicalCoreBuild();
+            build.direction = direction;
+            this = build;
+            /*Tile tile = Vars.world.tile((int) tile().x,(int) tile().y);
             tile.remove();
-            tile.setNet(block,team(),0);
+            tile.setNet(block,team(),0);*/
         }
     }
 }
