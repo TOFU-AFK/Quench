@@ -97,7 +97,7 @@ public class BaseGenerator extends StructuralBattery{
         @Override
         public void update(){
           super.update();
-          if(c!=null){
+          if(c!=null&&consumes!=null){
             float capacity = consumes.getPower().capacity;
             if(c.start&&power.status*capacity+increasePower<=capacity){
             power.status+=increasePower;
@@ -105,7 +105,7 @@ public class BaseGenerator extends StructuralBattery{
             }else if(capacity-power.status*capacity>0){
                 power.status+=capacity-power.status*capacity;
             }
-            if(c.mechanicalData!=null) outputPower();
+            if(c.mechanicalData!=null&&consumes!=null) outputPower();
           }
         }
         
