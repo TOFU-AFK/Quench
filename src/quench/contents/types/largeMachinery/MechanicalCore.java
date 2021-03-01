@@ -86,13 +86,6 @@ public class MechanicalCore extends LargeMachinery{
         public MechanicalData mechanicalData = new MechanicalData(this,structure);
         public boolean isRead = false;
         
-        @Override
-        @CallSuper
-        public void init(){
-            super.init();
-            mechanicalData.efficiency = efficiency;
-        }
-        
         //旋转按钮
         @Override
         public void buildConfiguration(Table table){
@@ -115,8 +108,13 @@ public class MechanicalCore extends LargeMachinery{
            }
         }
         
+        public void initially(){
+            if(mechanicalData.efficiency==null) mechanicalData.efficiency = efficiency;
+        }
+        
         @Override
         public void update(){
+            initially();
             start = construct();
             if(isRead&&start){
                 Tile tile = Vars.world.tile(tile().x, tile().y);
