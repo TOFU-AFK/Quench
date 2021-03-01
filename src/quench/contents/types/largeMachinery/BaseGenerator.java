@@ -57,7 +57,7 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class BaseGenerator extends StructuralBattery{
-    private float final capacity;
+    public final float capacity;
     public BaseGenerator(String name){
         super(name);
         solid = true;
