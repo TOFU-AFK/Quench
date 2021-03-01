@@ -102,6 +102,7 @@ public class StructuralBattery extends LargeMachinery{
         @Override
         public void update(){
         super.update();
+        if(power.status*capacity>consumes.getPower().capacity) power.status*capacity= consumes.getPower().capacity;
         }
 
         @Override
