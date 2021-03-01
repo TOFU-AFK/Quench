@@ -109,7 +109,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void initially(){
-            if(mechanicalData.efficiency==null) mechanicalData.efficiency = efficiency;
+            if(mechanicalData.efficiency==0) mechanicalData.efficiency = efficiency;
         }
         
         @Override
