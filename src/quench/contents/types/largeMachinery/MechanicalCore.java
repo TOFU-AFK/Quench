@@ -60,6 +60,7 @@ import static mindustry.Vars.*;
 public class MechanicalCore extends LargeMachinery{
     public Structure structure;
     public MechanicalCore block = this;
+    public float efficiency = 1;//该核心对发电机等方块的效率提升
     public MechanicalCore(String name){
         super(name);
         solid = true;

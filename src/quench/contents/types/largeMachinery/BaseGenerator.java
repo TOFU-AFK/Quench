@@ -99,8 +99,8 @@ public class BaseGenerator extends StructuralBattery{
           super.update();
           if(c!=null){
             float capacity = consumes.getPower().capacity;
-            if(c.start&&power.status*capacity+increasePower<=capacity){
-            power.status+=increasePower;
+            if(c.start&&power.status*capacity+increasePower*efficiency<=capacity){
+            power.status+=increasePower*efficiency;
             //防止卡在电力上限附近
             }else if(capacity-power.status*capacity>0){
                 power.status+=capacity-power.status*capacity;
@@ -112,7 +112,7 @@ public class BaseGenerator extends StructuralBattery{
         //给多方块结构中的电池方块输入电力
         public void outputPower(){
             ArrayList<Tile> battery = c.mechanicalData.getBatteryTile();
-            float output = powerOutput / battery.size();
+            float output = powerOutput / battery.size()*efficiency;
           for(int i=0;i<battery.size();i++){
               Tile tile = battery.get(i);
               //防止build为空
