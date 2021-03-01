@@ -57,6 +57,8 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class BaseGenerator extends StructuralBattery{
+    public float increasePower = 0.005f;//增加的电力
+    public float powerOutput = 0.005f;//输出电力
     public BaseGenerator(String name){
         super(name);
         solid = true;
@@ -97,22 +99,22 @@ public class BaseGenerator extends StructuralBattery{
           super.update();
           if(c!=null){
             float capacity = consumes.getPower().capacity;
-            if(c.start&&power.status*capacity+0.001f<=capacity) power.status+=0.001f;
+            if(c.start&&power.status*capacity+increasePower<=capacity) power.status+=increasePower;
             if(c.mechanicalData!=null) outputPower();
           }
         }
         
         //给多方块结构中的电池方块输入电力
         public void outputPower(){
-        //该方法目前只能向第一个电池充能
-            /*ArrayList<Tile> battery = c.mechanicalData.getBatteryTile();
+            ArrayList<Tile> battery = c.mechanicalData.getBatteryTile();
+            float output = powerOutput / battery.size();
           for(int i=0;i<battery.size();i++){
               Tile tile = battery.get(i);
-              if(power.status>0&&tile.build.power.status+0.001f<=tile.block().consumes.getPower().capacity){
-              tile.build.power.status+=0.001f;
-              power.status-=0.001f;
+              if(power.status*capacity>0&&tile.build.power.status*tile.block().consumes.getPower().capacity+output<=tile.block().consumes.getPower().capacity){
+              tile.build.power.status+=output;
+              power.status-=output;
               }
-          }*/
+          }
         }
 
         @Override
