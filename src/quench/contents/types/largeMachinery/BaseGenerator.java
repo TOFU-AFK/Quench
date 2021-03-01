@@ -110,7 +110,7 @@ public class BaseGenerator extends StructuralBattery{
             float output = powerOutput / battery.size();
           for(int i=0;i<battery.size();i++){
               Tile tile = battery.get(i);
-              if(power.status*capacity>0&&tile.build.power.status*tile.block().consumes.getPower().capacity+output<=tile.block().consumes.getPower().capacity){
+              if(power.status*consumes.getPower().capacity>0&&tile.build.power.status*tile.block().consumes.getPower().capacity+output<=tile.block().consumes.getPower().capacity){
               tile.build.power.status+=output;
               power.status-=output;
               }
