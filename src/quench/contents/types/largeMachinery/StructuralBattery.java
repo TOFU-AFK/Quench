@@ -104,7 +104,7 @@ public class StructuralBattery extends LargeMachinery{
         super.update();
         //如果电力大于上限，强制回到上限
         /*if(power.status*consumes.getPower().capacity>consumes.getPower().capacity) power.status = consumes.getPower().capacity;*/
-        if(power.status*consumes.getPower().capacity>consumes.getPower().capacity) power.status -= 0.001f;
+        if(power.status*consumes.getPower().capacity>consumes.getPower().capacity) power.status = 1;
         }
 
         @Override

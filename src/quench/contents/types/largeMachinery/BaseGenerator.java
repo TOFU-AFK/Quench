@@ -57,7 +57,7 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class BaseGenerator extends StructuralBattery{
-    public float increasePower = 0.005f;//增加的电力
+    public float increasePower = 0.005f;//增加的电力(百分比)
     public float powerOutput = 0.005f;//输出电力
     public BaseGenerator(String name){
         super(name);
