@@ -57,7 +57,6 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class BaseGenerator extends StructuralBattery{
-    public final float capacity;
     public BaseGenerator(String name){
         super(name);
         solid = true;
@@ -66,8 +65,7 @@ public class BaseGenerator extends StructuralBattery{
         configurable = true;
         hasPower = true;
         outputsPower = true;
-        consumesPower = false;
-        capacity = consumes.getPower().capacity;
+        consumesPower = true;
     }
 
     @Override
@@ -98,6 +96,7 @@ public class BaseGenerator extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
+            float capacity = consumes.getPower().capacity;
             if(c.start&&power.status*capacity+0.001f<=capacity) power.status+=0.001f;
             if(c.mechanicalData!=null) outputPower();
           }
