@@ -107,11 +107,13 @@ public class LargeMachinery extends Block{
         @Override
         public void write(Writes write){
             super.write(write);
+            if(hasPower) write.f(power.status);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
+            if(hasPower) power.status = read.f();
             c = null;
         }
     }
