@@ -171,18 +171,12 @@ public class MechanicalCore extends LargeMachinery{
         Lines.stroke(1);
         Lines.square(x+data.x(direction), y+data.y(direction),tilesize/2+2,0);
         }
-        }else{
-        for(int i=0;i<mechanicalData.battery.size();i++){
-        Tile t = mechanicalData.battery.get(i);
-        if(t!=null){
-        Lines.stroke(1);
-        Lines.square(x+t.x, y+t.y,tilesize/2+2,0);
-        }
-        }
         }
         }
         
         public void controlStart(){
+            mechanicalData.battery.clear();
+            mechanicalData.block.clear();
             for(BlockData data:structure.datas){
                 if(structure.datas.length>mechanicalData.getBlocks().size()){
                 LargeMachinery block = data.block;
