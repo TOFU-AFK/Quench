@@ -133,6 +133,8 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile(tile().x, tile().y);
                 tile.remove();
                 tile.setNet(block,team(),0);
+                mechanicalData.battery.clear();
+                mechanicalData.block.clear();
                 isRead=false;
             }
             if(start){
@@ -175,8 +177,8 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void controlStart(){
-            mechanicalData.battery.clear();
-            mechanicalData.block.clear();
+            //mechanicalData.battery.clear();
+            //mechanicalData.block.clear();
             for(BlockData data:structure.datas){
                 if(structure.datas.length>mechanicalData.getBlocks().size()){
                 LargeMachinery block = data.block;

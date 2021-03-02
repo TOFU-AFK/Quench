@@ -60,6 +60,7 @@ public class MechanicalData{
     public Structure structure;
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
+    ArrayList<LargeMachineryBuild> build = new ArrayList<LargeMachineryBuild>();
     public float efficiency = 0;
     public float powerCapacity = 0;
     public float power = 0;
