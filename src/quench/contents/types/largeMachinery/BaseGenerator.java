@@ -85,7 +85,7 @@ public class BaseGenerator extends StructuralBattery{
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(c!=null ? "核心: "+c.block().name:"核心:null");
+            cont.add(c!=null ? "核心: x:"+c.tile().x+"y:"+c.tile().y:"核心:null");
             table.add(cont);
         }
         
