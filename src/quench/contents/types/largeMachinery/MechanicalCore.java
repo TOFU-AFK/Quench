@@ -54,6 +54,7 @@ import mindustry.*;
 
 import java.util.*;
 import quench.contents.blocks.*;
+import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 
 import static mindustry.Vars.*;
 
@@ -159,6 +160,7 @@ public class MechanicalCore extends LargeMachinery{
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 if(!tile.block().name.equals(data.name)) return false;
+                if((LargeMachineryBuild) tile.build.c!=null&&(LargeMachineryBuild) tile.build.c != this) return false;
             }
             return true;
         }
