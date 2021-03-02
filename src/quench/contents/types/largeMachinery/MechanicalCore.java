@@ -78,6 +78,18 @@ public class MechanicalCore extends LargeMachinery{
     public StructureType getType(){
         return StructureType.core;
     }
+    
+    @Override
+	public void setBars(){
+		super.setBars();
+		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
+			(MechanicalCoreBuild entity) -> new Bar(
+				() -> Core.bundle.get("MechanicalCore.totalEnergy",entity.mechanicalData!=null ? entity.mechanicalData.getPower()*entity.mechanicalData.powerCapacity:0),
+				() -> Pal.powerBar,
+				() -> entity.mechanicalData!=null ? entity.mechanicalData.getPower() / 1:0/1
+			)
+		);
+	}
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
         public int direction = 0;//核心方向，0为上，1为右，2为下，3为左
@@ -109,6 +121,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void initially(){
+            if(efficiency<1) efficiency = 1;
             if(mechanicalData.efficiency==0) mechanicalData.efficiency = efficiency;
         }
         

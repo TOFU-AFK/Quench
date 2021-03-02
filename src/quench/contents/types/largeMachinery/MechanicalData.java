@@ -61,6 +61,8 @@ public class MechanicalData{
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
     public float efficiency = 0;
+    public float powerCapacity = 0;
+    public float power = 0;
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;
@@ -68,6 +70,22 @@ public class MechanicalData{
     
     public void addBattery(Tile t){
         battery.add(t);
+        powerCapacity = 0;
+        for(int i=0;i<battery.size();i++){
+           powerCapacity+=battery.get(i).block().consumes.getPower().capacity;
+        }
+    }
+    
+    //返回电力百分比
+    public float getPower(){
+        power = 0;
+        for(int i=0;i<battery.size();i++){
+            Tile t = battery.get(i);
+            if(t.build!=null){
+           power+=t.build.power.status;
+            }
+        }
+        return power;
     }
     
     public void addBlock(LargeMachinery b){
