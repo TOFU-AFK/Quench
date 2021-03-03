@@ -180,20 +180,17 @@ public class MechanicalCore extends LargeMachinery{
         }
         
         public void controlStart(){
-            //mechanicalData.battery.clear();
-            //mechanicalData.block.clear();
             for(BlockData data:structure.datas){
                 if(structure.datas.length>mechanicalData.getBlocks().size()){
-                LargeMachinery block = data.block;
-                block.core = this;
-                mechanicalData.addBlock(block);
+                //先获取地图的tile，再将build强制转换成LargeMachineryBuild，因为前面已经判断了方块的名称，所以不用担心出现问题，不过我还是加了一个try语句防止出现问题
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
-                tile.setNet(block,team(),0);
-                if(block.getType()==StructureType.battery){
-                    Tile t = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
-                    
-                    mechanicalData.addBattery(t);
+                tile.setNet(data.block,team(),0);
+                LargeMachineryBuild build = (LargeMachineryBuild) tile.build;
+                build.c = this;
+                mechanicalData.addTile(tile);
+                if(data.block.getType()==StructureType.battery){
+                    mechanicalData.addBattery(tile);
                 }
                 }
             }
@@ -206,7 +203,7 @@ public class MechanicalCore extends LargeMachinery{
             for(int i=0;i<mechanicalData.getBlocks().size();i++){
                 Tile tile = Vars.world.tile((int) tile().x+structure.datas[i].x(direction)/8,(int) tile().y+structure.datas[i].y(direction)/8);
                 tile.remove();
-                mechanicalData.getBlock(i).core = null;
+                mechanicalData.getTile(i).c = null;
                 tile.setNet(mechanicalData.getBlock(i),team(),0);
             }
             }

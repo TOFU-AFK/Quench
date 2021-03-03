@@ -59,7 +59,7 @@ import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 import static mindustry.Vars.*;
 
 public class LargeMachinery extends Block{
-    public MechanicalCoreBuild core;
+    //public MechanicalCoreBuild core;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     public TextureRegion bottom;
     public LargeMachinery(String name){
@@ -95,7 +95,7 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
-            if(core!=null&&c==null) c = core;
+            //if(core!=null&&c==null) c = core;
         }
 
         @Override

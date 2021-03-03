@@ -59,7 +59,7 @@ public class MechanicalData{
     public MechanicalCoreBuild core;
     public Structure structure;
     ArrayList<Tile> battery = new ArrayList<Tile>();
-    ArrayList<LargeMachinery> block = new ArrayList<LargeMachinery>();
+    ArrayList<Tile> tile = new ArrayList<Tile>();
     public float efficiency = 0;
     public float powerCapacity = 0;
     public float power = 0;
@@ -88,32 +88,28 @@ public class MechanicalData{
         return power;
     }
     
-    public void addBlock(LargeMachinery b){
-        block.add(b);
+    public void addTile(Tile b){
+        tile.add(b);
     }
     
     public void setBattery(ArrayList<Tile> b){
         battery = b;
     }
     
-    public void setBlock(ArrayList<LargeMachinery> b){
-        block = b;
+    public void setTile(ArrayList<Tile> b){
+        tile = b;
     }
     
     public ArrayList<Tile> getBattery(){
         return battery;
     }
     
-    public ArrayList<LargeMachinery> getBlock(){
-        return block;
+    public ArrayList<Tile> getTiles(){
+        return tile;
     }
     
-    public ArrayList<LargeMachinery> getBlocks(){
-        return block;
-    }
-    
-    public LargeMachinery getBlock(int i){
-        return block.get(i);
+    public Tile getTile(int i){
+        return tile.get(i);
     }
     
     public ArrayList<Tile> getBatteryTile(){
