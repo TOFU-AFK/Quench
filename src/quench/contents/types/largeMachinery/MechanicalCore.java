@@ -236,7 +236,8 @@ public class MechanicalCore extends LargeMachinery{
         public void read(Reads read, byte revision){
             super.read(read, revision);
             direction = read.i();
-            read.bool() ? isRead = false:isRead = true;
+            //读取时将逻辑值反转，用于重新设置结构核心值
+            isRead = !read.bool();
         }
     }
 }
