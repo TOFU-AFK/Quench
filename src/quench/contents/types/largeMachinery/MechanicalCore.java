@@ -229,14 +229,14 @@ public class MechanicalCore extends LargeMachinery{
         public void write(Writes write){
             super.write(write);
             write.i(direction);
-            write.b(isRead);
+            write.bool(isRead);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
             direction = read.i();
-            read.b() ? isRead = false:isRead = false;
+            read.bool() ? isRead = false:isRead = true;
         }
     }
 }
