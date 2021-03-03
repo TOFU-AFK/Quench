@@ -95,7 +95,6 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
-            //if(core!=null&&c==null) c = core;
         }
 
         @Override
@@ -114,7 +113,6 @@ public class LargeMachinery extends Block{
         public void read(Reads read, byte revision){
             super.read(read, revision);
             if(hasPower) power.status = read.f();
-            c = null;
         }
     }
 }

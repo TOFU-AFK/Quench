@@ -57,8 +57,8 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class BaseGenerator extends StructuralBattery{
-    public float increasePower = 0.005f;//增加的电力(百分比)
-    public float powerOutput = 0.005f;//输出电力
+    public float increasePower = 2f;//每帧电力产生
+    public float powerOutput = 1f;//最大输出电力(当结构中有多个电池时，会平均分)
     public BaseGenerator(String name){
         super(name);
         solid = true;
@@ -98,15 +98,20 @@ public class BaseGenerator extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
+              generate();
+          }
+        }
+        
+        public void generate(){
             float capacity = consumes.getPower().capacity;
-            if(c.start&&power.status*capacity+increasePower*c.mechanicalData.efficiency<=capacity){
-            power.status+=increasePower*c.mechanicalData.efficiency;
-            //防止卡在电力上限附近
+            //发电量占总电量储存的百分比
+            float power = increasePower /capacity*c.mechanicalData.efficiency;
+            if(c.start&&power.status*capacity+power<=capacity){
+            power.status+=power;
             }else if(capacity-power.status*capacity>0){
-                power.status+=capacity-power.status*capacity;
+                power.status=1;
             }
             if(c.mechanicalData!=null) outputPower();
-          }
         }
         
         //给多方块结构中的电池方块输入电力
@@ -117,14 +122,16 @@ public class BaseGenerator extends StructuralBattery{
               Tile tile = battery.get(i);
               //防止build为空
               if(tile.build!=null){
-              if(power.status*consumes.getPower().capacity>0&&tile.build.power.status*tile.block().consumes.getPower().capacity+output<=tile.block().consumes.getPower().capacity){
-              tile.build.power.status+=output;
-              power.status-=output;
-              //防止卡在电力上限附近
-              }else if(power.status*consumes.getPower().capacity>0&&tile.block().consumes.getPower().capacity-tile.build.power.status*tile.block().consumes.getPower().capacity>0){
-                  output = tile.block().consumes.getPower().capacity-tile.build.power.status*tile.block().consumes.getPower().capacity;
-              tile.build.power.status+=output;
-              power.status-=output;
+              float status = tile.build.power.status;
+              float capacity = tile.block().consumes.getPower().capacity;
+              //电力输出量占总数的百分比
+              float power = output / capacity;
+              if(power.status*consumes.getPower().capacity>0&&status*capacity+power<=capacity){
+              tile.build.power.status+=power;
+              power.status-=power;
+              }else if(power.status*consumes.getPower().capacity>0&&capacity-status*capacity>0){
+              tile.build.power.status=1;
+              power.status-=power;
               }
               }
           }
