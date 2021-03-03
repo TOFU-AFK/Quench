@@ -105,9 +105,9 @@ public class BaseGenerator extends StructuralBattery{
         public void generate(){
             float capacity = consumes.getPower().capacity;
             //发电量占总电量储存的百分比
-            float power = increasePower /capacity*c.mechanicalData.efficiency;
-            if(c.start&&power.status*capacity+power<=capacity){
-            power.status+=power;
+            float generatePower = increasePower /capacity*c.mechanicalData.efficiency;
+            if(c.start&&power.status*capacity+generatePower<=capacity){
+            power.status+=generatePower;
             }else if(capacity-power.status*capacity>0){
                 power.status=1;
             }
@@ -125,13 +125,13 @@ public class BaseGenerator extends StructuralBattery{
               float status = tile.build.power.status;
               float capacity = tile.block().consumes.getPower().capacity;
               //电力输出量占总数的百分比
-              float power = output / capacity;
-              if(power.status*consumes.getPower().capacity>0&&status*capacity+power<=capacity){
-              tile.build.power.status+=power;
-              power.status-=power;
+              float outputPower = output / capacity;
+              if(power.status*consumes.getPower().capacity>0&&status*capacity+outputPower<=capacity){
+              tile.build.power.status+=outputPower;
+              power.status-=outputPower;
               }else if(power.status*consumes.getPower().capacity>0&&capacity-status*capacity>0){
               tile.build.power.status=1;
-              power.status-=power;
+              power.status-=outputPower;
               }
               }
           }
