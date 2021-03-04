@@ -118,6 +118,7 @@ public class QULargeMachinery implements ContentList
 			size = 1;
 			health = 80*size*size;
 			whitelist = new BlockData[]{new BlockData(Blocks.water),new BlockData(Blocks.deepwater)};
+			floating = true;
 			}
 		};
 	}
