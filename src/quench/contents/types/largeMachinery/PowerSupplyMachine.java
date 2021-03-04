@@ -81,7 +81,7 @@ public class PowerSupplyMachine extends LargeMachinery{
 		super.setBars();
 		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
 			(PowerSupplyMachineBuild entity) -> new Bar(
-				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.powerQuantity),
+				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.powerQuantity)),
 				() -> Pal.powerBar,
 				() -> entity.c == null ? entity.powerQuantity / store:entity.powerQuantity / store*entity.c.mechanicalData.efficiency
 			)
