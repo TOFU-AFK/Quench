@@ -73,7 +73,7 @@ public class PowerSupplyMachine extends LargeMachinery{
     
     @Override
     public StructureType getType(){
-        return StructureType.battery;
+        return StructureType.powerSupply;
     }
     
     @Override
