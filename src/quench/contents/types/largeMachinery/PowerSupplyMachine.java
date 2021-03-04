@@ -55,7 +55,7 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class PowerSupplyMachine extends LargeMachinery{
-    public float power = 10;//动能供应
+    public float store = 10;//动能存量
     public float yield = 0.001f;//动能产量
     public PowerSupplyMachine(String name){
         super(name);
@@ -81,9 +81,9 @@ public class PowerSupplyMachine extends LargeMachinery{
 		super.setBars();
 		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
 			(PowerSupplyMachineBuild entity) -> new Bar(
-				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.mechanicalData.getPower()*entity.mechanicalData.powerCapacity)),
+				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.powerQuantity),
 				() -> Pal.powerBar,
-				() -> entity.c == null ? entity.powerQuantity / power:entity.powerQuantity / power*entity.c.mechanicalData.efficiency
+				() -> entity.c == null ? entity.powerQuantity / store:entity.powerQuantity / store*entity.c.mechanicalData.efficiency
 			)
 		);
 	}
@@ -102,7 +102,7 @@ public class PowerSupplyMachine extends LargeMachinery{
         @Override
         public void update(){
             super.update();
-            if(c!=null&&canProvidePower&&power>0&&begin) providePower();
+            if(c!=null&&canProvidePower&&store>0&&begin) providePower();
         }
         
         public void providePower(){
@@ -117,11 +117,13 @@ public class PowerSupplyMachine extends LargeMachinery{
         @Override
         public void write(Writes write){
             super.write(write);
+            write.f(powerQuantity);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
+            powerQuantity = read.f();
         }
     }
 }
