@@ -1,6 +1,4 @@
-/*
-*大型机械的基础type
-*/
+//动力提供type
 package quench.contents.types;
 
 import mindustry.world.*;
@@ -54,60 +52,46 @@ import mindustry.*;
 
 import java.util.*;
 
-import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
-
 import static mindustry.Vars.*;
 
-public class LargeMachinery extends Block{
-    //public MechanicalCoreBuild core;
-    public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
-    public boolean canGenerate;//可以发电
-    public BlockData[] blacklist;//方块将不能放置在黑名单上的方块上。
-    public BlockData[] whitelist;//方块将只能放置在白名单的方块上。
-    public TextureRegion bottom;
-    public LargeMachinery(String name){
+public class PowerSupplyMachine extends LargeMachinery{
+    public float power = 10;//动能供应
+    public float yield = 0.001f//动能产量
+    public PowerSupplyMachine(String name){
         super(name);
         solid = true;
         destructible = true;
-        group = BlockGroup.walls;
-        update = true;
         buildCostMultiplier = 5f;
         configurable = true;
-        hasPower = false;
-        canProvidePower = false;
-        canGenerate false;
+        canProvidePower = true;
     }
 
     @Override
     public void load(){
         super.load();
-        bottom = Core.atlas.find("quench-bottom");
     }
     
-    public StructureType getType(){
-        return StructureType.block;
-    }
-    
-    //使用黑名单和白名单判断是否可放在指定方块上，比如水车只能放在水方块上
-    //在黑名单和白名单同时存在时，将使用黑名单
     @Override
-    public boolean canPlaceOn(Tile tile, Team team){
-        super.canPlaceOn(tile,team);
-        if(blacklist.length>0){
-            for(BlockData data:blacklist){
-                if(data.n.equals(tile.block().name)) return false;
-            }
-        }else if(whitelist.length>0){
-            for(BlockData data:whitelist){
-                if(data.n.equals(tile.block().name)) return true;
-            }
-        }else{
-            return true;
-        }
+    public StructureType getType(){
+        return StructureType.battery;
     }
+    
+    @Override
+	public void setBars(){
+		super.setBars();
+		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
+			(PowerSupplyMachineBuild entity) -> new Bar(
+				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.mechanicalData.getPower()*entity.mechanicalData.powerCapacity)),
+				() -> Pal.powerBar,
+				() -> entity.c == null ? entity.powerQuantity / power:entity.powerQuantity / power*entity.c.mechanicalData.efficiency
+			)
+		);
+	}
 	 
-    public class LargeMachineryBuild extends Building{
-        public MechanicalCoreBuild c;
+    public class PowerSupplyMachineBuild extends LargeMachineryBuild{
+        public boolean begin = true;//开始提供动力
+        public float powerQuantity = 0;
+        
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
@@ -117,24 +101,27 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
+            super.update();
+            if(c!=null&&canProvidePower&&power>0&&begin) providePower();
+        }
+        
+        public void providePower(){
+            powerQuantity+=yield;
         }
 
         @Override
         public void draw(){
-            Draw.rect(bottom,x,y);
-            Draw.rect(block.region,x,y);
+            super.draw();
         }
         
         @Override
         public void write(Writes write){
             super.write(write);
-            if(hasPower) write.f(power.status);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            if(hasPower) power.status = read.f();
         }
     }
 }

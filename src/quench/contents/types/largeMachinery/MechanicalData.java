@@ -88,6 +88,15 @@ public class MechanicalData{
         return power;
     }
     
+    public ArrayList<Tile> getGenerator(){
+        ArrayList<Tile> tile = new ArrayList<Tile>();
+        for(int i=0;i<tile.size();i++){
+            LargeMachinery block = (LargeMachinery) tile.get(i).block();
+            if(block.getType()==StructureType.generator) tile.add(block);
+        }
+        return tile;
+    }
+    
     public void addTile(Tile b){
         tile.add(b);
     }

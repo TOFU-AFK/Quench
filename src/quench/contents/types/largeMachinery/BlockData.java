@@ -55,6 +55,8 @@ public class BlockData{
     public String name;
     public LargeMachinery block;
     int x,y;
+    //正常情况下请不要使用此变量，此变量专门用于黑名单
+    public String n;
     public BlockData(LargeMachinery block,int x,int y){
         this.block = block;
         this.name = block.name;
@@ -67,6 +69,11 @@ public class BlockData{
         this.name = name;
         this.x = x;
         this.y = y;
+    }
+    
+    //正常情况下请不要使用此构造方法，此构造方法专门用于黑名单
+    public void BlockData(Block b){
+        n = b.name;
     }
     
     public Tile tile(float coreX,float coreY){

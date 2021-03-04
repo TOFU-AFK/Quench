@@ -97,7 +97,7 @@ public class BaseGenerator extends StructuralBattery{
         @Override
         public void update(){
           super.update();
-          if(c!=null){
+          if(c!=null&&canGenerate){
               generate();
           }
         }

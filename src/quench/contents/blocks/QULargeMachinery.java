@@ -48,7 +48,7 @@ public class QULargeMachinery implements ContentList
 	{
 	    instantiation();
 	    
-	    //请在这里实例化核心，核心type需要用到LargeMachinery方块，否则将会发生闪退！
+	    //请在这里实例化核心，因为核心type需要用到LargeMachinery方块，否则将会发生闪退！
 		hydroelectricGeneratorCore = new MechanicalCore("hydroelectricGeneratorCore")
 		{
 			{
@@ -106,6 +106,8 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
+			powerOutput = 10;
+			increasePower = 20;
 			consumes.powerBuffered(10f);
 			}
 		};
