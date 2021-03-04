@@ -102,6 +102,9 @@ public class LargeMachinery extends Block{
             }
         }else if(whitelist!=null&&whitelist.length>0){
             for(BlockData data:whitelist){
+                Log.info("[淬火] data.n: "+data.n, "");
+                Log.info("[淬火] tile.block: "+tile.block().name, "");
+                Log.info("[淬火] tile.floor: "+tile.floor().name, "");
                 if(!data.n.equals(tile.block().name)||!data.n.equals(tile.floor().name)) return false;
         }
     }
