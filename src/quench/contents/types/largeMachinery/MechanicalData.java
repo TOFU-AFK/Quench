@@ -54,6 +54,7 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
+import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 
 public class MechanicalData{
     public MechanicalCoreBuild core;
@@ -86,7 +87,7 @@ public class MechanicalData{
     
     public void addPowerSupply(Tile t){
         powerSupply.add(t);
-        LargeMachinery block = (LargeMachinery) tile.block();
+        LargeMachinery block = (LargeMachinery) t.block();
         motiveStorage+=block.store;
     }
     
@@ -124,17 +125,14 @@ public class MechanicalData{
     public void addTile(Tile b){
         tile.add(b);
         LargeMachinery block = (LargeMachinery) b.block();
-        switch (block.getType()){
-            case StructureType.battery:
-                addBattery(b);
-                break;
-            case StructureType.powerSupply:
-                addPowerSupply(b);
-                break;
-            case StructureType.generator:
-                addGenerator(b);
+        if(block.getType()==StructureType.battery){
+            addBattery(b);
+        }else if(block.getType()==StructureType.powerSupply){
+            addPowerSupply(b);
+        }else if(block.getType()==StructureType.generator){
+            addGenerator(b);
         }
-    }
+        }
     
     public void setBattery(ArrayList<Tile> b){
         battery = b;

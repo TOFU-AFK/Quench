@@ -120,7 +120,8 @@ public class PowerSupplyMachine extends LargeMachinery{
             for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            if(build.motiveQuantity+output<=build.store){
+            LargeMachinery block = (LargeMachinery) t.block();
+            if(build.motiveQuantity+output<=block.store){
             build.motiveQuantity+=output;
             motiveQuantity-=output;
             }else if(store-build.motiveQuantity>0){

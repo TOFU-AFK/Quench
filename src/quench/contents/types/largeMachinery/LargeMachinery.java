@@ -98,11 +98,11 @@ public class LargeMachinery extends Block{
         super.canPlaceOn(tile,team);
         if(blacklist!=null&&blacklist.length>0){
             for(BlockData data:blacklist){
-                if(data.n.equals(tile.block().name)) return false;
+                if(data.n.equals(tile.block().name)||data.n.equals(tile.floor().name)) return false;
             }
         }else if(whitelist!=null&&whitelist.length>0){
             for(BlockData data:whitelist){
-                if(!data.n.equals(tile.block().name)) return false;
+                if(!data.n.equals(tile.block().name)||!data.n.equals(tile.floor().name)) return false;
         }
     }
     return true;
