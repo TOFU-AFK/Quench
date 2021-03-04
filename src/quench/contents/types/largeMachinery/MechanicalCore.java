@@ -90,6 +90,14 @@ public class MechanicalCore extends LargeMachinery{
 				() -> entity.mechanicalData.getPower() / 1
 			)
 		);
+		
+	    bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
+			(MechanicalCoreBuild entity) -> new Bar(
+				() -> Core.bundle.get("MechanicalCore.totalMotive",Float.toString(entity.mechanicalData.getMotive())),
+				() -> Pal.powerBar,
+				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.motiveStorage
+			)
+		);
 	}
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
@@ -196,9 +204,9 @@ public class MechanicalCore extends LargeMachinery{
                 LargeMachineryBuild build = (LargeMachineryBuild) tile.build;
                 build.c = this;
                 mechanicalData.addTile(tile);
-                if(data.block.getType()==StructureType.battery){
+                /*if(data.block.getType()==StructureType.battery){
                     mechanicalData.addBattery(tile);
-                }
+                }*/
                 }
             }
         }
@@ -207,14 +215,6 @@ public class MechanicalCore extends LargeMachinery{
         //在核心旋转先，清空原先方块的core值
         public void empty(){
             if(start){
-            /*for(int i=0;i<mechanicalData.getTiles().size();i++){
-                Tile tile = Vars.world.tile((int) tile().x+structure.datas[i].x(direction)/8,(int) tile().y+structure.datas[i].y(direction)/8);
-                tile.remove();
-                tile.setNet(mechanicalData.getTile(i).block(),team(),0);
-                tile = Vars.world.tile((int) tile().x+structure.datas[i].x(direction)/8,(int) tile().y+structure.datas[i].y(direction)/8);
-                LargeMachineryBuild build = (LargeMachineryBuild) tile.build;
-                build.c = null;
-            }*/
             for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 if(tile.build!=null){

@@ -60,9 +60,13 @@ public class MechanicalData{
     public Structure structure;
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<Tile> tile = new ArrayList<Tile>();
+    ArrayList<Tile> generator = new ArrayList<Tile>();
+    ArrayList<Tile> powerSupply = new ArrayList<Tile>();
     public float efficiency = 0;
     public float powerCapacity = 0;
     public float power = 0;
+    public float motiveStorage = 0;//动力总量
+    public float motive = 0;//动力
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;
@@ -74,6 +78,16 @@ public class MechanicalData{
         for(int i=0;i<battery.size();i++){
            powerCapacity+=battery.get(i).block().consumes.getPower().capacity;
         }
+    }
+    
+    public void addGenerator(Tile t){
+        generator.add(t);
+    }
+    
+    public void addPowerSupply(Tile t){
+        powerSupply.add(t);
+        LargeMachinery block = (LargeMachinery) tile.block();
+        motiveStorage+=block.store;
     }
     
     //返回电力百分比
@@ -88,6 +102,16 @@ public class MechanicalData{
         return power;
     }
     
+    public float getMotive(){
+        motive = 0;
+        for(int i=0;i<powerSupply.size();i++){
+            Tile t = powerSupply.get(i);
+            LargeMachineryBuild build = (LargeMachineryBuild) t.build;
+            motive+=build.motiveQuantity;
+        }
+        return motive;
+    }
+    
     public ArrayList<Tile> getGenerator(){
         ArrayList<Tile> t = new ArrayList<Tile>();
         for(int i=0;i<tile.size();i++){
@@ -99,6 +123,17 @@ public class MechanicalData{
     
     public void addTile(Tile b){
         tile.add(b);
+        LargeMachinery block = (LargeMachinery) b.block();
+        switch (block.getType()){
+            case StructureType.battery:
+                addBattery(b);
+                break;
+            case StructureType.powerSupply:
+                addPowerSupply(b);
+                break;
+            case StructureType.generator:
+                addGenerator(b);
+        }
     }
     
     public void setBattery(ArrayList<Tile> b){

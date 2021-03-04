@@ -59,6 +59,7 @@ import static mindustry.Vars.*;
 public class BaseGenerator extends StructuralBattery{
     public float increasePower = 2f;//每帧电力产生
     public float powerOutput = 1f;//最大输出电力(当结构中有多个电池时，会平均分)
+    public float consumeMotive = 0.01f;
     public BaseGenerator(String name){
         super(name);
         solid = true;
@@ -68,6 +69,7 @@ public class BaseGenerator extends StructuralBattery{
         hasPower = true;
         outputsPower = true;
         consumesPower = true;
+        canGenerate = true;
     }
 
     @Override
@@ -79,6 +81,18 @@ public class BaseGenerator extends StructuralBattery{
     public StructureType getType(){
         return StructureType.generator;
     }
+    
+    @Override
+	public void setBars(){
+		super.setBars();
+		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
+			(BaseGeneratorBuild entity) -> new Bar(
+				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.motiveQuantity)),
+				() -> Pal.powerBar,
+				() -> entity.motiveQuantity / store
+			)
+		);
+	}
 	 
     public class BaseGeneratorBuild extends StructuralBatteryBuild{
         
@@ -97,7 +111,7 @@ public class BaseGenerator extends StructuralBattery{
         @Override
         public void update(){
           super.update();
-          if(c!=null&&canGenerate){
+          if(c!=null&&canGenerate&&motiveQuantity>=consumeMotive){
               generate();
           }
         }
@@ -112,6 +126,7 @@ public class BaseGenerator extends StructuralBattery{
                 power.status=1;
             }
             if(c.mechanicalData!=null) outputPower();
+            motiveQuantity-=consumeMotive;
         }
         
         //给多方块结构中的电池方块输入电力

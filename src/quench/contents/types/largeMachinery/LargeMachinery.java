@@ -62,6 +62,9 @@ public class LargeMachinery extends Block{
     //public MechanicalCoreBuild core;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     public boolean canGenerate;//可以发电
+    public float store = 0;//动能存量
+    public float yield = 0;//动能产量
+    public float outputMotive = 0;//输出的动能
     public BlockData[] blacklist;//方块将不能放置在黑名单上的方块上。
     public BlockData[] whitelist;//方块将只能放置在白名单的方块上。
     public TextureRegion bottom;
@@ -93,18 +96,6 @@ public class LargeMachinery extends Block{
     @Override
     public boolean canPlaceOn(Tile tile, Team team){
         super.canPlaceOn(tile,team);
-        /*if(blacklist.length>0){
-            for(BlockData data:blacklist){
-                if(data.n.equals(tile.block().name)) return false;
-            }
-        }else if(whitelist.length>0){
-            for(BlockData data:whitelist){
-                if(data.n.equals(tile.block().name)) return true;
-            }
-        }else{
-            return false;
-        }
-            return true;*/
         if(blacklist!=null&&blacklist.length>0){
             for(BlockData data:blacklist){
                 if(data.n.equals(tile.block().name)) return false;
@@ -119,6 +110,9 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
+        public boolean begin = true;//开始提供动力
+        public float motiveQuantity = 0;//动能数量
+        
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
@@ -140,12 +134,14 @@ public class LargeMachinery extends Block{
         public void write(Writes write){
             super.write(write);
             if(hasPower) write.f(power.status);
+            write.f(motiveQuantity);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
             if(hasPower) power.status = read.f();
+            motiveQuantity = read.f();
         }
     }
 }

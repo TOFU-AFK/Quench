@@ -55,8 +55,6 @@ import java.util.*;
 import static mindustry.Vars.*;
 
 public class PowerSupplyMachine extends LargeMachinery{
-    public float store = 10;//动能存量
-    public float yield = 0.001f;//动能产量
     public PowerSupplyMachine(String name){
         super(name);
         solid = true;
@@ -64,6 +62,9 @@ public class PowerSupplyMachine extends LargeMachinery{
         buildCostMultiplier = 5f;
         configurable = true;
         canProvidePower = true;
+        store = 100;//动能存量
+        yield = 0.3f;
+        outputMotive = 0.2f;
     }
 
     @Override
@@ -81,16 +82,14 @@ public class PowerSupplyMachine extends LargeMachinery{
 		super.setBars();
 		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
 			(PowerSupplyMachineBuild entity) -> new Bar(
-				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.powerQuantity)),
+				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.motiveQuantity)),
 				() -> Pal.powerBar,
-				() -> entity.c == null ? entity.powerQuantity / store:entity.powerQuantity / store*entity.c.mechanicalData.efficiency
+				() -> entity.motiveQuantity / store
 			)
 		);
 	}
 	 
     public class PowerSupplyMachineBuild extends LargeMachineryBuild{
-        public boolean begin = true;//开始提供动力
-        public float powerQuantity = 0;
         
         @Override
         public void buildConfiguration(Table table){
@@ -106,9 +105,31 @@ public class PowerSupplyMachine extends LargeMachinery{
         }
         
         public void providePower(){
-            powerQuantity+=yield;
+            if(motiveQuantity+yield*c.mechanicalData.efficiency<=store){
+            motiveQuantity+=yield*c.mechanicalData.efficiency;
+            }else if(store-motiveQuantity>0){
+            motiveQuantity+=store-motiveQuantity;
+            }
+            outputMotive();
         }
-
+        
+        //输出动力
+        public void outputMotive(){
+            ArrayList<Tile> generator = new ArrayList<Tile>();
+            float output = outputMotive / generator.size();
+            for(int i=0;i<generator.size();i++){
+            Tile t = generator.get(i);
+            LargeMachineryBuild build = (LargeMachineryBuild) t.build;
+            if(build.motiveQuantity+output<=build.store){
+            build.motiveQuantity+=output;
+            motiveQuantity-=output;
+            }else if(store-build.motiveQuantity>0){
+                output = store-build.motiveQuantity;
+                build.motiveQuantity+=output;
+                motiveQuantity-=output;
+            }
+            }
+}
         @Override
         public void draw(){
             super.draw();
@@ -117,13 +138,11 @@ public class PowerSupplyMachine extends LargeMachinery{
         @Override
         public void write(Writes write){
             super.write(write);
-            write.f(powerQuantity);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            powerQuantity = read.f();
         }
     }
 }
