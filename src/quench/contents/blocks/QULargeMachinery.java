@@ -41,7 +41,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel;
 	
 	@Override
 	public void load()
@@ -109,6 +109,14 @@ public class QULargeMachinery implements ContentList
 			powerOutput = 10;
 			increasePower = 20;
 			consumes.powerBuffered(10f);
+			}
+		};
+		waterwheel = new PowerSupplyMachine("waterwheel")
+		{
+			{
+            requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
+			size = 1;
+			health = 80*size*size;
 			}
 		};
 	}

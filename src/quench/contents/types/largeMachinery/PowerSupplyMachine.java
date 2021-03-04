@@ -56,7 +56,7 @@ import static mindustry.Vars.*;
 
 public class PowerSupplyMachine extends LargeMachinery{
     public float power = 10;//动能供应
-    public float yield = 0.001f//动能产量
+    public float yield = 0.001f;//动能产量
     public PowerSupplyMachine(String name){
         super(name);
         solid = true;

@@ -75,7 +75,7 @@ public class LargeMachinery extends Block{
         configurable = true;
         hasPower = false;
         canProvidePower = false;
-        canGenerate false;
+        canGenerate = false;
     }
 
     @Override
