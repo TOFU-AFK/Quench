@@ -117,7 +117,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
-			whitelist = {new BlockData(Block.water),new BlockData(Block.deepwater)};
+			whitelist = new BlockData[]{new BlockData(Block.water),new BlockData(Block.deepwater)};
 			}
 		};
 	}
