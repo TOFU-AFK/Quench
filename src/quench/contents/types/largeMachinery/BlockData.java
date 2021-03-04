@@ -72,7 +72,7 @@ public class BlockData{
     }
     
     //正常情况下请不要使用此构造方法，此构造方法专门用于黑名单
-    public void BlockData(Block b){
+    public BlockData(Block b){
         n = b.name;
     }
     
