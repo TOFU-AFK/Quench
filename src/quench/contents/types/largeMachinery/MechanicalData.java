@@ -89,12 +89,12 @@ public class MechanicalData{
     }
     
     public ArrayList<Tile> getGenerator(){
-        ArrayList<Tile> tile = new ArrayList<Tile>();
+        ArrayList<Tile> t = new ArrayList<Tile>();
         for(int i=0;i<tile.size();i++){
             LargeMachinery block = (LargeMachinery) tile.get(i).block();
-            if(block.getType()==StructureType.generator) tile.add(block);
+            if(block.getType()==StructureType.generator) t.add(tile.get(i));
         }
-        return tile;
+        return t;
     }
     
     public void addTile(Tile b){

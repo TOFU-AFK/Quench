@@ -102,8 +102,9 @@ public class LargeMachinery extends Block{
                 if(data.n.equals(tile.block().name)) return true;
             }
         }else{
-            return true;
+            return false;
         }
+            return true;
     }
 	 
     public class LargeMachineryBuild extends Building{
