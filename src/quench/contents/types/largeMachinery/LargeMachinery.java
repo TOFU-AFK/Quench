@@ -93,7 +93,7 @@ public class LargeMachinery extends Block{
     @Override
     public boolean canPlaceOn(Tile tile, Team team){
         super.canPlaceOn(tile,team);
-        if(blacklist.length>0){
+        /*if(blacklist.length>0){
             for(BlockData data:blacklist){
                 if(data.n.equals(tile.block().name)) return false;
             }
@@ -104,7 +104,17 @@ public class LargeMachinery extends Block{
         }else{
             return false;
         }
-            return true;
+            return true;*/
+        if(blacklist!=null&&blacklist.length>0){
+            for(BlockData data:blacklist){
+                if(data.n.equals(tile.block().name)) return false;
+            }
+        }else if(whitelist!=null&&whitelist.length>0){
+            for(BlockData data:whitelist){
+                if(!data.n.equals(tile.block().name)) return false;
+        }
+    }
+    return true;
     }
 	 
     public class LargeMachineryBuild extends Building{
