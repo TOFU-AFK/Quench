@@ -95,7 +95,6 @@ public class LargeMachinery extends Block{
     //在黑名单和白名单同时存在时，将使用黑名单
     @Override
     public boolean canPlaceOn(Tile tile, Team team){
-        super.canPlaceOn(tile,team);
         if(blacklist!=null&&blacklist.length>0){
             for(BlockData data:blacklist){
                 if(data.n.equals(tile.block().name)||data.n.equals(tile.floor().name)) return false;
@@ -105,7 +104,11 @@ public class LargeMachinery extends Block{
                 Log.info("[淬火] data.n: "+data.n, "");
                 Log.info("[淬火] tile.block: "+tile.block().name, "");
                 Log.info("[淬火] tile.floor: "+tile.floor().name, "");
-                if(!data.n.equals(tile.block().name)||!data.n.equals(tile.floor().name)) return false;
+                if(data.n.equals(tile.block().name)||data.n.equals(tile.floor().name)){ 
+    return true;
+    }else{
+        return false;
+    }
         }
     }
     return true;
