@@ -84,9 +84,7 @@ public class StructuralBattery extends LargeMachinery{
         
         @Override
         public void buildConfiguration(Table table){
-            Table cont = new Table();
-            cont.add(c!=null ? "核心: x:"+c.tile().x+" y:"+c.tile().y:"核心:null");
-            table.add(cont);
+            super.buildConfiguration(table);
         }
         
         @Override

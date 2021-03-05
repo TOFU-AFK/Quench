@@ -1,4 +1,4 @@
-//动力提供type
+//动力提供type，水车
 package quench.contents.types;
 
 import mindustry.world.*;
@@ -54,16 +54,15 @@ import java.util.*;
 
 import static mindustry.Vars.*;
 
-public class PowerSupplyMachine extends LargeMachinery{
-    public PowerSupplyMachine(String name){
+public class WaterWheel extends PowerSupplyMachine{
+    public float viscosity = 0.5f;//当粘性小于等于值时，将开始工作
+    public WaterWheel(String name){
         super(name);
         solid = true;
         destructible = true;
         buildCostMultiplier = 5f;
         configurable = true;
         canProvidePower = true;
-        store = 100;//动能存量
-        yield = 0.3f;
         outputMotive = 0.2f;
     }
 
@@ -77,7 +76,7 @@ public class PowerSupplyMachine extends LargeMachinery{
         return StructureType.powerSupply;
     }
 	 
-    public class PowerSupplyMachineBuild extends LargeMachineryBuild{
+    public class WaterWheelBuild extends PowerSupplyMachineBuild{
         
         @Override
         public void buildConfiguration(Table table){
@@ -87,16 +86,20 @@ public class PowerSupplyMachine extends LargeMachinery{
         @Override
         public void update(){
             super.update();
-            if(c!=null&&canProvidePower&&store>0&&begin) providePower();
         }
         
+        @Override
         public void providePower(){
+            Tile t = Vars.world.tile(tile().x,tile().y);
+            Liquid liquid = t.floor().liquidDrop;
+            if(liquid!=null&&liquid.viscosity<=viscosity){
             if(motiveQuantity+yield*c.mechanicalData.efficiency<=store){
             motiveQuantity+=yield*c.mechanicalData.efficiency;
             }else if(store-motiveQuantity>0){
             motiveQuantity+=store-motiveQuantity;
             }
             outputMotive();
+            }
         }
         
         //输出动力
@@ -107,7 +110,6 @@ public class PowerSupplyMachine extends LargeMachinery{
             Tile t = generator.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
             LargeMachinery block = (LargeMachinery) t.block();
-            Log.info("[淬火] t.block().name: "+t.block().name, "");
             if(build.motiveQuantity+output<=block.store){
             build.motiveQuantity+=output;
             motiveQuantity-=output;

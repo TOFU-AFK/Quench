@@ -111,14 +111,14 @@ public class QULargeMachinery implements ContentList
 			consumes.powerBuffered(10f);
 			}
 		};
-		waterwheel = new PowerSupplyMachine("waterwheel")
+		waterwheel = new WaterWheel("waterwheel")
 		{
 			{
             requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
-			//把含水方块加上
-			whitelist = new BlockData[]{new BlockData(Blocks.water),new BlockData(Blocks.deepwater),new BlockData(Blocks.darksandTaintedWater),new BlockData(Blocks.taintedWater),new BlockData(Blocks.sandWater),new BlockData(Blocks.darksandWater)};
+			//把含水方块加上(感觉无用，就不搞了)
+			/*whitelist = new BlockData[]{new BlockData(Blocks.water),new BlockData(Blocks.deepwater),new BlockData(Blocks.darksandTaintedWater),new BlockData(Blocks.taintedWater),new BlockData(Blocks.sandWater),new BlockData(Blocks.darksandWater)};*/
 			floating = true;
 			}
 		};
