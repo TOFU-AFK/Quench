@@ -93,7 +93,7 @@ public class MechanicalCore extends LargeMachinery{
 		
 	    bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
 			(MechanicalCoreBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalMotive",Float.toString(entity.mechanicalData.getMotive())),
+				() -> Core.bundle.get("MechanicalCore.totalMotive",Float.toString(entity.mechanicalData.getMotive()*1)),
 				() -> Pal.powerBar,
 				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.motiveStorage
 			)
@@ -139,12 +139,6 @@ public class MechanicalCore extends LargeMachinery{
             initially();
             start = construct();
             if(isRead&&!start){
-                /*Tile tile = Vars.world.tile(tile().x, tile().y);
-                tile.remove();
-                tile.setNet(block,team(),0);
-                mechanicalData.battery.clear();
-                mechanicalData.tile.clear();
-                isRead=false;*/
                 for(BlockData data:structure.datas){
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 if(tile.build!=null){
@@ -166,9 +160,6 @@ public class MechanicalCore extends LargeMachinery{
         @Override
         public void draw(){
             super.draw();
-            if(condition!=null){
-            Draw.rect(condition,x-tilesize/2,y+tilesize);
-            }
         }
         
         public boolean construct(){
@@ -192,6 +183,9 @@ public class MechanicalCore extends LargeMachinery{
         Lines.square(x+data.x(direction), y+data.y(direction),tilesize/2+2,0);
         }
         }
+        if(condition!=null){
+            Draw.rect(condition,x-tilesize/2,y+tilesize);
+        }
         }
         
         public void controlStart(){
@@ -204,9 +198,6 @@ public class MechanicalCore extends LargeMachinery{
                 LargeMachineryBuild build = (LargeMachineryBuild) tile.build;
                 build.c = this;
                 mechanicalData.addTile(tile);
-                /*if(data.block.getType()==StructureType.battery){
-                    mechanicalData.addBattery(tile);
-                }*/
                 }
             }
         }

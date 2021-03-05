@@ -103,7 +103,7 @@ public class PowerSupplyMachine extends LargeMachinery{
         
         //输出动力
         public void outputMotive(){
-            ArrayList<Tile> generator = new ArrayList<Tile>();
+            ArrayList<Tile> generator = c.mechanicalData.generator;
             float output = outputMotive / generator.size();
             for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
