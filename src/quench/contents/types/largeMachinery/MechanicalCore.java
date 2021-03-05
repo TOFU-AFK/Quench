@@ -149,10 +149,9 @@ public class MechanicalCore extends LargeMachinery{
             }
             if(start){
                 controlStart();
-            }
-            if(start){
                 condition = Core.atlas.find("quench-status-right");
             }else{
+                if(mechanicalData.using) mechanicalData.initialize();
                 condition = Core.atlas.find("quench-status-mistake");
             }
         }

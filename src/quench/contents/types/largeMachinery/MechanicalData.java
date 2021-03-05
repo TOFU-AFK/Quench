@@ -68,9 +68,24 @@ public class MechanicalData{
     public float power = 0;
     public float motiveStorage = 0;//动力总量
     public float motive = 0;//动力
+    public boolean using = false;//正在使用中
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;
+    }
+    
+    //初始化所有数据
+    public void initialize(){
+        battery.clear();
+        tile.clear();
+        generator.clear();
+        powerSupply.clear();
+        efficiency = 0;
+        powerCapacity = 0;
+        power = 0;
+        motiveStorage = 0;
+        motive = 0;
+        using = false;
     }
     
     public void addBattery(Tile t){
@@ -123,6 +138,7 @@ public class MechanicalData{
     }
     
     public void addTile(Tile b){
+        if(!using) using = true;
         tile.add(b);
         LargeMachinery block = (LargeMachinery) b.block();
         if(block.getType()==StructureType.battery){
