@@ -91,6 +91,20 @@ public class LargeMachinery extends Block{
         return StructureType.block;
     }
     
+    @Override
+	public void setBars(){
+		super.setBars();
+		if(store>0){
+		bars.add(Core.bundle.get("LargeMachinery.motiveForce"), 
+			(LargeMachineryBuild entity) -> new Bar(
+				() -> Core.bundle.get("LargeMachinery.motiveForce",Float.toString(entity.motiveQuantity)),
+				() -> Pal.powerBar,
+				() -> entity.motiveQuantity / store
+			)
+		);
+		}
+	}
+    
     //使用黑名单和白名单判断是否可放在指定方块上，比如水车只能放在水方块上
     //在黑名单和白名单同时存在时，将使用黑名单
     @Override
@@ -101,9 +115,6 @@ public class LargeMachinery extends Block{
             }
         }else if(whitelist!=null&&whitelist.length>0){
             for(BlockData data:whitelist){
-                Log.info("[淬火] data.n: "+data.n, "");
-                Log.info("[淬火] tile.block: "+tile.block().name, "");
-                Log.info("[淬火] tile.floor: "+tile.floor().name, "");
                 if(data.n.equals(tile.block().name)||data.n.equals(tile.floor().name)){ 
     return true;
     }else{

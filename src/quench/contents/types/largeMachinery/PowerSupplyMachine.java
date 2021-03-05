@@ -76,18 +76,6 @@ public class PowerSupplyMachine extends LargeMachinery{
     public StructureType getType(){
         return StructureType.powerSupply;
     }
-    
-    @Override
-	public void setBars(){
-		super.setBars();
-		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
-			(PowerSupplyMachineBuild entity) -> new Bar(
-				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.motiveQuantity)),
-				() -> Pal.powerBar,
-				() -> entity.motiveQuantity / store
-			)
-		);
-	}
 	 
     public class PowerSupplyMachineBuild extends LargeMachineryBuild{
         
@@ -121,6 +109,7 @@ public class PowerSupplyMachine extends LargeMachinery{
             Tile t = generator.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
             LargeMachinery block = (LargeMachinery) t.block();
+            Log.info("[淬火] t.block().name: "+t.block().name, "");
             if(build.motiveQuantity+output<=block.store){
             build.motiveQuantity+=output;
             motiveQuantity-=output;

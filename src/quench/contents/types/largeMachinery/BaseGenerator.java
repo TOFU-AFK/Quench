@@ -81,18 +81,6 @@ public class BaseGenerator extends StructuralBattery{
     public StructureType getType(){
         return StructureType.generator;
     }
-    
-    @Override
-	public void setBars(){
-		super.setBars();
-		bars.add(Core.bundle.get("PowerSupplyMachine.motiveForce"), 
-			(BaseGeneratorBuild entity) -> new Bar(
-				() -> Core.bundle.get("PowerSupplyMachine.motiveForce",Float.toString(entity.motiveQuantity)),
-				() -> Pal.powerBar,
-				() -> entity.motiveQuantity / store
-			)
-		);
-	}
 	 
     public class BaseGeneratorBuild extends StructuralBatteryBuild{
         
