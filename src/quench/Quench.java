@@ -77,37 +77,12 @@ import quench.contents.bullets.*;
 import quench.contents.Setting;
 
 public class Quench extends Mod{
-    public static Setting setting;
     public Quench()
 	{
     }
     
     @Override
     public void init(){
-    try{
-    //获取配置文件
-    Fi config = getConfig();
-    Json json = new Json();
-    setting = json.fromJson(Setting.class,config.readString());
-    BaseDialog dialog = new BaseDialog("Quench");
-    dialog.cont.pane(p -> {
-        p.margin(10f);
-        p.table(Tex.button, t -> {
-            Table cont = new Table();
-            cont.add(setting.toString());
-            cont.row();
-            cont.add("配置文件已启动");
-            t.add(cont);
-        }).marginLeft(12f);
-    });
-    dialog.buttons.button("@ok", () -> {
-    dialog.hide();
-    });
-    dialog.show();
-    }catch(Throwable e){
-        setting = new Setting();
-        Log.info("[淬火] 未找到配置文件",e);
-    }
     }
 	 //加载内容
     @Override

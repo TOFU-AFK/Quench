@@ -56,22 +56,15 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	@Override
 	public void draw(LargeMachineryBuild entity){
 	    build = (WaterWheelBuild) entity;
+	    color1 = build.liquid.color;
+	    color2 = build.liquid.lightColor;
 	    block = (WaterWheel) build.block;
-	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
-	    if(color1==null){
-	        color1 = build.liquid.color;
-	        color2 = build.liquid.lightColor;
-	    }
-            for(int i=0;i<quantity;i++){
-                /*Draw.alpha((0.3f + Mathf.absin(Time.time, 2f * i * 2f, 0.3f * i * 0.05f)));
-                Drawf.light(build.team, build.x, build.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color1).lerp(color2, Mathf.absin(7f, 0.2f)), 0.8f*i);
-                Draw.blend(Blending.additive);*/
-                
-                Draw.rect(sprites.get(i), build.x, build.y);
-                //Draw.blend();
-            }
+	    if(build.liquid.viscosity>block.viscosity){
+	        Draw.rect(block.region, entity.x, entity.y);
 	    }else{
-	        Draw.rect(region, entity.x, entity.y);
+            for(int i=0;i<quantity;i++){
+                Draw.rect(sprites.get(i), build.x, build.y);
+            }
 	    }
     }
 
