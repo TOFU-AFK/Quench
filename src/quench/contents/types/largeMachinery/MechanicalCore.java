@@ -83,6 +83,7 @@ public class MechanicalCore extends LargeMachinery{
     @Override
 	public void setBars(){
 		super.setBars();
+		if(Quench.setting.statisticalPower){
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
 			(MechanicalCoreBuild entity) -> new Bar(
 				() -> Core.bundle.get("MechanicalCore.totalEnergy",Float.toString(entity.mechanicalData.getPower()*entity.mechanicalData.powerCapacity)),
@@ -90,7 +91,9 @@ public class MechanicalCore extends LargeMachinery{
 				() -> entity.mechanicalData.getPower() / 1
 			)
 		);
+		}
 		
+		if(Quench.setting.statisticalMotive){
 	    bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
 			(MechanicalCoreBuild entity) -> new Bar(
 				() -> Core.bundle.get("MechanicalCore.totalMotive"),
@@ -98,6 +101,7 @@ public class MechanicalCore extends LargeMachinery{
 				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.motiveStorage
 			)
 		);
+		}
 	}
 	 
     public class MechanicalCoreBuild extends LargeMachineryBuild{
@@ -174,7 +178,7 @@ public class MechanicalCore extends LargeMachinery{
         //用于绘制结构
         @Override
         public void drawConfigure(){
-        if(!start){
+        if(!start&&Quench.setting.buildingTips){
         for(BlockData data:structure.datas){
         Draw.alpha(0.5f);
         Draw.rect(Core.atlas.find(data.name), x+data.x(direction), y+data.y(direction));
@@ -182,7 +186,7 @@ public class MechanicalCore extends LargeMachinery{
         Lines.square(x+data.x(direction), y+data.y(direction),tilesize/2+2,0);
         }
         }
-        if(condition!=null){
+        if(condition!=null&&Quench.setting.mistakeTips){
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         }

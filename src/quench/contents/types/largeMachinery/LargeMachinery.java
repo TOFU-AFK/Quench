@@ -55,6 +55,7 @@ import mindustry.*;
 import java.util.*;
 
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
+import quench.contents.types.draw.*;
 
 import static mindustry.Vars.*;
 
@@ -64,10 +65,10 @@ public class LargeMachinery extends Block{
     public boolean canGenerate;//可以发电
     public float store = 0;//动能存量
     public float yield = 0;//动能产量
+    public DrawLargeMachinery drawer = new DrawLargeMachinery();
     public float outputMotive = 0;//输出的动能
     public BlockData[] blacklist;//方块将不能放置在黑名单上的方块上。
     public BlockData[] whitelist;//方块将只能放置在白名单的方块上。
-    public TextureRegion bottom;
     public LargeMachinery(String name){
         super(name);
         solid = true;
@@ -84,7 +85,7 @@ public class LargeMachinery extends Block{
     @Override
     public void load(){
         super.load();
-        bottom = Core.atlas.find("quench-bottom");
+        drawer.load(this);
     }
     
     public StructureType getType(){
@@ -143,8 +144,7 @@ public class LargeMachinery extends Block{
 
         @Override
         public void draw(){
-            Draw.rect(bottom,x,y);
-            Draw.rect(block.region,x,y);
+            drawer.draw();
         }
         
         @Override

@@ -35,6 +35,7 @@ import quench.contents.types.*;
 import quench.contents.items.*;
 import quench.contents.drawers.*;
 import quench.contents.effects.*;
+import quench.contents.largeMachinery.drawers.*;
 
 import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
@@ -120,6 +121,11 @@ public class QULargeMachinery implements ContentList
 			//把含水方块加上(感觉无用，就不搞了)
 			/*whitelist = new BlockData[]{new BlockData(Blocks.water),new BlockData(Blocks.deepwater),new BlockData(Blocks.darksandTaintedWater),new BlockData(Blocks.taintedWater),new BlockData(Blocks.sandWater),new BlockData(Blocks.darksandWater)};*/
 			floating = true;
+			drawer = new DrawWaterWheel(){
+			    {
+			        quantity = 5;
+			    }
+			}
 			}
 		};
 	}

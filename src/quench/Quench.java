@@ -43,8 +43,10 @@ public class Quench extends Mod{
     dialog.cont.pane(p -> {
         p.margin(10f);
         p.table(Tex.button, t -> {
-            t.add(setting.toString()).top();
-            t.add("配置文件已启动").bottom();
+            Table cont = new Table();
+            cont.add(setting.toString()).top();
+            cont.add("配置文件已启动").bottom();
+            t.add(cont);
         }).marginLeft(12f);
     });
     dialog.buttons.button("@ok", () -> {
