@@ -61,8 +61,10 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
+	        Log.info("[淬火] 进入", "");
 	        time+=Time.time;
 	        if(time>=1){
+	            Log.info("[淬火] 进入time", "");
 	            turn();
 	            time = 0;
 	        }
@@ -72,6 +74,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     }
     
     public void turn(){
+        Log.info("[淬火] 进入turn", "");
         Draw.rect(sprites.get(index), build.x, build.y);
     }
 
