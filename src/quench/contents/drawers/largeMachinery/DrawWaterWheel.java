@@ -56,7 +56,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	public void draw(LargeMachineryBuild entity){
 	    build = (WaterWheelBuild) entity;
 	    block = (WaterWheel) build.block;
-	    if(build.liquid!=null&&build.liquid.viscosity<=build.viscosity){
+	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
 	    if(color1==null){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
