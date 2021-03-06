@@ -118,6 +118,7 @@ public class MechanicalData{
             case 3:
                 return 0;
         }
+        return 90;
     }
     
     //返回电力百分比
