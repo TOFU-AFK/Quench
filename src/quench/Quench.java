@@ -3,6 +3,7 @@ package quench;
 //导入原版包
 import arc.*;
 import arc.files.*;
+import arc.util.serialization.*;
 import mindustry.graphics.*;
 import arc.graphics.g2d.*;
 import arc.scene.ui.*;
