@@ -74,7 +74,6 @@ import quench.contents.blocks.*;
 import quench.contents.planets.*;
 import quench.contents.bullets.*;
 //import quench.contents.units.*;
-import quench.contents.Setting;
 
 public class Quench extends Mod{
     public Quench()
