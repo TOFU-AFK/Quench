@@ -80,11 +80,7 @@ public class Quench extends Mod{
     public static Setting setting;
     public Quench()
 	{
-    }
-    
-    @Override
-    public void init(){
-    try{
+	try{
     //获取配置文件
     Fi config = getConfig();
     Json json = new Json();
@@ -108,6 +104,10 @@ public class Quench extends Mod{
         setting = new Setting();
         Log.info("[淬火] 未找到配置文件",e);
     }
+    }
+    
+    @Override
+    public void init(){
     }
 	 //加载内容
     @Override
