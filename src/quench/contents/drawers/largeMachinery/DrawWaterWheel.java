@@ -60,7 +60,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
-            for(int i=0;i<1000;i++){
+            for(int i=0;i<60;i++){
                 if(index>=quantity-1){
                     index = 0;
                 }else{
