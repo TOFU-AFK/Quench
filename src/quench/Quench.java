@@ -34,24 +34,26 @@ public class Quench extends Mod{
     
     @Override
     public void init(){
+    try{
     //获取配置文件
     Fi config = getConfig();
-    if(config != null){
     Json json = new Json();
     setting = json.fromJson(Setting.class,config.readString());
-    }
     BaseDialog dialog = new BaseDialog("Quench");
     dialog.cont.pane(p -> {
         p.margin(10f);
         p.table(Tex.button, t -> {
             t.add(setting.toString()).top();
-            t.add("此窗口用于测试配置文件").bottom();
+            t.add("配置文件已启动").bottom();
         }).marginLeft(12f);
     });
     dialog.buttons.button("@ok", () -> {
     dialog.hide();
     });
     dialog.show();
+    }catch(Throwable e){
+        Log.info("[淬火] 未找到配置文件",e);
+    }
     }
 	 //加载内容
     @Override
