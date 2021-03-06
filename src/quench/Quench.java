@@ -36,7 +36,7 @@ public class Quench extends Mod{
     //获取配置文件
     Fi config = getConfig();
     if(config != null){
-    Json json = new Json()
+    Json json = new Json();
     setting = json.fromJson(Setting.class,config.readString());
     }
     BaseDialog dialog = new BaseDialog("Quench");
