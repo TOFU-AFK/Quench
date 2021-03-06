@@ -51,6 +51,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     WaterWheelBuild build;
     WaterWheel block;
     ArrayList<TextureRegion> sprites;
+    TextureRegion light;
     public int index = 0;
     float time;
 
@@ -71,6 +72,12 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	            turn();
 	            time = 0;
 	        }
+	        Draw.color(color1, color2, (float)i / quantity);
+                Draw.alpha(0.4f);
+                Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f);
+                Draw.blend(Blending.additive);
+                Draw.rect(light, entity.x, entity.y);
+                Draw.blend();
 	    }else{
 	        Draw.rect(block.region, entity.x, entity.y);
 	    }
@@ -84,6 +91,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     @Override
     public void load(Block block){
      sprites = new ArrayList<TextureRegion>();
+     light = Core.atlas.find(block.name + "-light");
      for(int i=0;i<=quantity;i++){
 		    sprites.add(Core.atlas.find(block.name + "-" + i));
     }
