@@ -37,7 +37,8 @@ public class Quench extends Mod{
     dialog.cont.pane(p -> {
         p.margin(10f);
         p.table(Tex.button, t -> {
-            t.add(config.name());
+            t.add(config != null ? config.readString():"未找到配置文件，请检查模组完整性!");
+            t.add("此窗口用于测试配置文件");
         }).marginLeft(12f);
     });
     dialog.buttons.button("@ok", () -> {
