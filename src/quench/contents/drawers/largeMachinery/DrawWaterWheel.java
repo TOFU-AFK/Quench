@@ -54,14 +54,18 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     TextureRegion light;
     public int index = 0;
     float time;
+    float angle;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
 	    build = (WaterWheelBuild) entity;
 	    block = (WaterWheel) build.block;
-	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
+	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity&&build.c.mechanicalData!=null){
+	        if(color1==null){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
+	        angle = build.c.mechanicalData.getAngle();
+	        }
 	        time+=Time.time;
 	        if(time>=45){
 	            if(index+1>=quantity){
@@ -73,18 +77,17 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	            time = 0;
 	        }
 	        Draw.color(color1, color2, (float)time / quantity);
-                Draw.alpha(0.4f);
+                Draw.alpha(0.1f*time);
                 Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f);
                 Draw.blend(Blending.additive);
-                Draw.rect(light, entity.x, entity.y);
+                Draw.rect(light, entity.x, entity.y,);
                 Draw.blend();
 	    }else{
-	        Draw.rect(block.region, entity.x, entity.y);
+	        Draw.rect(block.region, entity.x, entity.y,angle);
 	    }
     }
     
     public void turn(){
-        Log.info("[淬火] 进入turn", "");
         Draw.rect(sprites.get(index), build.x, build.y);
     }
 
