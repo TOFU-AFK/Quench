@@ -61,11 +61,9 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	    build = (WaterWheelBuild) entity;
 	    block = (WaterWheel) build.block;
 	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity&&build.c.mechanicalData!=null){
-	        if(color1==null){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
 	        angle = build.c.mechanicalData.getAngle();
-	        }
 	        time+=Time.time;
 	        if(time>=45){
 	            if(index+1>=quantity){
@@ -77,7 +75,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	            time = 0;
 	        }
 	        Draw.color(color1, color2, (float)time / quantity);
-                Draw.alpha(0.1f*time);
+                Draw.alpha(0.5f);
                 Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f);
                 Draw.blend(Blending.additive);
                 Draw.rect(light, entity.x, entity.y,angle);
