@@ -62,8 +62,12 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
 	        time+=Time.time;
-	        if(time>=30){
-	            Log.info("[淬火] 进入time", "");
+	        if(time>=45){
+	            if(index+1>=quantity){
+	                index = 0;
+	            }else{
+	                index++;
+	            }
 	            turn();
 	            time = 0;
 	        }
