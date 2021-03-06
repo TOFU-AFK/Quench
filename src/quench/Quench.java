@@ -24,12 +24,26 @@ import quench.contents.bullets.*;
 //import quench.contents.units.*;
 
 public class Quench extends Mod{
-	 //模组被启动
     public Quench()
-    
-	 {
+	{
     }
     
+    @Override
+    public void init(){
+    //获取配置文件
+    Fi config = getConfig();
+    BaseDialog dialog = new BaseDialog("Quench");
+    dialog.cont.pane(p -> {
+        p.margin(10f);
+        p.table(Tex.button, t -> {
+            t.add(config.name());
+        }).marginLeft(12f);
+    });
+    dialog.buttons.button("@ok", () -> {
+    dialog.hide();
+    });
+    dialog.show();
+    }
 	 //加载内容
     @Override
     public void loadContent()

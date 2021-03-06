@@ -93,7 +93,7 @@ public class MechanicalCore extends LargeMachinery{
 		
 	    bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
 			(MechanicalCoreBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalMotive",Float.toString(entity.mechanicalData.getMotive()*1)),
+				() -> Core.bundle.get("MechanicalCore.totalMotive"),
 				() -> Pal.powerBar,
 				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.motiveStorage
 			)

@@ -97,7 +97,7 @@ public class LargeMachinery extends Block{
 		if(store>0){
 		bars.add(Core.bundle.get("LargeMachinery.motiveForce"), 
 			(LargeMachineryBuild entity) -> new Bar(
-				() -> Core.bundle.get("LargeMachinery.motiveForce",Float.toString(entity.motiveQuantity)),
+				() -> Core.bundle.get("LargeMachinery.motiveForce"),
 				() -> Pal.powerBar,
 				() -> entity.motiveQuantity / store
 			)
