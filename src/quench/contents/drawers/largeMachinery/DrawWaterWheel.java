@@ -51,6 +51,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     WaterWheelBuild build;
     WaterWheel block;
     ArrayList<TextureRegion> sprites;
+    float time = 0;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
@@ -61,11 +62,12 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
 	    }
-            for(int i = 0; i < quantity; i++){
+            for(TextureRegion region:sprites){
                 /*Draw.alpha((0.3f + Mathf.absin(Time.time, 2f * i * 2f, 0.3f * i * 0.05f)));
                 Drawf.light(build.team, build.x, build.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color1).lerp(color2, Mathf.absin(7f, 0.2f)), 0.8f*i);
                 Draw.blend(Blending.additive);*/
-                Draw.rect(sprites.get(i), build.x, build.y);
+                
+                Draw.rect(region, build.x, build.y);
                 //Draw.blend();
             }
 	    }
