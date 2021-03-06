@@ -87,7 +87,7 @@ public class PowerSupplyMachine extends LargeMachinery{
         @Override
         public void update(){
             super.update();
-            if(c!=null&&canProvidePower&&store>0&&begin) providePower();
+            if(c!=null&&canProvidePower&&store>0) providePower();
         }
         
         public void providePower(){
@@ -107,7 +107,6 @@ public class PowerSupplyMachine extends LargeMachinery{
             Tile t = generator.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
             LargeMachinery block = (LargeMachinery) t.block();
-            Log.info("[淬火] t.block().name: "+t.block().name, "");
             if(build.motiveQuantity+output<=block.store){
             build.motiveQuantity+=output;
             motiveQuantity-=output;

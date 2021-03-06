@@ -128,7 +128,6 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        public boolean begin = true;//开始提供动力
         public float motiveQuantity = 0;//动能数量
         
         @Override

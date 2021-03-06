@@ -60,5 +60,6 @@ public class DrawWaterWheel extends DrawBlock {
      for(int i=0;i<=quantity;i++){
 		    sprites.add(Core.atlas.find(block.name + "-" + i));
     }
+    }
 
 }

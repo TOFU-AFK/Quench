@@ -77,6 +77,8 @@ public class WaterWheel extends PowerSupplyMachine{
     }
 	 
     public class WaterWheelBuild extends PowerSupplyMachineBuild{
+        Tile t;
+        Liquid liquid;
         
         @Override
         public void buildConfiguration(Table table){
@@ -90,8 +92,10 @@ public class WaterWheel extends PowerSupplyMachine{
         
         @Override
         public void providePower(){
-            Tile t = Vars.world.tile(tile().x,tile().y);
-            Liquid liquid = t.floor().liquidDrop;
+            if(t==null){
+            t = Vars.world.tile(tile().x,tile().y);
+            liquid = t.floor().liquidDrop;
+            }
             if(liquid!=null&&liquid.viscosity<=viscosity){
             if(motiveQuantity+yield*c.mechanicalData.efficiency<=store){
             motiveQuantity+=yield*c.mechanicalData.efficiency;
@@ -122,7 +126,7 @@ public class WaterWheel extends PowerSupplyMachine{
 }
         @Override
         public void draw(){
-            super.draw();
+            if(liquid!=null&&liquid.viscosity<=viscosity) drawer.draw();
         }
         
         @Override
