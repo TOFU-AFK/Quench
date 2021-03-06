@@ -124,8 +124,8 @@ public class QULargeMachinery implements ContentList
 			drawer = new DrawWaterWheel(){
 			    {
 			        quantity = 5;
-			    };
-			}
+			    }
+			};
 			}
 		};
 	}
