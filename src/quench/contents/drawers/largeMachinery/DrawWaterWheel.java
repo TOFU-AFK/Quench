@@ -36,20 +36,27 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
 import quench.contents.types.LargeMachinery.LargeMachineryBuild;
+import quench.contents.types.WaterWheel.WaterWheelBuild;
+
+import java.util.ArrayList;
 
 import static mindustry.Vars.*;
 
-public class DrawWaterWheel extends DrawBlock {
+public class DrawWaterWheel extends DrawLargeMachinery {
     public int quantity = 1;//贴图数量
+    public Color color1;
+    public Color color2;
+    WaterWheelBuild build;
     ArrayList<TextureRegion> sprites;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
+	    build = (WaterWheelBuild) entity;
             for(int i = 0; i < quantity; i++){
                 Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)));
-                Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(plasma2).lerp(plasma1, Mathf.absin(7f, 0.2f)), 0.8f+i);
+                Drawf.light(build.team, build.x, build.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f+i);
                 Draw.blend(Blending.additive);
-                Draw.rect(sprites.get(i), entity.x, entity.y);
+                Draw.rect(sprites.get(i), build.x, build.y);
                 Draw.blend();
             }
     }

@@ -143,7 +143,7 @@ public class LargeMachinery extends Block{
 
         @Override
         public void draw(){
-            drawer.draw();
+            drawer.draw(this);
         }
         
         @Override

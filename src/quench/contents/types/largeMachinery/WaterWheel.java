@@ -126,7 +126,7 @@ public class WaterWheel extends PowerSupplyMachine{
 }
         @Override
         public void draw(){
-            if(liquid!=null&&liquid.viscosity<=viscosity) drawer.draw();
+            if(liquid!=null&&liquid.viscosity<=viscosity) drawer.draw(this);
         }
         
         @Override
