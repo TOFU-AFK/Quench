@@ -52,6 +52,8 @@ import mindustry.*;
 
 import java.util.*;
 
+import quench.*;
+
 import static mindustry.Vars.*;
 
 public class WaterWheel extends PowerSupplyMachine{
