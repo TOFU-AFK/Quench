@@ -62,12 +62,12 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
 	    }
-            for(TextureRegion region:sprites){
+            for(int i=0;i<quantity;i++){
                 /*Draw.alpha((0.3f + Mathf.absin(Time.time, 2f * i * 2f, 0.3f * i * 0.05f)));
                 Drawf.light(build.team, build.x, build.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color1).lerp(color2, Mathf.absin(7f, 0.2f)), 0.8f*i);
                 Draw.blend(Blending.additive);*/
                 
-                Draw.rect(region, build.x, build.y);
+                Draw.rect(sprites.get(i), build.x, build.y);
                 //Draw.blend();
             }
 	    }
