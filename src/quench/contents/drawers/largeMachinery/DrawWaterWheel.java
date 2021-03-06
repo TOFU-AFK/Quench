@@ -72,7 +72,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	            turn();
 	            time = 0;
 	        }
-	        Draw.color(color1, color2, (float)i / quantity);
+	        Draw.color(color1, color2, (float)time / quantity);
                 Draw.alpha(0.4f);
                 Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f);
                 Draw.blend(Blending.additive);
