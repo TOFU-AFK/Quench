@@ -15,6 +15,6 @@ public class Setting{
     }
     
     public String toString(){
-        return String.valueOf(buildingTips)+"\n"+String.valueOf(mistakeTips)+"\n"+String.valueOf(statisticalPower)+"\n"+String.valueOf(statisticalMotive)+"\n"+String.valueOf(displayWindow);
+        return "建造提示: "+String.valueOf(buildingTips)+"\n"+"错误提示: "+String.valueOf(mistakeTips)+"\n"+"统计电力: "+String.valueOf(statisticalPower)+"\n"+"统计动力: "+String.valueOf(statisticalMotive)+"\n"+"显示窗口: "+String.valueOf(displayWindow);
     }
 }
