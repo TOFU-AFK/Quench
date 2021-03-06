@@ -23,8 +23,10 @@ import quench.contents.blocks.*;
 import quench.contents.planets.*;
 import quench.contents.bullets.*;
 //import quench.contents.units.*;
+import quench.contents.Setting;
 
 public class Quench extends Mod{
+    public static Setting setting = new Setting();
     public Quench()
 	{
     }
@@ -33,12 +35,16 @@ public class Quench extends Mod{
     public void init(){
     //获取配置文件
     Fi config = getConfig();
+    if(config != null){
+    Json json = new Json()
+    setting = json.fromJson(Setting.class,config.readString());
+    }
     BaseDialog dialog = new BaseDialog("Quench");
     dialog.cont.pane(p -> {
         p.margin(10f);
         p.table(Tex.button, t -> {
-            t.add(config != null ? config.readString():"未找到配置文件，请检查模组完整性!");
-            t.add("此窗口用于测试配置文件");
+            t.add(setting.toString()).top();
+            t.add("此窗口用于测试配置文件").bottom();
         }).marginLeft(12f);
     });
     dialog.buttons.button("@ok", () -> {
