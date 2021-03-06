@@ -87,7 +87,7 @@ public class MechanicalCore extends LargeMachinery{
 		if(Quench.setting.statisticalPower){
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
 			(MechanicalCoreBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalEnergy",Float.toString(entity.mechanicalData.getPower()*entity.mechanicalData.powerCapacity)),
+				() -> Core.bundle.get("MechanicalCore.totalEnergy"),
 				() -> Pal.powerBar,
 				() -> entity.mechanicalData.getPower() / 1
 			)

@@ -77,7 +77,7 @@ import quench.contents.bullets.*;
 import quench.contents.Setting;
 
 public class Quench extends Mod{
-    public static Setting setting = new Setting();
+    public static Setting setting;
     public Quench()
 	{
     }
@@ -94,8 +94,9 @@ public class Quench extends Mod{
         p.margin(10f);
         p.table(Tex.button, t -> {
             Table cont = new Table();
-            cont.add(setting.toString()).top();
-            cont.add("配置文件已启动").bottom();
+            cont.add(setting.toString());
+            cont.row();
+            cont.add("配置文件已启动");
             t.add(cont);
         }).marginLeft(12f);
     });
@@ -104,6 +105,7 @@ public class Quench extends Mod{
     });
     dialog.show();
     }catch(Throwable e){
+        setting = new Setting();
         Log.info("[淬火] 未找到配置文件",e);
     }
     }
