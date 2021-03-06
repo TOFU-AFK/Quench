@@ -79,8 +79,8 @@ public class WaterWheel extends PowerSupplyMachine{
     }
 	 
     public class WaterWheelBuild extends PowerSupplyMachineBuild{
-        Tile t;
-        Liquid liquid;
+        public Tile t;
+        public Liquid liquid;
         
         @Override
         public void buildConfiguration(Table table){
