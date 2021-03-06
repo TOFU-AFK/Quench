@@ -48,11 +48,13 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     public Color color1;
     public Color color2;
     WaterWheelBuild build;
+    WaterWheel block;
     ArrayList<TextureRegion> sprites;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
 	    build = (WaterWheelBuild) entity;
+	    block = (WaterWheel) build.block;
 	    if(build.liquid!=null&&build.liquid.viscosity<=build.viscosity){
 	    if(color1==null){
 	        color1 = build.liquid.color;
