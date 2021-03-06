@@ -70,6 +70,8 @@ public class DrawWaterWheel extends DrawLargeMachinery {
                 Draw.rect(sprites.get(i), build.x, build.y);
                 //Draw.blend();
             }
+	    }else{
+	        Draw.rect(entity.block.region, entity.x, entity.y);
 	    }
     }
 
