@@ -51,7 +51,6 @@ public class DrawWaterWheel extends DrawLargeMachinery {
     WaterWheelBuild build;
     WaterWheel block;
     ArrayList<TextureRegion> sprites;
-    TextureRegion region;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
@@ -59,18 +58,17 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	    color1 = build.liquid.color;
 	    color2 = build.liquid.lightColor;
 	    block = (WaterWheel) build.block;
-	    if(build.liquid.viscosity>block.viscosity){
-	        Draw.rect(block.region, entity.x, entity.y);
-	    }else{
+	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
             for(int i=0;i<quantity;i++){
                 Draw.rect(sprites.get(i), build.x, build.y);
             }
+	    }else{
+	        Draw.rect(block.region, entity.x, entity.y);
 	    }
     }
 
     @Override
     public void load(Block block){
-     region = Core.atlas.find(block.name);
      sprites = new ArrayList<TextureRegion>();
      for(int i=0;i<=quantity;i++){
 		    sprites.add(Core.atlas.find(block.name + "-" + i));
