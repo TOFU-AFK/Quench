@@ -49,6 +49,21 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.core.*;
 import mindustry.*;
+import arc.*;
+import arc.files.*;
+import arc.util.serialization.*;
+import mindustry.graphics.*;
+import arc.graphics.g2d.*;
+import arc.scene.ui.*;
+import arc.scene.style.TextureRegionDrawable;
+import arc.util.*;
+import mindustry.*;
+import mindustry.content.*;
+import mindustry.game.EventType.*;
+import mindustry.gen.*;
+import mindustry.mod.*;
+import mindustry.ui.Styles;
+import mindustry.ui.dialogs.*;
 
 import java.util.*;
 
