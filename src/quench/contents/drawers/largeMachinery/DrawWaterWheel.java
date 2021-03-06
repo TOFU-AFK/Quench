@@ -37,7 +37,7 @@ import mindustry.world.meta.*;
 
 import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 import quench.contents.types.WaterWheel.WaterWheelBuild;
-import quench.contents.types.WaterWheel.WaterWheel;
+import quench.contents.types.*;
 import quench.contents.types.draw.*;
 
 import java.util.ArrayList;
