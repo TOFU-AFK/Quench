@@ -84,6 +84,7 @@ public class MechanicalCore extends LargeMachinery{
     @Override
 	public void setBars(){
 		super.setBars();
+		if(Quench.setting!=null){
 		if(Quench.setting.statisticalPower){
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
 			(MechanicalCoreBuild entity) -> new Bar(
@@ -102,6 +103,7 @@ public class MechanicalCore extends LargeMachinery{
 				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.motiveStorage
 			)
 		);
+		}
 		}
 	}
 	 
@@ -179,6 +181,7 @@ public class MechanicalCore extends LargeMachinery{
         //用于绘制结构
         @Override
         public void drawConfigure(){
+        if(Quench.setting!=null){
         if(!start&&Quench.setting.buildingTips){
         for(BlockData data:structure.datas){
         Draw.alpha(0.5f);
@@ -189,6 +192,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         if(condition!=null&&Quench.setting.mistakeTips){
             Draw.rect(condition,x-tilesize/2,y+tilesize);
+        }
         }
         }
         
