@@ -2,6 +2,7 @@ package quench;
 
 //导入原版包
 import arc.*;
+import arc.files.*;
 import mindustry.graphics.*;
 import arc.graphics.g2d.*;
 import arc.scene.ui.*;
