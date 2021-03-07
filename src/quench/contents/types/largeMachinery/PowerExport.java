@@ -89,25 +89,20 @@ public class PowerExport extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
-              Log.info("[淬火] if(c!=null)","");
               float consume = 0;
               Tile tile = near(c.direction);
               if(tile.build!=null&&tile.block()!=null&&tile.block()!=Blocks.air){
-              Log.info("[淬火] if(tile.build!=null&&tile.block()!=null&&tile.block()!=Blocks.air)","");
               Building build = tile.build;
-              if(build.block.hasPower&&build.team==team){
+              if(build!=null&&build.block.hasPower&&build.team==team){
               float capacity = build.block.consumes.getPower().capacity;
               float status = build.power.status;
-              if(status*capacity+output>=capacity){
+              if(status*capacity+output>=capacity&&status<1){
                   consume = c.mechanicalData.usePower(output);
               }else if(capacity-status*capacity>0){
                   
                   consume = c.mechanicalData.usePower(capacity-status*capacity);
               }
-              Log.info("[淬火] consume"+consume,"");
-              Log.info("[淬火] consume / capacity"+consume / capacity,"");
               build.power.status+=consume / capacity;
-              Log.info("[淬火] status"+consume / capacity,"");
               }
           }
           }

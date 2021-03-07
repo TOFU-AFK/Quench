@@ -144,9 +144,6 @@ public class MechanicalData{
             if(capacity>=usePower+total){
                 build.power.status-=usePower / capacity;
                 consume+=usePower;
-            }else if(capacity-usePower-total>0){
-            usePower = capacity-usePower-total;
-            consume+=usePower;
             }
         }
         return consume;
