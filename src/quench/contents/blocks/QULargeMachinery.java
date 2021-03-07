@@ -58,7 +58,7 @@ public class QULargeMachinery implements ContentList
 			size = 1;
 			health = 40*size*size;
 			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(waterwheel,0,24)});//每次偏移8像素，就偏移一格
-			new TechNode().TechNode(TechTree.root, this,new ItemStack(Items.titanium, 2));
+			new TechNode().TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
 			}
 		};
 		
