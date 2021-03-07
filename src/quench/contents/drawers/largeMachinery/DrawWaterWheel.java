@@ -63,7 +63,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
-	        if(build.c.mechanicalData!=null){
+	        if(build.c!=null&&build.c.mechanicalData!=null){
 	        angle = build.c.mechanicalData.getAngle();
 	        }else{
 	            angle = 0;
