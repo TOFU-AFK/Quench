@@ -67,8 +67,10 @@ public class PowerExport extends StructuralBattery{
         buildCostMultiplier = 5f;
         configurable = true;
         hasPower = true;
-        outputsPower = true;
+        insulated = true;
+        noUpdateDisabled = true;
         consumesPower = true;
+        outputsPower = true;
     }
 
     @Override
