@@ -58,13 +58,13 @@ public class DrawPowerExport extends DrawLargeMachinery {
         Draw.alpha(0.95f);
         Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Pal.powerBar).lerp(Pal.lightTrail, Mathf.absin(7f, 0.2f)), 0.8f);
         Draw.blend(Blending.additive);
-        Draw.rect(arrow, entity.x, entity.y,angle-90);
+        Draw.rect(arrow, entity.x, entity.y,angle-180);
         Draw.blend();
     }
 
     @Override
     public void load(Block block){
-     arrow = Core.atlas.find("transfer-arrow");
+     arrow = Core.atlas.find("quench-arrow");
     }
 
 }
