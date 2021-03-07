@@ -91,6 +91,7 @@ public class PowerExport extends StructuralBattery{
           if(c!=null){
               float consume = 0;
               Tile tile = near(c.direction);
+              if(tile.build!=null&&tile.block()!=null&&tile.block()!=Blocks.air){
               Building build = tile.build;
               if(build.block.hasPower&&build.team==team){
               float capacity = build.block.consumes.getPower().capacity;
@@ -103,6 +104,7 @@ public class PowerExport extends StructuralBattery{
               }
               build.power.status = consume / capacity;
               }
+          }
           }
         }
 
