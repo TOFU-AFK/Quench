@@ -42,7 +42,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport;
 	
 	@Override
 	public void load()
@@ -74,6 +74,7 @@ public class QULargeMachinery implements ContentList
 	
 	//在此实例化非核心方块
 	public void instantiation(){
+	    //骨架
 	    basicBlock = new LargeMachinery("basicBlock")
 		{
 			{
@@ -91,7 +92,7 @@ public class QULargeMachinery implements ContentList
 			health = 80*size*size;
 			}
 		};
-		
+		//电池
 		smallStructureBattery = new StructuralBattery("smallStructureBattery")
 		{
 			{
@@ -101,7 +102,7 @@ public class QULargeMachinery implements ContentList
 			consumes.powerBuffered(3500f);
 			}
 		};
-		
+		//电力
 		powerGenerator = new BaseGenerator("powerGenerator"){
 		    {
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
@@ -112,20 +113,28 @@ public class QULargeMachinery implements ContentList
 			consumes.powerBuffered(10f);
 			}
 		};
+		//动力
 		waterwheel = new WaterWheel("waterwheel")
 		{
 			{
             requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
-			//把含水方块加上(感觉无用，就不搞了)
-			/*whitelist = new BlockData[]{new BlockData(Blocks.water),new BlockData(Blocks.deepwater),new BlockData(Blocks.darksandTaintedWater),new BlockData(Blocks.taintedWater),new BlockData(Blocks.sandWater),new BlockData(Blocks.darksandWater)};*/
 			floating = true;
 			drawer = new DrawWaterWheel(){
 			    {
 			        quantity = 5;
 			    }
 			};
+			}
+		};
+		//电力出口
+		powerExport = new PowerExport("powerExport")
+		{
+			{
+            requirements(Category.crafting, with(Items.copper, 25));
+			size = 1;
+			health = 40*size*size;
 			}
 		};
 	}

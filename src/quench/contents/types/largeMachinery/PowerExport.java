@@ -1,5 +1,5 @@
 /*
-*大型机械的电池type
+*电力出口
 */
 package quench.contents.types;
 
@@ -53,22 +53,21 @@ import mindustry.core.*;
 import mindustry.*;
 
 import java.util.*;
+
 import quench.*;
 
 import static mindustry.Vars.*;
 
-public class StructuralBattery extends LargeMachinery{
-        
-    public StructuralBattery(String name){
+public class PowerExport extends StructuralBattery{
+    public float output = 1f;//电力输出
+    public PowerExport(String name){
         super(name);
         solid = true;
         destructible = true;
         buildCostMultiplier = 5f;
         configurable = true;
         hasPower = true;
-        insulated = true;
-        group = BlockGroup.power;
-        noUpdateDisabled = true;
+        outputsPower = true;
         consumesPower = true;
     }
 
@@ -79,10 +78,10 @@ public class StructuralBattery extends LargeMachinery{
     
     @Override
     public StructureType getType(){
-        return StructureType.battery;
+        return StructureType.generator;
     }
 	 
-    public class StructuralBatteryBuild extends LargeMachineryBuild{
+    public class PowerExportBuild extends StructuralBatteryBuild{
         
         @Override
         public void buildConfiguration(Table table){
@@ -91,24 +90,24 @@ public class StructuralBattery extends LargeMachinery{
         
         @Override
         public void update(){
-        super.update();
-        //如果电力超过上限，强制回到上限
-        if(power.status*consumes.getPower().capacity>consumes.getPower().capacity) power.status = 1;
+          super.update();
+          if(c!=null){
+              
+          }
+        }
+        
+        @Override
+        public void drawConfigure(){
+        //绘制电力出口
+        Draw.color(Pal.powerBar);
+        Drawf.light(team, x, y+getNearbyY(1), (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(Pal.powerBar, Mathf.absin(7f, 0.2f)), 2f);
+        Lines.stroke(1);
+        Lines.square(x, y+getNearbyY(1),tilesize/2+2,0);
         }
 
         @Override
         public void draw(){
             super.draw();
-        }
-        
-        @Override
-        public void write(Writes write){
-            super.write(write);
-        }
-
-        @Override
-        public void read(Reads read, byte revision){
-            super.read(read, revision);
         }
     }
 }

@@ -138,6 +138,74 @@ public class LargeMachinery extends Block{
             table.add(cont);
         }
         
+        //得到附近的X坐标
+        //0左，其他为右
+        public float getNearbyX(int direction){
+            if(c!=null){
+            switch (c.direction){
+                case 0:
+                    if(direction==0){
+                        return x-8;
+                    }else{
+                        return x+8;
+                    }
+                case 1:
+                    if(direction==0){
+                        return y+8;
+                    }else{
+                        return y-8;
+                    }
+                case 2:
+                    if(direction==0){
+                        return x-8;
+                    }else{
+                        return x+8;
+                    }
+                case 3:
+                    if(direction==0){
+                        return y+8;
+                    }else{
+                        return y-8;
+                    }
+            }
+            }
+            return x+8;
+        }
+        
+        //得到附近的Y坐标
+        //0上，其他为下
+        public float getNearbyY(int direction){
+            if(c!=null){
+            switch (c.direction){
+                case 0:
+                    if(direction==0){
+                        return y+8;
+                    }else{
+                        return y-8;
+                    }
+                case 1:
+                    if(direction==0){
+                        return x+8;
+                    }else{
+                        return x-8;
+                    }
+                case 2:
+                    if(direction==0){
+                        return y-8;
+                    }else{
+                        return y+8;
+                    }
+                case 3:
+                    if(direction==0){
+                        return x-8;
+                    }else{
+                        return x+8;
+                    }
+            }
+            }
+            return y+8;
+        }
+        
         @Override
         public void update(){
         }

@@ -186,12 +186,17 @@ public class MechanicalCore extends LargeMachinery{
         if(condition!=null){
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
+        //获取结构数据，触发结构中方块的drawConfigure()方法
+        for(int i;i<mechanicalData.getTiles().size();i++){
+            LargeMachineryBuild build = (LargeMachineryBuild) mechanicalData.getTile(i);
+            build.drawConfigure();
+        }
         }
         
         public void controlStart(){
             for(BlockData data:structure.datas){
                 if(structure.datas.length>mechanicalData.getTiles().size()){
-                //先获取地图的tile，再将build强制转换成LargeMachineryBuild，因为前面已经判断了方块的名称，所以不用担心出现问题，不过我还是加了一个try语句防止出现问题
+                //先获取地图的tile，再将build强制转换成LargeMachineryBuild，因为前面已经判断了方块的名称，所以不用担心出现问题
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 tile.remove();
                 tile.setNet(data.block,team(),0);
