@@ -65,7 +65,7 @@ public class DrawPowerExport extends DrawLargeMachinery {
 
     @Override
     public void load(Block block){
-     arrow = Core.atlas.find("phase-conveyor-arrow");
+     arrow = Core.atlas.find("transfer-arrow");
     }
 
 }
