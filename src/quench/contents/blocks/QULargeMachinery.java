@@ -57,8 +57,9 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
-			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(waterwheel,0,24)});//每次偏移8像素，就偏移一格
-			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
+			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData(powerExport,0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(waterwheel,0,24)});//每次偏移8像素，就偏移一格
+			//添加科技树
+			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.silicon, 45),new ItemStack(Items.lead, 85),new ItemStack(Items.titanium, 25)});
 			}
 		};
 		
@@ -70,6 +71,7 @@ public class QULargeMachinery implements ContentList
 			health = 40*size*size;
 			efficiency = 1.2f;
 			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData("quench-basicBlock",0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(mediumBasicBlock,24,8),new BlockData(mediumBasicBlock,-24,8),new BlockData(mediumBasicBlock,24,32),new BlockData(mediumBasicBlock,-24,32),new BlockData(smallStructureBattery,16,16),new BlockData(smallStructureBattery,-16,16),new BlockData(powerGenerator,16,24),new BlockData(powerGenerator,-16,24)});//每次偏移8像素，就偏移一格
+			new TechNode(TechTree.get(hydroelectricGeneratorCore), this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
 			}
 		};
 	}
@@ -83,6 +85,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
+			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
 		};
 		
@@ -92,6 +95,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
+			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 100),new ItemStack(Items.lead, 25)});
 			}
 		};
 		//电池
@@ -102,6 +106,7 @@ public class QULargeMachinery implements ContentList
 			size = 1;
 			health = 40*size*size;
 			consumes.powerBuffered(3500f);
+			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.silicon, 25),new ItemStack(Items.lead, 30)});
 			}
 		};
 		//电力
@@ -113,6 +118,7 @@ public class QULargeMachinery implements ContentList
 			powerOutput = 10;
 			increasePower = 20;
 			consumes.powerBuffered(10f);
+			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.silicon, 45),new ItemStack(Items.lead, 85),new ItemStack(Items.titanium, 25)});
 			}
 		};
 		//动力
@@ -128,6 +134,7 @@ public class QULargeMachinery implements ContentList
 			        quantity = 5;
 			    }
 			};
+			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 100),new ItemStack(Items.lead, 25)});
 			}
 		};
 		//电力出口
@@ -137,6 +144,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
+			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
 		};
 	}

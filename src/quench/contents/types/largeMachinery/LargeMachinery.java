@@ -51,6 +51,7 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.core.*;
 import mindustry.*;
+import mindustry.content.TechTree.TechNode;
 
 import java.util.*;
 
