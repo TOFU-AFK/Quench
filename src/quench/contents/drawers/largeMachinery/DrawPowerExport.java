@@ -45,7 +45,6 @@ import java.util.ArrayList;
 import static mindustry.Vars.*;
 
 public class DrawPowerExport extends DrawLargeMachinery {
-    public int quantity = 1;//贴图数量
     public TextureRegion arrow;
     public float angle = 0;
 
@@ -56,7 +55,7 @@ public class DrawPowerExport extends DrawLargeMachinery {
 	        angle = entity.c.mechanicalData.getAngle();
 	    }
 	    Draw.color(Pal.powerBar);
-        Draw.alpha(0.2f);
+        Draw.alpha(0.8f);
         Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Pal.powerBar).lerp(Pal.lightTrail, Mathf.absin(7f, 0.2f)), 0.8f);
         Draw.blend(Blending.additive);
         Draw.rect(arrow, entity.x, entity.y,angle-180);

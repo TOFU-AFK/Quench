@@ -144,6 +144,7 @@ public class QULargeMachinery implements ContentList
             requirements(Category.crafting, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
+			drawer = new DrawPowerExport();
 			consumes.powerBuffered(1250f);
 			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
