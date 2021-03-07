@@ -143,12 +143,12 @@ public class LargeMachinery extends Block{
         public void update(){
         }
         
-        public Tile nearby(int rotation){
-        if(rotation == 0) return Vars.world.tile(x, y-1);
-        if(rotation == 1) return Vars.world.tile(x-1, y );
-        if(rotation == 2) return Vars.world.tile(x, y+1);
-        if(rotation == 3) return Vars.world.tile(x+1, y);
-        return Vars.world.tile(x, y-1);
+        public Tile near(int rotation){
+        if(rotation == 0) return Vars.world.tile((int)tile().x, (int)tile().y-1);
+        if(rotation == 1) return Vars.world.tile((int)tile().x-1, (int)tile().y );
+        if(rotation == 2) return Vars.world.tile((int)tile().x, (int)tile().y+1);
+        if(rotation == 3) return Vars.world.tile((int)tile().x+1, (int)tile().y);
+        return Vars.world.tile((int)tile().x, (int)tile().y-1);
     }
 
         @Override
