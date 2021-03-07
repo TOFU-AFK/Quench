@@ -56,7 +56,7 @@ public class DrawPowerExport extends DrawLargeMachinery {
 	        angle = entity.c.mechanicalData.getAngle();
 	    }
 	    Draw.color(Pal.powerBar);
-        Draw.alpha(0.8f);
+        Draw.alpha(0.2f);
         Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Pal.powerBar).lerp(Pal.lightTrail, Mathf.absin(7f, 0.2f)), 0.8f);
         Draw.blend(Blending.additive);
         Draw.rect(arrow, entity.x, entity.y,angle-180);
