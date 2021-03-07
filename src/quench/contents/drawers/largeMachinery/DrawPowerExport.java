@@ -51,7 +51,7 @@ public class DrawPowerExport extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	    super.draw(this);
+	    super.draw(entity);
 	    if(entity.c!=null&&entity.c.mechanicalData!=null){
 	        angle = entity.c.mechanicalData.getAngle();
 	    }
