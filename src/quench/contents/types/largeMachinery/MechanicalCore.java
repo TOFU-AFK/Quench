@@ -188,7 +188,7 @@ public class MechanicalCore extends LargeMachinery{
         }
         //获取结构数据，触发结构中方块的drawConfigure()方法
         for(int i;i<mechanicalData.getTiles().size();i++){
-            LargeMachineryBuild build = (LargeMachineryBuild) mechanicalData.getTile(i);
+            LargeMachineryBuild build = (LargeMachineryBuild) mechanicalData.getTile(i).build;
             build.drawConfigure();
         }
         }
