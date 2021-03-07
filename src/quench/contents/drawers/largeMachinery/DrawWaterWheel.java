@@ -65,13 +65,15 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	        color2 = build.liquid.lightColor;
 	        angle = build.c.mechanicalData.getAngle();
 	        time+=Time.time;
+	        //定时将索引加一
 	        if(time>=45){
 	            if(index+1>=quantity){
 	                index = 0;
 	            }else{
 	                index++;
 	            }
-	            turn();
+	            //传结构的角度
+	            turn(angle);
 	            time = 0;
 	        }
 	        Draw.color(color1, color2, (float)time / quantity);
@@ -81,12 +83,12 @@ public class DrawWaterWheel extends DrawLargeMachinery {
                 Draw.rect(light, entity.x, entity.y,angle);
                 Draw.blend();
 	    }else{
-	        Draw.rect(block.region, entity.x, entity.y,angle);
+	        Draw.rect(block.region, entity.x, entity.y);
 	    }
     }
     
-    public void turn(){
-        Draw.rect(sprites.get(index), build.x, build.y);
+    public void turn(float angle){
+        Draw.rect(sprites.get(index), build.x, build.y,angle);
     }
 
     @Override

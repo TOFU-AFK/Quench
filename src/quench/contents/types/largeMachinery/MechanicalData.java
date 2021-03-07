@@ -110,15 +110,15 @@ public class MechanicalData{
     public float getAngle(){
         switch (core.direction){
             case 0:
-                return 90;
-            case 1:
-                return 180;
-            case 2:
-                return 270;
-            case 3:
                 return 0;
+            case 1:
+                return 90;
+            case 2:
+                return 180;
+            case 3:
+                return 270;
         }
-        return 90;
+        return 0;
     }
     
     //返回电力百分比
