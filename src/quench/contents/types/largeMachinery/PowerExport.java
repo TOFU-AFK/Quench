@@ -59,7 +59,7 @@ import quench.*;
 import static mindustry.Vars.*;
 
 public class PowerExport extends StructuralBattery{
-    public float output = 1f;//电力输出
+    public float output = 10f;//电力输出
     public PowerExport(String name){
         super(name);
         solid = true;
@@ -89,7 +89,20 @@ public class PowerExport extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
-              
+              float consume = 0;
+              Tile tile = nearby(c.direction);
+              Building build = tile.build;
+              if(build.block.hasPower&&build.team==team){
+              float capacity = build.block.consumes.getPower().capacity;
+              float status = build.power.status;
+              if(status*capacity+output>=capacity){
+                  consume = c.mechanicalData.usePower(output);
+              }else if(capacity-status*capacity>0){
+                  
+                  consume = c.mechanicalData.usePower(capacity-status*capacity);
+              }
+              build.power.status = consume / capacity;
+              }
           }
         }
 

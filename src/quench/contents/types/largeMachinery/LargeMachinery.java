@@ -142,6 +142,14 @@ public class LargeMachinery extends Block{
         @Override
         public void update(){
         }
+        
+        public Tile nearby(int rotation){
+        if(rotation == 0) return Vars.world.tile(x, y-1);
+        if(rotation == 1) return Vars.world.tile(x-1, y );
+        if(rotation == 2) return Vars.world.tile(x, y+1);
+        if(rotation == 3) return Vars.world.tile(x+1, y);
+        return Vars.world.tile(x, y-1);
+    }
 
         @Override
         public void draw(){

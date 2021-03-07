@@ -133,6 +133,25 @@ public class MechanicalData{
         return power;
     }
     
+    //使用整个结构的电力，返回实际消耗的数量
+    public float usePower(float amount){
+        float consume = 0;
+        float usePower = amount / battery.size();
+        for(int i=0;i<battery.size();i++){
+            Building build = battery.get(i).build;
+            float capacity = build.block.consumes.getPower().capacity;
+            float total = build.power.status*capacity;
+            if(capacity>=usePower+total){
+                build.power.status-=usePower / capacity;
+                consume+=usePower;
+            }else if(capacity-usePower-total>0){
+            usePower = capacity-usePower-total;
+            consume+=usePower;
+            }
+        }
+        return consume;
+    }
+    
     public float getMotive(){
         motive = 0;
         for(int i=0;i<powerSupply.size();i++){
