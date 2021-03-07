@@ -112,11 +112,11 @@ public class MechanicalData{
             case 0:
                 return 0;
             case 1:
-                return 90;
+                return 270;
             case 2:
                 return 180;
             case 3:
-                return 270;
+                return 90;
         }
         return 0;
     }
