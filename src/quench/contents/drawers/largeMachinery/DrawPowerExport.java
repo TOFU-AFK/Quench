@@ -44,7 +44,7 @@ import java.util.ArrayList;
 
 import static mindustry.Vars.*;
 
-public class DrawWaterWheel extends DrawLargeMachinery {
+public class DrawPowerExport extends DrawLargeMachinery {
     public int quantity = 1;//贴图数量
     public TextureRegion arrow;
     public float angle = 0;
