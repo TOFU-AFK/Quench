@@ -102,9 +102,9 @@ public class PowerExport extends StructuralBattery{
         public void drawConfigure(){
         //绘制电力出口
         Draw.color(Pal.powerBar);
-        Drawf.light(team, x, y/*+getNearbyY(1)*/, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Color.white).lerp(Pal.powerBar, Mathf.absin(7f, 0.2f)), 2f);
+        Drawf.light(team, x, y+getNearbyY(1), (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Color.white).lerp(Pal.powerBar, Mathf.absin(7f, 0.2f)), 2f);
         Lines.stroke(1);
-        Lines.square(x, y/*+getNearbyY(1)*/,tilesize/2+2,0);
+        Lines.square(x, y+getNearbyY(1),tilesize/2+2,0);
         }
 
         @Override
