@@ -60,10 +60,14 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	public void draw(LargeMachineryBuild entity){
 	    build = (WaterWheelBuild) entity;
 	    block = (WaterWheel) build.block;
-	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity&&build.c.mechanicalData!=null){
+	    if(build.liquid!=null&&build.liquid.viscosity<=block.viscosity){
 	        color1 = build.liquid.color;
 	        color2 = build.liquid.lightColor;
+	        if(build.c.mechanicalData!=null){
 	        angle = build.c.mechanicalData.getAngle();
+	        }else{
+	            angle = 0;
+	        }
 	        time+=Time.time;
 	        //定时将索引加一
 	        if(time>=45){
@@ -83,7 +87,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
                 Draw.rect(light, entity.x, entity.y,angle);
                 Draw.blend();
 	    }else{
-	        Draw.rect(block.region, entity.x, entity.y);
+	        Draw.rect(block.region, entity.x, entity.y,angle);
 	    }
     }
     
