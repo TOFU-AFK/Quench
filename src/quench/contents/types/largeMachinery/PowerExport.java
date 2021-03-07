@@ -92,15 +92,6 @@ public class PowerExport extends StructuralBattery{
               
           }
         }
-        
-        @Override
-        public void drawConfigure(){
-        //绘制电力出口
-        super.drawConfigure();
-        Draw.color(Pal.powerBar);
-        Lines.stroke(1);
-        Lines.square(x, y+getNearbyY(1),tilesize/2+2,0);
-        }
 
         @Override
         public void draw(){
