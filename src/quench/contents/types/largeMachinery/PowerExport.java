@@ -77,11 +77,6 @@ public class PowerExport extends StructuralBattery{
     public void load(){
         super.load();
     }
-    
-    @Override
-    public StructureType getType(){
-        return StructureType.generator;
-    }
 	 
     public class PowerExportBuild extends StructuralBatteryBuild{
         
@@ -101,8 +96,8 @@ public class PowerExport extends StructuralBattery{
         @Override
         public void drawConfigure(){
         //绘制电力出口
+        super.drawConfigure();
         Draw.color(Pal.powerBar);
-        Drawf.light(team, x, y+getNearbyY(1), (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Color.white).lerp(Pal.powerBar, Mathf.absin(7f, 0.2f)), 2f);
         Lines.stroke(1);
         Lines.square(x, y+getNearbyY(1),tilesize/2+2,0);
         }
