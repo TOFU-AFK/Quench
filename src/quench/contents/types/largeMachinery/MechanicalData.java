@@ -174,6 +174,18 @@ public class MechanicalData{
         return totalCapacity;
     }
     
+    public float getBatteryCapacity(){
+        float totalCapacity = 0f;
+        for(Tile tile : battery){
+            Building build = tile.build;
+            if(build.enabled && build.block.consumes.hasPower()){
+                ConsumePower power = build.block.consumes.getPower();
+                totalCapacity += (1f - build.power.status) * power.capacity;
+            }
+        }
+        return totalCapacity;
+    }
+    
     //更改电力
     public void transferPower(float amount){
         if(amount > 0){
