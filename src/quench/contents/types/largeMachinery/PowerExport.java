@@ -72,6 +72,7 @@ public class PowerExport extends StructuralBattery{
         noUpdateDisabled = true;
         consumesPower = true;
         outputsPower = true;
+        schematicPriority
     }
 
     @Override
