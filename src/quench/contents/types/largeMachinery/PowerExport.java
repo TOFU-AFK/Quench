@@ -91,18 +91,19 @@ public class PowerExport extends StructuralBattery{
             super.updateTile();
             
             if(front() == null || !front().block.hasPower || team != front().team || c == null) return;
-
+            Log.info("[淬火] if(front() == null || !front().block.hasPower || team != front().team || c == null) return;","");
             MechanicalData data = c.mechanicalData;
             PowerGraph frontGraph = front().power.graph;
             float backStored = data.getBatteryStored() / data.getTotalBatteryCapacity();
+            Log.info("[淬火] backStored"+backStored,"");
             float frontStored = frontGraph.getBatteryStored() / frontGraph.getTotalBatteryCapacity();
-            if(backStored > frontStored){
+            Log.info("[淬火] frontStored"+frontStored,"");
                 float amount = data.getBatteryStored() * (backStored - frontStored) / 2;
                 amount = Mathf.clamp(amount, 0, frontGraph.getTotalBatteryCapacity() * (1 - frontStored));
 
                 data.transferPower(-amount);
                 frontGraph.transferPower(amount);
-            }
+                Log.info("[淬火] amount"+amount,"");
         }
 
         @Override
