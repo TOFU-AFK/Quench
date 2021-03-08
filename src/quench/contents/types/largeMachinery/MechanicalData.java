@@ -141,7 +141,7 @@ public class MechanicalData{
             Building build = battery.get(i).build;
             float capacity = build.block.consumes.getPower().capacity;
             float total = build.power.status*capacity;
-            if(capacity>=usePower+total){
+            if(usePower+total<=capacity){
                 build.power.status-=usePower / capacity;
                 consume+=usePower;
             }

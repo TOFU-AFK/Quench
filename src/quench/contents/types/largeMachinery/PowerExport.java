@@ -93,10 +93,10 @@ public class PowerExport extends StructuralBattery{
               Tile tile = near(c.direction);
               if(tile.build!=null&&tile.block()!=null&&tile.block()!=Blocks.air){
               Building build = tile.build;
-              if(build!=null&&build.block.hasPower&&build.team==team){
+              if(build!=null&&build.block.hasPower&&build.team==team&&build.block.consumes.getPower()!=null){
               float capacity = build.block.consumes.getPower().capacity;
               float status = build.power.status;
-              if(status*capacity+output>=capacity&&status<1){
+              if(status*capacity+output>=capacity){
                   consume = c.mechanicalData.usePower(output);
               }else if(capacity-status*capacity>0){
                   
