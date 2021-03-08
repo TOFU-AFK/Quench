@@ -89,7 +89,8 @@ public class PowerExport extends StructuralBattery{
         @Override
         public void updateTile(){
             super.updateTile();
-            if(front() == null !front().block.hasPower || back().team != front().team||c == null) return;
+            
+            if(front() == null || !front().block.hasPower || team != front().team || c == null) return;
 
             MechanicalData data = c.mechanicalData;
             PowerGraph frontGraph = front().power.graph;
