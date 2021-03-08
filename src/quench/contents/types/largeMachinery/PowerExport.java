@@ -59,7 +59,6 @@ import quench.*;
 import static mindustry.Vars.*;
 
 public class PowerExport extends StructuralBattery{
-    public float output = 10f;//电力输出
     public PowerExport(String name){
         super(name);
         rotate = true;
@@ -72,7 +71,7 @@ public class PowerExport extends StructuralBattery{
         noUpdateDisabled = true;
         consumesPower = true;
         outputsPower = true;
-        schematicPriority
+        schematicPriority = 10;
     }
 
     @Override
