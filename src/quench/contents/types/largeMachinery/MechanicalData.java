@@ -132,21 +132,73 @@ public class MechanicalData{
         }
         return power;
     }
-    
-    //使用整个结构的电力，返回实际消耗的数量
-    public float usePower(float amount){
-        float consume = 0;
-        float usePower = amount / battery.size();
-        for(int i=0;i<battery.size();i++){
-            Building build = battery.get(i).build;
-            float capacity = build.block.consumes.getPower().capacity;
-            float total = build.power.status*capacity;
-            if(usePower+total<=capacity){
-                build.power.status-=usePower / capacity;
-                consume+=usePower;
+//得到电池存量
+    public float getBatteryStored(){
+        float totalAccumulator = 0f;
+        for(Tile tile : battery){
+            Building build = tile.build;
+            Consumers consumes = build.block.consumes;
+            if(build.enabled && consumes.hasPower()){
+                totalAccumulator += build.power.status * consumes.getPower().capacity;
             }
         }
-        return consume;
+        return totalAccumulator;
+    }
+
+//使用电池
+    public float useBatteries(float needed){
+        float stored = getBatteryStored();
+        if(Mathf.equal(stored, 0f)) return 0f;
+
+        float used = Math.min(stored, needed);
+        float consumedPowerPercentage = Math.min(1.0f, needed / stored);
+        for(Tile tile : battery){
+            Building build = tile.build;
+            Consumers consumes = build.block.consumes;
+            if(build.enabled && consumes.hasPower()){
+                build.power.status *= (1f-consumedPowerPercentage);
+            }
+        }
+        return used;
+    }
+    
+    //得到电力总量
+    public float getTotalBatteryCapacity(){
+        float totalCapacity = 0f;
+        for(Tile tile : battery){
+            Building build = tile.build;
+            if(build.enabled && build.block.consumes.hasPower()){
+                totalCapacity += build.block.consumes.getPower().capacity;
+            }
+        }
+        return totalCapacity;
+    }
+    
+    //更改电力
+    public void transferPower(float amount){
+        if(amount > 0){
+            chargeBatteries(amount);
+        }else{
+            useBatteries(-amount);
+        }
+    }
+    
+    public float chargeBatteries(float excess){
+        float capacity = getBatteryCapacity();
+        float chargedPercent = Math.min(excess/capacity, 1f);
+        if(Mathf.equal(capacity, 0f)) return 0f;
+
+        for(Tile tile : battery){
+            Building build = tile.build;
+            Consumers consumes = build.block.consumes;
+            if(build.enabled && consumes.hasPower()){
+                ConsumePower consumePower = consumes.getPower();
+                if(consumePower.capacity > 0f){
+                    build.power.status += (1f- build.power.status) * chargedPercent;
+                }
+            }
+        }
+        return Math.min(excess, capacity);
     }
     
     public float getMotive(){

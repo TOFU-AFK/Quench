@@ -87,43 +87,19 @@ public class PowerExport extends StructuralBattery{
         }
         
         @Override
-        public void update(){
-          super.update();
-          if(c!=null){
-              /*float consume = 0;
-              Tile tile = near(c.direction);
-              if(tile.build!=null&&tile.block()!=null&&tile.block()!=Blocks.air){
-              Building build = tile.build;
-              if(build!=null&&build.block.hasPower&&build.team==team&&build.block.consumes.getPower()!=null){
-              float capacity = build.block.consumes.getPower().capacity;
-              float status = build.power.status;
-              if(status*capacity+output>=capacity){
-                  consume = c.mechanicalData.usePower(output);
-              }else if(capacity-status*capacity>0){
-                  
-                  consume = c.mechanicalData.usePower(capacity-status*capacity);
-              }
-              build.power.status+=consume / capacity;
-              }
-          }*/
-          }
-        }
-        
-        @Override
         public void updateTile(){
             super.updateTile();
-            if(front() == null || back() == null || !back().block.hasPower || !front().block.hasPower || back().team != front().team) return;
+            if(front() == null !front().block.hasPower || back().team != front().team||c == null) return;
 
-            PowerGraph backGraph = back().power.graph;
+            MechanicalData data = c.mechanicalData;
             PowerGraph frontGraph = front().power.graph;
-            if(backGraph == frontGraph) return;
-            float backStored = backGraph.getBatteryStored() / backGraph.getTotalBatteryCapacity();
+            float backStored = data.getBatteryStored() / data.getTotalBatteryCapacity();
             float frontStored = frontGraph.getBatteryStored() / frontGraph.getTotalBatteryCapacity();
             if(backStored > frontStored){
-                float amount = backGraph.getBatteryStored() * (backStored - frontStored) / 2;
+                float amount = data.getBatteryStored() * (backStored - frontStored) / 2;
                 amount = Mathf.clamp(amount, 0, frontGraph.getTotalBatteryCapacity() * (1 - frontStored));
 
-                backGraph.transferPower(-amount);
+                data.transferPower(-amount);
                 frontGraph.transferPower(amount);
             }
         }
