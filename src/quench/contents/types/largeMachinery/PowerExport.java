@@ -62,6 +62,7 @@ public class PowerExport extends StructuralBattery{
     public float output = 10f;//电力输出
     public PowerExport(String name){
         super(name);
+        rotate = true;
         solid = true;
         destructible = true;
         buildCostMultiplier = 5f;
@@ -89,7 +90,7 @@ public class PowerExport extends StructuralBattery{
         public void update(){
           super.update();
           if(c!=null){
-              float consume = 0;
+              /*float consume = 0;
               Tile tile = near(c.direction);
               if(tile.build!=null&&tile.block()!=null&&tile.block()!=Blocks.air){
               Building build = tile.build;
@@ -104,8 +105,27 @@ public class PowerExport extends StructuralBattery{
               }
               build.power.status+=consume / capacity;
               }
+          }*/
           }
-          }
+        }
+        
+        @Override
+        public void updateTile(){
+            super.updateTile();
+            if(front() == null || back() == null || !back().block.hasPower || !front().block.hasPower || back().team != front().team) return;
+
+            PowerGraph backGraph = back().power.graph;
+            PowerGraph frontGraph = front().power.graph;
+            if(backGraph == frontGraph) return;
+            float backStored = backGraph.getBatteryStored() / backGraph.getTotalBatteryCapacity();
+            float frontStored = frontGraph.getBatteryStored() / frontGraph.getTotalBatteryCapacity();
+            if(backStored > frontStored){
+                float amount = backGraph.getBatteryStored() * (backStored - frontStored) / 2;
+                amount = Mathf.clamp(amount, 0, frontGraph.getTotalBatteryCapacity() * (1 - frontStored));
+
+                backGraph.transferPower(-amount);
+                frontGraph.transferPower(amount);
+            }
         }
 
         @Override
