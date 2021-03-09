@@ -61,7 +61,6 @@ import static mindustry.Vars.*;
 public class PowerExport extends StructuralBattery{
     public PowerExport(String name){
         super(name);
-        rotate = true;
         solid = true;
         destructible = true;
         buildCostMultiplier = 5f;
@@ -71,7 +70,6 @@ public class PowerExport extends StructuralBattery{
         noUpdateDisabled = true;
         consumesPower = true;
         outputsPower = true;
-        schematicPriority = 10;
     }
 
     @Override
@@ -87,13 +85,12 @@ public class PowerExport extends StructuralBattery{
         }
         
         @Override
-        public void updateTile(){
-            super.updateTile();
-            
-            if(front() == null || !front().block.hasPower || team != front().team || c == null) return;
+        public void update(){
+            super.update();
+            if(c == null || near(c.direction) == null || !near(c.direction).build.block.hasPower || team != near(c.direction).team()) return;
             Log.info("[淬火] if(front() == null || !front().block.hasPower || team != front().team || c == null) return;","");
             MechanicalData data = c.mechanicalData;
-            PowerGraph frontGraph = front().power.graph;
+            PowerGraph frontGraph = near(c.direction).build.power.graph;
             float backStored = data.getBatteryStored() / data.getTotalBatteryCapacity();
             Log.info("[淬火] backStored"+backStored,"");
             float frontStored = frontGraph.getBatteryStored() / frontGraph.getTotalBatteryCapacity();
