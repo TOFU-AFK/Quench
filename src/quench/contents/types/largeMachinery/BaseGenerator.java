@@ -69,7 +69,7 @@ public class BaseGenerator extends StructuralBattery{
         buildCostMultiplier = 5f;
         configurable = true;
         hasPower = true;
-        outputsPower = true;
+        outputsPower = false;
         consumesPower = true;
         canGenerate = true;
     }
