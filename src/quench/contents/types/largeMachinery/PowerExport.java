@@ -87,7 +87,7 @@ public class PowerExport extends StructuralBattery{
         @Override
         public void update(){
             super.update();
-            if(c == null || near(c.direction) == null || !near(c.direction).build.block.hasPower || team != near(c.direction).team()) return;
+            if(c != null && near(c.direction) != null && near(c.direction).block().hasPower && team == near(c.direction).team()) {
             Log.info("[淬火] if(front() == null || !front().block.hasPower || team != front().team || c == null) return;","");
             MechanicalData data = c.mechanicalData;
             PowerGraph frontGraph = near(c.direction).build.power.graph;
@@ -101,6 +101,7 @@ public class PowerExport extends StructuralBattery{
                 data.transferPower(-amount);
                 frontGraph.transferPower(amount);
                 Log.info("[淬火] amount"+amount,"");
+            }
         }
 
         @Override
