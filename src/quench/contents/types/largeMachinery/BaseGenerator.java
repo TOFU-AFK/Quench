@@ -64,13 +64,6 @@ public class BaseGenerator extends StructuralBattery{
     public float consumeMotive = 0.01f;
     public BaseGenerator(String name){
         super(name);
-        solid = true;
-        destructible = true;
-        buildCostMultiplier = 5f;
-        configurable = true;
-        hasPower = true;
-        outputsPower = false;
-        consumesPower = true;
         canGenerate = true;
     }
 

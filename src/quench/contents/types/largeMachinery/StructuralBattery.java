@@ -70,7 +70,7 @@ public class StructuralBattery extends LargeMachinery{
         group = BlockGroup.power;
         noUpdateDisabled = true;
         consumesPower = true;
-        outputsPower = false;
+        outputsPower = true;
     }
 
     @Override
