@@ -92,7 +92,7 @@ public class PowerExport extends StructuralBattery{
             PowerGraph frontGraph = near(c.direction).build.power.graph;
             float backStored = data.graph.getBatteryStored() / data.graph.getTotalBatteryCapacity();
             float frontStored = frontGraph.getBatteryStored() / frontGraph.getTotalBatteryCapacity();
-                float amount = data.getBatteryStored() * (backStored - frontStored) / 2;
+                float amount = data.graph.getBatteryStored() * (backStored - frontStored) / 2;
                 amount = Mathf.clamp(amount, 0, frontGraph.getTotalBatteryCapacity() * (1 - frontStored));
 
                 data.graph.transferPower(-amount);
