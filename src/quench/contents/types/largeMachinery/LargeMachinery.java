@@ -158,7 +158,7 @@ public class LargeMachinery extends Block{
         
         @Override
         public void drawConfigure(){
-            BaseDialog pop = new BaseDialog(block.displayName);
+            BaseDialog pop = new BaseDialog(block.getDisplayName(tile()));
             detailed(pop);
         }
         
