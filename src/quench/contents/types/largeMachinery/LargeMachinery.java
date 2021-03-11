@@ -27,7 +27,6 @@ import mindustry.ctype.*;
 import mindustry.content.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.entities.bullet.*;
-import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
@@ -52,9 +51,7 @@ import mindustry.world.meta.*;
 import mindustry.core.*;
 import mindustry.*;
 import mindustry.content.TechTree.TechNode;
-import arc.scene.ui.*;
-import mindustry.core.GameState.*;
-import mindustry.game.EventType.*;
+import arc.scene.ui.Dialog.DialogStyle;
 
 import java.util.*;
 
