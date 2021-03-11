@@ -5,5 +5,6 @@ public enum StructureType{
     core,
     battery,
     generator,
+    motive,
     powerSupply;
 }

@@ -157,6 +157,20 @@ public class LargeMachinery extends Block{
         }
         
         @Override
+        public void drawConfigure(){
+            BaseDialog pop = new BaseDialog(block.displayName);
+            detailed(pop)
+        }
+        
+        //被点击时显示详细数据
+        public void detailed(BaseDialog pop){
+            pop.setFillParent(false);
+            pop.setWidth(80);
+            pop.setHeight(160);
+            pop.show();
+        }
+        
+        @Override
         public void write(Writes write){
             super.write(write);
             if(hasPower) write.f(power.status);

@@ -175,6 +175,7 @@ public class MechanicalCore extends LargeMachinery{
         //用于绘制结构
         @Override
         public void drawConfigure(){
+        super.drawConfigure();
         if(!start){
         for(BlockData data:structure.datas){
         Draw.alpha(0.5f);
@@ -187,9 +188,10 @@ public class MechanicalCore extends LargeMachinery{
             Draw.rect(condition,x-tilesize/2,y+tilesize);
         }
         //获取结构数据，触发结构中方块的drawConfigure()方法
-        for(int i=0;i<mechanicalData.getTiles().size();i++){
+        //感觉无用，先注释了
+        /*for(int i=0;i<mechanicalData.getTiles().size();i++){
             LargeMachineryBuild build = (LargeMachineryBuild) mechanicalData.getTile(i).build;
-            build.drawConfigure();
+            build.drawConfigure();*/
         }
         }
         
