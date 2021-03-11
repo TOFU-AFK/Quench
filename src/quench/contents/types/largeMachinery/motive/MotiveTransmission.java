@@ -57,7 +57,7 @@ import java.util.*;
 
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 import quench.contents.types.draw.*;
-import quench.*;
+import quench.contents.types.*;
 
 import static mindustry.Vars.*;
 
