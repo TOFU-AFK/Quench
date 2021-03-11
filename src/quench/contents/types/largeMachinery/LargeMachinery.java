@@ -159,7 +159,7 @@ public class LargeMachinery extends Block{
         @Override
         public void drawConfigure(){
             BaseDialog pop = new BaseDialog(block.displayName);
-            detailed(pop)
+            detailed(pop);
         }
         
         //被点击时显示详细数据
