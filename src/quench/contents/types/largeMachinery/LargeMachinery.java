@@ -160,9 +160,9 @@ public class LargeMachinery extends Block{
         @Override
         public void drawConfigure(){
             DialogStyle style = new DialogStyle(){{
-            stageBackground = none;
+            stageBackground = Styles.none;
             titleFont = Fonts.def;
-            background = windowEmpty;
+            background = Styles.windowEmpty;
             titleFontColor = Pal.lightPyraFlame;
         }};
             pop = new BaseDialog(block.getDisplayName(tile()),style);
