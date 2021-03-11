@@ -193,7 +193,6 @@ public class MechanicalCore extends LargeMachinery{
             LargeMachineryBuild build = (LargeMachineryBuild) mechanicalData.getTile(i).build;
             build.drawConfigure();*/
         }
-        }
         
         public void controlStart(){
             for(BlockData data:structure.datas){
