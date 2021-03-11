@@ -162,7 +162,7 @@ public class LargeMachinery extends Block{
             DialogStyle style = new DialogStyle(){{
             stageBackground = Styles.none;
             titleFont = Fonts.def;
-            background = Styles.windowEmpty;
+            //background = windowEmpty;
             titleFontColor = Pal.lightPyraFlame;
         }};
             pop = new BaseDialog(block.getDisplayName(tile()),style);
