@@ -52,6 +52,9 @@ import mindustry.world.meta.*;
 import mindustry.core.*;
 import mindustry.*;
 import mindustry.content.TechTree.TechNode;
+import arc.scene.ui.*;
+import mindustry.core.GameState.*;
+import mindustry.game.EventType.*;
 
 import java.util.*;
 
