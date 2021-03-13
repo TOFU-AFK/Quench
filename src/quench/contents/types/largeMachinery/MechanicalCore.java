@@ -96,7 +96,7 @@ public class MechanicalCore extends LargeMachinery{
 			(MechanicalCoreBuild entity) -> new Bar(
 				() -> Core.bundle.get("MechanicalCore.totalMotive"),
 				() -> Pal.powerBar,
-				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.motiveStorage
+				() -> entity.mechanicalData.getMotive() / entity.mechanicalData.getTotalMotive()
 			)
 		);
 	}
@@ -150,6 +150,7 @@ public class MechanicalCore extends LargeMachinery{
             }
             if(start){
                 controlStart();
+                mechanicalData.update();
                 condition = Core.atlas.find("quench-status-right");
             }else{
                 mechanicalData.initialize();

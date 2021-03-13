@@ -59,14 +59,14 @@ import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 public class MechanicalData{
     public MechanicalCoreBuild core;
     public Structure structure;
+    //集合，这里推荐用Seq，用ArrayList是因为当时我并没有想到用这个，现在也懒得改了
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<Tile> tile = new ArrayList<Tile>();
     ArrayList<Tile> generator = new ArrayList<Tile>();
     ArrayList<Tile> powerSupply = new ArrayList<Tile>();
     public float efficiency = 0;
-    public float motiveStorage = 0;//动力总量
-    public float motive = 0;//动力
     public StructureGraph graph;
+    public boolean overburden = false;//动力是否超载
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;
@@ -116,8 +116,29 @@ public class MechanicalData{
         return 0;
     }
     
+    public void update(){
+        //判断动力是否超载
+        if(getMotive()>getTotalMotive()){
+            overburden = true;
+        }else{
+            overburden = false;
+        }
+    }
+    
+    //得到动力使用
     public float getMotive(){
-        motive = 0;
+        float motive = 0;
+        for(int i=0;i<generator.size();i++){
+            Tile t = generator.get(i);
+            LargeMachinery block = (LargeMachinery) t.block();
+            motive+=block.increasePower;
+        }
+        return motive*efficiency;
+    }
+    
+    //得到动力总量
+    public float getTotalMotive(){
+        float motive = 0;
         for(int i=0;i<powerSupply.size();i++){
             Tile t = powerSupply.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;

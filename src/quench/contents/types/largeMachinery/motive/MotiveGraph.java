@@ -1,5 +1,5 @@
 /*
-*大型机械的动力传输type
+*大型机械的动力管理器
 */
 package quench.contents.types.motive;
 
@@ -61,51 +61,9 @@ import quench.contents.types.*;
 
 import static mindustry.Vars.*;
 
-public class MotiveTransmission extends LargeMachinery{
-    public float occupy = 2;
-    public MotiveTransmission(String name){
-        super(name);
-        solid = true;
-        destructible = true;
-        group = BlockGroup.walls;
-        update = true;
-        buildCostMultiplier = 5f;
-        configurable = true;
-    }
-
-    @Override
-    public void load(){
-        super.load();
-        drawer.load(this);
-    }
-    
-    public StructureType getType(){
-        return StructureType.motive;
-    }
-    
-	 
-    public class MotiveTransmissionBuild extends LargeMachineryBuild{
-        public MotiveGraph;
-        //是否拥有动力管理系统
-        public boolean hasMotiveGraph(){
-            return MotiveGraph!=null;
-        }
+public class MotiveGraph{
+    public Seq<MotiveTransmission> builds = new Seq<MotiveTransmission>();
+    public MotiveGraph(){
         
-        @Override
-        public void buildConfiguration(Table table){
-            Table cont = new Table();
-            cont.add(MotiveGraph!=null ? "动力占用:"+occupy:"未找到动力源");
-            table.add(cont);
-        }
-        
-        @Override
-        public void update(){
-        }
-
-        @Override
-        public void draw(){
-            drawer.draw(this);
-        }
-
     }
 }
