@@ -66,7 +66,6 @@ public class MechanicalData{
     public float efficiency = 0;
     public float motiveStorage = 0;//动力总量
     public float motive = 0;//动力
-    public boolean using = false;//正在使用中
     public StructureGraph graph;
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
@@ -83,7 +82,6 @@ public class MechanicalData{
         efficiency = 0;
         motiveStorage = 0;
         motive = 0;
-        using = false;
         graph = null;
     }
     
@@ -138,7 +136,6 @@ public class MechanicalData{
     }
     
     public void addTile(Tile b){
-        if(!using) using = true;
         tile.add(b);
         LargeMachinery block = (LargeMachinery) b.block();
         if(block.getType()==StructureType.battery){

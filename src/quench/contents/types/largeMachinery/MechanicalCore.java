@@ -152,7 +152,7 @@ public class MechanicalCore extends LargeMachinery{
                 controlStart();
                 condition = Core.atlas.find("quench-status-right");
             }else{
-                if(mechanicalData.using) mechanicalData.initialize();
+                mechanicalData.initialize();
                 condition = Core.atlas.find("quench-status-mistake");
             }
         }
@@ -167,7 +167,7 @@ public class MechanicalCore extends LargeMachinery{
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
                 if(!tile.block().name.equals(data.name)||tile.team()!=team) return false;
                 LargeMachineryBuild build = (LargeMachineryBuild) tile.build;
-                if(build.c!=null&&build.c != this) return false;
+                if(build.c!=null&&build.c != this&&build.team!=team) return false;
             }
             return true;
         }
@@ -219,6 +219,7 @@ public class MechanicalCore extends LargeMachinery{
                 build.c = null;
                 }
             }
+            mechanicalData.initialize();
             }
         }
         
