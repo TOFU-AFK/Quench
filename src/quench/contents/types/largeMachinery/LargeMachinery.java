@@ -150,14 +150,12 @@ public class LargeMachinery extends Block{
         public void write(Writes write){
             super.write(write);
             if(hasPower) write.f(power.status);
-            write.f(motiveQuantity);
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
             if(hasPower) power.status = read.f();
-            motiveQuantity = read.f();
         }
     }
 }
