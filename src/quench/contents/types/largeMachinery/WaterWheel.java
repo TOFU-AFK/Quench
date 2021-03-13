@@ -99,33 +99,10 @@ public class WaterWheel extends PowerSupplyMachine{
             liquid = t.floor().liquidDrop;
             }
             if(liquid!=null&&liquid.viscosity<=viscosity){
-            if(motiveQuantity+yield*c.mechanicalData.efficiency<=store){
-            motiveQuantity+=yield*c.mechanicalData.efficiency;
-            }else if(store-motiveQuantity>0){
-            motiveQuantity+=store-motiveQuantity;
-            }
-            outputMotive();
+                motive = yield * c.mechanicalData.efficiency;
             }
         }
-        
-        //输出动力
-        public void outputMotive(){
-            ArrayList<Tile> generator = c.mechanicalData.generator;
-            float output = outputMotive / generator.size();
-            for(int i=0;i<generator.size();i++){
-            Tile t = generator.get(i);
-            LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            LargeMachinery block = (LargeMachinery) t.block();
-            if(build.motiveQuantity+output<=block.store){
-            build.motiveQuantity+=output;
-            motiveQuantity-=output;
-            }else if(store-build.motiveQuantity>0){
-                output = store-build.motiveQuantity;
-                build.motiveQuantity+=output;
-                motiveQuantity-=output;
-            }
-            }
-}
+
         @Override
         public void draw(){
             drawer.draw(this);

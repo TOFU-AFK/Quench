@@ -139,7 +139,7 @@ public class MechanicalData{
         for(int i=0;i<powerSupply.size();i++){
             Tile t = powerSupply.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            motive+=build.motiveQuantity;
+            motive+=build.motive;
         }
         return motive;
     }

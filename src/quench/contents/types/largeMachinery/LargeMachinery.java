@@ -65,7 +65,6 @@ public class LargeMachinery extends Block{
     //public MechanicalCoreBuild core;
     public boolean canProvidePower;//可提供动力，用于动力发电机检测方块
     public boolean canGenerate;//可以发电
-    public float store = 0;//动能存量
     public float yield = 0;//动能产量
     public DrawLargeMachinery drawer = new DrawLargeMachinery();
     public float outputMotive = 0;//输出的动能
@@ -97,15 +96,6 @@ public class LargeMachinery extends Block{
     @Override
 	public void setBars(){
 		super.setBars();
-		if(store>0){
-		bars.add(Core.bundle.get("LargeMachinery.motiveForce"), 
-			(LargeMachineryBuild entity) -> new Bar(
-				() -> Core.bundle.get("LargeMachinery.motiveForce"),
-				() -> Pal.powerBar,
-				() -> entity.motiveQuantity / store
-			)
-		);
-		}
 	}
     
     //使用黑名单和白名单判断是否可放在指定方块上，比如水车只能放在水方块上

@@ -64,6 +64,7 @@ public class BlockData{
         this.y = y;
     }
     
+    //不要问为啥有这个构造方法，以前写的烂代码懒得改了
     public BlockData(String name,int x,int y){
         this.block = QULargeMachinery.basicBlock;
         this.name = name;
