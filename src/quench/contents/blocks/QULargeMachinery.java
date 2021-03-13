@@ -54,7 +54,7 @@ public class QULargeMachinery implements ContentList
 		hydroelectricGeneratorCore = new MechanicalCore("hydroelectricGeneratorCore")
 		{
 			{
-            requirements(Category.effect, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+            requirements(Category.power, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
 			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData(powerExport,0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(waterwheel,0,24)});//每次偏移8像素，就偏移一格
@@ -66,7 +66,7 @@ public class QULargeMachinery implements ContentList
         mediumHydroelectricGeneratorCore = new MechanicalCore("mediumHydroelectricGeneratorCore")
 		{
 			{
-            requirements(Category.effect, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
+            requirements(Category.power, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
 			size = 1;
 			health = 40*size*size;
 			efficiency = 1.2f;
@@ -82,7 +82,7 @@ public class QULargeMachinery implements ContentList
 	    basicBlock = new LargeMachinery("basicBlock")
 		{
 			{
-            requirements(Category.crafting, with(Items.copper, 25));
+            requirements(Category.effect, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
 			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
@@ -92,7 +92,7 @@ public class QULargeMachinery implements ContentList
 		mediumBasicBlock = new LargeMachinery("mediumBasicBlock")
 		{
 			{
-            requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
+            requirements(Category.effect, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
 			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 100),new ItemStack(Items.lead, 25)});
@@ -102,7 +102,7 @@ public class QULargeMachinery implements ContentList
 		smallStructureBattery = new StructuralBattery("smallStructureBattery")
 		{
 			{
-            requirements(Category.crafting, with(Items.silicon, 25, Items.lead, 30));
+            requirements(Category.effect, with(Items.silicon, 25, Items.lead, 30));
 			size = 1;
 			health = 40*size*size;
 			consumes.powerBuffered(3500f);
@@ -112,7 +112,7 @@ public class QULargeMachinery implements ContentList
 		//电力
 		powerGenerator = new BaseGenerator("powerGenerator"){
 		    {
-            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+            requirements(Category.effect, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
 			powerOutput = 10;
@@ -125,7 +125,7 @@ public class QULargeMachinery implements ContentList
 		waterwheel = new WaterWheel("waterwheel")
 		{
 			{
-            requirements(Category.crafting, with(Items.copper, 100,Items.lead,25));
+            requirements(Category.effect, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
 			floating = true;
@@ -141,7 +141,7 @@ public class QULargeMachinery implements ContentList
 		powerExport = new PowerExport("powerExport")
 		{
 			{
-            requirements(Category.crafting, with(Items.copper, 25));
+            requirements(Category.effect, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
 			drawer = new DrawPowerExport();
