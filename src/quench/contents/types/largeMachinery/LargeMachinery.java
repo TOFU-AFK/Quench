@@ -120,7 +120,7 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        public float motiveQuantity = 0;//动能数量
+        public float motive = 0;//实际动能产出
         
         @Override
         public void buildConfiguration(Table table){

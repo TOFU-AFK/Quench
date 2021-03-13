@@ -78,7 +78,6 @@ public class PowerSupplyMachine extends LargeMachinery{
     }
 	 
     public class PowerSupplyMachineBuild extends LargeMachineryBuild{
-        public float motive = 0;
         
         @Override
         public void buildConfiguration(Table table){
