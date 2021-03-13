@@ -92,7 +92,8 @@ public class BaseGenerator extends StructuralBattery{
         @Override
         public void update(){
           super.update();
-          if(c!=null&&canGenerate&&motiveQuantity>=consumeMotive){
+          //最后一个条件为判断是否超载
+          if(c!=null&&canGenerate&&!c.mechanicalData.overburden){
               generate();
           }
         }
@@ -107,7 +108,6 @@ public class BaseGenerator extends StructuralBattery{
                 power.status=1;
             }
             if(c.mechanicalData!=null) outputPower();
-            motiveQuantity-=consumeMotive;
         }
         
         //给多方块结构中的电池方块输入电力

@@ -128,7 +128,7 @@ public class MechanicalData{
         for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
             BaseGenerator block = (BaseGenerator) t.block();
-            motive+=block.increasePower;
+            motive+=block.consumeMotive;
         }
         return motive*efficiency;
     }
