@@ -70,7 +70,7 @@ public class QULargeMachinery implements ContentList
 			size = 1;
 			health = 40*size*size;
 			efficiency = 1.2f;
-			structure = new Structure(new BlockData[]{new BlockData(basicBlock,-16,24),new BlockData(basicBlock,-8,24),new BlockData(basicBlock,8,24),new BlockData(basicBlock,16,24),new BlockData(powerGenerator,-16,24),new BlockData(powerGenerator,-8,16),new BlockData(powerGenerator,8,16),new BlockData(powerGenerator,16,16),new BlockData(smallStructureBattery,0,16),new BlockData(smallStructureBattery,0,8),new BlockData(mediumBasicBlock,-16,8),new BlockData(mediumBasicBlock,-16,8),new BlockData(basicBlock,-8,8),new BlockData(basicBlock,8,8),new BlockData(waterwheel,-16,0),new BlockData(waterwheel,-8,0),new BlockData(waterwheel,8,0),new BlockData(waterwheel,16,0),new BlockData(powerExport,0,24)});//一方块8像素
+			structure = new Structure(new BlockData[]{new BlockData(basicBlock,-16,24),new BlockData(basicBlock,-8,24),new BlockData(basicBlock,8,24),new BlockData(basicBlock,16,24),new BlockData(powerGenerator,-16,16),new BlockData(powerGenerator,-8,16),new BlockData(powerGenerator,8,16),new BlockData(powerGenerator,16,16),new BlockData(smallStructureBattery,0,16),new BlockData(smallStructureBattery,0,8),new BlockData(mediumBasicBlock,-16,8),new BlockData(mediumBasicBlock,16,8),new BlockData(basicBlock,-8,8),new BlockData(basicBlock,8,8),new BlockData(waterwheel,-16,0),new BlockData(waterwheel,-8,0),new BlockData(waterwheel,8,0),new BlockData(waterwheel,16,0),new BlockData(powerExport,0,24)});//一方块8像素
 			//添加科技树
 			new TechNode(TechTree.get(hydroelectricGeneratorCore), this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
 			}
