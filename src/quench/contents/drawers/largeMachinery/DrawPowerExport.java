@@ -45,26 +45,24 @@ import java.util.ArrayList;
 import static mindustry.Vars.*;
 
 public class DrawPowerExport extends DrawLargeMachinery {
-    public TextureRegion arrow;
+    public TextureRegion arrow,place;
     public float angle = 0;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	    Draw.rect(entity.block.region, entity.x, entity.y);
-	    if(entity.c!=null&&entity.c.mechanicalData!=null){
-	        angle = entity.c.mechanicalData.getAngle();
-	    }
+	    Draw.rect(place, entity.x, entity.y);
 	    Draw.color(Pal.powerBar);
         Draw.alpha(0.9f);
         Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Pal.powerBar).lerp(Pal.lightTrail, Mathf.absin(7f, 0.2f)), 12f);
         Draw.blend(Blending.additive);
-        Draw.rect(arrow, entity.x, entity.y,angle);
+        Draw.rect(arrow, entity.x, entity.y,entity.rotation * 90);
         Draw.blend();
     }
 
     @Override
     public void load(Block block){
      arrow = Core.atlas.find("quench-arrow");
+     place = Core.atlas.find(block.name + "-place");
     }
 
 }
