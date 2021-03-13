@@ -50,7 +50,7 @@ public class DrawPowerExport extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	    int r = entity.rotation-1;
+	    int r = entity.rotation+1;
 	    Draw.rect(place, entity.x, entity.y);
 	    Draw.color(Pal.powerBar);
         Draw.alpha(0.9f);
