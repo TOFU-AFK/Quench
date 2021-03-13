@@ -85,10 +85,10 @@ public class MotiveTransmission extends LargeMachinery{
     
 	 
     public class MotiveTransmissionBuild extends LargeMachineryBuild{
-        public MotiveGraph;
+        public MotiveGraph graph;
         //是否拥有动力管理系统
         public boolean hasMotiveGraph(){
-            return MotiveGraph!=null;
+            return graph!=null;
         }
         
         @Override
