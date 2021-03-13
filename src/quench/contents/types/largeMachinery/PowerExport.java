@@ -90,12 +90,12 @@ public class PowerExport extends StructuralBattery{
             if(c != null && near(c.direction) != null && near(c.direction).block().hasPower && team == near(c.direction).team()) {
             MechanicalData data = c.mechanicalData;
             PowerGraph frontGraph = near(c.direction).build.power.graph;
-            float backStored = data.getBatteryStored() / data.getTotalBatteryCapacity();
+            float backStored = data.graph.getBatteryStored() / data.graph.getTotalBatteryCapacity();
             float frontStored = frontGraph.getBatteryStored() / frontGraph.getTotalBatteryCapacity();
-                float amount = data.getBatteryStored() * (backStored - frontStored) / 2;
+                float amount = data.graph.getBatteryStored() * (backStored - frontStored) / 2;
                 amount = Mathf.clamp(amount, 0, frontGraph.getTotalBatteryCapacity() * (1 - frontStored));
 
-                data.transferPower(-amount);
+                data.graph.transferPower(-amount);
                 frontGraph.transferPower(amount);
             }
         }
