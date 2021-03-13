@@ -67,6 +67,7 @@ public class MechanicalData{
     public float motiveStorage = 0;//动力总量
     public float motive = 0;//动力
     public boolean using = false;//正在使用中
+    public float power;
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
         this.core = core;
         this.structure = structure;

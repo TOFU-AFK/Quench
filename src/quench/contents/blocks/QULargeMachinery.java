@@ -54,7 +54,7 @@ public class QULargeMachinery implements ContentList
 		hydroelectricGeneratorCore = new MechanicalCore("hydroelectricGeneratorCore")
 		{
 			{
-            requirements(Category.crafting, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
+            requirements(Category.effect, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
 			structure = new Structure(new BlockData[]{new BlockData("quench-basicBlock",8,8),new BlockData("quench-basicBlock",-8,8),new BlockData("quench-basicBlock",8,16),new BlockData("quench-basicBlock",-8,16),new BlockData("quench-basicBlock",8,24),new BlockData("quench-basicBlock",-8,24),new BlockData("quench-basicBlock",8,-8),new BlockData("quench-basicBlock",-8,-8),new BlockData(powerExport,0,-8),new BlockData("quench-basicBlock",8,0),new BlockData("quench-basicBlock",-8,0),new BlockData(smallStructureBattery,0,8),new BlockData(powerGenerator,0,16),new BlockData(waterwheel,0,24)});//每次偏移8像素，就偏移一格
@@ -66,7 +66,7 @@ public class QULargeMachinery implements ContentList
         mediumHydroelectricGeneratorCore = new MechanicalCore("mediumHydroelectricGeneratorCore")
 		{
 			{
-            requirements(Category.crafting, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
+            requirements(Category.effect, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
 			size = 1;
 			health = 40*size*size;
 			efficiency = 1.2f;
