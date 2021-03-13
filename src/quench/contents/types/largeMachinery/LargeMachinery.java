@@ -131,7 +131,6 @@ public class LargeMachinery extends Block{
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
         public float motiveQuantity = 0;//动能数量
-        BaseDialog pop;
         
         @Override
         public void buildConfiguration(Table table){
@@ -155,27 +154,6 @@ public class LargeMachinery extends Block{
         @Override
         public void draw(){
             drawer.draw(this);
-        }
-        
-        @Override
-        public void drawConfigure(){
-            DialogStyle style = new DialogStyle(){{
-            stageBackground = Styles.none;
-            titleFont = Fonts.def;
-            //background = windowEmpty;
-            titleFontColor = Pal.lightPyraFlame;
-        }};
-            pop = new BaseDialog(block.getDisplayName(tile()),style);
-            detailed(pop);
-        }
-        
-        //被点击时显示详细数据
-        public void detailed(BaseDialog pop){
-            pop.setFillParent(false);
-            pop.setWidth(80);
-            pop.setHeight(160);
-            pop.addCloseButton();
-            pop.show();
         }
         
         @Override
