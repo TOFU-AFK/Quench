@@ -82,7 +82,7 @@ public class MechanicalData{
         efficiency = 0;
         motiveStorage = 0;
         motive = 0;
-        graph = null;
+        graph = new StructureGraph();
     }
     
     public void addBattery(Tile t){
