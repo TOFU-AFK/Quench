@@ -94,7 +94,7 @@ public class MotiveTransmission extends LargeMachinery{
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(MotiveGraph!=null ? "动力占用:"+occupy:"未找到动力源");
+            cont.add(graph!=null ? "动力占用:"+occupy:"未找到动力源");
             table.add(cont);
         }
         

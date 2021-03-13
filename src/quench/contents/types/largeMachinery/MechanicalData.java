@@ -80,8 +80,6 @@ public class MechanicalData{
         generator.clear();
         powerSupply.clear();
         efficiency = 0;
-        motiveStorage = 0;
-        motive = 0;
         graph = new StructureGraph();
     }
     
@@ -98,7 +96,6 @@ public class MechanicalData{
     public void addPowerSupply(Tile t){
         powerSupply.add(t);
         LargeMachinery block = (LargeMachinery) t.block();
-        motiveStorage+=block.store;
     }
     
     //返回结构角度
@@ -130,7 +127,7 @@ public class MechanicalData{
         float motive = 0;
         for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
-            LargeMachinery block = (LargeMachinery) t.block();
+            BaseGenerator block = (BaseGenerator) t.block();
             motive+=block.increasePower;
         }
         return motive*efficiency;
