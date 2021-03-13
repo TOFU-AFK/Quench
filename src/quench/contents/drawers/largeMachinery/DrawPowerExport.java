@@ -50,12 +50,13 @@ public class DrawPowerExport extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
+	    int r = entity.rotation-1;
 	    Draw.rect(place, entity.x, entity.y);
 	    Draw.color(Pal.powerBar);
         Draw.alpha(0.9f);
         Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(Pal.powerBar).lerp(Pal.lightTrail, Mathf.absin(7f, 0.2f)), 12f);
         Draw.blend(Blending.additive);
-        Draw.rect(arrow, entity.x, entity.y,entity.rotation * 90);
+        Draw.rect(arrow, entity.x, entity.y,r * 90);
         Draw.blend();
     }
 
