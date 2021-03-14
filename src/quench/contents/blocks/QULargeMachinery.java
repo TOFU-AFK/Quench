@@ -116,8 +116,8 @@ public class QULargeMachinery implements ContentList
             requirements(Category.effect, with(Items.silicon, 45, Items.lead, 85,Items.titanium, 25));
 			size = 1;
 			health = 40*size*size;
-			powerOutput = 10;
-			increasePower = 20;
+			powerOutput = 200;
+			increasePower = 200;
 			consumes.powerBuffered(10f);
 			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.silicon, 45),new ItemStack(Items.lead, 85),new ItemStack(Items.titanium, 25)});
 			}

@@ -200,7 +200,6 @@ public class MechanicalCore extends LargeMachinery{
                 if(structure.datas.length>mechanicalData.getTiles().size()){
                 //先获取地图的tile，再将build强制转换成LargeMachineryBuild，因为前面已经判断了方块的名称，所以不用担心出现问题
                 Tile tile = Vars.world.tile((int) tile().x+data.x(direction)/8,(int) tile().y+data.y(direction)/8);
-                tile.remove();
                 tile.setNet(data.block,team(),0);
                 LargeMachineryBuild build = (LargeMachineryBuild) tile.build;
                 build.c = this;
