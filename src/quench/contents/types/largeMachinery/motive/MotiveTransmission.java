@@ -117,7 +117,7 @@ public class MotiveTransmission extends LargeMachinery{
         
         //目标，传输动力的目标
         public Tile target(){
-          return nearby(rotation);
+          return tile().nearby(rotation);
         }
         
         //可传输动力

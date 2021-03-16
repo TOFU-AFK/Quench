@@ -37,6 +37,7 @@ import quench.contents.items.*;
 import quench.contents.drawers.*;
 import quench.contents.effects.*;
 import quench.contents.largeMachinery.drawers.*;
+import quench.contents.types.motive.*;
 
 import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
