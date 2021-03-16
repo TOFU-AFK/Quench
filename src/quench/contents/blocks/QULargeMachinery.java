@@ -43,7 +43,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod;
 	
 	@Override
 	public void load()
@@ -148,6 +148,15 @@ public class QULargeMachinery implements ContentList
 			drawer = new DrawPowerExport();
 			consumes.powerBuffered(1250f);
 			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 25)});
+			}
+		};
+		
+		motiveRod = new MotiveTransmission("motiveRod"){
+		  {
+            requirements(Category.effect, with(Items.copper, 25));
+			size = 1;
+			health = 40*size*size;
+			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
 		};
 	}

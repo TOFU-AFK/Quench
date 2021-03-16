@@ -63,6 +63,7 @@ import static mindustry.Vars.*;
 
 public class MotiveTransmission extends LargeMachinery{
     public float occupy = 2;
+    public boolean transportable;
     public MotiveTransmission(String name){
         super(name);
         solid = true;
@@ -71,6 +72,8 @@ public class MotiveTransmission extends LargeMachinery{
         update = true;
         buildCostMultiplier = 5f;
         configurable = true;
+        rotate = true;
+        transportable = true;
     }
 
     @Override
@@ -85,26 +88,71 @@ public class MotiveTransmission extends LargeMachinery{
     
 	 
     public class MotiveTransmissionBuild extends LargeMachineryBuild{
-        public MotiveGraph graph;
-        //是否拥有动力管理系统
-        public boolean hasMotiveGraph(){
-            return graph!=null;
-        }
+        public Motive motive;
+        public float amount = 0;
+        public boolean start = false;
         
         @Override
         public void buildConfiguration(Table table){
-            Table cont = new Table();
-            cont.add(graph!=null ? "动力占用:"+occupy:"未找到动力源");
-            table.add(cont);
+            /*Table cont = new Table();
+            table.add(cont);*/
         }
         
         @Override
         public void update(){
         }
+        
+        //当传来动力时
+        //参数1为动力的运动方向，参数2为动力总量
+        public void reception(Motive motive,float amount){
+          this.motive = motive;
+          this.amount = amount;
+          start = true;
+        }
+        
+        //可接收动力，动力传输方块传输动力前会执行此方法
+        public boolean acceptable(LargeMachineryBuild build){
+          return build.rotation == rotation;
+        }
+        
+        //目标，传输动力的目标
+        public Tile target(){
+          return nearby(rotation);
+        }
+        
+        //可传输动力
+        public boolean transportable(){
+          Tile tile = target();
+          MotiveTransmissionBuild build;
+          //强制转换，如果出错则返回false
+          try{
+             build = (MotiveTransmissionBuild) tile.build;
+          }catch(Exception e){
+            return false;
+          }
+          if(build.acceptable(this)&&amount>0&&motive!=null) return true;
+          return false;
+        }
+        
+        //传输动力
+        public void transmit(){
+          Tile tile = target();
+          MotiveTransmissionBuild build;
+          //强制转换，如果出错则返回false
+          try{
+             build = (MotiveTransmissionBuild) tile.build;
+          }catch(Exception e){
+            return;
+          }
+          build.reception(motive,5);
+        }
 
         @Override
         public void draw(){
             drawer.draw(this);
+            if(start){
+              Draw.rect(Core.atlas.find("quench-status-right"),x-tilesize/2,y+tilesize);
+            }
         }
 
     }
