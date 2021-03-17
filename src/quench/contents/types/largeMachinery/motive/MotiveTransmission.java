@@ -133,7 +133,7 @@ public class MotiveTransmission extends LargeMachinery{
           }catch(Exception e){
             return false;
           }
-          if(build.acceptable(this)&&amount>0&&motive!=null) return true;
+          if(build!=null&&build.acceptable(this)&&amount>0&&motive!=null) return true;
           return false;
         }
         
