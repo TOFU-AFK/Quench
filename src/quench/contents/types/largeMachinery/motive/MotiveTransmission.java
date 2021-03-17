@@ -100,6 +100,9 @@ public class MotiveTransmission extends LargeMachinery{
         
         @Override
         public void update(){
+          if(transportable()){
+            transmit();
+          }
         }
         
         //当传来动力时
