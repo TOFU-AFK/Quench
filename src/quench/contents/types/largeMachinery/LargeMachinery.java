@@ -172,7 +172,7 @@ public class LargeMachinery extends Block{
         //可传输动力
         public boolean transportable(){
           Tile tile = target();
-          LargeMachineryBuild build==null;
+          LargeMachineryBuild build=null;
           if(tile.block().name.contains("quench-")){
             build = (LargeMachineryBuild) tile.build;
           }
@@ -185,7 +185,7 @@ public class LargeMachinery extends Block{
         //传输动力
         public void transmit(){
           Tile tile = target();
-          LargeMachineryBuild build==null;
+          LargeMachineryBuild build=null;
             if(tile.block().name.contains("quench-")){
             build = (LargeMachineryBuild) tile.build;
             }
