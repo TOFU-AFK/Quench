@@ -177,7 +177,7 @@ public class LargeMachinery extends Block{
             build = (LargeMachineryBuild) tile.build;
           }
            
-          Log.info("[淬火] build"+String.valueOf(build!=null),"");
+          Log.info("[淬火] build"+ build==null?"空":"存在","");
           if(build!=null&&build.acceptable(this)&&amount>0&&turn!=null) return true;
           return false;
         }
@@ -189,7 +189,7 @@ public class LargeMachinery extends Block{
             if(tile.block().name.contains("quench-")){
             build = (LargeMachineryBuild) tile.build;
             }
-          build.reception(turn,5);
+          if(build!=null) build.reception(turn,5);
         }
         
         
