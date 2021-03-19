@@ -62,8 +62,6 @@ import quench.contents.types.*;
 import static mindustry.Vars.*;
 
 public class MotiveTransmission extends LargeMachinery{
-    public float occupy = 2;
-    public boolean transportable;
     public MotiveTransmission(String name){
         super(name);
         solid = true;
@@ -88,9 +86,6 @@ public class MotiveTransmission extends LargeMachinery{
     
 	 
     public class MotiveTransmissionBuild extends LargeMachineryBuild{
-        public Motive motive;
-        public float amount = 0;
-        public boolean start = false;
         
         @Override
         public void buildConfiguration(Table table){
@@ -105,51 +100,31 @@ public class MotiveTransmission extends LargeMachinery{
           }
         }
         
-        //当传来动力时
-        //参数1为动力的运动方向，参数2为动力总量
+        /*
+        @Override
         public void reception(Motive motive,float amount){
-          this.motive = motive;
-          this.amount = amount;
-          start = true;
+          super.reception(motive,amount)
         }
         
-        //可接收动力，动力传输方块传输动力前会执行此方法
+        @Override
         public boolean acceptable(LargeMachineryBuild build){
-          return build.rotation == rotation;
+          super.acceptable(build);
         }
         
-        //目标，传输动力的目标
+        @Override
         public Tile target(){
-          return tile().nearby(rotation);
+          super.target();
         }
         
-        //可传输动力
+        @Override
         public boolean transportable(){
-          Tile tile = target();
-          MotiveTransmissionBuild build;
-          //强制转换，如果出错则返回false
-          try{
-             build = (MotiveTransmissionBuild) tile.build;
-          }catch(Exception e){
-            return false;
-          }
-          Log.info("[淬火] build",build == null);
-          if(build!=null&&build.acceptable(this)&&amount>0&&motive!=null) return true;
-          return false;
+          super.transportable();
         }
         
         //传输动力
         public void transmit(){
-          Tile tile = target();
-          MotiveTransmissionBuild build;
-          //强制转换，如果出错则返回false
-          try{
-             build = (MotiveTransmissionBuild) tile.build;
-          }catch(Exception e){
-            return;
-          }
-          build.reception(motive,5);
-        }
+          super.transmit();
+        }*/
 
         @Override
         public void draw(){

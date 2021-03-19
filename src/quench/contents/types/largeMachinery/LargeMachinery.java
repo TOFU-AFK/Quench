@@ -70,6 +70,8 @@ public class LargeMachinery extends Block{
     public float outputMotive = 0;//输出的动能
     public BlockData[] blacklist;//方块将不能放置在黑名单上的方块上。
     public BlockData[] whitelist;//方块将只能放置在白名单的方块上。
+    public float occupy = 2;//动力占用
+    public boolean transportable;//可传输动力
     public LargeMachinery(String name){
         super(name);
         solid = true;
@@ -81,6 +83,7 @@ public class LargeMachinery extends Block{
         hasPower = false;
         canProvidePower = false;
         canGenerate = false;
+        transportable = false;
     }
 
     @Override
@@ -121,6 +124,8 @@ public class LargeMachinery extends Block{
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
         public float motive = 0;//实际动能产出
+        public Motive turn = Motive.left;//动力转向
+        public float amount = 0;//动力总数
         
         @Override
         public void buildConfiguration(Table table){
@@ -145,6 +150,47 @@ public class LargeMachinery extends Block{
         public void draw(){
             drawer.draw(this);
         }
+        
+        //当传来动力时
+        //参数1为动力的运动方向，参数2为动力总量
+        public void reception(Motive motive,float amount){
+          this.motive = motive;
+          this.amount = amount;
+        }
+        
+        //可接收动力，动力传输方块传输动力前会执行此方法
+        public boolean acceptable(LargeMachineryBuild build){
+          return build.rotation == rotation;
+        }
+        
+        //目标，传输动力的目标
+        public Tile target(){
+          return tile().nearby(rotation);
+        }
+        
+        //可传输动力
+        public boolean transportable(){
+          Tile tile = target();
+          LargeMachineryBuild build;
+          if(tile.block().name.contains("quench-")){
+            build = (LargeMachineryBuild) tile.build;
+          }
+           
+          Log.info("[淬火] build"+build!=null,"");
+          if(build!=null&&build.acceptable(this)&&amount>0&&motive!=null) return true;
+          return false;
+        }
+        
+        //传输动力
+        public void transmit(){
+          Tile tile = target();
+          LargeMachineryBuild build;
+            if(tile.block().name.contains("quench-")){
+            build = (LargeMachineryBuild) tile.build;
+            }
+          build.reception(motive,5);
+        }
+        
         
         @Override
         public void write(Writes write){
