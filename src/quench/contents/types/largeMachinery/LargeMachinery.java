@@ -126,7 +126,7 @@ public class LargeMachinery extends Block{
         public MechanicalCoreBuild c;
         public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
-        public float amount = 0;//动力总数
+        public float amount = 5;//动力总数
         
         @Override
         public void buildConfiguration(Table table){
@@ -176,8 +176,6 @@ public class LargeMachinery extends Block{
           if(tile.block().name.contains("quench-")){
             build = (LargeMachineryBuild) tile.build;
           }
-           
-          Log.info("[淬火] build"+ build==null?"空":"存在","");
           if(build!=null&&build.acceptable(this)&&amount>0&&turn!=null) return true;
           return false;
         }
