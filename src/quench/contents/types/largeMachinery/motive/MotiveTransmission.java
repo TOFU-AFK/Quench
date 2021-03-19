@@ -129,7 +129,7 @@ public class MotiveTransmission extends LargeMachinery{
         @Override
         public void draw(){
             drawer.draw(this);
-            if(start){
+            if(transportable()){
               Draw.rect(Core.atlas.find("quench-status-right"),x-tilesize/2,y+tilesize);
             }
         }

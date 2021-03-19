@@ -56,6 +56,7 @@ import arc.scene.ui.Dialog.DialogStyle;
 import java.util.*;
 
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
+import quench.contents.types.motive.*;
 import quench.contents.types.draw.*;
 import quench.*;
 
@@ -176,7 +177,7 @@ public class LargeMachinery extends Block{
             build = (LargeMachineryBuild) tile.build;
           }
            
-          Log.info("[淬火] build"+build!=null,"");
+          Log.info("[淬火] build"+String.valueOf(build!=null),"");
           if(build!=null&&build.acceptable(this)&&amount>0&&motive!=null) return true;
           return false;
         }
