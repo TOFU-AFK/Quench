@@ -155,7 +155,7 @@ public class LargeMachinery extends Block{
         //当传来动力时
         //参数1为动力的运动方向，参数2为动力总量
         public void reception(Motive motive,float amount){
-          this.motive = motive;
+          this.motive = turn;
           this.amount = amount;
         }
         
@@ -178,7 +178,7 @@ public class LargeMachinery extends Block{
           }
            
           Log.info("[淬火] build"+String.valueOf(build!=null),"");
-          if(build!=null&&build.acceptable(this)&&amount>0&&motive!=null) return true;
+          if(build!=null&&build.acceptable(this)&&amount>0&&turn!=null) return true;
           return false;
         }
         
@@ -189,7 +189,7 @@ public class LargeMachinery extends Block{
             if(tile.block().name.contains("quench-")){
             build = (LargeMachineryBuild) tile.build;
             }
-          build.reception(motive,5);
+          build.reception(turn,5);
         }
         
         
