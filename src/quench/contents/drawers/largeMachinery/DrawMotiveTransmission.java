@@ -39,6 +39,8 @@ import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 import quench.contents.types.WaterWheel.WaterWheelBuild;
 import quench.contents.types.*;
 import quench.contents.types.draw.*;
+import quench.contents.types.motive.*;
+import quench.contents.types.motive.MotiveTransmission.MotiveTransmissionBuild;
 
 import java.util.ArrayList;
 
