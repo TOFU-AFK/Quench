@@ -58,9 +58,9 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	    time+=Time.time;
+	    time++;
 	    //定时将索引加一
-	    if(time>=6){
+	    if(time>=28){
 	      time = 0;
 	     if(index+1>=quantity){
 	       index = 0;
