@@ -160,7 +160,7 @@ public class QULargeMachinery implements ContentList
 			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
 		};
-		MotiveSource = new MotiveSource("motiveSource"){
+		motiveSource = new MotiveSource("motiveSource"){
 		  {
       requirements(Category.power,BuildVisibility.sandboxOnly, with());
 			size = 1;
