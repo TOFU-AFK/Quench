@@ -72,6 +72,7 @@ public class MotiveSource extends LargeMachinery{
         configurable = true;
         transportable = true;
         rotate = true;
+        occupy = 0;
     }
 
     @Override

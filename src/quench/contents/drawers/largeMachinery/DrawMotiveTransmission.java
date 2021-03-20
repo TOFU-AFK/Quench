@@ -72,12 +72,12 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
          Drawf.light(entity.team, entity.x,entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color1).lerp(color2, Mathf.absin(7f, 1f)), 0.8f);
          Draw.rect(entity.block.region, entity.x, entity.y);
 	     }else{
-	       turn(entity.rotation*90);
+	       turn(entity.rotation*90,entity);
 	     }
     }
   }
     
-    public void turn(float angle){
+    public void turn(float angle,LargeMachineryBuild build){
         Draw.rect(sprites.get(index), build.x, build.y,angle);
     }
 
