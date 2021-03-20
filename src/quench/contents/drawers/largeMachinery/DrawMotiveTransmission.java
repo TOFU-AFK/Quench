@@ -50,8 +50,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     public int quantity = 1;//贴图数量
     public Color color1;
     public Color color2;
-    MotiveTransmissionBuild build;
-    MotiveTransmission block;
     ArrayList<TextureRegion> sprites;
     TextureRegion light;
     public int index = 0;
@@ -60,8 +58,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	    build = (MotiveTransmissionBuild) entity;
-	    block = (MotiveTransmission) build.block;
 	    time+=Time.time;
 	    //定时将索引加一
 	    if(time>=6){
@@ -70,13 +66,13 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	       }else{
 	       index++;
 	     }
-	     if(build.overburden){
+	     if(entity.overburden()){
 	       Draw.color(color1, color2, (float)time / quantity);
          Draw.alpha(0.5f*time);
          Drawf.light(entity.team, entity.x,entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color1).lerp(color2, Mathf.absin(7f, 1f)), 0.8f);
          Draw.rect(entity.block.region, entity.x, entity.y);
 	     }else{
-	       turn(build.rotation*90);
+	       turn(entity.rotation*90);
 	     }
     }
   }
