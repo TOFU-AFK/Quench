@@ -77,6 +77,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	       turn(build.rotation*90);
 	     }
     }
+  }
     
     public void turn(float angle){
         Draw.rect(sprites.get(index), build.x, build.y,angle);
