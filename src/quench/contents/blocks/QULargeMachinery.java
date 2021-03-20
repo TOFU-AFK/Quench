@@ -44,7 +44,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod,motiveSource;
 	
 	@Override
 	public void load()
@@ -154,8 +154,17 @@ public class QULargeMachinery implements ContentList
 		
 		motiveRod = new MotiveTransmission("motiveRod"){
 		  {
-            requirements(Category.effect, with(Items.copper, 25));
+            requirements(Category.power, with(Items.copper, 25));
 			size = 1;
+			health = 40*size*size;
+			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
+			}
+		};
+		MotiveSource = new MotiveSource("motiveSource"){
+		  {
+      requirements(Category.power,BuildVisibility.sandboxOnly, with());
+			size = 1;
+			alwaysUnlocked = true;
 			health = 40*size*size;
 			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
