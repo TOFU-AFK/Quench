@@ -146,7 +146,7 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
-          if(amount<occupy){
+          if(amount<occupy||amount==-1){
             overburden = true;
           }else{
             overburden = false;
