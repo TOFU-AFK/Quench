@@ -53,7 +53,8 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     ArrayList<TextureRegion> sprites;
     TextureRegion light;
     public int index = 0;
-    float time;
+    public static float time;
+    public static boolean start = false;
     float angle;
 
 	@Override
@@ -75,6 +76,9 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	     }else{
 	       turn(entity.rotation*90,entity);
 	     }
+    }else if(!start){
+      Draw.rect(entity.block.region, entity.x, entity.y);
+      start = true;
     }
   }
     
