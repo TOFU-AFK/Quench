@@ -100,12 +100,12 @@ public class LargeMachinery extends Block{
     @Override
 	public void setBars(){
 		super.setBars();
-		if(occupy>0||amount==-1){
+		if(occupy>0){
 		  bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
 		  			(LargeMachineryBuild entity) -> new Bar(
 		  				() -> Core.bundle.get("MechanicalCore.totalMotive"),
 		  				() -> Pal.powerBar,
-		  				() -> entity.amount / amount!=-1 ? occupy:entity.amount)
+		  				() -> entity.amount == -1 ? 0 / 1:entity.amount / occupy)
 		  		);
 		}
 	}
