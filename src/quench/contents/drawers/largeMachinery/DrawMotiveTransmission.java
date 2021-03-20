@@ -60,8 +60,8 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	    build = (WaterWheelBuild) entity;
-	    block = (WaterWheel) build.block;
+	    build = (MotiveTransmissionBuild) entity;
+	    block = (MotiveTransmission) build.block;
 	    time+=Time.time;
 	    //定时将索引加一
 	    if(time>=2){
