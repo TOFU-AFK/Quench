@@ -71,7 +71,7 @@ public class LargeMachinery extends Block{
     public float outputMotive = 0;//输出的动能
     public BlockData[] blacklist;//方块将不能放置在黑名单上的方块上。
     public BlockData[] whitelist;//方块将只能放置在白名单的方块上。
-    public float occupy = 2;//动力占用
+    public float occupy = 0;//动力占用
     public boolean transportable;//可传输动力
     public LargeMachinery(String name){
         super(name);
@@ -100,12 +100,14 @@ public class LargeMachinery extends Block{
     @Override
 	public void setBars(){
 		super.setBars();
-		bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
-			(LargeMachineryBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalMotive"),
-				() -> Pal.powerBar,
-				() -> entity.amount / occupy)
-		);
+		if(occupy>0||occupy==-1){
+		  bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
+		  			(LargeMachineryBuild entity) -> new Bar(
+		  				() -> Core.bundle.get("MechanicalCore.totalMotive"),
+		  				() -> Pal.powerBar,
+		  				() -> entity.amount / occupy!=-1 ? occupy:entity.amount)
+		  		);
+		}
 	}
     
     //使用黑名单和白名单判断是否可放在指定方块上，比如水车只能放在水方块上
