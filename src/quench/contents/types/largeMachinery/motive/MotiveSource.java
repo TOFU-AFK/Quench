@@ -95,7 +95,7 @@ public class MotiveSource extends LargeMachinery{
                 if(turn==Motive.left){
                   turn = Motive.right;
                 }else{
-                  turn=Motive.left
+                  turn=Motive.left;
                 }
             });
             cont.row();
@@ -105,7 +105,7 @@ public class MotiveSource extends LargeMachinery{
         
         @Override
         public void update(){
-          amount = 99999999999999;//设置动力总数
+          amount = -1;//当总数为-1时，将判断为动力源
           if(transportable()){
             transmit();
           }
