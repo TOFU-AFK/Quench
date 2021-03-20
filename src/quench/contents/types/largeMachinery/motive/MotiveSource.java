@@ -118,22 +118,8 @@ public class MotiveSource extends LargeMachinery{
         }
         
         @Override
-        public boolean acceptable(LargeMachineryBuild build){
-          super.acceptable(build);
-        }
-        
-        @Override
-        public Tile target(){
-          super.target();
-        }
-        
-        @Override
         public boolean transportable(){
-          Tile tile = target();
-          LargeMachineryBuild build=null;
-          if(tile.block().name.contains("quench-")){
-            build = (LargeMachineryBuild) tile.build;
-          }
+          LargeMachineryBuild build = target();
           if(build!=null&&build.acceptable(this)&&turn!=null) return true;
           return false;
         }

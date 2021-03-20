@@ -100,6 +100,12 @@ public class LargeMachinery extends Block{
     @Override
 	public void setBars(){
 		super.setBars();
+		bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
+			(LargeMachineryBuild entity) -> new Bar(
+				() -> Core.bundle.get("MechanicalCore.totalMotive"),
+				() -> Pal.powerBar,
+				() -> entity.amount / occupy)
+		);
 	}
     
     //使用黑名单和白名单判断是否可放在指定方块上，比如水车只能放在水方块上
@@ -165,28 +171,25 @@ public class LargeMachinery extends Block{
         }
         
         //目标，传输动力的目标
-        public Tile target(){
-          return tile().nearby(rotation);
+        public LargeMachineryBuild target(){
+          Tile tile = tile().nearby(rotation);
+          LargeMachineryBuild build=null;
+            if(tile.block().name.contains("quench-")){
+            build = (LargeMachineryBuild) tile.build;
+            }
+            return build;
         }
         
         //可传输动力
         public boolean transportable(){
-          Tile tile = target();
-          LargeMachineryBuild build=null;
-          if(tile.block().name.contains("quench-")){
-            build = (LargeMachineryBuild) tile.build;
-          }
+          LargeMachineryBuild build = target();
           if(build!=null&&build.acceptable(this)&&amount>0&&turn!=null) return true;
           return false;
         }
         
         //传输动力
         public void transmit(){
-          Tile tile = target();
-          LargeMachineryBuild build=null;
-            if(tile.block().name.contains("quench-")){
-            build = (LargeMachineryBuild) tile.build;
-            }
+          LargeMachineryBuild build = target();
           if(build!=null) build.reception(turn,amount);
         }
         
