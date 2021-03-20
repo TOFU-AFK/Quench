@@ -145,6 +145,9 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
+          if(transportable()){
+            transmit();
+          }
         }
         
         public Tile near(int rotation){
