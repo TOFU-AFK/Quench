@@ -133,6 +133,7 @@ public class LargeMachinery extends Block{
         public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
+        public boolean overburden = false;//动力占用是否大于动力总数
         
         @Override
         public void buildConfiguration(Table table){
@@ -143,6 +144,11 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
+          if(amount<occupy){
+            overburden = true;
+          }else{
+            overburden = false;
+          }
         }
         
         public Tile near(int rotation){
@@ -190,7 +196,7 @@ public class LargeMachinery extends Block{
         //传输动力
         public void transmit(){
           LargeMachineryBuild build = target();
-          if(build!=null) build.reception(turn,amount);
+          if(build!=null&&!overburden) build.reception(turn,amount);
         }
         
         
