@@ -61,6 +61,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	    time+=Time.time;
 	    //定时将索引加一
 	    if(time>=6){
+	      time = 0;
 	     if(index+1>=quantity){
 	       index = 0;
 	       }else{
