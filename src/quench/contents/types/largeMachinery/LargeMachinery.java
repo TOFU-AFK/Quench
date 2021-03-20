@@ -183,7 +183,7 @@ public class LargeMachinery extends Block{
         //可传输动力
         public boolean transportable(){
           LargeMachineryBuild build = target();
-          if(build!=null&&build.acceptable(this)&&amount>0&&turn!=null) return true;
+          if(build!=null&&build.acceptable(this)&&turn!=null) return true;
           return false;
         }
         
