@@ -52,8 +52,8 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     public Color color2;
     ArrayList<TextureRegion> sprites;
     TextureRegion light;
-    public int index = 0;
-    public float time;
+    int index = 0;
+    float time;
     float angle;
 
 	@Override

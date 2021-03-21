@@ -147,7 +147,10 @@ public class LargeMachinery extends Block{
         public void showPop(Table table){
           Table pop = new Table();
           pop.add("测试");
-          table.add(pop).left();
+          pop.setX(x);
+          pop.setY(y);
+          table.row();
+          table.add(pop);
         }
         
         @Override
