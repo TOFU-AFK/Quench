@@ -60,7 +60,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	public void draw(LargeMachineryBuild entity){
 	    time++;
 	    //定时将索引加一
-	    if(time>=4){
+	    if(time>=12){
 	      time = 0;
 	     if(index+1>=quantity){
 	       index = 0;
@@ -70,8 +70,8 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	     }
 	     if(entity.overburden()){
 	       Draw.color(color1, color2, (float)time / quantity);
-         Draw.alpha(0.5f*time);
-         Drawf.light(entity.team, entity.x,entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color1).lerp(color2, Mathf.absin(7f, 1f)), 0.8f);
+         Draw.alpha(0.8f);
+         Drawf.light(entity.team, entity.x,entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 1f)), 0.8f);
          Draw.rect(entity.block.region, entity.x, entity.y);
 	     }else{
 	       turn(entity.rotation*90,entity);
