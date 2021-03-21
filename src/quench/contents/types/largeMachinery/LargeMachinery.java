@@ -52,6 +52,8 @@ import mindustry.core.*;
 import mindustry.*;
 import mindustry.content.TechTree.TechNode;
 import arc.scene.ui.Dialog.DialogStyle;
+import arc.scene.ui.TextButton.TextButtonStyle;
+import arc.scene.ui.*;
 
 import java.util.*;
 
@@ -146,7 +148,7 @@ public class LargeMachinery extends Block{
         
         public void showPop(Table table){
           table.row();
-          table.cont.pane(p -> {
+          table.pane(p -> {
                 p.margin(10f);
                 p.table(Tex.button, t -> {
                     TextButtonStyle style = Styles.cleart;
