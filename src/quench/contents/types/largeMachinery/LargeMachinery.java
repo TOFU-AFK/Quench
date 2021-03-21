@@ -145,12 +145,20 @@ public class LargeMachinery extends Block{
         }
         
         public void showPop(Table table){
-          Table pop = new Table();
-          pop.add("测试");
-          pop.setX(x);
-          pop.setY(y);
           table.row();
-          table.add(pop);
+          table.cont.pane(p -> {
+                p.margin(10f);
+                p.table(Tex.button, t -> {
+                    TextButtonStyle style = Styles.cleart;
+                    t.defaults().size(280f, 60f).left();
+
+                    t.button("@schematic.copy", Icon.copy, style, () -> {
+                    }).marginLeft(12f);
+                    t.row();
+                    t.button("@schematic.copy.import", Icon.download, style, () -> {
+                    }).marginLeft(12f);
+                });
+            });
         }
         
         @Override

@@ -174,7 +174,6 @@ public class QULargeMachinery implements ContentList
 			alwaysUnlocked = true;
 			
 			health = 40*size*size;
-			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
 		};
 	}
