@@ -79,7 +79,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
   }
     
     public void turn(float angle,LargeMachineryBuild build){
-        Draw.rect(sprites.get(turn==Motive.left ? index:quantity-index), build.x, build.y,angle);
+        Draw.rect(sprites.get(build.turn==Motive.left ? index:quantity-index), build.x, build.y,angle);
     }
 
     @Override
