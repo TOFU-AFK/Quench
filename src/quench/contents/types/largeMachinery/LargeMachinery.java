@@ -147,6 +147,7 @@ public class LargeMachinery extends Block{
         }
         
         public void showPop(Table table){
+          Table titleTable = new Table();
           table.row();
           table.pane(p -> {
                 p.margin(10f);
@@ -154,7 +155,8 @@ public class LargeMachinery extends Block{
                     TextButtonStyle style = Styles.cleart;
                     t.defaults().size(90f, 60f).left();
 
-                    t.table().add(new ItemImage(region,(int)healthf())).left();
+                    titleTable.add(new ItemImage(region,(int)healthf())).left();
+                    p.add(titleTable);
                     /*t.button("@schematic.copy", Icon.copy, style, () -> {
                     }).marginLeft(12f);
                     t.row();
