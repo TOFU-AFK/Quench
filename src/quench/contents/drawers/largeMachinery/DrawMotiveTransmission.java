@@ -53,8 +53,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     ArrayList<TextureRegion> sprites;
     TextureRegion light;
     public int index = 0;
-    public static float time;
-    public static boolean start = false;
+    public float time;
     float angle;
 
 	@Override
@@ -68,6 +67,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	       }else{
 	       index++;
 	     }
+	     }
 	     if(entity.overburden()){
 	       Draw.color(color1, color2, (float)time / quantity);
          Draw.alpha(0.5f*time);
@@ -76,10 +76,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	     }else{
 	       turn(entity.rotation*90,entity);
 	     }
-    }else if(!start){
-      Draw.rect(entity.block.region, entity.x, entity.y);
-      start = true;
-    }
   }
     
     public void turn(float angle,LargeMachineryBuild build){
