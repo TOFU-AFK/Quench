@@ -172,7 +172,7 @@ public class LargeMachinery extends Block{
         //当传来动力时
         //参数1为动力的运动方向，参数2为动力总量
         public void reception(Motive motive,float amount){
-          this.turn = turn;
+          this.turn = motive;
           this.amount = amount;
         }
         

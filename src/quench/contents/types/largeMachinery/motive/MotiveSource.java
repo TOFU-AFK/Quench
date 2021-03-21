@@ -110,11 +110,6 @@ public class MotiveSource extends LargeMachinery{
           if(transportable()){
             transmit();
           }
-          if(turn==Motive.left){
-            Log.info("[淬火] 动力方向 左","");
-          }else{
-            Log.info("[淬火] 动力方向 右","");
-          }
         }
         
         
