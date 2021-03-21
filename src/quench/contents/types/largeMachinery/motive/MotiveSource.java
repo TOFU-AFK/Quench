@@ -124,11 +124,6 @@ public class MotiveSource extends LargeMachinery{
           if(build!=null&&build.acceptable(this)&&turn!=null) return true;
           return false;
         }
-        
-        //传输动力
-        public void transmit(){
-          super.transmit();
-        }
 
         @Override
         public void draw(){
