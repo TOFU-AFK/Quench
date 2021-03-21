@@ -154,7 +154,7 @@ public class LargeMachinery extends Block{
                     TextButtonStyle style = Styles.cleart;
                     t.defaults().size(90f, 60f).left();
 
-                    t.table().add(new ItemImage(region,healthf())).left();
+                    t.table().add(new ItemImage(region,(int)healthf())).left();
                     /*t.button("@schematic.copy", Icon.copy, style, () -> {
                     }).marginLeft(12f);
                     t.row();
