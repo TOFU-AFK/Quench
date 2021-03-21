@@ -93,9 +93,9 @@ public class MotiveTransmission extends LargeMachinery{
         public void buildConfiguration(Table table){
             Table cont = new Table();
             if(turn==Motive.left){
-              cont.add("动力方向:左");
+              cont.add("旋转方向:左");
             }else{
-              cont.add("动力方向:右");
+              cont.add("旋转方向:右");
             }
             table.add(cont);
         }

@@ -69,7 +69,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	     }
 	     }
 	     if(entity.overburden()){
-         Drawf.light(entity.team, entity.x,entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 1f)), 0.8f);
          Draw.rect(entity.block.region, entity.x, entity.y);
 	     }else{
 	       turn(entity.rotation*90,entity);

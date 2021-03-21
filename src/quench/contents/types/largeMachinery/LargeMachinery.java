@@ -141,6 +141,13 @@ public class LargeMachinery extends Block{
             Table cont = new Table();
             cont.add(c!=null ? "核心: x:"+c.tile().x+" y:"+c.tile().y:"核心:null");
             table.add(cont);
+            showPop(table);//显示弹窗
+        }
+        
+        public void showPop(Table table){
+          Table pop = new Table();
+          pop.add("测试");
+          table.add(pop).left();
         }
         
         @Override
@@ -173,7 +180,11 @@ public class LargeMachinery extends Block{
         //参数1为动力的运动方向，参数2为动力总量
         public void reception(Motive motive,float amount){
           this.turn = motive;
-          this.amount = amount;
+          if(amount!=-1){
+            this.amount = amount;
+          }else{
+            this.amount = -1;
+          }
         }
         
         //可接收动力，动力传输方块传输动力前会执行此方法
