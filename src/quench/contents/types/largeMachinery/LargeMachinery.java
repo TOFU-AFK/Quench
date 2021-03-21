@@ -152,13 +152,14 @@ public class LargeMachinery extends Block{
                 p.margin(10f);
                 p.table(Tex.button, t -> {
                     TextButtonStyle style = Styles.cleart;
-                    t.defaults().size(280f, 60f).left();
+                    t.defaults().size(90f, 60f).left();
 
-                    t.button("@schematic.copy", Icon.copy, style, () -> {
+                    t.table().add(new ItemImage(region),healthf()).left();
+                    /*t.button("@schematic.copy", Icon.copy, style, () -> {
                     }).marginLeft(12f);
                     t.row();
                     t.button("@schematic.copy.import", Icon.download, style, () -> {
-                    }).marginLeft(12f);
+                    }).marginLeft(12f);*/
                 });
             });
         }
