@@ -156,10 +156,10 @@ public class LargeMachinery extends Block{
                     t.defaults().size(120f, 60f).left();
 
                     titleTable.add(new ItemImage(region)).left();
-                    titleTable.add("  "+localizedName);
                     titleTable.row();
-                    titleTable.image(Tex.whiteui, Pal.accent).growX().height(3f).pad(4f);
+                    titleTable.add(localizedName);
                     t.add(titleTable);
+                    t.image(Tex.whiteui, Pal.accent).growX().height(3f).pad(4f);
                     /*t.button("@schematic.copy", Icon.copy, style, () -> {
                     }).marginLeft(12f);
                     t.row();
