@@ -73,7 +73,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	        if(time>=45){
 	            if(index+1>=quantity){
 	                index = 0;
-	            }else{>
+	            }else{
 	                index++;
 	            }
 	            //传结构的角度
