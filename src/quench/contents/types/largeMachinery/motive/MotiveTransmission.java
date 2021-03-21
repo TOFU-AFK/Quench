@@ -91,8 +91,9 @@ public class MotiveTransmission extends LargeMachinery{
         
         @Override
         public void buildConfiguration(Table table){
-            /*Table cont = new Table();
-            table.add(cont);*/
+            Table cont = new Table();
+            cont.add("动力方向:"+turn==Motive.left ? "左":"右");
+            table.add(cont);
         }
         
         @Override
