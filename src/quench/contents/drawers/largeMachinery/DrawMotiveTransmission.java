@@ -69,8 +69,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	     }
 	     }
 	     if(entity.overburden()){
-	       Draw.color(color1, color2, (float)time / quantity);
-         Draw.alpha(0.8f);
          Drawf.light(entity.team, entity.x,entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 1f)), 0.8f);
          Draw.rect(entity.block.region, entity.x, entity.y);
 	     }else{
@@ -79,7 +77,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
   }
     
     public void turn(float angle,LargeMachineryBuild build){
-        Draw.rect(sprites.get(build.turn==Motive.left ? index:quantity-index), build.x, build.y,angle);
+        Draw.rect(sprites.get(build.turn==Motive.left ? index:quantity-1-index), build.x, build.y,angle);
     }
 
     @Override
