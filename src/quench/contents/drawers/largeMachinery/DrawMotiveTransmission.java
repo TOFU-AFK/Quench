@@ -56,7 +56,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     int index = 0;
     float time;
     float angle;
-    public LargeMachineryBuild master;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
