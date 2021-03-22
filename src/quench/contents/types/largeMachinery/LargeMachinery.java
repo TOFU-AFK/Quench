@@ -214,7 +214,7 @@ public class LargeMachinery extends Block{
                     quantity = 28;
                     color1 = Pal.redSpark;
                     color2 = Pal.redDust;
-                    master = this;
+                    master = LargeMachineryBuild.this;
                   }
             };
           }else if(otherDrawer!=null&&otherDrawer.master==null){
