@@ -85,6 +85,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 
     @Override
     public void load(Block block){
+     super.load(block);
      sprites = new ArrayList<TextureRegion>();
      for(int i=0;i<=quantity;i++){
 		    sprites.add(Core.atlas.find(block.name + "-" + i));

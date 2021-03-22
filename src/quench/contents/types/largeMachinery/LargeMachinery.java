@@ -189,6 +189,7 @@ public class LargeMachinery extends Block{
           if(otherDrawer==null){
             drawer.draw(this);
           }else{
+            if(!otherDrawer.isLoader) otherDrawer.load(block);
             otherDrawer.draw(this);
           }
         }

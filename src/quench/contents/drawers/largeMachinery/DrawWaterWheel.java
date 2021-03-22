@@ -97,6 +97,7 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 
     @Override
     public void load(Block block){
+     super.load(block);
      sprites = new ArrayList<TextureRegion>();
      light = Core.atlas.find(block.name + "-light");
      for(int i=0;i<=quantity;i++){

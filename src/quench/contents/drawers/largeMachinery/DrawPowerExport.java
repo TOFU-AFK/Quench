@@ -62,6 +62,7 @@ public class DrawPowerExport extends DrawLargeMachinery {
 
     @Override
     public void load(Block block){
+     super.load(block);
      arrow = Core.atlas.find("quench-arrow");
      place = Core.atlas.find(block.name + "-place");
     }
