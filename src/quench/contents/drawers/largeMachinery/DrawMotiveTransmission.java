@@ -59,7 +59,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	  //因为drawer变量在Block上，每个LargeMachineryBuild都会执行一次draw，导致速度加快，所以限制只有等于master的LargeMachineryBuild才能增加time
+	  //因为drawer变量在LargeMachinery上，每个LargeMachineryBuild都会执行一次draw，导致动画速度加快，所以限制只有等于master的LargeMachineryBuild才能增加time
 	  if(entity==master){
 	    time++;
 	    	//定时将索引加一

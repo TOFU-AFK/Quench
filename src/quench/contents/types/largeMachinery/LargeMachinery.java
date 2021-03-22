@@ -60,6 +60,7 @@ import java.util.*;
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 import quench.contents.types.motive.*;
 import quench.contents.types.draw.*;
+import quench.contents.largeMachinery.drawers.*;
 import quench.*;
 
 import static mindustry.Vars.*;
@@ -137,7 +138,7 @@ public class LargeMachinery extends Block{
         public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
-        public DrawMotiveTransmission otherDrawer;
+        public DrawLargeMachinery otherDrawer;
         
         @Override
         public void buildConfiguration(Table table){
@@ -200,7 +201,7 @@ public class LargeMachinery extends Block{
         
         //当传来动力时
         //参数1为动力的运动方向，参数2为动力总量
-        public void reception(Motive motive,float amount,DrawMotiveTransmission drawer){
+        public void reception(Motive motive,float amount,DrawLargeMachinery drawer){
           this.turn = motive;
           if(amount!=-1){
             this.amount = amount-occupy;
@@ -248,7 +249,7 @@ public class LargeMachinery extends Block{
         //传输动力
         public void transmit(){
           LargeMachineryBuild build = target();
-          if(build!=null&&!overburden()) build.reception(turn,amount);
+          if(build!=null&&!overburden()) build.reception(turn,amount,otherDrawer);
         }
         
         
