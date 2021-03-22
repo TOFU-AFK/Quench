@@ -163,7 +163,7 @@ public class LargeMachinery extends Block{
                     }).marginLeft(12f);
                     t.row();
                     t.button("@schematic.copy.import", Icon.download, style, () -> {
-                    }).marginLeft(12f);*/
+                    }).marginLeft(12f);
                 });
             });
         }*/
