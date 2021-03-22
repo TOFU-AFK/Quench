@@ -139,6 +139,7 @@ public class LargeMachinery extends Block{
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
         public DrawLargeMachinery otherDrawer;
+        public LargeMachineryBuild entity = this;
         
         @Override
         public void buildConfiguration(Table table){
@@ -215,10 +216,10 @@ public class LargeMachinery extends Block{
                     quantity = 28;
                     color1 = Pal.redSpark;
                     color2 = Pal.redDust;
-                    master = LargeMachineryBuild.this;
+                    master = entity;
                   }
             };
-          }else if(otherDrawer!=null&&otherDrawer.master==null){
+          }else if(otherDrawer.master==null){
             otherDrawer.master = this;
           }else{
             otherDrawer = drawer;
