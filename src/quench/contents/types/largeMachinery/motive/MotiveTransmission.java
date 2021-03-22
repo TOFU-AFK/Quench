@@ -135,7 +135,7 @@ public class MotiveTransmission extends LargeMachinery{
 
         @Override
         public void draw(){
-            drawer.draw(this);
+            super.draw();
         }
 
     }

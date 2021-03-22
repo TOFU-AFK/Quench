@@ -124,10 +124,16 @@ public class MotiveSource extends LargeMachinery{
           if(build!=null&&build.acceptable(this)&&turn!=null) return true;
           return false;
         }
+        
+        @Override
+        public void transmit(){
+          LargeMachineryBuild build = target();
+          if(build!=null&&!overburden()) build.reception(turn,amount,null);
+        }
 
         @Override
         public void draw(){
-            drawer.draw(this);
+            super.draw();
         }
 
     }
