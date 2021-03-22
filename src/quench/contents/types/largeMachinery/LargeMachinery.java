@@ -137,29 +137,28 @@ public class LargeMachinery extends Block{
         public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
+        public DrawLargeMachinery draw = drawer;
         
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
             cont.add(c!=null ? "核心: x:"+c.tile().x+" y:"+c.tile().y:"核心:null");
             table.add(cont);
-            showPop(table);//显示弹窗
         }
         
-        public void showPop(Table table){
+        //暂时无用
+        /*public void showPop(Table table){
           Table titleTable = new Table();
           table.row();
           table.pane(p -> {
-                p.margin(10f);
+                p.margin(5f);
                 p.table(Tex.button, t -> {
                     TextButtonStyle style = Styles.cleart;
                     t.defaults().size(120f, 60f).left();
 
                     titleTable.add(new ItemImage(region)).left();
-                    titleTable.row();
                     titleTable.add(localizedName);
                     t.add(titleTable);
-                    t.image(Tex.whiteui, Pal.accent).growX().height(3f).pad(4f);
                     /*t.button("@schematic.copy", Icon.copy, style, () -> {
                     }).marginLeft(12f);
                     t.row();
@@ -167,7 +166,7 @@ public class LargeMachinery extends Block{
                     }).marginLeft(12f);*/
                 });
             });
-        }
+        }*/
         
         @Override
         public void update(){
@@ -186,7 +185,7 @@ public class LargeMachinery extends Block{
 
         @Override
         public void draw(){
-            drawer.draw(this);
+            draw.draw(this);
         }
 
         //是否超载
@@ -200,7 +199,7 @@ public class LargeMachinery extends Block{
         public void reception(Motive motive,float amount){
           this.turn = motive;
           if(amount!=-1){
-            this.amount = amount;
+            this.amount = amount-occupy;
           }else{
             this.amount = -1;
           }
