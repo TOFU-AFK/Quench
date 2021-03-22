@@ -114,7 +114,7 @@ public class MotiveSource extends LargeMachinery{
         
         
         @Override
-        public void reception(Motive motive,float amount){
+        public void reception(Motive motive,float amount,DrawLargeMachinery drawer){
         //因为是动力源，所以不做处理
         }
         
