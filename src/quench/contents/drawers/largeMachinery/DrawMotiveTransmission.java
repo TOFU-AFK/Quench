@@ -55,19 +55,23 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     int index = 0;
     float time;
     float angle;
+    public LargeMachineryBuild master;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
+	  //因为drawer变量在Block上，每个LargeMachineryBuild都会执行一次draw，导致速度加快，所以限制只有等于master的LargeMachineryBuild才能增加time
+	  if(entity==master){
 	    time++;
-	    //定时将索引加一
-	    if(time>=12){
-	      time = 0;
-	     if(index+1>=quantity){
-	       index = 0;
-	       }else{
-	       index++;
+	    	//定时将索引加一
+	    	if(time>=12){
+	    	  time = 0;
+	    	  if(index+1>=quantity){
+	    	    index = 0;
+	    	  }else{
+	    	    index++;
+	    	  }
 	     }
-	     }
+	  }
 	     if(entity.overburden()){
          Draw.rect(entity.block.region, entity.x, entity.y);
 	     }else{

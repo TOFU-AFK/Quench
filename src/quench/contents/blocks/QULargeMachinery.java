@@ -157,13 +157,6 @@ public class QULargeMachinery implements ContentList
             requirements(Category.power, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
-			drawer = new DrawMotiveTransmission(){
-			    {
-			        quantity = 28;
-			        color1 = Pal.redSpark;
-			        color2 = Pal.redDust;
-			    }
-			};
 			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});
 			}
 		};
