@@ -64,7 +64,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	  if(entity.x==master.x&&entity.y==master.y){
 	    time++;
 	    	//定时将索引加一
-	    	if(time>=12){
+	    	if(time>=4){
 	    	  time = 0;
 	    	  if(index+1>=quantity){
 	    	    index = 0;
