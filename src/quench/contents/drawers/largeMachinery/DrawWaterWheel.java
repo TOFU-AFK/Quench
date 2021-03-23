@@ -84,7 +84,6 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	   }
 	       //传结构的角度
 	       turn(angle);
-	        }
 	        Draw.color(color1, color2, (float)time / quantity);
                 Draw.alpha(0.5f);
                 Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f);
