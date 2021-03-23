@@ -230,7 +230,7 @@ public class LargeMachinery extends Block{
         //传输动力
         public void transmit(){
           LargeMachineryBuild build = target();
-          if(build!=null&&!overburden()) build.reception(turn,amount,otherDrawer);
+          if(build!=null&&!overburden()) build.reception(turn,amount);
         }
         
         
