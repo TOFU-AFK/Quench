@@ -138,8 +138,6 @@ public class LargeMachinery extends Block{
         public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
-        public DrawLargeMachinery otherDrawer;
-        public LargeMachineryBuild entity = this;
         
         @Override
         public void buildConfiguration(Table table){
@@ -187,12 +185,7 @@ public class LargeMachinery extends Block{
 
         @Override
         public void draw(){
-          if(otherDrawer==null){
-            drawer.draw(this);
-          }else{
-            if(!otherDrawer.isLoader) otherDrawer.load(block);
-            otherDrawer.draw(this);
-          }
+          drawer.draw(this);
         }
 
         //是否超载
@@ -203,26 +196,12 @@ public class LargeMachinery extends Block{
         
         //当传来动力时
         //参数1为动力的运动方向，参数2为动力总量
-        public void reception(Motive motive,float amount,DrawLargeMachinery drawer){
+        public void reception(Motive motive,float amount){
           this.turn = motive;
           if(amount!=-1){
             this.amount = amount-occupy;
           }else{
             this.amount = -1;
-          }
-          if(drawer==null){
-            otherDrawer = new DrawMotiveTransmission(){
-                  {
-                    quantity = 28;
-                    color1 = Pal.redSpark;
-                    color2 = Pal.redDust;
-                    master = entity;
-                  }
-            };
-          }else if(otherDrawer.master==null){
-            otherDrawer.master = this;
-          }else{
-            otherDrawer = drawer;
           }
         }
         
