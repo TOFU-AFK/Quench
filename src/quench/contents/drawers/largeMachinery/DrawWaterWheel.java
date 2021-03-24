@@ -1,3 +1,4 @@
+//旧代码，很烂
 package quench.contents.largeMachinery.drawers;
 
 import arc.*;
@@ -68,22 +69,18 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 	        }else{
 	            angle = 0;
 	        }
-	   //因为drawer变量在LargeMachinery上，每个LargeMachineryBuild都会执行一次draw，导致动画速度加快，所以限制只有等于master的LargeMachineryBuild才能增加time
-	   if(master==null) master = entity;
-	     if(entity.x==master.x&&entity.y==master.y){
-	       time++;
-	       //定时将索引加一
-	       if(time>=8){
-	        	time = 0;
-	        	if(index+1>=quantity){
-	        	index = 0;
-	       }else{
-	        	index++;
-	       }
-	       }
-	   }
-	       //传结构的角度
-	       turn(angle);
+	        time+=Time.time;//这种方法有许多问题，建议使用DrawMotiveTransmission中的方法
+	        //定时将索引加一
+	        if(time>=45){
+	            if(index+1>=quantity){
+	                index = 0;
+	            }else{
+	                index++;
+	            }
+	            //传结构的角度
+	            turn(angle);
+	            time = 0;
+	        }
 	        Draw.color(color1, color2, (float)time / quantity);
                 Draw.alpha(0.5f);
                 Drawf.light(entity.team, entity.x, entity.y, (110f + Mathf.absin(5, 5f)), Tmp.c1.set(color2).lerp(color1, Mathf.absin(7f, 0.2f)), 0.8f);
@@ -108,5 +105,4 @@ public class DrawWaterWheel extends DrawLargeMachinery {
 		    sprites.add(Core.atlas.find(block.name + "-" + i));
     }
     }
-
 }
