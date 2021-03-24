@@ -102,9 +102,7 @@ public class MotiveTransmission extends LargeMachinery{
         
         @Override
         public void update(){
-          if(transportable()){
-            transmit();
-          }
+          super.update();
         }
         
         /*

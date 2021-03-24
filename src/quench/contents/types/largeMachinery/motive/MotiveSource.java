@@ -106,6 +106,7 @@ public class MotiveSource extends LargeMachinery{
         
         @Override
         public void update(){
+          drawer.update(this);
           amount = -1;//当总数为-1时，将判断为动力源
           if(transportable()){
             transmit();
