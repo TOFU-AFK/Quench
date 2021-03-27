@@ -86,7 +86,7 @@ public class QULargeMachinery implements ContentList
 					health = 40*size*size;
 					efficiency = 1.2f;
 					structure = new Structure(new BlockData[]{new BlockData(basicBlock,16,16),new BlockData(basicBlock,8,16),new BlockData(basicBlock,-8,16),new BlockData(basicBlock,-16,16),new BlockData(basicBlock,16,8),new BlockData(basicBlock,8,8),new BlockData(basicBlock,-8,8),new BlockData(basicBlock,-16,8),new BlockData(basicBlock,16,-8),new BlockData(basicBlock,8,-8),new BlockData(basicBlock,-8,-8),new BlockData(basicBlock,-16,-8),new BlockData(basicBlock,16,-16),new BlockData(basicBlock,8,-16),new BlockData(basicBlock,-8,-16),new BlockData(basicBlock,-16,-16),new BlockData(basicBlock,16,0),new BlockData(basicBlock,8,0),new BlockData(basicBlock,-8,0),new BlockData(basicBlock,-16,0),
-					  new BlockData(basicBlock,0,16),new BlockData(basicBlock,0,0),new BlockData(basicBlock,0,-8),new BlockData(basicBlock,0,-16)
+					  new BlockData(basicBlock,0,16),new BlockData(basicBlock,0,-8),new BlockData(basicBlock,0,-16)
 					});//一方块8像素
 					//添加科技树
 					new TechNode(TechTree.get(hydroelectricGeneratorCore), this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
