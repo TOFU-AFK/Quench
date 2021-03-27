@@ -120,7 +120,7 @@ public class LargeTurret{
     }
     
     public void drawLand(){
-      animation.draw(region,this);
+      animation.draw(region,core);
       isDrawed = true;
     }
     
