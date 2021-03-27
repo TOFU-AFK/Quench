@@ -148,7 +148,7 @@ public class LargeTurret{
     
     //寻找目标
     public void findTarget(){
-      target = Units.closestTarget(core.team, x, y,range);
+      target = Units.closestTarget(core.team, core.x, core.y,range);
     }
     
     //显示名称
