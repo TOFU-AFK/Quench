@@ -87,7 +87,7 @@ public class MotiveSource extends LargeMachinery{
     
 	 
     public class MotiveSourceBuild extends LargeMachineryBuild{
-      amount = -1;
+      public float amount = -1;
       public int time;
         
         @Override
