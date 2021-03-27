@@ -63,8 +63,8 @@ public class LargeTurret{
   public String name;
   public float health;//血量，也是护盾血量，当为0时，炮塔将关闭护盾，并飞走
   public int cool;//冷却时间，时间结束后，并且底座没有损坏，炮塔将重新回来
-  public int coolSpeed//冷却速度
-  public float radius//护盾半径
+  public int coolSpeed;//冷却速度
+  public float radius;//护盾半径
   public Effect defend;
   
   public LargeTurret(String name){
