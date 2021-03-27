@@ -217,7 +217,7 @@ public class LargeMachinery extends Block{
         //目标，传输动力的目标
         public LargeMachineryBuild target(){
           Tile tile = tile().nearby(rotation);
-          LargeMachineryBuild build;
+          LargeMachineryBuild build = null;
             if(tile.block().name.contains("quench-")){
             try{
             build = (LargeMachineryBuild) tile.build;
