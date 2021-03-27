@@ -67,6 +67,7 @@ public class LargeTurret{
   public float radius;//护盾半径
   public Effect defend;//护盾防御特效
   public float range;//攻击范围
+  public Animation animation;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -76,12 +77,18 @@ public class LargeTurret{
     radius = 60;
     defend = QUFx.smallShockWave;
     range = 240;
+    animation = new Animation();
+  }
+  
+  public LargeTurretBuild build(TurretCoreBuild core){
+    return new LargeTurretBuild(core);
   }
   
   public class LargeTurretBuild{
     public Teamc target;//目标
     public boolean inCooling = false;//炮塔冷却中;
     public boolean land = false;//炮塔已经降落
+    public boolean isDrawed = false;
     public float healthf = health;//剩余血量
     private TurretCoreBuild core;//炮塔的核心
     
@@ -100,11 +107,27 @@ public class LargeTurret{
     }
     
     public void draw(){
-       drawShield();
+      if(isDrawed){
+        drawShield();
+      }
+       if(land&&!inCooling&&!isDrawed){
+         drawLand();
+       }
+       if(land&&inCooling){
+         drawLand();
+       }
+    }
+    
+    public void drawLand(){
+      animation.draw();
+      isDrawed = true;
+    }
+    
+    public void drawToSky(){
+      isDrawed = false;
     }
     
     public void drawShield(){
-      if(!inCooling&&land){
         Draw.z(Layer.shields);
         Draw.color(core.team().color, Color.white, Mathf.clamp(hit));
         if(Core.settings.getBool("animatedshields")){
@@ -117,13 +140,15 @@ public class LargeTurret{
           Lines.poly(core.x, core.y, 6, radius);
           Draw.reset();
         }
-      }
       Draw.reset();
     }
     
     public void update(){
-      if(healthf<=0){
+      //核心消失，结构损坏，血量小于等于0
+      if(land&&core==null||!core.start||healthf<=0){
         toSky();
+      }else if(!land&&!inCooling){
+        land();
       }
       if(!inCooling){
         shields();
@@ -134,6 +159,12 @@ public class LargeTurret{
     public void toSky(){
       land = false;
       inCooling = true;
+    }
+    
+    //降落
+    public void land(){
+      land = true;
+      inCooling = false;
     }
     
     //护盾

@@ -38,13 +38,14 @@ import quench.contents.drawers.*;
 import quench.contents.effects.*;
 import quench.contents.largeMachinery.drawers.*;
 import quench.contents.types.motive.*;
+import quench.contents.types.core.*;
 
 import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod,motiveSource;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod,motiveSource,universalBase;
 	
 	@Override
 	public void load()
@@ -76,6 +77,19 @@ public class QULargeMachinery implements ContentList
 			new TechNode(TechTree.get(hydroelectricGeneratorCore), this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
 			}
 		};
+		
+		universalBase = new TurretCore("universalBase")
+				{
+					{
+		      requirements(Category.power, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
+					size = 1;
+					health = 40*size*size;
+					efficiency = 1.2f;
+					structure = new Structure(new BlockData[]{new BlockData(basicBlock,16,16),new BlockData(basicBlock,8,16),new BlockData(basicBlock,-8,16),new BlockData(basicBlock,-16,16),basicBlock,16,8),new BlockData(basicBlock,8,8),new BlockData(basicBlock,-8,8),new BlockData(basicBlock,-16,8),new BlockData(basicBlock,16,-8),new BlockData(basicBlock,8,-8),new BlockData(basicBlock,-8,-8),new BlockData(basicBlock,-16,-8),new BlockData(basicBlock,16,-16),new BlockData(basicBlock,8,-16),new BlockData(basicBlock,-8,-16),new BlockData(basicBlock,-16,-16)});//一方块8像素
+					//添加科技树
+					new TechNode(TechTree.get(hydroelectricGeneratorCore), this,new ItemStack[]{new ItemStack(Items.titanium, 2)});
+					}
+				};
 	}
 	
 	//在此实例化非核心方块

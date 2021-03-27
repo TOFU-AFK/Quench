@@ -1,4 +1,4 @@
-package quench.contents.types.core;
+package quench.contents.types.turret;
 
 import mindustry.world.*;
 import mindustry.entities.*;
@@ -52,37 +52,21 @@ import mindustry.*;
 import java.util.*;
 import quench.contents.blocks.*;
 import quench.contents.types.LargeMachinery.LargeMachineryBuild;
-import quench.contents.types.*;
-import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
-import quench.contents.types.turret.*;
-import quench.contents.types.turret.LargeTurret.LargeTurretBuild;
+import quench.contents.types.core.*;
+import quench.contents.types.core.TurretCore.TurretCoreBuild;
+import quench.contents.effects.*;
 
-import static mindustry.Vars.*;
+import static mindustry.Vars.*; 
 
-public class TurretCore extends MechanicalCore{
+public class Animation{
+  public Vec2[] vec = {new Vec2(0,0),new Vec2(0,0),new Vec2(0,0)};
+  public float[] size = {0.6f,0.8f,1f};
+  public float[] angle = {0,45,90};
   
-  public TurretCore(String name){
-        super(name);
-        solid = true;
-        destructible = true;
-        configurable = true;
-      }
-  
-  public class TurretCoreBuild extends MechanicalCoreBuild{
-    public LargeTurretBuild turret = QULargeTurret.motiveTurret;
-    
-    @Override
-    public void update(){
-      super.update();
-      turret.update();
+  public void draw(TextureRegion region,TurretCoreBuild core){
+    if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length)
+    for(int i=0;i<vec.length;i++){
+      Draw.rect(region,core.x+v.x,core.y+v.y,angle[i],region.width*size[i],region.height*size[i]);
     }
-    
-    @Override
-    public void draw(){
-      super.draw();
-      turret.draw();
-    }
-    
   }
-  
 }
