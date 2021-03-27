@@ -65,7 +65,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
   @Override
   public void update(LargeMachineryBuild entity){
   	  //因为drawer变量在LargeMachinery上，每个LargeMachineryBuild都会执行一次update，导致动画速度加快，所以限制只有等于master的LargeMachineryBuild才能增加time
-  	  if(master.tile==null) master = entity;
+  	  if(master==null||master.tile==null) master = entity;
   	  if(!entity.overburden()&&entity.x==master.x&&entity.y==master.y){
   	    time++;
   	    	//定时将索引加一
