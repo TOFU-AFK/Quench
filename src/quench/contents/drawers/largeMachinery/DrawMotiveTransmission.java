@@ -60,10 +60,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	    entity.startAnimation = false;
 	   }
   }
-  
-  @Override
-  public void update(LargeMachineryBuild entity){
-  }
     
     public void turn(float angle,LargeMachineryBuild build,int index){
         Draw.rect(sprites.get(build.turn==Motive.left ? index:quantity-1-index), build.x, build.y,angle);
