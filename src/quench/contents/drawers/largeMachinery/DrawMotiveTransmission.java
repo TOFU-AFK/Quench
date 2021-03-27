@@ -52,7 +52,6 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
     public Color color1;
     public Color color2;
     ArrayList<TextureRegion> sprites;
-    TextureRegion light;
     int index = 0;
     float time;
     float angle;
@@ -64,21 +63,11 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
   
   @Override
   public void update(LargeMachineryBuild entity){
-  	  //因为drawer变量在LargeMachinery上，每个LargeMachineryBuild都会执行一次update，导致动画速度加快，所以限制只有等于master的LargeMachineryBuild才能增加time
-  	  if(master==null||master.tile==null) master = entity;
-  	  if(!entity.overburden()&&entity.x==master.x&&entity.y==master.y){
-  	    time++;
-  	    	//定时将索引加一
-  	    	if(time>=4){
-  	    	  time = 0;
-  	    	  if(index+1>=quantity){
-  	    	    index = 0;
-  	    	  }else{
-  	    	    index++;
-  	    	  }
-  	     }
+  	  if(entity.startAnimation){
+  	    index = entity.index;
+  	    entity.startAnimation = false;
   	  }
-  	}
+  }
     
     public void turn(float angle,LargeMachineryBuild build){
         Draw.rect(sprites.get(build.turn==Motive.left ? index:quantity-1-index), build.x, build.y,angle);

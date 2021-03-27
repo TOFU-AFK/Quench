@@ -138,6 +138,8 @@ public class LargeMachinery extends Block{
         public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
+        public int index = 0;//贴图索引，用于传动杆
+        public boolean startAnimation = false;
         
         @Override
         public void buildConfiguration(Table table){
@@ -197,13 +199,15 @@ public class LargeMachinery extends Block{
         
         //当传来动力时
         //参数1为动力的运动方向，参数2为动力总量
-        public void reception(Motive motive,float amount){
+        public void reception(Motive motive,float amount,int index){
           this.turn = motive;
           if(amount!=-1){
             this.amount = amount-occupy;
           }else{
             this.amount = -1;
           }
+          this.index = index;
+          startAnimation = true;
         }
         
         //可接收动力，动力传输方块传输动力前会执行此方法

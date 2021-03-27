@@ -87,6 +87,8 @@ public class MotiveSource extends LargeMachinery{
     
 	 
     public class MotiveSourceBuild extends LargeMachineryBuild{
+      amount = -1;
+      public int time;
         
         @Override
         public void buildConfiguration(Table table){
@@ -106,8 +108,16 @@ public class MotiveSource extends LargeMachinery{
         
         @Override
         public void update(){
+          time++;
+          if(time>4){
+            time=0;
+            if(index+1>27){
+              index=0;
+            }else{
+              index++;
+            }
+          }
           drawer.update(this);
-          amount = -1;//当总数为-1时，将判断为动力源
           if(transportable()){
             transmit();
           }
@@ -115,7 +125,7 @@ public class MotiveSource extends LargeMachinery{
         
         
         @Override
-        public void reception(Motive motive,float amount){
+        public void reception(Motive motive,float amount,int index){
         //因为是动力源，所以不做处理
         }
         
@@ -129,7 +139,7 @@ public class MotiveSource extends LargeMachinery{
         @Override
         public void transmit(){
           LargeMachineryBuild build = target();
-          if(build!=null&&!overburden()) build.reception(turn,amount);
+          if(build!=null&&!overburden()) build.reception(turn,amount,index);
         }
 
         @Override
