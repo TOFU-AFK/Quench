@@ -117,7 +117,6 @@ public class MotiveSource extends LargeMachinery{
               index++;
             }
           }
-          drawer.update(this);
           if(transportable()){
             transmit();
           }

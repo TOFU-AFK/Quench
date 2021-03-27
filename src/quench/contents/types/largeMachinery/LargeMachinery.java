@@ -172,7 +172,6 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
-          drawer.update(this);
           if(transportable()){
             transmit();
           }

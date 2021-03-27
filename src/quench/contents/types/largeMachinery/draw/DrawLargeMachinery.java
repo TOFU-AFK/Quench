@@ -14,11 +14,6 @@ public class DrawLargeMachinery{
         //Draw.rect(bottom,x,y);
         Draw.rect(entity.block.region,entity.x,entity.y);
     }
-    
-    //因为在远离玩家一定范围后，draw方法就会停止执行，为了让如传动杆一样的方块继续执行动画，添加了update方法
-    public void update(LargeMachineryBuild entity){
-      
-    }
 
     public void load(Block block){
      //bottom = Core.atlas.find("quench-bottom");

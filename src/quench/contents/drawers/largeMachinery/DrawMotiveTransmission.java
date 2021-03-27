@@ -49,27 +49,23 @@ import static mindustry.Vars.*;
 
 public class DrawMotiveTransmission extends DrawLargeMachinery {
     public int quantity = 1;//贴图数量
-    public Color color1;
-    public Color color2;
     ArrayList<TextureRegion> sprites;
-    int index = 0;
     float time;
     float angle;
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	       turn(entity.rotation*90,entity);
+	  if(entity.startAnimation){
+	    turn(entity.rotation*90,entity,entity.index);
+	    entity.startAnimation = false;
+	   }
   }
   
   @Override
   public void update(LargeMachineryBuild entity){
-  	  if(entity.startAnimation){
-  	    index = entity.index;
-  	    entity.startAnimation = false;
-  	  }
   }
     
-    public void turn(float angle,LargeMachineryBuild build){
+    public void turn(float angle,LargeMachineryBuild build,int index){
         Draw.rect(sprites.get(build.turn==Motive.left ? index:quantity-1-index), build.x, build.y,angle);
     }
 

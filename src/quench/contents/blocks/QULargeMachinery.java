@@ -160,8 +160,6 @@ public class QULargeMachinery implements ContentList
 			drawer = new DrawMotiveTransmission(){
 						    {
 						        quantity = 28;
-						        color1 = Pal.redSpark;
-						        color2 = Pal.redDust;
 						    }
 						};
 			new TechNode(TechTree.root, this,new ItemStack[]{new ItemStack(Items.copper, 25)});

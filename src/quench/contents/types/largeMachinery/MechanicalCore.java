@@ -137,7 +137,6 @@ public class MechanicalCore extends LargeMachinery{
         
         @Override
         public void update(){
-          drawer.update(this);
             initially();
             start = construct();
             if(isRead&&!start){
