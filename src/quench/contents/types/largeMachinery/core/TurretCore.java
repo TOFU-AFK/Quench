@@ -69,7 +69,7 @@ public class TurretCore extends MechanicalCore{
       }
   
   public class TurretCoreBuild extends MechanicalCoreBuild{
-    public LargeTurretBuild turret = QULargeTurret.motiveTurret;
+    public LargeTurretBuild turret = QULargeTurret.motiveTurret.build(this);
     
     @Override
     public void update(){

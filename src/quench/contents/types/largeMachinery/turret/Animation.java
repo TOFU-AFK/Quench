@@ -66,7 +66,7 @@ public class Animation{
   public void draw(TextureRegion region,TurretCoreBuild core){
     if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length)
     for(int i=0;i<vec.length;i++){
-      Draw.rect(region,core.x+v.x,core.y+v.y,angle[i],region.width*size[i],region.height*size[i]);
+      Draw.rect(region,core.x+vec[i].x,core.y+vec[i].y,angle[i],region.width*size[i],region.height*size[i]);
     }
   }
 }
