@@ -65,15 +65,17 @@ public class LargeTurret{
   public int cool;//冷却时间，时间结束后，并且底座没有损坏，炮塔将重新回来
   public int coolSpeed;//冷却速度
   public float radius;//护盾半径
-  public Effect defend;
+  public Effect defend;//护盾防御特效
+  public float range;//攻击范围
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
-    health 
+    health = 1200;
     cool = 240;
     coolSpeed = 1;
     radius = 60;
     defend = QUFx.smallShockWave;
+    range = 240;
   }
   
   public class LargeTurretBuild{
@@ -84,13 +86,15 @@ public class LargeTurret{
     private TurretCoreBuild core;//炮塔的核心
     
     public Cons<Bullet> shieldConsumer;
+    public float hit;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
       shieldConsumer = trait -> {
-        if(trait.team != core.team && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
+        if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
             trait.absorb();
             defend.at(trait);
+            hit = 1f;
         }
       };
     }
@@ -102,15 +106,15 @@ public class LargeTurret{
     public void drawShield(){
       if(!inCooling&&land){
         Draw.z(Layer.shields);
-        Draw.color(core.team.color, Color.white, Mathf.clamp(hit));
+        Draw.color(core.team().color, Color.white, Mathf.clamp(hit));
         if(Core.settings.getBool("animatedshields")){
-          Fill.poly(x, y, 6, radius);
+          Fill.poly(core.x, core.y, 6, radius);
         }else{
           Lines.stroke(1.5f);
           Draw.alpha(0.09f + Mathf.clamp(0.08f * hit));
-          Fill.poly(x, y, 6, radius);
+          Fill.poly(core.x, core.y, 6, radius);
           Draw.alpha(1f);
-          Lines.poly(x, y, 6, radius);
+          Lines.poly(core.x, core.y, 6, radius);
           Draw.reset();
         }
       }
@@ -134,6 +138,9 @@ public class LargeTurret{
     
     //护盾
     public void shields(){
+      if(hit > 0f){
+        hit -= 1f / 5f * Time.delta;
+      }
       if(radius > 0 && !inCooling&&land){
         Groups.bullet.intersect(core.x - radius, core.y - radius, radius * 2f, radius * 2f, shieldConsumer);
       }
@@ -141,7 +148,7 @@ public class LargeTurret{
     
     //寻找目标
     public void findTarget(){
-      target = Units.closestTarget(team, x, y,range);
+      target = Units.closestTarget(core.team, x, y,range);
     }
     
     //显示名称

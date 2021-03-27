@@ -52,7 +52,8 @@ import mindustry.*;
 import java.util.*;
 import quench.contents.blocks.*;
 import quench.contents.types.LargeMachinery.LargeMachineryBuild;
-import quench.*;
+import quench.contents.types.*;
+import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 
 import static mindustry.Vars.*;
 
