@@ -55,12 +55,8 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 
 	@Override
 	public void draw(LargeMachineryBuild entity){
-	  if(entity.startAnimation){
 	    turn(entity.rotation*90,entity,entity.index);
 	    entity.startAnimation = false;
-	   }else{
-	     Draw.rect(sprites.get(0), entity.x, entity.y,entity.rotation*90);
-	   }
   }
     
     public void turn(float angle,LargeMachineryBuild build,int index){
