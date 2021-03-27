@@ -59,7 +59,7 @@ public class DrawMotiveTransmission extends DrawLargeMachinery {
 	    turn(entity.rotation*90,entity,entity.index);
 	    entity.startAnimation = false;
 	   }else{
-	     Draw.rect(sprite.get(0), entity.x, entity.y,entity.rotation*90);
+	     Draw.rect(sprites.get(0), entity.x, entity.y,entity.rotation*90);
 	   }
   }
     
