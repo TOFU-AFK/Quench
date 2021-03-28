@@ -81,7 +81,6 @@ public class LargeTurret{
     range = 240;
     animation = new Animation();
     region = Core.atlas.find(spriteName);
-    Log.info("[淬火] 贴图名称 "+spriteName,"");
   }
   
   public LargeTurretBuild build(TurretCoreBuild core){
@@ -128,6 +127,10 @@ public class LargeTurret{
           if(!inCooling){
             drawLand();
           }
+        }
+      }else{
+        if(land){
+          drawToSky();
         }
       }
     }
