@@ -59,9 +59,7 @@ import quench.contents.effects.*;
 import static mindustry.Vars.*; 
 
 public class LargeTurret{
-  public TextureRegion region;//炮塔主贴图
   public String name;
-  public String spriteName;
   public float health;//血量，也是护盾血量，当为0时，炮塔将关闭护盾，并飞走
   public int cool;//冷却时间，时间结束后，并且底座没有损坏，炮塔将重新回来
   public int coolSpeed;//冷却速度
@@ -72,7 +70,6 @@ public class LargeTurret{
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
-    spriteName = "quench-"+name;
     health = 1200;
     cool = 240;
     coolSpeed = 1;
@@ -80,7 +77,10 @@ public class LargeTurret{
     defend = QUFx.smallShockWave;
     range = 240;
     animation = new Animation();
-    region = Core.atlas.find(spriteName);
+  }
+  
+  public TextureRegion region(){
+    return Core.atlas.find(name);
   }
   
   public LargeTurretBuild build(TurretCoreBuild core){

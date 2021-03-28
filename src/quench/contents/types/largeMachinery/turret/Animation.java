@@ -59,14 +59,19 @@ import quench.contents.effects.*;
 import static mindustry.Vars.*; 
 
 public class Animation{
-  public Vec2[] vec = {new Vec2(0,0),new Vec2(0,0),new Vec2(0,0)};
+  public Vec2[] vec = {new Vec2(16,-16),new Vec2(8,-8),new Vec2(0,0)};
   public float[] size = {0.6f,0.8f,1f};
   public float[] angle = {0,45,90};
+  public int space = 6;
   
   public void draw(TextureRegion region,TurretCoreBuild core){
-    if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length)
-    for(int i=0;i<vec.length;i++){
-      Draw.rect(region,core.x+vec[i].x,core.y+vec[i].y,angle[i],region.width*size[i],region.height*size[i]);
+    time++;
+    if(time>=space){
+      time = 0;
+      if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length)
+          for(int i=0;i<vec.length;i++){
+            Draw.rect(region,core.x+vec[i].x,core.y+vec[i].y,angle[i],region.width*size[i],region.height*size[i]);
+          }
     }
   }
 }
