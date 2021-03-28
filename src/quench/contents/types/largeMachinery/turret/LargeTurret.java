@@ -229,9 +229,9 @@ public class LargeTurret{
     //寻找目标
     protected void findTarget(){
       if(targetAir && !targetGround){
-        target = Units.bestEnemy(team, x, y, range, e -> !e.dead() && !e.isGrounded(), unitSort);
+        target = Units.bestEnemy(core.team(), core.x, core.y, range, e -> !e.dead() && !e.isGrounded(), unitSort);
       }else{
-        target = Units.bestTarget(team, x, y, range, e -> !e.dead() && (e.isGrounded() || targetAir) && (!e.isGrounded() || targetGround), b -> true, unitSort);
+        target = Units.bestTarget(core.team(), core.x, core.y, range, e -> !e.dead() && (e.isGrounded() || targetAir) && (!e.isGrounded() || targetGround), b -> true, unitSort);
       }
     }
     
