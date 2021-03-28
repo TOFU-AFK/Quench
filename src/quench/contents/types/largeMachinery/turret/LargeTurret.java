@@ -87,17 +87,20 @@ public class LargeTurret{
   
   public class LargeTurretBuild{
     public Teamc target;//目标
-    public boolean inCooling = false;//炮塔冷却中;
-    public boolean land = false;//炮塔已经降落
-    public boolean isDrawed = false;
+    
     public float healthf = health;//剩余血量
     private TurretCoreBuild core;//炮塔的核心
     
     public Cons<Bullet> shieldConsumer;
     public float hit;
     
+    public boolean land;
+    public boolean inCooling;
+    
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
+      land = false;
+      inCooling = false;
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
             trait.absorb();
@@ -108,17 +111,20 @@ public class LargeTurret{
     }
     
     public void draw(){
-      if(land){
-        drawRegion();
-        drawShield();
+      if(core.start){
+        if(land){
+          if(inCooling){
+            drawToSky();
+          }else{
+            drawRegion();
+            drawShield();
+          }
+        }else{
+          if(!inCooling){
+            drawLand();
+          }
+        }
       }
-        drawShield();
-       if(land&&!inCooling&&!isDrawed){
-         drawLand();
-       }
-       if(land&&inCooling&&isDrawed){
-         drawToSky();
-       }
     }
     
     public void drawRegion(){
@@ -127,11 +133,11 @@ public class LargeTurret{
     
     public void drawLand(){
       animation.draw(region,core);
-      isDrawed = true;
+      land = true;
     }
     
     public void drawToSky(){
-      isDrawed = false;
+      land = false;
     }
     
     public void drawShield(){
@@ -151,27 +157,11 @@ public class LargeTurret{
     }
     
     public void update(){
-      //核心消失，结构损坏，血量小于等于0
-      if(land&&core==null||!core.start||healthf<=0){
-        toSky();
-      }else if(!land&&!inCooling){
-        land();
+      if(core.start){
+        if(land){
+          shields();
+        }
       }
-      if(!inCooling){
-        shields();
-      }
-    }
-    
-    //飞回空中
-    public void toSky(){
-      land = false;
-      inCooling = true;
-    }
-    
-    //降落
-    public void land(){
-      land = true;
-      inCooling = false;
     }
     
     //护盾
@@ -179,7 +169,7 @@ public class LargeTurret{
       if(hit > 0f){
         hit -= 1f / 5f * Time.delta;
       }
-      if(radius > 0 && !inCooling&&land){
+      if(radius > 0){
         Groups.bullet.intersect(core.x - radius, core.y - radius, radius * 2f, radius * 2f, shieldConsumer);
       }
     }
