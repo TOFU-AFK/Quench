@@ -136,11 +136,11 @@ public class LargeTurret{
     }
     
     public void drawRegion(){
-      Draw.rect(region,core.x,core.y,core.rotation*90);
+      Draw.rect(region(),core.x,core.y,core.rotation*90);
     }
     
     public void drawLand(){
-      animation.draw(region,core);
+      animation.draw(region(),core);
       land = true;
     }
     
