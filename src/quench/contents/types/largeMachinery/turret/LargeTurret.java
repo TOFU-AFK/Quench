@@ -108,15 +108,20 @@ public class LargeTurret{
     }
     
     public void draw(){
-      if(isDrawed){
+      if(land){
         drawShield();
       }
+        drawShield();
        if(land&&!inCooling&&!isDrawed){
          drawLand();
        }
        if(land&&inCooling){
          drawLand();
        }
+    }
+    
+    public void drawRegion(){
+      Draw.rect(region,core.x,core.y,core.rotation*90);
     }
     
     public void drawLand(){
