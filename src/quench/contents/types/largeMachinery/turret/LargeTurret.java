@@ -241,7 +241,7 @@ public class LargeTurret{
     }
     
     protected void turnToTarget(float targetRot){
-      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed())-180;
+      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed())+180;
       }
     
     //显示名称
