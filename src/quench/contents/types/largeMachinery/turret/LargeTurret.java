@@ -78,7 +78,7 @@ public class LargeTurret{
     defend = QUFx.smallShockWave;
     range = 240;
     animation = new Animation();
-    region = Core.atlas.find(this.name);
+    region = Core.atlas.find("quench-"+name);
   }
   
   public LargeTurretBuild build(TurretCoreBuild core){
