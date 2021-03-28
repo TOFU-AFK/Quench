@@ -63,6 +63,7 @@ public class Animation{
   public float[] size = {0.6f,0.8f,1f};
   public float[] angle = {0,45,90};
   public int space = 6;
+  public int time;
   
   public void draw(TextureRegion region,TurretCoreBuild core){
     time++;
