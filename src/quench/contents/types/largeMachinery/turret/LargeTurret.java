@@ -48,6 +48,7 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.core.*;
 import mindustry.*;
+import mindustry.entities.Units.Sortf;
 
 import java.util.*;
 import quench.contents.blocks.*;
@@ -195,7 +196,7 @@ public class LargeTurret{
           shields();
           findTarget();
           targetPosition(target);
-          float targetRot = angleTo(targetPos);
+          float targetRot = core.angleTo(targetPos);
           turnToTarget(targetRot);
         }
       }
@@ -216,7 +217,7 @@ public class LargeTurret{
         BulletType bullet = peekAmmo();
         float speed = bullet.speed;
         if(speed < 0.1f) speed = 9999999f;
-        targetPos.set(Predict.intercept(this, pos, speed));
+        targetPos.set(Predict.intercept(core, pos, speed));
         if(targetPos.isZero()){
           targetPos.set(pos);
       }
@@ -240,7 +241,7 @@ public class LargeTurret{
     }
     
     protected void turnToTarget(float targetRot){
-      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * delta() * baseReloadSpeed());
+      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed());
       }
     
     //显示名称
