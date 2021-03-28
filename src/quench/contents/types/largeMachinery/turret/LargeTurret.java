@@ -55,6 +55,7 @@ import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 import quench.contents.types.core.*;
 import quench.contents.types.core.TurretCore.TurretCoreBuild;
 import quench.contents.effects.*;
+import quench.contents.bullets.*;
 
 import static mindustry.Vars.*; 
 
@@ -66,7 +67,11 @@ public class LargeTurret{
   public float radius;//护盾半径
   public Effect defend;//护盾防御特效
   public float range;//攻击范围
+  public float baseReloadSpeed;
+  public float rotateSpeed;
   public Animation animation;
+  public boolean targetAir,targetGround;
+  public Sortf unitSort = Unit::dst2;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -77,6 +82,10 @@ public class LargeTurret{
     defend = QUFx.smallShockWave;
     range = 240;
     animation = new Animation();
+    baseReloadSpeed = 60;
+    rotateSpeed = 12;
+    targetAir = true;
+    targetGround = true;
   }
   
   public TextureRegion region(){
@@ -88,7 +97,7 @@ public class LargeTurret{
   }
   
   public class LargeTurretBuild{
-    public Teamc target;//目标
+    public @Nullable Posc target;//目标
     
     public float healthf = health;//剩余血量
     private TurretCoreBuild core;//炮塔的核心
@@ -99,11 +108,14 @@ public class LargeTurret{
     public boolean land;
     public boolean inCooling;
     public float coolf;//冷却时间
+    public float rotation;
+    public Vec2 targetPos = new Vec2();
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
       land = false;
       inCooling = false;
+      rotation = core.rotation*90;
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
             trait.absorb();
@@ -136,7 +148,9 @@ public class LargeTurret{
     }
     
     public void drawRegion(){
-      Draw.rect(region(),core.x,core.y,core.rotation*90);
+      Draw.z(Layer.turret);
+      Draw.rect(region(),core.x,core.y,rotation);
+      Draw.reset();
     }
     
     public void drawLand(){
@@ -179,6 +193,10 @@ public class LargeTurret{
         }
         if(land){
           shields();
+          findTarget();
+          targetPosition(target);
+          float targetRot = angleTo(targetPos);
+          turnToTarget(targetRot);
         }
       }
     }
@@ -193,10 +211,37 @@ public class LargeTurret{
       }
     }
     
-    //寻找目标
-    public void findTarget(){
-      target = Units.closestTarget(core.team, core.x, core.y,range);
+    public void targetPosition(Posc pos){
+      if(pos == null) return;
+        BulletType bullet = peekAmmo();
+        float speed = bullet.speed;
+        if(speed < 0.1f) speed = 9999999f;
+        targetPos.set(Predict.intercept(this, pos, speed));
+        if(targetPos.isZero()){
+          targetPos.set(pos);
+      }
     }
+    
+    public BulletType peekAmmo(){
+      return QUBullets.bigCircularMissile;
+    }
+    
+    //寻找目标
+    protected void findTarget(){
+      if(targetAir && !targetGround){
+        target = Units.bestEnemy(team, x, y, range, e -> !e.dead() && !e.isGrounded(), unitSort);
+      }else{
+        target = Units.bestTarget(team, x, y, range, e -> !e.dead() && (e.isGrounded() || targetAir) && (!e.isGrounded() || targetGround), b -> true, unitSort);
+      }
+    }
+    
+    public float baseReloadSpeed(){
+      return baseReloadSpeed;
+    }
+    
+    protected void turnToTarget(float targetRot){
+      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * delta() * baseReloadSpeed());
+      }
     
     //显示名称
     public String displayName(){
