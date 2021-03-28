@@ -109,14 +109,15 @@ public class LargeTurret{
     
     public void draw(){
       if(land){
+        drawRegion();
         drawShield();
       }
         drawShield();
        if(land&&!inCooling&&!isDrawed){
          drawLand();
        }
-       if(land&&inCooling){
-         drawLand();
+       if(land&&inCooling&&isDrawed){
+         drawToSky();
        }
     }
     
