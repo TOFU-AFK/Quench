@@ -84,7 +84,7 @@ public class LargeTurret{
     defend = QUFx.smallShockWave;
     range = 240;
     animation = new Animation();
-    baseReloadSpeed = 60;
+    baseReloadSpeed = 2;
     rotateSpeed = 12;
     targetAir = true;
     targetGround = true;
@@ -119,7 +119,7 @@ public class LargeTurret{
       this.core = core;
       land = false;
       inCooling = false;
-      rotation = core.rotation*90;
+      rotation = (core.rotation-1)*90;
       coolTime = shootCool;
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
@@ -256,7 +256,7 @@ public class LargeTurret{
     }
     
     protected void turnToTarget(float targetRot){
-      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed())-90;
+      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed());
       }
     
     //显示名称
