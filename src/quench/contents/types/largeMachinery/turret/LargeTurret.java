@@ -211,7 +211,7 @@ public class LargeTurret{
     public void attack(){
       if(coolTime>=shootCool){
         coolTime=0;
-        peekAmmo().create(core.team(),core.x,core.y,rotation);
+        peekAmmo().create(core,core.team(),core.x,core.y,rotation);
       }else{
         coolTime+=core.delta() * baseReloadSpeed();
       }
