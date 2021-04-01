@@ -73,6 +73,7 @@ public class LargeTurret{
   public Animation animation;
   public boolean targetAir,targetGround;
   public Sortf unitSort = Unit::dst2;
+  public float shootCool;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -87,6 +88,7 @@ public class LargeTurret{
     rotateSpeed = 12;
     targetAir = true;
     targetGround = true;
+    shootCool = 120;
   }
   
   public TextureRegion region(){
@@ -111,12 +113,14 @@ public class LargeTurret{
     public float coolf;//冷却时间
     public float rotation;
     public Vec2 targetPos = new Vec2();
+    public float coolTime;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
       land = false;
       inCooling = false;
       rotation = core.rotation*90;
+      coolTime = shootCool;
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
             trait.absorb();
@@ -198,7 +202,18 @@ public class LargeTurret{
           targetPosition(target);
           float targetRot = core.angleTo(targetPos);
           turnToTarget(targetRot);
+          attack();
         }
+      }
+    }
+    
+    //攻击
+    public void attack(){
+      if(coolTime>=shootCool){
+        coolTime=0;
+        peekAmmo().create(core.team(),core.x,core.y,rotation);
+      }else{
+        coolTime+=core.delta() * baseReloadSpeed();
       }
     }
     
