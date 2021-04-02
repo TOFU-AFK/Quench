@@ -74,6 +74,8 @@ public class LargeTurret{
   public boolean targetAir,targetGround;
   public Sortf unitSort = Unit::dst2;
   public float shootCool;
+  public Effect shootEffect;//射击特效
+  public Vec2 offset;//炮口偏移核心
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -89,6 +91,8 @@ public class LargeTurret{
     targetAir = true;
     targetGround = true;
     shootCool = 120;
+    shootEffect = Fx.none;
+    offset = new Vec2(0,0);
   }
   
   public TextureRegion region(){
@@ -209,12 +213,21 @@ public class LargeTurret{
     
     //攻击
     public void attack(){
-      if(coolTime>=shootCool){
-        coolTime=0;
-        peekAmmo().create(core,core.team(),core.x,core.y,rotation);
-      }else{
-        coolTime+=core.delta() * baseReloadSpeed();
+      if(shootable()){
+        if(coolTime>=shootCool){
+          coolTime=0;
+          shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
+          peekAmmo().create(core,core.team(),core.x,core.y,rotation);
+        }else{
+         coolTime+=core.delta() * baseReloadSpeed();
+        }
       }
+    }
+    
+    //可射击
+    public boolean shootable(){
+      if(target==null) return false;
+      return true;
     }
     
     //护盾
@@ -256,7 +269,7 @@ public class LargeTurret{
     }
     
     protected void turnToTarget(float targetRot){
-      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed());
+      rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed())+90;
       }
     
     //显示名称
