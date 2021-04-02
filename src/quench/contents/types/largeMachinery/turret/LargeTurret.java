@@ -123,7 +123,7 @@ public class LargeTurret{
       this.core = core;
       land = false;
       inCooling = false;
-      rotation = (core.rotation-1)*90;
+      rotation = 0;
       coolTime = shootCool;
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
@@ -158,7 +158,7 @@ public class LargeTurret{
     
     public void drawRegion(){
       Draw.z(Layer.turret);
-      Draw.rect(region(),core.x,core.y,rotation);
+      Draw.rect(region(),core.x,core.y,rotation+90);
       Draw.reset();
     }
     
