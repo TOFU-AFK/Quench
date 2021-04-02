@@ -158,7 +158,7 @@ public class LargeTurret{
     
     public void drawRegion(){
       Draw.z(Layer.turret);
-      Draw.rect(region(),core.x,core.y,rotation+90);
+      Draw.rect(region(),core.x,core.y,rotation);
       Draw.reset();
     }
     
