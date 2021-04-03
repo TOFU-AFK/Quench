@@ -54,9 +54,9 @@ public class QUBullets implements ContentList {
 	       	@Override
 	       	public void get(float x, float y) {
 	       		Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
-	       	};
+	       	}
 	       	
-	       };
+	       }
 	       Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,d);
 	     }).at(b);
      }
