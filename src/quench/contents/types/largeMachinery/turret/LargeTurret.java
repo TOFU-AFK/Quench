@@ -78,7 +78,7 @@ public class LargeTurret{
   public TextureRegion region;
   public BulletType bullet;//子弹
   public int shots;//射出数量;
-  public float bulletOffset;
+  public int bulletOffset;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -222,10 +222,10 @@ public class LargeTurret{
       if(shootable()&&coolTime>=shootCool){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-        if(shots=1){
+        if(shots==1){
           peekAmmo().create(core,core.team(),core.x,core.y,rotation);
         }else{
-          for(int i:shots){
+          for(int i=0;i<shots;i++){
             peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf(0,bulletOffset));
           }
         }

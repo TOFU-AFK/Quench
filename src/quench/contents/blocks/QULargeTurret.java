@@ -40,6 +40,7 @@ import quench.contents.largeMachinery.drawers.*;
 import quench.contents.types.motive.*;
 import quench.contents.types.core.*;
 import quench.contents.types.turret.*;
+import quench.contents.bullets.*;
 
 import static mindustry.type.ItemStack.*;
 import static mindustry.Vars.*;
