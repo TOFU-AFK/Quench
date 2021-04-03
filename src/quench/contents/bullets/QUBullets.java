@@ -58,7 +58,7 @@ public class QUBullets implements ContentList {
 	       	
 	       };
 	       Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,d);
-	     }.at(b);
+	     }).at(b);
      }
      
 	  }
