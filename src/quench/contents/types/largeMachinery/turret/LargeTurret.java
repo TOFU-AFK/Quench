@@ -118,7 +118,6 @@ public class LargeTurret{
     public float rotation;
     public Vec2 targetPos = new Vec2();
     public float coolTime;
-    public Animation animation;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
@@ -126,7 +125,6 @@ public class LargeTurret{
       inCooling = false;
       rotation = 0;
       coolTime = shootCool;
-      animation = new Animation();
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
             trait.absorb();
@@ -141,19 +139,19 @@ public class LargeTurret{
       if(core.start){
         if(land){
           if(inCooling){
-            drawToSky();
+            ToSky();
           }else{
             drawRegion();
             drawShield();
           }
         }else{
           if(!inCooling){
-            drawLand();
+            toLand();
           }
         }
       }else{
         if(land){
-          drawToSky();
+          toSky();
         }
       }
     }
@@ -164,14 +162,13 @@ public class LargeTurret{
       Draw.reset();
     }
     
-    public void drawLand(){
-      animation.draw(region(),core);
-      if(animation.end){
-        land = true;
-      }
+    public void toLand(){
+      QUFx.highEnergyShockWave.at(core);
+      land = true;
     }
     
-    public void drawToSky(){
+    public void toSky(){
+      QUFx.highEnergyShockWave.at(core);
       land = false;
     }
     
