@@ -164,7 +164,9 @@ public class LargeTurret{
     
     public void drawLand(){
       animation.draw(region(),core);
-      land = true;
+      if(animation.end){
+        land = true;
+      }
     }
     
     public void drawToSky(){
@@ -213,14 +215,13 @@ public class LargeTurret{
     
     //攻击
     public void attack(){
-      if(shootable()){
-        if(coolTime>=shootCool){
-          coolTime=0;
-          shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-          peekAmmo().create(core,core.team(),core.x,core.y,rotation);
-        }else{
-         coolTime+=core.delta() * baseReloadSpeed();
-        }
+      if(shootable&&coolTime>=shootCool){
+        coolTime=0;
+        shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
+        peekAmmo().create(core,core.team(),core.x,core.y,rotation);
+      }
+      if(coolTime<shootCool){
+        coolTime+=core.delta() * baseReloadSpeed();
       }
     }
     

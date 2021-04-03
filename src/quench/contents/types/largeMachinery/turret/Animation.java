@@ -64,6 +64,7 @@ public class Animation{
   public float[] angle = {0,45,90};
   public int space = 6;
   public int time;
+  public boolean end = false;
   
   public void draw(TextureRegion region,TurretCoreBuild core){
     time++;
@@ -72,6 +73,9 @@ public class Animation{
       if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length)
           for(int i=0;i<vec.length;i++){
             Draw.rect(region,core.x+vec[i].x,core.y+vec[i].y,angle[i],region.width*size[i],region.height*size[i]);
+            if(i>=vec.length){
+              end = true;
+            }
           }
     }
   }
