@@ -74,7 +74,7 @@ public class Animation{
           for(int i=0;i<vec.length;i++){
             Draw.rect(region,core.x+vec[i].x,core.y+vec[i].y,angle[i],region.width*size[i],region.height*size[i]);
             Log.info("[淬火] i:"+i,"");
-            if(i>=vec.length){
+            if(i>=vec.length-1){
               end = true;
               Log.info("[淬火] end:true","");
             }

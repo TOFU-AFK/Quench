@@ -70,7 +70,6 @@ public class LargeTurret{
   public float range;//攻击范围
   public float baseReloadSpeed;
   public float rotateSpeed;
-  public Animation animation;
   public boolean targetAir,targetGround;
   public Sortf unitSort = Unit::dst2;
   public float shootCool;
@@ -86,7 +85,6 @@ public class LargeTurret{
     radius = 60;
     defend = QUFx.smallShockWave;
     range = 240;
-    animation = new Animation();
     baseReloadSpeed = 2;
     rotateSpeed = 12;
     targetAir = true;
@@ -120,6 +118,7 @@ public class LargeTurret{
     public float rotation;
     public Vec2 targetPos = new Vec2();
     public float coolTime;
+    public Animation animation;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
@@ -127,6 +126,7 @@ public class LargeTurret{
       inCooling = false;
       rotation = 0;
       coolTime = shootCool;
+      animation = new Animation();
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
             trait.absorb();
