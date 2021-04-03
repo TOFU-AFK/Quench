@@ -35,31 +35,31 @@ public class QUBullets implements ContentList {
 	  
 	   disturbance = new BulletType(6f,100f){
 	    {
-	      drawSize = 400;
+	      drawSize = 12;
 	      pierce = true;
 	      lifetime = 180;
-	      hitSize = 60;
+	      hitSize = 10;
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
-	      lightRadius = 400;
+	      lightRadius = 12;
 	    }
 	    
 	   @Override
 	   public void draw(Bullet b){
-	     new Effect(32f, e -> {
-	       Draw.color(Pal.lancerLaser, Color.white,e.fin());
-	       Lines.stroke(e.fout() * 2.9725f);
-	       Floatc2 d = new Floatc2(){
-	       	
-	       	@Override
-	       	public void get(float x, float y) {
-	       		Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
-	       	}
-	       	
-	       }
-	       Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,d);
-	     }).at(b);
+	     Draw.color(Pal.lancerLaser, Color.white,b.fin());
+	     Fill.circle(b.x, b.y,12f);
+	     reset();
      }
+     
+     @Override
+      public void update(Bullet b){
+        new Effect(25f, e -> {
+     	Draw.color(Pal.lancerLaser);
+         Fill.circle(e.x, e.y, e.fout() * 12);
+         Draw.color(Color.white);
+         Fill.circle(e.x, e.y, e.fout() * 3);
+         }).at(b);
+        }
      
 	  };
 	  

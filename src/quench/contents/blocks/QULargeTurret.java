@@ -53,6 +53,7 @@ public class QULargeTurret implements ContentList
     motiveTurret = new LargeTurret("motiveTurret"){
       {
         bullet = QUBullets.disturbance;
+        shots = 12;
       }
     }
   }
