@@ -50,11 +50,13 @@ public class QUBullets implements ContentList {
 	       Draw.color(Pal.lancerLaser, Color.white,e.fin());
 	       Lines.stroke(e.fout() * 2.9725f);
 	       Floatc2 d = new Floatc2(){
-	       @Override
-	       void get(x, y){
-	       	 Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
+	       	
+	       	@Override
+	       	public void get(float x, float y) {
+	       		Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
 	       	}
-	       }
+	       	
+	       };
 	       Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,d);
 	     }.at(b);
      }
