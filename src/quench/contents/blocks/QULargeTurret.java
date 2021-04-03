@@ -50,6 +50,10 @@ public class QULargeTurret implements ContentList
   
   @Override
   public void load(){
-    motiveTurret = new LargeTurret("motiveTurret");
+    motiveTurret = new LargeTurret("motiveTurret"){
+      {
+        bullet = QUBullets.disturbance;
+      }
+    }
   }
 }

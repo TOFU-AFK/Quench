@@ -76,6 +76,7 @@ public class LargeTurret{
   public Effect shootEffect;//射击特效
   public Vec2 offset;//炮口偏移核心
   public TextureRegion region;
+  public BulletType bullet;//子弹
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -252,7 +253,7 @@ public class LargeTurret{
     }
     
     public BulletType peekAmmo(){
-      return QUBullets.bigCircularMissile;
+      return bullet;
     }
     
     //寻找目标

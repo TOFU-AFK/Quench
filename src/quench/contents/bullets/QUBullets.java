@@ -28,11 +28,42 @@ import static arc.math.Angles.*;
  
 public class QUBullets implements ContentList {
 	public static
-	BulletType curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
+	BulletType disturbance,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
  
 	@Override
 	public void load() {
-        curvebomb = new ArtilleryBulletType(4f, 200f) {
+	  
+	   disturbance = new BulletType(6f,100f){
+	    {
+	      drawSize = 400;
+	      pierce = true;
+	      lifetime = 180;
+	      hitSize = 60;
+	      hitEffect = Fx.none;
+	      despawnEffect = Fx.none;
+	      lightRadius = 400;
+	    }
+	    
+	   @Override
+	   public void draw(Bullet b){
+	     new Effect(32f, e -> {
+	       Draw.color(Pal.lancerLaser, Color.white,e.fin());
+	       Lines.stroke(e.fout() * 2.9725f);
+	       Floatc2 d = new Floatc2(){
+	       @Override
+	       void get(x, y){
+	       	 Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
+	       	}
+	       }
+	       Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,d);
+	     }.at(b);
+     }
+     
+	  }
+	  
+	  //---------------------------------------
+	  
+      curvebomb = new ArtilleryBulletType(4f, 200f) {
 			@Override
 			public void init(Bullet b) {
 				if (b == null)return;
@@ -96,7 +127,7 @@ public class QUBullets implements ContentList {
 			public void despawned(Bullet b) {
 				Effect.shake(3f, 1f,b);
 				despawnEffect.at(b);
-                                new Effect(32f, e -> {
+          new Effect(32f, e -> {
 					Draw.color(Color.valueOf("D3806A"), Color.valueOf("FFFF8F"),e.fin());
 	randLenVectors(e.id, 5, 5 + 15 * e.fin(), (x, y) -> {
 		Drawf.tri(e.x + x, e.y + y, 4* e.fout(), 9* e.fout(), 90);
