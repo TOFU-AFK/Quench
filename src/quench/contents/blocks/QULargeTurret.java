@@ -55,6 +55,6 @@ public class QULargeTurret implements ContentList
         bullet = QUBullets.disturbance;
         shots = 12;
       }
-    }
+    };
   }
 }

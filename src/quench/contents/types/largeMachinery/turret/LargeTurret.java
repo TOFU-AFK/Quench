@@ -77,7 +77,7 @@ public class LargeTurret{
   public Vec2 offset;//炮口偏移核心
   public TextureRegion region;
   public BulletType bullet;//子弹
-  public int shots//射出数量;
+  public int shots;//射出数量;
   public float bulletOffset;
   
   public LargeTurret(String name){
