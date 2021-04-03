@@ -59,9 +59,9 @@ import quench.contents.effects.*;
 import static mindustry.Vars.*; 
 
 public class Animation{
-  public Vec2[] vec = {new Vec2(16,-16),new Vec2(8,-8),new Vec2(0,0)};
-  public float[] size = {0.6f,0.8f,1f};
-  public float[] angle = {0,45,90};
+  public Vec2[] vec = {new Vec2(64,-64),new Vec2(56,-56),new Vec2(48,-48),new Vec2(40,-40),new Vec2(32,-32),new Vec2(24,-24),new Vec2(16,-16),new Vec2(8,-8),new Vec2(0,-0)};
+  public float[] size = {0.6f,0.65f,0.7f,0.75f,0.8f,0.85f,0.9f,0.95f,1f};
+  public float[] angle = {0,45,90,135,180,225,270,315,360};
   public int space = 6;
   public int time;
   public boolean end = false;
