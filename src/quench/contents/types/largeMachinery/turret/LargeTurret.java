@@ -76,6 +76,7 @@ public class LargeTurret{
   public float shootCool;
   public Effect shootEffect;//射击特效
   public Vec2 offset;//炮口偏移核心
+  public TextureRegion region;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -96,7 +97,8 @@ public class LargeTurret{
   }
   
   public TextureRegion region(){
-    return Core.atlas.find(name);
+    if(region==null) region = Core.atlas.find(name);
+    return region;
   }
   
   public LargeTurretBuild build(TurretCoreBuild core){

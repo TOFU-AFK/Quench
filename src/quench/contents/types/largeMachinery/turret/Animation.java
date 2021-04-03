@@ -67,14 +67,16 @@ public class Animation{
   public boolean end = false;
   
   public void draw(TextureRegion region,TurretCoreBuild core){
+    if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length) return;
     time++;
     if(time>=space){
       time = 0;
-      if(vec.length!=size.length||vec.length!=angle.length||size.length!=angle.length)
           for(int i=0;i<vec.length;i++){
             Draw.rect(region,core.x+vec[i].x,core.y+vec[i].y,angle[i],region.width*size[i],region.height*size[i]);
+            Log.info("[淬火] i:"+i,"");
             if(i>=vec.length){
               end = true;
+              Log.info("[淬火] end:true","");
             }
           }
     }
