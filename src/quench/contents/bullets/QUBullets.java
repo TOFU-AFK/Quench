@@ -33,7 +33,7 @@ public class QUBullets implements ContentList {
 	@Override
 	public void load() {
 	  
-	   disturbance = new BulletType(6f,100f){
+	   disturbance = new BulletType(6f,200f){
 	    {
 	      drawSize = 12;
 	      pierce = true;
@@ -42,6 +42,15 @@ public class QUBullets implements ContentList {
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
 	      lightRadius = 12;
+	      despawnEffect = new Effect(32f, e -> {
+	      					Draw.color(Color.white, Pal.lancerLaser,e.fin());
+	      					stroke(e.fout() * 2);
+	      					circle(e.x, e.y, e.fin() * 40);
+	      					Fill.circle(e.x, e.y, e.fout() * e.fout() * 10);
+	      					randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
+	      						Fill.circle(e.x + x, e.y + y, e.fout() * 5f);
+	      					});
+	      				});
 	    }
 	    
 	   @Override
@@ -49,6 +58,12 @@ public class QUBullets implements ContentList {
 	     Draw.color(Pal.lancerLaser, Color.white,b.fin());
 	     Fill.circle(b.x, b.y,12f);
 	     reset();
+     }
+     
+     @Override
+     public void despawned(Bullet b) {
+     	Effect.shake(3f, 1f,b);
+     	despawnEffect.at(b);
      }
      
      @Override
