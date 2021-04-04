@@ -15,6 +15,7 @@ import arc.struct.Bits;
 import arc.struct.*;
 import arc.util.io.*;
 import arc.scene.ui.*;
+import arc.audio.*;
 import mindustry.core.GameState.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
@@ -112,7 +113,7 @@ public class LargeTurret{
     public @Nullable Posc target;//目标
     
     public float healthf = health;//剩余血量
-    private TurretCoreBuild core;//炮塔的核心
+    public TurretCoreBuild core;//炮塔的核心
     
     public Cons<Bullet> shieldConsumer;
     public float hit;
