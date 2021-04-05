@@ -1,4 +1,4 @@
-package quench.contents.types.turret;
+package quench.contents.sounds;
 
 import mindustry.world.*;
 import mindustry.entities.*;
@@ -58,64 +58,14 @@ import quench.contents.types.core.*;
 import quench.contents.types.core.TurretCore.TurretCoreBuild;
 import quench.contents.effects.*;
 import quench.contents.bullets.*;
-import quench.contents.sounds.*;
 
 import static mindustry.Vars.*; 
 
-public class EnergizedLargeTurret extends LargeTurret{
-  
-  public Sound energizing;
-  
-  public EnergizedLargeTurret (String name){
-    super(name);
-    energizing = QUSounds.xuli;
-  }
+public class QUSounds implements ContentList{
+  public static Sound xuli;
   
   @Override
-  public LargeTurretBuild build(TurretCoreBuild core){
-    return new EnergizedLargeTurretBuild(core);
+  public void load(){
+    xuli = Core.audio.newSound(Core.files.classpath("sounds/xuli"));
   }
-  
-  public class EnergizedLargeTurretBuild extends LargeTurretBuild{
-    
-    public EnergizedLargeTurretBuild(TurretCoreBuild core){
-      super(core);
-    }
-    
-    @Override
-    public void draw(){
-      super.draw();
-    }
-    
-    @Override
-    public void update(){
-      super.update();
-    }
-    
-    //在攻击前
-    public void beforeAttack(){
-      energizing.at(core.x,core.y);
-    }
-    
-    //攻击
-    @Override
-    public void attack(){
-      if(shootable()&&coolTime>=shootCool){
-        coolTime=0;
-        shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-        if(shots==1){
-          peekAmmo().create(core,core.team(),core.x,core.y,rotation);
-        }else{
-          for(int i=0;i<shots;i++){
-            peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
-          }
-        }
-      }
-      if(coolTime<shootCool){
-        coolTime+=core.delta() * baseReloadSpeed();
-      }
-    }
-    
-  }
-
 }
