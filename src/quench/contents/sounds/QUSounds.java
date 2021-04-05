@@ -66,6 +66,6 @@ public class QUSounds implements ContentList{
   
   @Override
   public void load(){
-    xuli = Core.audio.newSound(Core.files.classpath("sounds/xuli"));
+    xuli = Core.audio.newSound(Core.files.internal("sounds/xuli"));
   }
 }
