@@ -218,16 +218,24 @@ public class LargeTurret{
       }
     }
     
+    //在攻击前
+    @Override
+    public boolean beforeAttack(){
+      return true;
+    }
+    
     //攻击
     public void attack(){
       if(shootable()&&coolTime>=shootCool){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
+        if(beforeAttack()){
         if(shots==1){
-          peekAmmo().create(core,core.team(),core.x,core.y,rotation);
-        }else{
-          for(int i=0;i<shots;i++){
-            peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
+            peekAmmo().create(core,core.team(),core.x,core.y,rotation);
+          }else{
+            for(int i=0;i<shots;i++){
+              peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
+            }
           }
         }
       }

@@ -64,10 +64,12 @@ import static mindustry.Vars.*;
 public class EnergizedLargeTurret extends LargeTurret{
   
   public Sound energizing;
+  public float chargingTime;
   
   public EnergizedLargeTurret (String name){
     super(name);
     energizing = Sounds.lasercharge;
+    chargingTime = 60;
   }
   
   @Override
@@ -77,8 +79,13 @@ public class EnergizedLargeTurret extends LargeTurret{
   
   public class EnergizedLargeTurretBuild extends LargeTurretBuild{
     
+    public boolean isCharging;
+    public float charging;
+    
     public EnergizedLargeTurretBuild(TurretCoreBuild core){
       super(core);
+      isCharging = false;
+      charging = 0;
     }
     
     @Override
@@ -92,8 +99,15 @@ public class EnergizedLargeTurret extends LargeTurret{
     }
     
     //在攻击前
-    public void beforeAttack(){
-      energizing.at(core.x,core.y);
+    @Override
+    public boolean beforeAttack(){
+      if(charging>=chargingTime){
+        return true;
+      }else{
+        energizing.at(core.x,core.y);
+        charging += += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
+        return false;
+      }
     }
     
     //攻击
@@ -102,12 +116,14 @@ public class EnergizedLargeTurret extends LargeTurret{
       if(shootable()&&coolTime>=shootCool){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-        if(shots==1){
-          peekAmmo().create(core,core.team(),core.x,core.y,rotation);
-        }else{
-          for(int i=0;i<shots;i++){
-            peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
-          }
+        if(beforeAttack()){
+          if(shots==1){
+                    peekAmmo().create(core,core.team(),core.x,core.y,rotation);
+                  }else{
+                    for(int i=0;i<shots;i++){
+                      peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
+                    }
+                  }
         }
       }
       if(coolTime<shootCool){
