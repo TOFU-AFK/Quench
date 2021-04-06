@@ -105,7 +105,7 @@ public class EnergizedLargeTurret extends LargeTurret{
         return true;
       }else{
         energizing.at(core.x,core.y);
-        charging += += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
+        charging += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
         return false;
       }
     }
