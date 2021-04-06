@@ -42,6 +42,7 @@ public class QUBullets implements ContentList {
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
 	      lightRadius = 12;
+	      speed = 0; 
 	    }
 	    
 	   @Override
@@ -53,6 +54,12 @@ public class QUBullets implements ContentList {
         if(b.timer.get(1,4)){
           disturbance.create(b,b.x,b.y,b.rot());
         }
+        new Effect(32f, e -> {
+	            Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
+	            Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
+	              Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
+	            });
+	          }).at(b);
       }
      
 	  };
@@ -77,12 +84,6 @@ public class QUBullets implements ContentList {
 	       
 	       @Override
 	        public void update(Bullet b){
-	          new Effect(32f, e -> {
-	            Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
-	            Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
-	              Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
-	            });
-	          }
 	        }
 	       
 	  	  };
