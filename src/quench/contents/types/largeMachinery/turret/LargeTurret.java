@@ -219,7 +219,6 @@ public class LargeTurret{
     }
     
     //在攻击前
-    @Override
     public boolean beforeAttack(){
       return true;
     }
