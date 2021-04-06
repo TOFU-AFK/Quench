@@ -73,7 +73,6 @@ import quench.contents.effects.*;
 import quench.contents.blocks.*;
 import quench.contents.planets.*;
 import quench.contents.bullets.*;
-import quench.contents.sounds.*;
 //import quench.contents.units.*;
 
 public class Quench extends Mod{
@@ -97,7 +96,6 @@ public class Quench extends Mod{
 	  new QULargeTurret().load();
 	  new QUWalls().load();
 	  new QUPlanets().load();
-	  new QUSounds().load();
     }
 	
 }

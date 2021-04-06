@@ -58,7 +58,6 @@ import quench.contents.types.core.*;
 import quench.contents.types.core.TurretCore.TurretCoreBuild;
 import quench.contents.effects.*;
 import quench.contents.bullets.*;
-import quench.contents.sounds.*;
 
 import static mindustry.Vars.*; 
 
@@ -68,7 +67,7 @@ public class EnergizedLargeTurret extends LargeTurret{
   
   public EnergizedLargeTurret (String name){
     super(name);
-    energizing = QUSounds.xuli;
+    energizing = Sounds.lasercharge;
   }
   
   @Override
