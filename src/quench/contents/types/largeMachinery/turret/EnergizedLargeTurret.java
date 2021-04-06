@@ -69,7 +69,7 @@ public class EnergizedLargeTurret extends LargeTurret{
   public EnergizedLargeTurret (String name){
     super(name);
     energizing = Sounds.lasercharge;
-    chargingTime = 60;
+    chargingTime = 10;//请注意，射击冷却时间过后才会充能
   }
   
   @Override
@@ -102,6 +102,7 @@ public class EnergizedLargeTurret extends LargeTurret{
     @Override
     public boolean beforeAttack(){
       if(charging>=chargingTime){
+        charging = 0;
         return true;
       }else{
         energizing.at(core.x,core.y);
