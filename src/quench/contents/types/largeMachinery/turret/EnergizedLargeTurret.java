@@ -96,6 +96,12 @@ public class EnergizedLargeTurret extends LargeTurret{
     @Override
     public void update(){
       super.update();
+      new Effect(32f, e -> {
+        Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
+        Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
+        Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
+        });
+      }).at(b);
     }
     
     //在攻击前
