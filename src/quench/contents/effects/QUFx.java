@@ -36,14 +36,14 @@ public class QUFx implements ContentList {
 	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
 	     Draw.alpha((0.3f + Mathf.absin(Time.time, 2f  * 2f, 0.3f * 0.05f))*e.fin());
 	     Lines.lineAngle(e.x,e.y,e.rotation,460);
-	 })
+	 });
 	  
 	  ray = new Effect(32f, e -> {
 	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
 	     Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
 	     Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
 	     });
-	 })
+	 });
 	  
 		re_thunder_charging = new Effect(25f, e -> {
 		 Draw.color(Pal.lancerLaser, Color.white,e.fin());
