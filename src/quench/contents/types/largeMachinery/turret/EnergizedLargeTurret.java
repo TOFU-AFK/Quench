@@ -119,10 +119,10 @@ public class EnergizedLargeTurret extends LargeTurret{
     @Override
     public void attack(){
       if(beforeAttack()&&shootable()&&coolTime>=shootCool){
-        QUFx.ray.at(core);
-        QUFx.ray.at(core.x+Vars.tilesize,core.y);
-        QUFx.ray.at(core.x-Vars.tilesize,core.y);
-        QUFx.disturbance.at(core);
+        QUFx.ray.at(core.x,core.y,rotation);
+        QUFx.ray.at(core.x+Vars.tilesize,core.y,rotation);
+        QUFx.ray.at(core.x-Vars.tilesize,core.y,rotation);
+        QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
           
