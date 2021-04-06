@@ -28,12 +28,12 @@ import static arc.math.Angles.*;
  
 public class QUBullets implements ContentList {
 	public static
-	BulletType disturbance,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
+	BulletType empty,disturbance,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
  
 	@Override
 	public void load() {
 	  
-	   disturbance = new BulletType(6f,200f){
+	   empty = new BulletType(6f,1f){
 	    {
 	      drawSize = 12;
 	      pierce = true;
@@ -42,41 +42,50 @@ public class QUBullets implements ContentList {
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
 	      lightRadius = 12;
-	      despawnEffect = new Effect(32f, e -> {
-	      					Draw.color(Color.white, Pal.lancerLaser,e.fin());
-	      					stroke(e.fout() * 2);
-	      					circle(e.x, e.y, e.fin() * 40);
-	      					Fill.circle(e.x, e.y, e.fout() * e.fout() * 10);
-	      					randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
-	      						Fill.circle(e.x + x, e.y + y, e.fout() * 5f);
-	      					});
-	      				});
 	    }
 	    
 	   @Override
 	   public void draw(Bullet b){
-	     Draw.color(Pal.lancerLaser, Color.white,b.fin());
-	     Fill.circle(b.x, b.y,12f);
-	     reset();
-     }
-     
-     @Override
-     public void despawned(Bullet b) {
-     	Effect.shake(3f, 1f,b);
-     	despawnEffect.at(b);
      }
      
      @Override
       public void update(Bullet b){
-        new Effect(25f, e -> {
-     	Draw.color(Pal.lancerLaser);
-         Fill.circle(e.x, e.y, e.fout() * 12);
-         Draw.color(Color.white);
-         Fill.circle(e.x, e.y, e.fout() * 3);
-         }).at(b);
+        if(b.timer.get(1,4)){
+          disturbance.create(b,b.x,b.y,b.rot());
         }
+      }
      
 	  };
+	  
+	  disturbance = new BulletType(6f,100f){
+	  	    {
+	  	      drawSize = 12;
+	  	      pierce = true;
+	  	      lifetime = 180;
+	  	      hitSize = 10;
+	  	      hitEffect = Fx.none;
+	  	      despawnEffect = Fx.none;
+	  	      lightRadius = 12;
+	  	    }
+	  	    
+	  	   @Override
+	  	   public void draw(Bullet b){
+	  	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
+	  	     Fill.square(b.x, b.y,3f);
+	  	     reset();
+	       }
+	       
+	       @Override
+	        public void update(Bullet b){
+	          new Effect(32f, e -> {
+	            Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
+	            Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
+	              Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
+	            });
+	          }
+	        }
+	       
+	  	  };
 	  
 	  //---------------------------------------
 	  

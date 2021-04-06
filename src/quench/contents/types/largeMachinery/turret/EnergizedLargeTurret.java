@@ -114,10 +114,9 @@ public class EnergizedLargeTurret extends LargeTurret{
     //攻击
     @Override
     public void attack(){
-      if(shootable()&&coolTime>=shootCool){
+      if(beforeAttack()&&shootable()&&coolTime>=shootCool){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-        if(beforeAttack()){
           if(shots==1){
                     peekAmmo().create(core,core.team(),core.x,core.y,rotation);
                   }else{
@@ -125,7 +124,6 @@ public class EnergizedLargeTurret extends LargeTurret{
                       peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
                     }
                   }
-        }
       }
       if(coolTime<shootCool){
         coolTime+=core.delta() * baseReloadSpeed();
