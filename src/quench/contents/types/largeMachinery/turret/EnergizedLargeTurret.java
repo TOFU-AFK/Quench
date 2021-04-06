@@ -80,12 +80,14 @@ public class EnergizedLargeTurret extends LargeTurret{
   public class EnergizedLargeTurretBuild extends LargeTurretBuild{
     
     public boolean isCharging;
+    boolean isPlay;
     public float charging;
     
     public EnergizedLargeTurretBuild(TurretCoreBuild core){
       super(core);
       isCharging = false;
       charging = 0;
+      isPlay = false;
     }
     
     @Override
@@ -107,7 +109,9 @@ public class EnergizedLargeTurret extends LargeTurret{
         return true;
       }else{
         if(!isCharging){
-          energizing.at(core.x,core.y);
+          if(!isPlay){
+            energizing.at(core.x,core.y);
+          }
           charging += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
           return false;
         }
@@ -125,7 +129,7 @@ public class EnergizedLargeTurret extends LargeTurret{
         QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-          
+        isPlay = false;
         isCharging = false;
       }
       if(coolTime<shootCool){
