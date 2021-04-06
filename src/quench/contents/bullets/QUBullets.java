@@ -52,7 +52,7 @@ public class QUBullets implements ContentList {
      @Override
       public void update(Bullet b){
         if(b.timer.get(1,4)){
-          disturbance.create(b,b.x,b.y,b.rot());
+          disturbance.create(b,b.x,b.y,b.rotation());
         }
         new Effect(32f, e -> {
 	            Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
