@@ -96,12 +96,6 @@ public class EnergizedLargeTurret extends LargeTurret{
     @Override
     public void update(){
       super.update();
-      new Effect(32f, e -> {
-        Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
-        Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
-        Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
-        });
-      }).at(core);
     }
     
     //在攻击前
@@ -109,11 +103,15 @@ public class EnergizedLargeTurret extends LargeTurret{
     public boolean beforeAttack(){
       if(charging>=chargingTime){
         charging = 0;
+        isCharging = true;
         return true;
       }else{
-        energizing.at(core.x,core.y);
-        charging += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
-        return false;
+        if(!isCharging){
+          energizing.at(core.x,core.y);
+          charging += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
+          return false;
+        }
+        return true;
       }
     }
     
@@ -121,15 +119,14 @@ public class EnergizedLargeTurret extends LargeTurret{
     @Override
     public void attack(){
       if(beforeAttack()&&shootable()&&coolTime>=shootCool){
+        QUFx.ray.at(core);
+        QUFx.ray.at(core.x+Vars.tilesize);
+        QUFx.ray.at(core.x-Vars.tilesize);
+        QUFx.disturbance.at(core);
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-          if(shots==1){
-                    peekAmmo().create(core,core.team(),core.x,core.y,rotation);
-                  }else{
-                    for(int i=0;i<shots;i++){
-                      peekAmmo().create(core,core.team(),core.x,core.y,rotation+bulletOffset);
-                    }
-                  }
+          
+        isCharging = false;
       }
       if(coolTime<shootCool){
         coolTime+=core.delta() * baseReloadSpeed();

@@ -27,10 +27,24 @@ import static arc.math.Angles.*;
 public class QUFx implements ContentList {
 	public static
 	//复雷充能，高能冲击波，榴弹发射，荧光球，小型扩散荧光球,小型冲击波
-	Effect re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall,smallHighlightBall,smallShockWave;
+	Effect disturbance,ray,re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall,smallHighlightBall,smallShockWave;
  
 	@Override
 	public void load() {
+	  
+	  disturbance = new Effect(32f, e -> {
+	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
+	     Draw.alpha((0.3f + Mathf.absin(Time.time, 2f  * 2f, 0.3f * 0.05f))*e.fin());
+	     Lines.lineAngle(e.x,e.y,e.rotation,460);
+	 })
+	  
+	  ray = new Effect(32f, e -> {
+	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
+	     Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
+	     Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
+	     });
+	 })
+	  
 		re_thunder_charging = new Effect(25f, e -> {
 		 Draw.color(Pal.lancerLaser, Color.white,e.fin());
 	     randLenVectors(e.id, 2, 1f + 20f * e.fout(), e.rotation, 120f, (x, y) -> {
