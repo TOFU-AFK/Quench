@@ -66,7 +66,12 @@ public class TurretCore extends MechanicalCore{
         solid = true;
         destructible = true;
         configurable = true;
-      }
+  }
+      
+  @Override
+  public void init(){
+    QULargeTurret.motiveTurret.init(this);
+  }
   
   public class TurretCoreBuild extends MechanicalCoreBuild{
     public LargeTurretBuild turret = QULargeTurret.motiveTurret.build(this);

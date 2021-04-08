@@ -80,11 +80,12 @@ public class LargeTurret{
   public BulletType bullet;//子弹
   public int shots;//射出数量;
   public int bulletOffset;
-  public boolean chargeTime;//充能时间
+  public float chargeTime;//充能时间
   public Sound chargeSound = Sounds.none;//充能音效
   public boolean directCharging = true;//范围内没有敌人时是否也可充能
   public float shootLength = -1;
-  public Effect chargeEffect = QUFx.ary;
+  public Effect chargeEffect = QUFx.ray;
+  protected Vec2 tr = new Vec2();
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -115,11 +116,9 @@ public class LargeTurret{
     return new LargeTurretBuild(core);
   }
   
-  @Override
-    public void init(){
-      if(shootLength < 0) shootLength = size * core.tilesize / 2f;
-      super.init();
-    }
+  public void init(TurretCore core){
+    if(shootLength < 0) shootLength = size * core.tilesize / 2f;
+  }
   
   public class LargeTurretBuild{
     public @Nullable Posc target;//目标
