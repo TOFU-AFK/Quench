@@ -51,7 +51,7 @@ public class QULargeTurret implements ContentList
   
   @Override
   public void load(){
-    motiveTurret = new EnergizedLargeTurret("motiveTurret"){
+    motiveTurret = new ChargeLargeTurret("motiveTurret"){
       {
         bullet = QUBullets.disturbance;
         shots = 12;

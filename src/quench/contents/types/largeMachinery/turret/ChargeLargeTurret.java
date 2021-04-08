@@ -61,33 +61,25 @@ import quench.contents.bullets.*;
 
 import static mindustry.Vars.*; 
 
-public class EnergizedLargeTurret extends LargeTurret{
+public class ChargeLargeTurret extends LargeTurret{
   
-  public Sound energizing;
-  public float chargingTime;
+  public float chargeTime;
   
-  public EnergizedLargeTurret (String name){
+  public ChargeLargeTurret (String name){
     super(name);
-    energizing = Sounds.lasercharge;
-    chargingTime = 10;//请注意，射击冷却时间过后才会充能
+    chargeSound = Sounds.lasercharge;
+    chargeTime = 10;
   }
   
   @Override
   public LargeTurretBuild build(TurretCoreBuild core){
-    return new EnergizedLargeTurretBuild(core);
+    return new ChargeLargeTurretBuild(core);
   }
   
-  public class EnergizedLargeTurretBuild extends LargeTurretBuild{
+  public class ChargeLargeTurretBuild extends LargeTurretBuild{
     
-    public boolean isCharging;
-    boolean isPlay;
-    public float charging;
-    
-    public EnergizedLargeTurretBuild(TurretCoreBuild core){
+    public ChargeLargeTurretBuild(TurretCoreBuild core){
       super(core);
-      isCharging = false;
-      charging = 0;
-      isPlay = false;
     }
     
     @Override
@@ -99,41 +91,18 @@ public class EnergizedLargeTurret extends LargeTurret{
     public void update(){
       super.update();
     }
-    
-    //在攻击前
-    @Override
-    public boolean beforeAttack(){
-      if(charging>=chargingTime){
-        charging = 0;
-        isCharging = true;
-        return true;
-      }else{
-        if(!isCharging){
-          if(!isPlay){
-            energizing.at(core.x,core.y);
-          }
-          charging += core.delta() * peekAmmo().reloadMultiplier * baseReloadSpeed();
-          return false;
-        }
-        return true;
-      }
-    }
+  
     
     //攻击
     @Override
     public void attack(){
-      if(beforeAttack()&&shootable()&&coolTime>=shootCool){
+      if(shootable()){
         QUFx.ray.at(core.x,core.y,rotation);
         QUFx.ray.at(core.x+Vars.tilesize,core.y,rotation);
         QUFx.ray.at(core.x-Vars.tilesize,core.y,rotation);
         QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
-        isPlay = false;
-        isCharging = false;
-      }
-      if(coolTime<shootCool){
-        coolTime+=core.delta() * baseReloadSpeed();
       }
     }
     

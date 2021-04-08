@@ -80,11 +80,16 @@ public class LargeTurret{
   public BulletType bullet;//子弹
   public int shots;//射出数量;
   public int bulletOffset;
+  public boolean chargeTime;//充能时间
+  public Sound chargeSound = Sounds.none;//充能音效
+  public boolean directCharging = true;//范围内没有敌人时是否也可充能
+  public float shootLength = -1;
+  public Effect chargeEffect = QUFx.ary;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
     health = 1200;
-    cool = 240;
+    cool = 240; 
     coolSpeed = 1;
     radius = 60;
     defend = QUFx.smallShockWave;
@@ -98,6 +103,7 @@ public class LargeTurret{
     offset = new Vec2(0,0);
     shots = 1;
     bulletOffset = 8;
+    chargeTime = 0;
   }
   
   public TextureRegion region(){
@@ -108,6 +114,12 @@ public class LargeTurret{
   public LargeTurretBuild build(TurretCoreBuild core){
     return new LargeTurretBuild(core);
   }
+  
+  @Override
+    public void init(){
+      if(shootLength < 0) shootLength = size * core.tilesize / 2f;
+      super.init();
+    }
   
   public class LargeTurretBuild{
     public @Nullable Posc target;//目标
@@ -124,6 +136,7 @@ public class LargeTurret{
     public float rotation;
     public Vec2 targetPos = new Vec2();
     public float coolTime;
+    public boolean charging = false;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
@@ -218,14 +231,27 @@ public class LargeTurret{
       }
     }
     
-    //在攻击前
-    public boolean beforeAttack(){
-      return true;
+    //计算炮塔冷却时间与其他
+    public void updateShooting(){
+      if(coolTime<shootCool){
+        coolTime+=core.delta() * baseReloadSpeed();
+      }
+      if(chargeTime>0){
+        if(target!=null||directCharging){
+          tr.trns(rotation, shootLength);
+          chargeSound.at(core.x + tr.x, core.y + tr.y, 1);
+          chargeEffect.at(core.x + tr.x, core.y + tr.y, rotation);
+          charging = true;
+          Time.run(chargeTime, () -> {
+            charging = false;
+          });
+        }
+      }
     }
     
     //攻击
     public void attack(){
-      if(beforeAttack()&&shootable()&&coolTime>=shootCool){
+      if(shootable()){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
         if(shots==1){
@@ -235,16 +261,15 @@ public class LargeTurret{
               peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
             }
           }
-      }
-      if(coolTime<shootCool){
-        coolTime+=core.delta() * baseReloadSpeed();
+      }else{
+        updateShooting();
       }
     }
     
     //可射击
     public boolean shootable(){
-      if(target==null) return false;
-      return true;
+      if(!charging&&target!=null||coolTime>=shootCool) return true;
+      return false;
     }
     
     //护盾
