@@ -105,7 +105,7 @@ public class ChargeLargeTurret extends LargeTurret{
         float randSy2 = Angles.trnsy(rotation - 90, 18);
         QUFx.ray.at(core.x+trnx,core.y+trny,rotation);
         QUFx.ray.at(core.x+trnx+randSx,core.y+trny+randSy,rotation);
-        QUFx.ray.at(core.x+trnx+randSx+randSx2,core.y+trny+randSy+randSy2,rotation);
+        QUFx.ray.at(core.x+trnx+randSx2,core.y+trny+randSy2,rotation);
         QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
