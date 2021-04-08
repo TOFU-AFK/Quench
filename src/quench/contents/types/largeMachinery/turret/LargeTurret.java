@@ -86,6 +86,7 @@ public class LargeTurret{
   public float shootLength = -1;
   public Effect chargeEffect = QUFx.ray;
   protected Vec2 tr = new Vec2();
+  public final int tilesize = 8;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
