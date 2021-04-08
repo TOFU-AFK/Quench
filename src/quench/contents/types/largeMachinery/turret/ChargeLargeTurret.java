@@ -68,7 +68,7 @@ public class ChargeLargeTurret extends LargeTurret{
   public ChargeLargeTurret (String name){
     super(name);
     chargeSound = Sounds.lasercharge;
-    chargeTime = 10;
+    chargeTime = 50;
   }
   
   @Override
@@ -97,9 +97,10 @@ public class ChargeLargeTurret extends LargeTurret{
     @Override
     public void attack(){
       if(shootable()){
+        tr.trns(rotation, shootLength);
         QUFx.ray.at(core.x,core.y,rotation);
-        QUFx.ray.at(core.x+Vars.tilesize,core.y,rotation);
-        QUFx.ray.at(core.x-Vars.tilesize,core.y,rotation);
+        QUFx.ray.at(core.x+tr.x,core.y+tr.y,rotation);
+        QUFx.ray.at(core.x-tr.x,core.y-tr.y,rotation);
         QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);

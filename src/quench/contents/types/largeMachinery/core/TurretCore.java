@@ -70,6 +70,7 @@ public class TurretCore extends MechanicalCore{
       
   @Override
   public void init(){
+    super.init();
     QULargeTurret.motiveTurret.init(this);
   }
   
