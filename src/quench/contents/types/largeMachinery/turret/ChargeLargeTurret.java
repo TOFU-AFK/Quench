@@ -97,18 +97,18 @@ public class ChargeLargeTurret extends LargeTurret{
     @Override
     public void attack(){
       if(shootable()){
-        float trnx = Angles.trnsx(rotation, 18);
-        float trny = Angles.trnsy(rotation, 18);
-        float randSx = Angles.trnsx(rotation + 90, 18);
-        float randSy = Angles.trnsy(rotation + 90, 18);
-        float randSx2 = Angles.trnsx(rotation - 90, 18);
-        float randSy2 = Angles.trnsy(rotation - 90, 18);
+        float trnx = Angles.trnsx(rotation, 9);
+        float trny = Angles.trnsy(rotation, 9);
+        float randSx = Angles.trnsx(rotation + 90, 9);
+        float randSy = Angles.trnsy(rotation + 90, 9);
+        float randSx2 = Angles.trnsx(rotation - 90, 9);
+        float randSy2 = Angles.trnsy(rotation - 90, 9);
         QUFx.ray.at(core.x+trnx,core.y+trny,rotation);
         QUFx.ray.at(core.x+trnx+randSx,core.y+trny+randSy,rotation);
         QUFx.ray.at(core.x+trnx+randSx2,core.y+trny+randSy2,rotation);
-        QUFx.disturbance.at(core.x,core.y,rotation);
+        //QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
-        shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
+        //shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
       }
     }
     

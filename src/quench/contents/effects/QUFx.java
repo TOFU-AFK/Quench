@@ -39,6 +39,7 @@ public class QUFx implements ContentList {
 	 });
 	  
 	  ray = new Effect(32f, e -> {
+	     Draw.z(Layer.bullet);
 	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
 	     Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
 	     Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);

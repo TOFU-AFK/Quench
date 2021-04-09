@@ -234,9 +234,7 @@ public class LargeTurret{
     
     //计算炮塔冷却时间与其他
     public void updateShooting(){
-      if(coolTime<shootCool){
-        coolTime+=core.delta() * baseReloadSpeed();
-      }
+      coolTime+=core.delta() * baseReloadSpeed();
       if(chargeTime>0){
         if(target!=null||directCharging){
           tr.trns(rotation, shootLength);
@@ -269,7 +267,7 @@ public class LargeTurret{
     
     //可射击
     public boolean shootable(){
-      if(!charging&&target!=null||coolTime>=shootCool) return true;
+      if(!charging&&target!=null&&coolTime>=shootCool) return true;
       return false;
     }
     
