@@ -36,7 +36,7 @@ public class QUFx implements ContentList {
 	    Angles.randLenVectors(e.id, 12, 2f + 20f * e.fout(), e.rotation, 120f, (x, y) -> {
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 6f + 1f);
         });
-	  }
+	  });
 	  
 	  disturbance = new Effect(32f, e -> {
 	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
