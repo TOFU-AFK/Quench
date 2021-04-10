@@ -223,7 +223,7 @@ public class LargeTurret{
             healthf = health;
             inCooling = false;
             coolf = 0;
-            shooting = false
+            shooting = false;
           }else{
             coolf+=coolSpeed;
           }
