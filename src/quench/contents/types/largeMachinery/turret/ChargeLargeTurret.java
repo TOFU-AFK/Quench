@@ -129,6 +129,7 @@ public class ChargeLargeTurret extends LargeTurret{
        BulletType bullet = QUBullets.disturbance;
        bullet.lifetime = 0;
        b = bullet.create(core,0,0,0);
+       b.type = QUBullets.disturbance;
       }
       Damage.collideLine(b,core.team,QUFx.blastWave,core.x,core.y,rotation,460,true);
     }
