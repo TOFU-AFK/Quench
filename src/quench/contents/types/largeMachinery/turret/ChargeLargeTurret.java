@@ -63,8 +63,6 @@ import static mindustry.Vars.*;
 
 public class ChargeLargeTurret extends LargeTurret{
   
-  public float chargeTime;
-  
   public ChargeLargeTurret (String name){
     super(name);
     chargeSound = Sounds.lasercharge;

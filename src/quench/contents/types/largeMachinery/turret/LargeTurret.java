@@ -209,6 +209,9 @@ public class LargeTurret{
     }
     
     public void update(){
+      Log.info("[淬火] 炮塔血量"+healthf, "");
+      Log.info("[淬火] 炮塔充能"+charging, "");
+      Log.info("[淬火] 炮塔冷却"+coolTime, "");
       if(core.start){
         if(healthf<=0){
           inCooling = true;
