@@ -62,7 +62,7 @@ import quench.contents.bullets.*;
 import static mindustry.Vars.*; 
 
 public class ChargeLargeTurret extends LargeTurret{
-  Bullet b = new bullet();
+  Bullet b = new Bullet();
   
   public ChargeLargeTurret (String name){
     super(name);
