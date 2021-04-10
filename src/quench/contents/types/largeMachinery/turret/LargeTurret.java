@@ -258,7 +258,7 @@ public class LargeTurret{
     
     //攻击
     public void attack(){
-      if(shootable()||shooting){
+      if(shootable()){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
         if(shots==1){
@@ -280,11 +280,16 @@ public class LargeTurret{
     
     //可射击
     public boolean shootable(){
+      if(shooting){
+        return true;
+      }
       if(!charging&&target!=null&&coolTime>=shootCool){
         shooting = true;
         return true;
       }else{
-        updateShooting();
+        if(!shooting){
+          updateShooting();
+        }
         return false;
       }
     }
