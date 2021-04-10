@@ -62,7 +62,7 @@ import quench.contents.bullets.*;
 import static mindustry.Vars.*; 
 
 public class ChargeLargeTurret extends LargeTurret{
-  Bullet b = new Bullet();
+  Bullet b = null;
   
   public ChargeLargeTurret (String name){
     super(name);
@@ -78,9 +78,10 @@ public class ChargeLargeTurret extends LargeTurret{
   @Override
   public void init(TurretCore core){
     super.init(core);
-    b.damage = 20;
-    b.type.collidesGround = true; 
-  }
+    BulletType bullet = QUBullets.disturbance;
+    bullet.lifetime = 0;
+    b = bullet.create(core,0,0,0);
+    }
   
   public class ChargeLargeTurretBuild extends LargeTurretBuild{
     
