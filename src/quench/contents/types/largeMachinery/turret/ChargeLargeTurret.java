@@ -105,7 +105,8 @@ public class ChargeLargeTurret extends LargeTurret{
         QUFx.ray.at(core.x+trnx+randSx,core.y+trny+randSy,rotation);
         QUFx.ray.at(core.x+trnx+randSx2,core.y+trny+randSy2,rotation);
         for(int i=0;i<3;i++){
-          float x,y;
+          float x=0;
+          float y=0;
           switch (i){
             case 0:
               x=trnx;
@@ -136,6 +137,7 @@ public class ChargeLargeTurret extends LargeTurret{
     }
     
     public void damage(float px,float py){
+      //暂时没有什么好的解决方法，直接用Effect
       new Effect(32f, e ->{
         Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
         	 Damage.damage(core.team,core.x + x, core.y + y,4,20,true,true);
