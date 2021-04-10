@@ -273,6 +273,9 @@ public class LargeTurret{
     
     //可射击
     public boolean shootable(){
+      Log.info("[淬火] charging"+charging, "");
+      Log.info("[淬火] coolTime"+coolTime, "");
+      Log.info("[淬火] coolTime大:"+(coolTime>=shootCool), "");
       if(!charging&&coolTime>=shootCool){
         return true;
       }else{
