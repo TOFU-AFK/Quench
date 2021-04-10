@@ -48,7 +48,6 @@ public class QUFx implements ContentList {
 	  ray = new Effect(32f, e -> {
 	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
 	     Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
-	       Damage.damage(Vars.player.core().team,e.x + x, e.y + y,e.fslope(),20,true,true);
 	     Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
 	     });
 	 });
