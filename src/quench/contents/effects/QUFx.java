@@ -17,6 +17,7 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.Vars;
  
 import static mindustry.Vars.*;
 import static arc.graphics.g2d.Draw.rect;
