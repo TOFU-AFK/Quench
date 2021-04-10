@@ -212,6 +212,7 @@ public class LargeTurret{
       Log.info("[淬火] 炮塔血量"+healthf, "");
       Log.info("[淬火] 炮塔充能"+charging, "");
       Log.info("[淬火] 炮塔冷却"+coolTime, "");
+      Log.info("[淬火] shootable方法"+shootable(), "");
       if(core.start){
         if(healthf<=0){
           inCooling = true;
@@ -220,6 +221,7 @@ public class LargeTurret{
           if(coolf>=cool){
             healthf = health;
             inCooling = false;
+            coolf = 0;
           }else{
             coolf+=coolSpeed;
           }
@@ -272,8 +274,11 @@ public class LargeTurret{
     
     //可射击
     public boolean shootable(){
-      if(!charging&&target!=null&&coolTime>=shootCool) return true;
-      return false;
+      if(!charging&&target!=null&&coolTime>=shootCool){
+        return true;
+      }else{
+        return false;
+      }
     }
     
     //护盾
