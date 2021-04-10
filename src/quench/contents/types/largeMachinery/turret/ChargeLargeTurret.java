@@ -130,7 +130,7 @@ public class ChargeLargeTurret extends LargeTurret{
        bullet.lifetime = 0;
        b = bullet.create(core,0,0,0);
       }
-      Damage.collideLine(b,core.team,QUFx.blastWave,core.x,core.y,(int)rotation,460,true,true);
+      Damage.collideLine(b,core.team,QUFx.blastWave,core.x,core.y,rotation,460,true);
     }
     
   }
