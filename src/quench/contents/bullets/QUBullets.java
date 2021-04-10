@@ -51,7 +51,7 @@ public class QUBullets implements ContentList {
      
      @Override
       public void update(Bullet b){
-        Damage.collideLine(b,core.team,QUFx.blastWave,core.x,core.y,rotation,460,true);
+        Damage.collideLine(b,b.team,QUFx.blastWave,b.x,b.y,b.rot,460,true);
       }
      
 	  };
