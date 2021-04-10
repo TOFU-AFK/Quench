@@ -137,12 +137,9 @@ public class ChargeLargeTurret extends LargeTurret{
     }
     
     public void damage(float px,float py){
-      //暂时没有什么好的解决方法，直接用Effect
-      new Effect(32f, e ->{
-        Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
-        	 Damage.damage(core.team,core.x + x, core.y + y,4,20,true,true);
-        });
-      }).at(core.x+px,core.y+py);
+      Angles.randLenVectors(32, 10, 440 * 2 / 2 + 460 / 2,rotation, 0,(x,y) -> {
+        	 Damage.damage(core.team,core.x + x + px, core.y + y + py,4,20,true,true);
+      });
     }
     
   }
