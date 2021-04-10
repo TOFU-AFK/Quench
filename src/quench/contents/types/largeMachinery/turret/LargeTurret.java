@@ -239,6 +239,7 @@ public class LargeTurret{
     //计算炮塔冷却时间与其他
     public void updateShooting(){
       //coolTime+=core.delta() * baseReloadSpeed();
+      Log.info("[淬火] 被调用", "");
       coolTime++;
       if(chargeTime>0){
         if(target!=null||directCharging){
@@ -266,8 +267,6 @@ public class LargeTurret{
               peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
             }
           }
-      }else{
-        updateShooting();
       }
     }
     
@@ -276,9 +275,11 @@ public class LargeTurret{
       Log.info("[淬火] charging"+charging, "");
       Log.info("[淬火] coolTime"+coolTime, "");
       Log.info("[淬火] coolTime大:"+(coolTime>=shootCool), "");
-      if(!charging&&coolTime>=shootCool){
+      Log.info("[淬火] target为空:"+(target==null), "");
+      if(!charging&&target!=null&&coolTime>=shootCool){
         return true;
       }else{
+        updateShooting();
         return false;
       }
     }
