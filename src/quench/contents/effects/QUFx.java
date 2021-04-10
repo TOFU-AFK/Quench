@@ -27,10 +27,19 @@ import static arc.math.Angles.*;
  
 public class QUFx implements ContentList {
 	public static
-	Effect charge,disturbance,ray,re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall,smallHighlightBall,smallShockWave;
+	Effect blastWave,charge,disturbance,ray,re_thunder_charging,highEnergyShockWave,grenadeLaunch,highlightBall,smallHighlightBall,smallShockWave;
  
 	@Override
 	public void load() {
+	  
+	  blastWave = new Effect(32f, e ->{
+	    Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
+	    randLenVectors(e.id, 10, 5 + 55 * e.fin(), (x, y) -> {
+			Fill.circle(e.x + x, e.y + y, e.fout() * 2f);
+					});
+        Lines.stroke(e.fout() * 1.5f);
+        Lines.circle(e.x, e.y, e.fin() * 16f);
+	 });
 	  
 	  charge = new Effect(32f, e ->{
 	    Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
