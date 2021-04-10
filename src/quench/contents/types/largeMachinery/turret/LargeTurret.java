@@ -123,7 +123,7 @@ public class LargeTurret{
   }
   
   public class LargeTurretBuild{
-    public @Nullable Posc target;//目标
+    public Posc target;//目标
     
     public float healthf = health;//剩余血量
     public TurretCoreBuild core;//炮塔的核心
@@ -274,8 +274,9 @@ public class LargeTurret{
     //可射击
     public boolean shootable(){
       Log.info("[淬火] charging"+charging, "");
-      Log.info("[淬火] target"+(target==null), "");
-      Log.info("[淬火] coolTime"+(coolTime>=shootCool), "");
+      /*Log.info("[淬火] target"+(target==null), "");
+      Log.info("[淬火] coolTime"+(coolTime>=shootCool), "");*/
+      findTarget();
       if(!charging&&target!=null&&coolTime>=shootCool){
         return true;
       }else{
