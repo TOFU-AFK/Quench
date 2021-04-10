@@ -234,7 +234,8 @@ public class LargeTurret{
     
     //计算炮塔冷却时间与其他
     public void updateShooting(){
-      coolTime+=core.delta() * baseReloadSpeed();
+      //coolTime+=core.delta() * baseReloadSpeed();
+      coolTime++;
       if(chargeTime>0){
         if(target!=null||directCharging){
           tr.trns(rotation, shootLength);
@@ -243,6 +244,7 @@ public class LargeTurret{
           charging = true;
           Time.run(chargeTime, () -> {
             charging = false;
+            Log.info("[淬火] run已运行", "");
           });
         }
       }
