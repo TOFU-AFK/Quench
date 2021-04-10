@@ -88,6 +88,7 @@ public class LargeTurret{
   protected Vec2 tr = new Vec2();
   public final int tilesize = 8;
   public int size = 5;
+  public float duration = 0;//射击持续时间
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -138,6 +139,7 @@ public class LargeTurret{
     public Vec2 targetPos = new Vec2();
     public float coolTime;
     public boolean charging = false;
+    public boolean shooting = false;//正在射击中
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
@@ -221,6 +223,7 @@ public class LargeTurret{
             healthf = health;
             inCooling = false;
             coolf = 0;
+            shooting = false
           }else{
             coolf+=coolSpeed;
           }
@@ -255,7 +258,7 @@ public class LargeTurret{
     
     //攻击
     public void attack(){
-      if(shootable()){
+      if(shootable()||shooting){
         coolTime=0;
         shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
         if(shots==1){
@@ -264,16 +267,26 @@ public class LargeTurret{
             for(int i=0;i<shots;i++){
               peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
             }
-          }
+        }
+        if(duration>0){
+          Time.run(duration, () -> {
+            shooting = false;
+          });
+        }else{
+          shooting = false;
+        }
       }
     }
     
     //可射击
     public boolean shootable(){
       if(!charging&&target!=null&&coolTime>=shootCool){
+        duration = true;
         return true;
       }else{
-        updateShooting();
+        if(!shooting){
+          updateShooting();
+        }
         return false;
       }
     }
