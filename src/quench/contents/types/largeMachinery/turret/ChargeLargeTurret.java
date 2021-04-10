@@ -107,6 +107,13 @@ public class ChargeLargeTurret extends LargeTurret{
         //QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
         //shootEffect.at(core.x+offset.x,core.y+offset.y,rotation);
+        if(duration>0){
+          Time.run(duration, () -> {
+          shooting = false;
+          });
+        }else{
+          shooting = false;
+        }
       }
     }
     
