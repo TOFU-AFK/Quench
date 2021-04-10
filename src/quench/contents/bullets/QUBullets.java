@@ -37,7 +37,7 @@ public class QUBullets implements ContentList {
 	    {
 	      drawSize = 12;
 	      pierce = true;
-	      lifetime = 120;
+	      lifetime = 1;
 	      hitSize = 10;
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
@@ -51,15 +51,7 @@ public class QUBullets implements ContentList {
      
      @Override
       public void update(Bullet b){
-        new Effect(32f, e -> {
-        	 Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),e.fin());
-        	 Angles.randLenVectors(e.id, 10, 440 * e.fin() / 2 + 460 / 2,e.rotation, 0,(x,y) -> {
-        	 Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y),e.fslope() * 17 + 2);
-        	   });
-        	 }).at(b);
-        if(b.timer.get(1,2)){
-          disturbance.create(b,b.x,b.y,b.rotation());
-        }
+        Damage.collideLine(b,core.team,QUFx.blastWave,core.x,core.y,rotation,460,true);
       }
      
 	  };
