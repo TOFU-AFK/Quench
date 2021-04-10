@@ -78,9 +78,6 @@ public class ChargeLargeTurret extends LargeTurret{
   @Override
   public void init(TurretCore core){
     super.init(core);
-    BulletType bullet = QUBullets.disturbance;
-    bullet.lifetime = 0;
-    b = bullet.create(core,0,0,0);
     }
   
   public class ChargeLargeTurretBuild extends LargeTurretBuild{
@@ -128,6 +125,11 @@ public class ChargeLargeTurret extends LargeTurret{
     }
     
     public void damage(){
+      if(b==null){
+       BulletType bullet = QUBullets.disturbance;
+       bullet.lifetime = 0;
+       b = bullet.create(core,0,0,0);
+      }
       Damage.collideLine(b,core.team,QUFx.blastWave,core.x,core.y,rotation,460,true,true);
     }
     
