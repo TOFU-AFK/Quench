@@ -281,7 +281,7 @@ public class LargeTurret{
     //可射击
     public boolean shootable(){
       if(!charging&&target!=null&&coolTime>=shootCool){
-        duration = true;
+        shooting = true;
         return true;
       }else{
         if(!shooting){
