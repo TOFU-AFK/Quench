@@ -143,7 +143,7 @@ public class LargeTurret{
       this.core = core;
       land = false;
       inCooling = false;
-      rotation = 0;
+      rotation = 90;
       coolTime = shootCool;
       shieldConsumer = trait -> {
         if(trait.team != core.team() && trait.type.absorbable && Intersector.isInsideHexagon(core.x, core.y, radius * 2f, trait.x(), trait.y())){
@@ -239,9 +239,8 @@ public class LargeTurret{
     //计算炮塔冷却时间与其他
     public void updateShooting(){
       //coolTime+=core.delta() * baseReloadSpeed();
-      Log.info("[淬火] 被调用", "");
       coolTime++;
-      if(chargeTime>0){
+      if(chargeTime>0&&!charging){
         if(target!=null||directCharging){
           tr.trns(rotation, shootLength);
           chargeSound.at(core.x + tr.x, core.y + tr.y, 1);
@@ -249,7 +248,6 @@ public class LargeTurret{
           charging = true;
           Time.run(chargeTime, () -> {
             charging = false;
-            Log.info("[淬火] run已运行", "");
           });
         }
       }
@@ -272,10 +270,6 @@ public class LargeTurret{
     
     //可射击
     public boolean shootable(){
-      Log.info("[淬火] charging"+charging, "");
-      Log.info("[淬火] coolTime"+coolTime, "");
-      Log.info("[淬火] coolTime大:"+(coolTime>=shootCool), "");
-      Log.info("[淬火] target为空:"+(target==null), "");
       if(!charging&&target!=null&&coolTime>=shootCool){
         return true;
       }else{
