@@ -82,7 +82,6 @@ public class LargeTurret{
   public int bulletOffset;
   public float chargeTime;//充能时间
   public Sound chargeSound = Sounds.none;//充能音效
-  public boolean directCharging = true;//范围内没有敌人时是否也可充能
   public float shootLength = -1;
   public Effect chargeEffect = QUFx.ray;
   protected Vec2 tr = new Vec2();
@@ -211,9 +210,6 @@ public class LargeTurret{
     }
     
     public void update(){
-      /*Log.info("[淬火] 炮塔充能"+charging, "");
-      Log.info("[淬火] 炮塔冷却"+coolTime, "");*/
-      Log.info("[淬火] shootable方法"+shootable(), "");
       if(core.start){
         if(healthf<=0){
           inCooling = true;
@@ -244,7 +240,7 @@ public class LargeTurret{
       //coolTime+=core.delta() * baseReloadSpeed();
       coolTime++;
       if(chargeTime>0&&!charging){
-        if(target!=null||directCharging){
+        if(target!=null){
           tr.trns(rotation, shootLength);
           chargeSound.at(core.x + tr.x, core.y + tr.y, 1);
           chargeEffect.at(core.x + tr.x, core.y + tr.y, rotation);

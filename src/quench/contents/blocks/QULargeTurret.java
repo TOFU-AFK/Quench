@@ -57,7 +57,8 @@ public class QULargeTurret implements ContentList
         shots = 12;
         size = 5;
         chargeTime = 30;
-        duration = 120;
+        duration = 300;
+        chargeEffect = QUFx.charge;
       }
     };
   }
