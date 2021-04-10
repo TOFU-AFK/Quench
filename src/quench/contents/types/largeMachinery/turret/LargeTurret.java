@@ -284,9 +284,7 @@ public class LargeTurret{
         shooting = true;
         return true;
       }else{
-        if(!shooting){
-          updateShooting();
-        }
+        updateShooting();
         return false;
       }
     }
