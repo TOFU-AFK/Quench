@@ -53,7 +53,7 @@ public class QULargeTurret implements ContentList
   public void load(){
     motiveTurret = new ChargeLargeTurret("motiveTurret"){
       {
-        bullet = QUBullets.disturbance;//虽然并没有用到这子弹，但请不要删除，它有其他用处
+        bullet = QUBullets.empty;
         shots = 12;
         size = 5;
         chargeTime = 30;

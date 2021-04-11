@@ -110,8 +110,12 @@ public class ChargeLargeTurret extends LargeTurret{
         QUFx.ray.at(core.x+trnx,core.y+trny,rotation);
         QUFx.ray.at(core.x+trnx+randSx,core.y+trny+randSy,rotation);
         QUFx.ray.at(core.x+trnx+randSx2,core.y+trny+randSy2,rotation);
-        for(int i=0;i<10;i++){
-          damage(0,27*i);
+        if(shots==1){
+            peekAmmo().create(core,core.team(),core.x,core.y,rotation);
+          }else{
+            for(int i=0;i<shots;i++){
+              peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
+            }
         }
         //QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
@@ -124,10 +128,6 @@ public class ChargeLargeTurret extends LargeTurret{
           shooting = false;
         }
       }
-    }
-    
-    public void damage(float x,float y){
-      Damage.damage(core.team,core.x + x, core.y + y,27,20,false,true,true);
     }
     
   }

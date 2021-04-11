@@ -37,12 +37,12 @@ public class QUBullets implements ContentList {
 	    {
 	      drawSize = 12;
 	      pierce = true;
-	      lifetime = 1;
+	      lifetime = 100;
 	      hitSize = 10;
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
 	      lightRadius = 12;
-	      speed = 0; 
+	      speed = 1; 
 	    }
 	    
 	   @Override
