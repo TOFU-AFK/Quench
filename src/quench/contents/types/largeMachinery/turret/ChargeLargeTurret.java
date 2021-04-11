@@ -95,6 +95,16 @@ public class ChargeLargeTurret extends LargeTurret{
     public void update(){
       super.update();
     }
+    
+    @Override
+    public void targetPosition(Posc pos){
+      if(pos == null) return;
+        float speed = 12;
+        targetPos.set(Predict.intercept(core, pos, speed));
+        if(targetPos.isZero()){
+          targetPos.set(pos);
+      }
+    }
   
     
     //攻击

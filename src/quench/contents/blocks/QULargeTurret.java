@@ -56,6 +56,7 @@ public class QULargeTurret implements ContentList
         bullet = QUBullets.empty;
         shots = 1;
         size = 5;
+        range = 820;
         chargeTime = 30;
         duration = 300;
         chargeEffect = QUFx.charge;
