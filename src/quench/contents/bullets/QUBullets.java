@@ -37,7 +37,7 @@ public class QUBullets implements ContentList {
 	    {
 	      drawSize = 12;
 	      pierce = true;
-	      lifetime = 100;
+	      lifetime = 20;
 	      hitSize = 10;
 	      hitEffect = Fx.none;
 	      despawnEffect = Fx.none;
