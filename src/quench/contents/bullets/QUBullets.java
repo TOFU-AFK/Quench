@@ -33,7 +33,7 @@ public class QUBullets implements ContentList {
 	@Override
 	public void load() {
 	  
-	   empty = new BulletType(6f,1f){
+	   empty = new BulletType(6f,10f){
 	    {
 	      drawSize = 12;
 	      pierce = true;

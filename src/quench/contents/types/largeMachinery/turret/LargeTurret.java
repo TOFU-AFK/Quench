@@ -245,9 +245,9 @@ public class LargeTurret{
           chargeSound.at(core.x + tr.x, core.y + tr.y, 1);
           chargeEffect.at(core.x + tr.x, core.y + tr.y, rotation);
           charging = true;
-          Time.run(chargeTime, () -> {
+          /*Time.run(chargeTime, () -> {
             charging = false;
-          });
+          });*/
         }
       }
     }
@@ -265,12 +265,13 @@ public class LargeTurret{
             }
         }
         if(duration>0){
-          Time.run(duration*2, () -> {
+          Time.run(duration, () -> {
             shooting = false;
           });
         }else{
           shooting = false;
         }
+        charging = false;
       }
     }
     
@@ -279,13 +280,11 @@ public class LargeTurret{
       if(shooting){
         return true;
       }
-      if(!charging&&target!=null&&coolTime>=shootCool){
+      if(charging&&target!=null&&coolTime>=shootCool){
         shooting = true;
         return true;
       }else{
-        if(!shooting){
-          updateShooting();
-        }
+        updateShooting();
         return false;
       }
     }
