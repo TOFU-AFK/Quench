@@ -110,24 +110,8 @@ public class ChargeLargeTurret extends LargeTurret{
         QUFx.ray.at(core.x+trnx,core.y+trny,rotation);
         QUFx.ray.at(core.x+trnx+randSx,core.y+trny+randSy,rotation);
         QUFx.ray.at(core.x+trnx+randSx2,core.y+trny+randSy2,rotation);
-        for(int i=0;i<3;i++){
-          float x=0;
-          float y=0;
-          switch (i){
-            case 0:
-              x=trnx;
-              y=trny;
-              break;
-            case 1:
-              x=randSx;
-              y=randSy;
-              break;
-            case 2:
-              x=randSx2;
-              y=randSy2;
-              break;
-          }
-          damage(x,y);
+        for(int i=0;i<10;i++){
+          damage(0,27*i);
         }
         //QUFx.disturbance.at(core.x,core.y,rotation);
         coolTime=0;
@@ -142,10 +126,8 @@ public class ChargeLargeTurret extends LargeTurret{
       }
     }
     
-    public void damage(float px,float py){
-      Angles.randLenVectors(32, 10, 550 * 2 / 2 + 460 / 2,rotation, 0,(x,y) -> {
-        	 Damage.damage(core.team,core.x + x + px, core.y + y + py,4,20,true,true);
-      });
+    public void damage(float x,float y){
+      Damage.damage(core.team,core.x + x, core.y + y,27,20,false,true,true);
     }
     
   }
