@@ -265,7 +265,7 @@ public class LargeTurret{
             }
         }
         if(duration>0){
-          Time.run(duration, () -> {
+          Time.run(duration*2, () -> {
             shooting = false;
           });
         }else{

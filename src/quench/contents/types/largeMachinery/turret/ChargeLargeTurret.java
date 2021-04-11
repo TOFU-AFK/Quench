@@ -111,7 +111,7 @@ public class ChargeLargeTurret extends LargeTurret{
         QUFx.ray.at(core.x+trnx+randSx,core.y+trny+randSy,rotation);
         QUFx.ray.at(core.x+trnx+randSx2,core.y+trny+randSy2,rotation);
         if(shots==1){
-            peekAmmo().create(core,core.team(),core.x,core.y,rotation);
+            peekAmmo().create(null,core.team(),core.x,core.y,rotation);
           }else{
             for(int i=0;i<shots;i++){
               peekAmmo().create(core,core.team(),core.x,core.y,rotation+Mathf.random(0,bulletOffset));
