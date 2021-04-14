@@ -123,19 +123,20 @@ public class MechanicalData{
     public int getRotation(){
       switch (core.direction){
             case 0:
-                return 0;
-            case 1:
                 return 3;
+            case 1:
+                return 0;
             case 2:
-                return 2;
-            case 3:
                 return 1;
+            case 3:
+                return 2;
               }
-              return 0;
+              return 3;
     }
     
     public void update(){
         //判断动力是否超载
+        Log.info("[淬火] getMotive()值="+getMotive(), "");
         if(getMotive()>-1&&getMotive()>getTotalMotive()){
             overburden = true;
         }else{
