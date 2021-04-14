@@ -150,7 +150,7 @@ public class MechanicalData{
             Tile t = generator.get(i);
             LargeMachinery block = (LargeMachinery) t.block();
             //如果其中有动力源，则跳出循环，返回-1
-            LargeMachineryBuild build = (LargeMachineryBuild) = t.build;
+            LargeMachineryBuild build = (LargeMachineryBuild) t.build;
             if(t.build.amount==-1){
               return -1;
             }
@@ -188,10 +188,10 @@ public class MechanicalData{
         }
         
         switch(block.getType()){
-          case StructureType.battery:
+          case battery:
             addBattery(b);
             break;
-          case StructureType.powerSupply:
+          case powerSupply:
             addPowerSupply(b);
             break;
           /*case StructureType.motive:
