@@ -137,7 +137,7 @@ public class MechanicalData{
     public void update(){
         //判断动力是否超载
         if(getMotive()==-1f){
-          return false;
+          overburden = false;
         }
         if(getMotive()>getTotalMotive()){
             overburden = true;
