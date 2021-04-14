@@ -136,8 +136,10 @@ public class MechanicalData{
     
     public void update(){
         //判断动力是否超载
-        Log.info("[淬火] getMotive()值="+getMotive(), "");
-        if(getMotive()>-1&&getMotive()>getTotalMotive()){
+        if(getMotive()==-1f){
+          return false;
+        }
+        if(getMotive()>getTotalMotive()){
             overburden = true;
         }else{
             overburden = false;
