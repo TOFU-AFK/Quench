@@ -151,7 +151,7 @@ public class MechanicalData{
             LargeMachinery block = (LargeMachinery) t.block();
             //如果其中有动力源，则跳出循环，返回-1
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            if(build.amount==-1){
+            if(build.amount<0){
               return -1;
             }
             motive+=block.occupy;

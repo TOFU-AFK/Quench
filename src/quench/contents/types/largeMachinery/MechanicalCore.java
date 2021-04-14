@@ -216,6 +216,7 @@ public class MechanicalCore extends LargeMachinery{
                 mechanicalData.addTile(tile);
                 }
             }
+            mechanicalData.addTile(tile());
         }
         
         //清空
