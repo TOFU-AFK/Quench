@@ -72,7 +72,7 @@ public class MotiveTransmission extends LargeMachinery{
         configurable = true;
         rotate = true;
         transportable = true;
-        occupy = 2;
+        occupy = 1;
         hasShadow = false;
     }
 

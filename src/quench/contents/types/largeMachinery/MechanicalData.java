@@ -62,9 +62,10 @@ public class MechanicalData{
     //集合，这里推荐用Seq，用ArrayList是因为当时我并没有想到用这个，现在也懒得改了
     ArrayList<Tile> battery = new ArrayList<Tile>();
     ArrayList<Tile> tile = new ArrayList<Tile>();
-    ArrayList<Tile> generator = new ArrayList<Tile>();
+    ArrayList<Tile> generator = new ArrayList<Tile>();//消耗动力的方块
     ArrayList<Tile> powerSupply = new ArrayList<Tile>();
-    public float efficiency = 0;
+    //ArrayList<Tile> motive = new ArrayList<Tile>();
+    public float efficiency = 0;//工作效率
     public StructureGraph graph;
     public boolean overburden = false;//动力是否超载
     public MechanicalData(MechanicalCoreBuild core,Structure structure){
@@ -79,6 +80,7 @@ public class MechanicalData{
         tile.clear();
         generator.clear();
         powerSupply.clear();
+        //motive.clear();
         efficiency = 0;
         graph = new StructureGraph();
     }
@@ -95,11 +97,15 @@ public class MechanicalData{
     
     public void addPowerSupply(Tile t){
         powerSupply.add(t);
-        LargeMachinery block = (LargeMachinery) t.block();
+        /*LargeMachinery block = (LargeMachinery) t.block();*/
     }
     
+    /*public void addMotive(Tile t){
+      motive.add(t);
+    }*/
+    
     //返回结构角度
-    public float getAngle(){
+    public int getAngle(){
         switch (core.direction){
             case 0:
                 return 0;
@@ -113,9 +119,24 @@ public class MechanicalData{
         return 0;
     }
     
+    //返回结构方向
+    public int getRotation(){
+      switch (core.direction){
+            case 0:
+                return 0;
+            case 1:
+                return 3;
+            case 2:
+                return 2;
+            case 3:
+                return 1;
+              }
+              return 0;
+    }
+    
     public void update(){
         //判断动力是否超载
-        if(getMotive()>getTotalMotive()){
+        if(getMotive()==-1||getMotive()>getTotalMotive()){
             overburden = true;
         }else{
             overburden = false;
@@ -127,10 +148,15 @@ public class MechanicalData{
         float motive = 0;
         for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
-            BaseGenerator block = (BaseGenerator) t.block();
-            motive+=block.consumeMotive;
+            LargeMachinery block = (LargeMachinery) t.block();
+            //如果其中有动力源，则跳出循环，返回-1
+            LargeMachineryBuild build = (LargeMachineryBuild) = t.build;
+            if(t.build.amount==-1){
+              return -1;
+            }
+            motive+=block.occupy;
         }
-        return motive*efficiency;
+        return motive;
     }
     
     //得到动力总量
@@ -156,12 +182,20 @@ public class MechanicalData{
     public void addTile(Tile b){
         tile.add(b);
         LargeMachinery block = (LargeMachinery) b.block();
-        if(block.getType()==StructureType.battery){
+        
+        if(block.occupy>0){
+          addGenerator(b);
+        }
+        
+        switch(block.getType()){
+          case StructureType.battery:
             addBattery(b);
-        }else if(block.getType()==StructureType.powerSupply){
+            break;
+          case StructureType.powerSupply:
             addPowerSupply(b);
-        }else if(block.getType()==StructureType.generator){
-            addGenerator(b);
+            break;
+          /*case StructureType.motive:
+            addMotive(b);*/
         }
         }
     

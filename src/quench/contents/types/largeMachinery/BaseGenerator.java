@@ -61,10 +61,11 @@ import static mindustry.Vars.*;
 public class BaseGenerator extends StructuralBattery{
     public float increasePower = 2f;//每帧电力产生
     public float powerOutput = 1f;//最大输出电力(当结构中有多个电池时，会平均分)
-    public float consumeMotive = 0.01f;
+    //public float consumeMotive = 0.01f;
     public BaseGenerator(String name){
         super(name);
         canGenerate = true;
+        occupy = 0.3f;
     }
 
     @Override

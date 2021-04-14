@@ -209,6 +209,9 @@ public class MechanicalCore extends LargeMachinery{
                 if(data.block.rotate){
                   build.rotation = r;
                 }
+                if(data.block.getType()==StructureType.motive){
+                  build.rotation = mechanicalData.getRotation();
+                }
                 build.c = this;
                 mechanicalData.addTile(tile);
                 }

@@ -63,6 +63,7 @@ import static mindustry.Vars.*;
 
 public class LargeTurret{
   public String name;
+  public float occupy;
   public float health;//血量，也是护盾血量，当为0时，炮塔将关闭护盾，并隐藏
   public int cool;//冷却时间，时间结束后，并且底座没有损坏，炮塔将显示
   public int coolSpeed;//冷却速度
@@ -107,6 +108,7 @@ public class LargeTurret{
     shots = 1;
     bulletOffset = 8;
     chargeTime = 0;
+    occupy = 3;
   }
   
   public TextureRegion region(){
