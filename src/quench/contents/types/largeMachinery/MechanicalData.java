@@ -136,9 +136,8 @@ public class MechanicalData{
     
     public void update(){
         //判断动力是否超载
-        LargeMachineryBuild build = (LargeMachineryBuild) t.build;
           for(int i=0;i<generator.size();i++){
-            Tile t = powerSupply.get(i);
+            Tile t = generator.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
             if(build.amount==-1f){
               overburden = false;
