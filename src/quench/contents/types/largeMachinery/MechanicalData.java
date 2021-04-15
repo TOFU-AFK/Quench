@@ -136,9 +136,15 @@ public class MechanicalData{
     
     public void update(){
         //判断动力是否超载
-        if(getMotive()==-1f){
-          overburden = false;
-        }
+        LargeMachineryBuild build = (LargeMachineryBuild) t.build;
+          for(int i=0;i<generator.size();i++){
+            Tile t = powerSupply.get(i);
+            LargeMachineryBuild build = (LargeMachineryBuild) t.build;
+            if(build.amount==-1f){
+              overburden = false;
+              return;
+            }
+          }
         if(getMotive()>getTotalMotive()){
             overburden = true;
         }else{
@@ -152,11 +158,6 @@ public class MechanicalData{
         for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
             LargeMachinery block = (LargeMachinery) t.block();
-            //如果其中有动力源，则跳出循环，返回-1
-            LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            if(build.amount<0){
-              return -1;
-            }
             motive+=block.occupy;
         }
         return motive;

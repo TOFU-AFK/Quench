@@ -81,6 +81,7 @@ public class TurretCore extends MechanicalCore{
     @Override
     public void update(){
       super.update();
+      Log.info("[淬火] overburden="+mechanicalData.overburden,"");
       if(!mechanicalData.overburden){
         turret.update();
       }
