@@ -123,15 +123,15 @@ public class MechanicalData{
     public int getRotation(){
       switch (core.direction){
             case 0:
-                return 3;
+                return 2;
             case 1:
-                return 0;
+                return 1;
             case 2:
                 return 1;
             case 3:
-                return 2;
+                return 0;
               }
-              return 3;
+              return 2;
     }
     
     public void update(){
