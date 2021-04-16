@@ -104,7 +104,7 @@ public class LargeLaserTurret extends LargeTurret{
     }
     
     @Override
-    public boolean shootable(){||
+    public boolean shootable(){
       updateShooting();
       if(coolTime>=shootCool){
         coolTime = 0;
