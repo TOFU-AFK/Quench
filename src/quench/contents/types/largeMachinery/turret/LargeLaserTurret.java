@@ -95,15 +95,16 @@ public class LargeLaserTurret extends LargeTurret{
     
     @Override
     public void updateShooting(){
+      coolTime++;
       if(coolTime>=shootCool){
         BulletType type = peekAmmo();
         bullet(type,rotation);
-        coolTime = 0;
+        coolTime = shootCool;
       }
     }
     
     @Override
-    public boolean shootable(){
+    public boolean shootable(){||
       updateShooting();
       if(coolTime>=shootCool){
         coolTime = 0;
@@ -126,6 +127,7 @@ public class LargeLaserTurret extends LargeTurret{
           bulletLife -= Time.delta / Math.max(core.efficiency(), 0.00001f);
           if(bulletLife <= 0f){
             bullet = null;
+            coolTime = 0;
           }
         }
       }
