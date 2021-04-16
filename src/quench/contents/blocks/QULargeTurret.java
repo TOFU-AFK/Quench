@@ -51,7 +51,7 @@ public class QULargeTurret implements ContentList
   
   @Override
   public void load(){
-    motiveTurret = new LaserTurret("motiveTurret"){
+    motiveTurret = new LargeLaserTurret("motiveTurret"){
       {
         bullet = QUBullets.windBeam;
         size = 5;
