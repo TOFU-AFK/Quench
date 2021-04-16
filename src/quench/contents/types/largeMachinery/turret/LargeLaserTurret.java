@@ -73,7 +73,7 @@ public class LargeLaserTurret extends LargeTurret{
   
   @Override
   public LargeTurretBuild build(TurretCoreBuild core){
-    return new LaserTurretBuild(core);
+    return new LargeLaserTurretBuild(core);
   }
   
   @Override
