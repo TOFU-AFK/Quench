@@ -133,7 +133,7 @@ public class LaserTurret extends LargeTurret{
     
     @Override
     protected void turnToTarget(float targetRot){
-      rotation = Angles.moveToward(rotation, targetRot, core.efficiency() * rotateSpeed * delta() * (bulletLife > 0f ? firingMoveFract : 1f));
+      rotation = Angles.moveToward(rotation, targetRot, core.efficiency() * rotateSpeed * core.delta() * (bulletLife > 0f ? firingMoveFract : 1f));
     }
     
     protected void bullet(BulletType type, float angle){
