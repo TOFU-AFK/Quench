@@ -28,57 +28,20 @@ import static arc.math.Angles.*;
  
 public class QUBullets implements ContentList {
 	public static
-	BulletType empty,disturbance,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
+	BulletType windBeam,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
  
 	@Override
 	public void load() {
 	  
-	   empty = new BulletType(6f,10f){
-	    {
-	      drawSize = 12;
-	      pierce = true;
-	      lifetime = 20;
-	      hitSize = 10;
-	      hitEffect = Fx.none;
-	      despawnEffect = Fx.none;
-	      lightRadius = 12;
-	      speed = 1; 
-	    }
-	    
-	   @Override
-	   public void draw(Bullet b){
-     }
-     
-     @Override
-      public void update(Bullet b){
-        Damage.collideLine(b,b.team,QUFx.blastWave,b.x,b.y,b.rotation(),820);
-      }
-     
-	  };
-	  
-	  disturbance = new BulletType(6f,100f){
-	  	    {
-	  	      drawSize = 12;
-	  	      pierce = true;
-	  	      lifetime = 180;
-	  	      hitSize = 10;
-	  	      hitEffect = Fx.none;
-	  	      despawnEffect = Fx.none;
-	  	      lightRadius = 12;
-	  	    }
-	  	    
-	  	   @Override
-	  	   public void draw(Bullet b){
-	  	     Draw.color(Pal.heal, Color.valueOf("#C6FFC6"),b.fin());
-	  	     Fill.square(b.x, b.y,3f);
-	  	     reset();
-	       }
-	       
-	       @Override
-	        public void update(Bullet b){
-	        }
-	       
-	  	  };
+	  windBeam = new ContinuousLaserBulletType(80){{
+      length = 420f;
+      hitEffect = QUFx.charge;
+      hitColor = Color.valueOf("#C6FFC6");
+      drawSize = 420f;
+      incendChance = 0.4f;
+      incendSpread = 5f;
+      incendAmount = 1;
+    }};
 	  
 	  //---------------------------------------
 	  

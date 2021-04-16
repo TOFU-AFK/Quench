@@ -51,15 +51,12 @@ public class QULargeTurret implements ContentList
   
   @Override
   public void load(){
-    motiveTurret = new ChargeLargeTurret("motiveTurret"){
+    motiveTurret = new LaserTurret("motiveTurret"){
       {
-        bullet = QUBullets.empty;
-        shots = 1;
+        bullet = QUBullets.windBeam;
         size = 5;
-        range = 820;
-        chargeTime = 30;
-        duration = 300;
-        chargeEffect = QUFx.charge;
+        range = 420;
+        shootDuration = 200;
       }
     };
   }
