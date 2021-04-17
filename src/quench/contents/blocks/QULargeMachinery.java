@@ -84,7 +84,7 @@ public class QULargeMachinery implements ContentList
 		      requirements(Category.turret, with(Items.silicon, 90, Items.lead, 85,Items.titanium, 50));
 					size = 1;
 					health = 40*size*size;
-					efficiency = 1.2f;
+					efficiency = 1;
 					structure = new Structure(new BlockData[]{new BlockData(basicBlock,16,16),new BlockData(basicBlock,8,16),new BlockData(basicBlock,-8,16),new BlockData(basicBlock,-16,16),new BlockData(basicBlock,16,8),new BlockData(basicBlock,8,8),new BlockData(basicBlock,-8,8),new BlockData(basicBlock,-16,8),new BlockData(basicBlock,16,-8),new BlockData(basicBlock,8,-8),new BlockData(basicBlock,-8,-8),new BlockData(basicBlock,-16,-8),new BlockData(basicBlock,16,-16),new BlockData(basicBlock,8,-16),new BlockData(basicBlock,-8,-16),new BlockData(basicBlock,-16,-16),new BlockData(basicBlock,16,0),new BlockData(basicBlock,8,0),new BlockData(basicBlock,-8,0),new BlockData(basicBlock,-16,0),
 					  new BlockData(basicBlock,0,16),new BlockData(basicBlock,0,8),new BlockData(basicBlock,0,-8),new BlockData(motiveRod,0,-16)
 					});//一方块8像素
