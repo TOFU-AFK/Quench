@@ -84,7 +84,7 @@ public class LargeLaserTurret extends LargeTurret{
   
   public class LargeLaserTurretBuild extends LargeTurretBuild{
     Bullet bullet;
-    protected boolean shooting = false;
+    float life = bulletLife;
     
     public LargeLaserTurretBuild(TurretCoreBuild core){
       super(core);
@@ -102,9 +102,11 @@ public class LargeLaserTurret extends LargeTurret{
         BulletType type = peekAmmo();
         bullet(type,rotation);
         coolTime = shootCool;
+        life = bulletLife;
       }
     }
     
+    /*
     @Override
     public boolean shootable(){
       if(coolTime>=shootCool){
@@ -114,36 +116,34 @@ public class LargeLaserTurret extends LargeTurret{
         updateShooting();
         return false;
       }
-    }
+    }*/
   
     
     //攻击
     @Override
     public void attack(){
-      if(shooting||shootable()){
-        if(bulletLife > 0 && bullet != null){
-          shooting = true;
-          tr.trns(rotation, shootLength, 0f);
-          bullet.rotation(rotation);
-          bullet.set(core.x + tr.x, core.y + tr.y);
-          bullet.time(0f);
-          bulletLife -= Time.delta;
-          if(bulletLife <= 0f){
-            bullet = null;
-            coolTime = 0;
-            shooting = false;
-          }
+      if(life > 0 && bullet != null){
+        tr.trns(rotation, shootLength, 0f);
+        bullet.rotation(rotation);
+        bullet.set(core.x + tr.x, core.y + tr.y);
+        bullet.time(0f);
+        life -= Time.delta;
+        if(life <= 0f){
+          bullet = null;
+          coolTime = 0;
         }
+      }else if(bullet==null){
+        updateShooting();
       }
     }
     
-    @Override
+    /*@Override
     public BulletType peekAmmo(){
-      if(core.mechanicalData.getMotiveDirection().contains(Motive.right,true)&&rightBullet!=null&&!shooting){
+      if(core.mechanicalData.getMotiveDirection().contains(Motive.right,true)&&rightBullet!=null){
         return rightBullet;
       }
       return core.turret.bullet;
-    }
+    }*/
     
     @Override
     protected void turnToTarget(float targetRot){

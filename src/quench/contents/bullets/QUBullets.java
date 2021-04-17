@@ -64,7 +64,7 @@ public class QUBullets implements ContentList {
       float realLength = Damage.findLaserLength(b, length);
       float fout = Mathf.clamp(b.time > b.lifetime - fadeTime ? 1f - (b.time - (lifetime - fadeTime)) / fadeTime : 1f);
       float baseLen = realLength * fout;
-      Lines.lineAngle(b.x+x, b.y+y, b.rotation(), baseLen);
+      Lines.lineAngle(b.x+x, b.y, b.rotation(), baseLen);
       for(int s = 0; s < colors.length; s++){
         Draw.color(Tmp.c1.set(colors[s]).mul(1f + Mathf.absin(Time.time, 1f, 0.1f)));
          for(int i = 0; i < tscales.length; i++){

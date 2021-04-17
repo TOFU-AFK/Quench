@@ -56,8 +56,8 @@ public class QULargeTurret implements ContentList
         bullet = QUBullets.windBeam;
         rightBullet = QUBullets.smallWindBeam;
         size = 5;
-        range = 420;
-        shootDuration = 200;
+        range = 210;
+        shootDuration = 240;
       }
     };
   }
