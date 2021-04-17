@@ -141,7 +141,7 @@ public class LargeLaserTurret extends LargeTurret{
       if(core.mechanicalData.getMotiveDirection().contains(Motive.right,true)&&rightBullet!=null&&!shooting){
         return rightBullet;
       }
-      return LargeLaserTurret.bullet;
+      return core.turret.bullet;
     }
     
     @Override
