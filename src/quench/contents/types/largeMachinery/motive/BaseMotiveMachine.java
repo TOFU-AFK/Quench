@@ -59,7 +59,7 @@ import quench.contents.types.*;
 import static mindustry.Vars.*;
 
 public class BaseMotiveMachine extends LargeMachinery{
-  public float BaseOutputMotive = 3;//基础动力输出
+  public float baseOutputMotive = 3;//基础动力输出
   public float quicken = 1f;//动力增加数量
   public float baseConsumptionInterval = 120;//基础消耗间隔
   
@@ -85,7 +85,7 @@ public class BaseMotiveMachine extends LargeMachinery{
   @Override
   public void setStats(){
     super.setStats();
-    stats.add(Stat.output, efficiency, StatUnit.none);
+    stats.add(Stat.output, baseOutputMotive, StatUnit.none);
   }
   
   public class BaseMotiveMachineBuild extends LargeMachineryBuild{
@@ -100,12 +100,18 @@ public class BaseMotiveMachine extends LargeMachinery{
     }
     
     public void updateMotive(){
-      if(consValid()){
-        consumptionInterval-=1;
-        if(consumptionInterval<=0){
-          consumptionInterval = baseConsumptionInterval;
-          consume();
-          outputMotive+=quicken;
+      if(outputMotive>=baseOutputMotive){
+        if(consValid()){
+          consumptionInterval-=1;
+          if(consumptionInterval<=0){
+            consumptionInterval = baseConsumptionInterval;
+            consume();
+            outputMotive+=quicken;
+          }
+        }
+      }else{
+        if(outputMotive>baseOutputMotive){
+          outputMotive=baseOutputMotive;
         }
       }
     }
