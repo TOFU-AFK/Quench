@@ -73,6 +73,7 @@ public class MotiveSource extends LargeMachinery{
         transportable = true;
         rotate = true;
         occupy = 0;
+        isMotiveMachine = true;
     }
 
     @Override
@@ -108,18 +109,7 @@ public class MotiveSource extends LargeMachinery{
         
         @Override
         public void update(){
-          time++;
-          if(time>4){
-            time=0;
-            if(index+1>27){
-              index=0;
-            }else{
-              index++;
-            }
-          }
-          if(transportable()){
-            transmit();
-          }
+          super.update;
         }
         
         

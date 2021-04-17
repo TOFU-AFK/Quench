@@ -76,6 +76,7 @@ public class LargeMachinery extends Block{
     public BlockData[] whitelist;//方块将只能放置在白名单的方块上。
     public float occupy = 0;//动力占用
     public boolean transportable;//可传输动力
+    public boolean isMotiveMachine = false;//可生产动力
     public LargeMachinery(String name){
         super(name);
         solid = true;
@@ -172,6 +173,15 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
+          time++;
+          if(time>4){
+            time=0;
+            if(index+1>27){
+              index=0;
+            }else{
+              index++;
+            }
+          }
           if(transportable()){
             transmit();
           }

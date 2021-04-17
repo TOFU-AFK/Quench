@@ -75,6 +75,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     rotate = true;
     occupy = 0;
     hasItems = true;
+    isMotiveMachine = true;
   }
   
   @Override
@@ -87,6 +88,20 @@ public class BaseMotiveMachine extends LargeMachinery{
     super.setStats();
     stats.add(Stat.output, baseOutputMotive, StatUnit.none);
   }
+  
+  @Override
+	public void setBars(){
+		super.setBars();
+		if(c==null){
+		  bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
+			(MechanicalCoreBuild entity) -> new Bar(
+				() -> Core.bundle.get("MechanicalCore.totalMotive"),
+				() -> Pal.powerBar,
+				() -> entity.outputMotive
+			)
+		);
+		}
+	}
   
   public class BaseMotiveMachineBuild extends LargeMachineryBuild{
     public float outputMotive = 0;//动力输出，从零逐渐提升

@@ -86,7 +86,7 @@ public class MechanicalCore extends LargeMachinery{
         return StructureType.core;
     }
     
-    @Override
+  @Override
 	public void setBars(){
 		super.setBars();
 		bars.add(Core.bundle.get("MechanicalCore.totalEnergy"), 
