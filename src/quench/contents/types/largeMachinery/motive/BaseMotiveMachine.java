@@ -92,15 +92,13 @@ public class BaseMotiveMachine extends LargeMachinery{
   @Override
 	public void setBars(){
 		super.setBars();
-		if(c==null){
 		  bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
-			(MechanicalCoreBuild entity) -> new Bar(
+			(BaseMotiveMachineBuild entity) -> new Bar(
 				() -> Core.bundle.get("MechanicalCore.totalMotive"),
 				() -> Pal.powerBar,
 				() -> entity.outputMotive
 			)
 		);
-		}
 	}
   
   public class BaseMotiveMachineBuild extends LargeMachineryBuild{
