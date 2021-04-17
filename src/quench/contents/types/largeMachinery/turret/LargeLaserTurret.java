@@ -58,6 +58,7 @@ import quench.contents.types.core.*;
 import quench.contents.types.core.TurretCore.TurretCoreBuild;
 import quench.contents.effects.*;
 import quench.contents.bullets.*;
+import quench.contents.types.motive.*;
 
 import static mindustry.Vars.*; 
 

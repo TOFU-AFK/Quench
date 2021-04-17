@@ -336,7 +336,12 @@ public class LargeTurret{
     
     protected void turnToTarget(float targetRot){
       rotation = Angles.moveToward(rotation, targetRot, rotateSpeed * core.delta() * baseReloadSpeed());
-      }
+    }
+    
+    //绘制攻击范围
+    public void drawSelect(){
+      Drawf.dashCircle(core.x, core.y, range, core.team.color);
+    }
     
     //显示名称
     public String displayName(){

@@ -76,23 +76,29 @@ public class TurretCore extends MechanicalCore{
   }
   
   public class TurretCoreBuild extends MechanicalCoreBuild{
-    public LargeTurretBuild turret = QULargeTurret.motiveTurret.build(this);
+    public LargeTurret turret = QULargeTurret.motiveTurret;
+    public LargeTurretBuild build = QULargeTurret.motiveTurret.build(this);
     
     @Override
     public void update(){
       super.update();
       Log.info("[淬火] overburden="+mechanicalData.overburden,"");
       if(!mechanicalData.overburden){
-        turret.update();
+        build.update();
       }
     }
     
     @Override
     public void draw(){
       super.draw();
-      turret.draw();
+      build.draw();
     }
     
+    @Override
+    public void drawConfigure(){
+      super.drawConfigure();
+      build.drawSelect();
+    }
   }
   
 }
