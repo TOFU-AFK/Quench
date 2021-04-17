@@ -141,6 +141,7 @@ public class LargeMachinery extends Block{
         public float amount = 0;//动力总数
         public int index = 0;//贴图索引，用于传动杆
         public boolean startAnimation = false;
+        public int time;
         
         @Override
         public void buildConfiguration(Table table){

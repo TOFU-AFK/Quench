@@ -132,7 +132,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     }
     
     public void outputMotive(){
-      motive=outputMotive;
+      amount=outputMotive;
     }
     
   }
