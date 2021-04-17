@@ -137,6 +137,14 @@ public class LargeLaserTurret extends LargeTurret{
     }
     
     @Override
+    public BulletType peekAmmo(){
+      if(core.mechanicalData.getMotiveDirection().contains(Motive.right,true)&&rightBullet!=null&&!shooting){
+        return rightBullet;
+      }
+      return bullet;
+    }
+    
+    @Override
     protected void turnToTarget(float targetRot){
       rotation = Angles.moveToward(rotation, targetRot, core.efficiency() * rotateSpeed * core.delta() * (bulletLife > 0f ? firingMoveFract : 1f));
     }
