@@ -55,12 +55,12 @@ public class QUBullets implements ContentList {
         float x = Angles.trnsx(ang + increase, 18);
         float y = Angles.trnsy(ang + increase, 18);
         
-        drawWindBeam(x,y);
+        drawWindBeam(b,x,y);
       }
       
     }
     
-    void drawWindBeam(float x,float y){
+    void drawWindBeam(Bullet b,float x,float y){
       float realLength = Damage.findLaserLength(b, length);
       float fout = Mathf.clamp(b.time > b.lifetime - fadeTime ? 1f - (b.time - (lifetime - fadeTime)) / fadeTime : 1f);
       float baseLen = realLength * fout;
