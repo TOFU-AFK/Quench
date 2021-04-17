@@ -33,7 +33,7 @@ public class QUBullets implements ContentList {
 	@Override
 	public void load() {
 	  
-  smallWindBeam = new ContinuousLaserBulletType(20){{
+      smallWindBeam = new ContinuousLaserBulletType(20){{
       length = 320f;
       hitEffect = QUFx.charge;
       hitColor = Color.valueOf("#C6FFC6");
@@ -46,14 +46,44 @@ public class QUBullets implements ContentList {
       pierce = true;
       colors = new Color[]{Pal.heal,Color.valueOf("#C6FFC6"),Color.valueOf("#DEFFDE"),Color.white};
     }
+    
+    @Override
+    public void update(Bullet b){
+      for(int i=0;i<3;i++){
+        float increase = 90 * i - 90;
+        float ang = b.rotation();
+        
+        float x = Angles.trnsx(ang + increase, 18);
+        float y = Angles.trnsy(ang + increase, 18);
+        
+        damage(b,x,y);
+      }
+    }
+    
+    void damage(Bullet b,float x,float y){
+      if(b.timer(1, 5f)){
+        Damage.collideLine(b, b.team, hitEffect, b.x + x, b.y + y, b.rotation(), length, largeHit);
+      }
+
+      if(shake > 0){
+        Effect.shake(shake, shake, b);
+      }
+    }
 	    
 	  @Override
     public void draw(Bullet b){
       for(int i=0;i<3;i++){
         float increase = 90 * i - 90;
         float ang = b.rotation();
-        float x = Angles.trnsx(ang + increase, 18);
-        float y = Angles.trnsy(ang + increase, 18);
+        float x,y;
+        if(i = 2){
+          x = Angles.trnsx(ang, 18);
+          y = Angles.trnsy(ang, 18);
+        }else{
+          x = Angles.trnsx(ang + increase, 18);
+          y = Angles.trnsy(ang + increase, 18);
+        }
+        
         
         drawWindBeam(b,x,y);
       }
@@ -64,7 +94,7 @@ public class QUBullets implements ContentList {
       float realLength = Damage.findLaserLength(b, length);
       float fout = Mathf.clamp(b.time > b.lifetime - fadeTime ? 1f - (b.time - (lifetime - fadeTime)) / fadeTime : 1f);
       float baseLen = realLength * fout;
-      Lines.lineAngle(b.x+x, b.y, b.rotation(), baseLen);
+      Lines.lineAngle(b.x+x, b.y+y, b.rotation(), baseLen);
       for(int s = 0; s < colors.length; s++){
         Draw.color(Tmp.c1.set(colors[s]).mul(1f + Mathf.absin(Time.time, 1f, 0.1f)));
          for(int i = 0; i < tscales.length; i++){
