@@ -109,7 +109,7 @@ public class MotiveSource extends LargeMachinery{
         
         @Override
         public void update(){
-          super.update;
+          super.update();
         }
         
         
