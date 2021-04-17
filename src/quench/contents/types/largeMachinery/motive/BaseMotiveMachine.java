@@ -72,7 +72,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     buildCostMultiplier = 5f;
     configurable = true;
     transportable = true;
-    rotate = false;
+    rotate = true;
     occupy = 0;
     hasItems = true;
   }
