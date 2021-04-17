@@ -79,6 +79,7 @@ public class LargeTurret{
   public Vec2 offset;//炮口偏移核心
   public TextureRegion region;
   public BulletType bullet;//子弹
+  public BulletType rightBullet;//动力方向为右时子弹
   public int shots;//射出数量;
   public int bulletOffset;
   public float chargeTime;//充能时间
@@ -313,6 +314,9 @@ public class LargeTurret{
     }
     
     public BulletType peekAmmo(){
+      if(core.mechanicalData.getMotiveDirection().contains(Motive.right,true)&&rightBullet!=null){
+        return rightBullet;
+      }
       return bullet;
     }
     

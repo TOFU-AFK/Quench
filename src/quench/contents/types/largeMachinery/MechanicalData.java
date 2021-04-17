@@ -151,6 +151,19 @@ public class MechanicalData{
         }
     }
     
+    //得到动力方向
+    public Seq<Motive> getMotiveDirection(){
+      Seq<Motive> motive = new Seq<Motive>();
+      for(int i=0;i<generator.size();i++){
+        Tile t = generator.get(i);
+        LargeMachineryBuild build = (LargeMachineryBuild) t.build;
+        if(build.amount==-1||build.amount>0){
+          motive.add(build.turn);
+        }
+      }
+      return motive;
+    }
+    
     //得到动力使用
     public float getMotive(){
         float motive = 0;

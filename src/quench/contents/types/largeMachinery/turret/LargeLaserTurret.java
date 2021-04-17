@@ -83,7 +83,7 @@ public class LargeLaserTurret extends LargeTurret{
   
   public class LargeLaserTurretBuild extends LargeTurretBuild{
     Bullet bullet;
-    protected boolean shooting;
+    protected boolean shooting = false;
     
     public LargeLaserTurretBuild(TurretCoreBuild core){
       super(core);
@@ -106,11 +106,11 @@ public class LargeLaserTurret extends LargeTurret{
     
     @Override
     public boolean shootable(){
-      updateShooting();
       if(coolTime>=shootCool){
         coolTime = 0;
         return true;
       }else{
+        updateShooting();
         return false;
       }
     }
@@ -119,7 +119,7 @@ public class LargeLaserTurret extends LargeTurret{
     //攻击
     @Override
     public void attack(){
-      if(shootable()||shooting){
+      if(shooting||shootable()){
         if(bulletLife > 0 && bullet != null){
           shooting = true;
           tr.trns(rotation, shootLength, 0f);

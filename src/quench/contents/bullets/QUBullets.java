@@ -28,10 +28,59 @@ import static arc.math.Angles.*;
  
 public class QUBullets implements ContentList {
 	public static
-	BulletType windBeam,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
+	BulletType smallWindBeam,windBeam,curvebomb, smallcurvebomb,curvedmissile,bigCircularMissile,circularMissile,smallCircularMissile;
  
 	@Override
 	public void load() {
+	  
+  smallWindBeam = new ContinuousLaserBulletType(20){{
+      length = 320f;
+      hitEffect = QUFx.charge;
+      hitColor = Color.valueOf("#C6FFC6");
+      drawSize = 320f;
+      incendChance = 0.4f;
+      strokes = new float[]{0.6f, 0.5f, 0.3f, 0.1f};
+      tscales = new float[]{0.3f, 0.23f, 0.16f, 0.06f};
+      incendSpread = 5f;
+      incendAmount = 1;
+      pierce = true;
+      colors = new Color[]{Pal.heal,Color.valueOf("#C6FFC6"),Color.valueOf("#DEFFDE"),Color.white};
+    }
+	    
+	  @Override
+    public void draw(Bullet b){
+      for(int i=0;i<3;i++){
+        float increase = 90 * i - 90;
+        float ang = b.rotation();
+        float x = Angles.trnsx(ang + increase, 18);
+        float y = Angles.trnsy(ang + increase, 18);
+        
+        drawWindBeam(x,y);
+      }
+      
+    }
+    
+    void drawWindBeam(float x,float y){
+      float realLength = Damage.findLaserLength(b, length);
+      float fout = Mathf.clamp(b.time > b.lifetime - fadeTime ? 1f - (b.time - (lifetime - fadeTime)) / fadeTime : 1f);
+      float baseLen = realLength * fout;
+      Lines.lineAngle(b.x+x, b.y+y, b.rotation(), baseLen);
+      for(int s = 0; s < colors.length; s++){
+        Draw.color(Tmp.c1.set(colors[s]).mul(1f + Mathf.absin(Time.time, 1f, 0.1f)));
+         for(int i = 0; i < tscales.length; i++){
+            Tmp.v1.trns(b.rotation() + 180f, (lenscales[i] - 1f) * spaceMag);
+            Lines.stroke((width + Mathf.absin(Time.time, oscScl, oscMag)) * fout * strokes[s] * tscales[i]);
+            Lines.lineAngle(b.x+x + Tmp.v1.x, b.y + y + Tmp.v1.y, b.rotation(), baseLen * lenscales[i], false);
+            }
+        }
+
+        Tmp.v1.trns(b.rotation(), baseLen * 1.1f);
+
+        Drawf.light(b.team, b.x+x, b.y+y, b.x + x + Tmp.v1.x, b.y + y + Tmp.v1.y, lightStroke, lightColor, 0.7f);
+        Draw.reset();
+    }
+	    
+	  };
 	  
 	  windBeam = new ContinuousLaserBulletType(80){{
       length = 420f;
