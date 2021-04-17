@@ -72,6 +72,12 @@ public class MechanicalCore extends LargeMachinery{
     }
     
     @Override
+    public void setStats(){
+      super.setStats();
+      stats.add(Stat.speedincrease, efficiency, StatUnit.none);
+    }
+    
+    @Override
     public void load(){
         super.load();
     }

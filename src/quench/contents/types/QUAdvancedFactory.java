@@ -57,7 +57,7 @@ public class QUAdvancedFactory extends GenericCrafter{
 			(QUAdvancedFactoryBuild entity) -> new Bar(
 				() -> Core.bundle.get("other.time"),
 				() -> Color.valueOf("D3806A"),
-				() -> entity.progress / 1f
+				() -> entity.progress / entity.totalProgress
 			)
 		);
 	}
