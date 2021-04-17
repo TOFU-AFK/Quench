@@ -76,7 +76,7 @@ public class QUBullets implements ContentList {
         float increase = 90 * i - 90;
         float ang = b.rotation();
         float x,y;
-        if(i = 2){
+        if(i == 2){
           x = Angles.trnsx(ang, 18);
           y = Angles.trnsy(ang, 18);
         }else{
