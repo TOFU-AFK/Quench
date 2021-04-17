@@ -50,7 +50,7 @@ public class QUBullets implements ContentList {
     @Override
     public void update(Bullet b){
       for(int i=0;i<3;i++){
-        float increase = 90 * i;
+        float increase = 90 * i - 90;
         float ang = b.rotation();
         
         float x = Angles.trnsx(ang + increase, 18);
@@ -72,11 +72,33 @@ public class QUBullets implements ContentList {
 	    
 	  @Override
     public void draw(Bullet b){
+      float ang = b.rotation();
+      float extraX,extraY;
       for(int i=0;i<3;i++){
-        float increase = 90 * i;
-        float ang = b.rotation();
-        float x = Angles.trnsx(ang + increase, 18);
-        float y = Angles.trnsy(ang + increase, 18);
+        /*float x,y;
+        switch (i){
+          case 0:
+            x = Angles.trnsx(ang, 18);
+            y = Angles.trnsy(ang, 18);
+          case 1:
+            x = Angles.trnsx(ang, 18) + Angles.trnsx(ang + 90, 18);
+            y = Angles.trnsy(ang, 18) + Angles.trnsy(ang + 90, 18);
+          case 2:
+            x = Angles.trnsx(ang, 18) + Angles.trnsx(ang - 90, 18);
+            y = Angles.trnsy(ang, 18) + Angles.trnsy(ang - 90, 18);
+        }*/
+        float increase;
+        if(i==2){
+          increase = -90;
+        }else{
+          increase = 90*i;
+        }
+        float x = Angles.trnsx(ang  + increase, 18) + extraX;
+        float y = Angles.trnsy(ang + increase, 18) + extraY;
+        if(i==0){
+          extraX = x;
+          extraY = y;
+        }
         drawWindBeam(b,x,y);
       }
       
