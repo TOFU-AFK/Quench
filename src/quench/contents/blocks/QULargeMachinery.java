@@ -143,7 +143,7 @@ public class QULargeMachinery implements ContentList
 		waterwheel = new WaterWheel("waterwheel")
 		{
 			{
-            requirements(Category.effect, with(Items.copper, 100,Items.lead,25));
+      requirements(Category.effect, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
 			floating = true;
@@ -159,7 +159,7 @@ public class QULargeMachinery implements ContentList
 		powerExport = new PowerExport("powerExport")
 		{
 			{
-            requirements(Category.effect, with(Items.copper, 25));
+      requirements(Category.effect, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
 			drawer = new DrawPowerExport();
@@ -190,10 +190,12 @@ public class QULargeMachinery implements ContentList
 			}
 		};
 		firepowerEngine = new BaseMotiveMachine("firepowerEngine"){
-		  requirements(Category.power, with(Items.titanium, 45,Items.silicon,65));
-		  size = 1;
-		  health = 80*size*size;
-		  consumes.items(new ItemStack(Items.coal, 1));
-		}
+		  {
+		    requirements(Category.power, with(Items.titanium, 45,Items.silicon,65));
+		    size = 1;
+		    health = 80*size*size;
+		    consumes.items(new ItemStack(Items.coal, 1));
+		  }
+		};
 	}
 }
