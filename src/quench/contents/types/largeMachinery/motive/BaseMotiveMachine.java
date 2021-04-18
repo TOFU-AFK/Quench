@@ -110,6 +110,7 @@ public class BaseMotiveMachine extends LargeMachinery{
       super.update();
       updateMotive();
       outputMotive();
+      
     }
     
     public void updateMotive(){
