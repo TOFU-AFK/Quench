@@ -77,9 +77,11 @@ public class BaseMotiveMachine extends LargeMachinery{
     rotate = true;
     occupy = 0;
     hasItems = true;
+    acceptsItems = true;
     isMotiveMachine = true;
     burn = Items.coal;
     burnAmout = 1;
+    group = BlockGroup.transportation;
   }
   
   @Override
