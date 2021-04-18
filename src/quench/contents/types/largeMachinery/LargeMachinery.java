@@ -225,6 +225,7 @@ public class LargeMachinery extends Block{
         //可接收动力，动力传输方块传输动力前会执行此方法
         public boolean acceptable(LargeMachineryBuild build){
           if(occupy<build.amount&&build.amount!=-1){
+            Log.info("[淬火] acceptable()=false", "");
             return false;
           }
           return build.rotation == rotation;
@@ -262,12 +263,22 @@ public class LargeMachinery extends Block{
         public void write(Writes write){
             super.write(write);
             if(hasPower) write.f(power.status);
+            if(turn==Motive.left){
+              write.i(0);
+            }else{
+              write.i(1);
+            }
         }
 
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
             if(hasPower) power.status = read.f();
+            if(read.i()==0){
+              turn = Motive.left;
+            }else{
+              turn = Motive.right;
+            }
         }
     }
 }

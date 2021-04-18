@@ -96,7 +96,7 @@ public class BaseMotiveMachine extends LargeMachinery{
 			(BaseMotiveMachineBuild entity) -> new Bar(
 				() -> Core.bundle.format("LargeMachinery.motiveForce",entity.outputMotive),
 				() -> Pal.powerBar,
-				() -> entity.outputMotive / baseOutputMotive
+				() -> entity.amount / baseOutputMotive
 			)
 		);
 	}

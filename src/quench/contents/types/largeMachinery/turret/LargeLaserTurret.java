@@ -98,7 +98,7 @@ public class LargeLaserTurret extends LargeTurret{
     @Override
     public void updateShooting(){
       coolTime++;
-      if(coolTime>=shootCool){
+      if(coolTime>=shootCool&&target!=null){
         BulletType type = peekAmmo();
         bullet(type,rotation);
         coolTime = shootCool;
