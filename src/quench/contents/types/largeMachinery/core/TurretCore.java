@@ -56,6 +56,7 @@ import quench.contents.types.*;
 import quench.contents.types.MechanicalCore.MechanicalCoreBuild;
 import quench.contents.types.turret.*;
 import quench.contents.types.turret.LargeTurret.LargeTurretBuild;
+import quench.contents.types.draw.*;
 
 import static mindustry.Vars.*;
 
@@ -81,7 +82,7 @@ public class TurretCore extends MechanicalCore{
     public DrawData drawData;
     
     public TurretCoreBuild(){
-      drawData = DrawData(this);
+      drawData = new DrawData(this);
       drawData.add("血量",build.healthf,turret.health);
     }
     

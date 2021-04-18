@@ -124,7 +124,7 @@ public class DrawData{
     }
     
     public void draw(){
-      for(i=0;i<items.size;i++){
+      for(int i=0;i<items.size;i++){
         offsetX = i*offset;
         items.get(i).draw(offsetX,0);
       }
