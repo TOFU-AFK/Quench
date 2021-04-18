@@ -151,6 +151,7 @@ public class DrawData{
     public void draw(float offsetX, float offsetY){
       //Draw.z(Layer.turret);
       Draw.color(color);
+      Log.info("[淬火] 已绘制", "");
       //Fill.crect(x+offsetX,y+offsetY,width,height);
       Lines.lineAngle(x+offsetX,y+offsetY,90,height);
       Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
