@@ -78,6 +78,12 @@ public class TurretCore extends MechanicalCore{
   public class TurretCoreBuild extends MechanicalCoreBuild{
     public LargeTurret turret = QULargeTurret.motiveTurret;
     public LargeTurretBuild build = QULargeTurret.motiveTurret.build(this);
+    public DrawData drawData;
+    
+    public TurretCoreBuild(){
+      drawData = DrawData(this);
+      drawData.add("血量",build.healthf,turret.health);
+    }
     
     @Override
     public void update(){
@@ -91,7 +97,12 @@ public class TurretCore extends MechanicalCore{
     public void draw(){
       super.draw();
       build.draw();
+      if(!mechanicalData.overburden){
+        drawData.draw();
+      }
     }
+    
+    
     
     @Override
     public void drawConfigure(){

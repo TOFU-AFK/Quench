@@ -8,7 +8,7 @@ import quench.contents.types.LargeMachinery.LargeMachineryBuild;
 
 public class DrawLargeMachinery{
     //public TextureRegion bottom;
-    public LargeMachineryBuild master;//详细请看DrawMotiveTransmission
+    public LargeMachineryBuild master;//现在无用
     public boolean isLoader = false;
     public void draw(LargeMachineryBuild entity){
         //Draw.rect(bottom,x,y);
