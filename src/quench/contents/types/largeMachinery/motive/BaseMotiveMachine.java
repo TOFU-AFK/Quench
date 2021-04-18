@@ -62,6 +62,8 @@ public class BaseMotiveMachine extends LargeMachinery{
   public float baseOutputMotive = 3;//基础动力输出
   public float quicken = 1f;//动力增加数量
   public float baseConsumptionInterval = 120;//基础消耗间隔
+  public Item burn;//燃烧物品
+  public int burnAmout;//一次燃烧物品的数量
   
   public BaseMotiveMachine(String name){
     super(name);
@@ -76,6 +78,8 @@ public class BaseMotiveMachine extends LargeMachinery{
     occupy = 0;
     hasItems = true;
     isMotiveMachine = true;
+    burn = Items.coal;
+    burnAmout = 1;
   }
   
   @Override
@@ -119,7 +123,6 @@ public class BaseMotiveMachine extends LargeMachinery{
         if(consValid()){
           consumptionInterval-=1;
           if(consumptionInterval<=0){
-            Log.info("[淬火] consumptionInterval归零","");
             consumptionInterval = baseConsumptionInterval;
             consume();
             outputMotive+=quicken;
@@ -130,6 +133,19 @@ public class BaseMotiveMachine extends LargeMachinery{
       if(outputMotive>baseOutputMotive){
         outputMotive=baseOutputMotive;
       }
+    }
+    
+    @Override
+    public boolean consValid(){
+      if(items.has(burn,burnAmout)){
+        return true;
+      }
+      return false;
+    }
+    
+    @Override
+    public void consume(){
+      items.remove(burn,burnAmout);
     }
     
     public void outputMotive(){

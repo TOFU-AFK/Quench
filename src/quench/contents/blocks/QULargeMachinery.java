@@ -194,7 +194,6 @@ public class QULargeMachinery implements ContentList
 		    requirements(Category.power, with(Items.titanium, 45,Items.silicon,65));
 		    size = 1;
 		    health = 80*size*size;
-		    consumes.items(new ItemStack(Items.coal, 1));
 		  }
 		};
 	}
