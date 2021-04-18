@@ -98,9 +98,7 @@ public class TurretCore extends MechanicalCore{
     public void draw(){
       super.draw();
       build.draw();
-      if(!mechanicalData.overburden){
-        drawData.draw();
-      }
+      drawData.draw();
     }
     
     
