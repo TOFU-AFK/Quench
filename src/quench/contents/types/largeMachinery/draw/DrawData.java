@@ -162,6 +162,7 @@ public class DrawData{
       Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
       Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
       Lines.lineAngle(x+offsetX,y+offsetY,180,width);
+      QUFx.ray.at(x+offsetX,y,90);
       Draw.reset();
     }
     
