@@ -88,7 +88,11 @@ public class MotiveSource extends LargeMachinery{
     
 	 
     public class MotiveSourceBuild extends LargeMachineryBuild{
-      public float amount = -1;
+      
+      public MotiveSourceBuild(){
+        super();
+        amount = -1f;
+      }
         
         @Override
         public void buildConfiguration(Table table){

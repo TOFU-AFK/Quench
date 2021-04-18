@@ -113,7 +113,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     }
     
     public void updateMotive(){
-      if(outputMotive>=baseOutputMotive){
+      if(outputMotive<baseOutputMotive){
         if(consValid()){
           consumptionInterval-=1;
           if(consumptionInterval<=0){
@@ -123,6 +123,7 @@ public class BaseMotiveMachine extends LargeMachinery{
           }
         }
       }else{
+        //如果动力超出上限，强制回到上限
         if(outputMotive>baseOutputMotive){
           outputMotive=baseOutputMotive;
         }
