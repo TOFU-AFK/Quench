@@ -141,6 +141,7 @@ public class BaseMotiveMachine extends LargeMachinery{
       if(item==burn){
         return true;
       }
+      return false;
     }
     
     @Override
