@@ -66,7 +66,7 @@ public class DrawData{
   public LargeMachineryBuild entity;
   public float offset;
   public Color dataColor;//默认颜色
-  public Color dataLightColor//默认高亮颜色
+  public Color dataLightColor;//默认高亮颜色
   public float width;
   public float height;
   protected ItemArray itemArray;
@@ -108,7 +108,7 @@ public class DrawData{
     
   }
   
-  public class ItemArray(){
+  public class ItemArray{
     Seq<ItemData> items = new Seq<ItemData>();
     
     public ItemArray(){
@@ -124,7 +124,7 @@ public class DrawData{
     }
     
     public void draw(){
-      for(i=0;i<items.size,i++){
+      for(i=0;i<items.size;i++){
         offsetX = i*offset;
         items.get(i).draw(offsetX,0);
       }
