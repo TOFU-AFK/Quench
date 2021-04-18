@@ -33,7 +33,7 @@ public class QUBullets implements ContentList {
 	@Override
 	public void load() {
 	  
-      smallWindBeam = new ContinuousLaserBulletType(20){{
+      smallWindBeam = new ContinuousLaserBulletType(109){{
       length = 320f;
       hitEffect = QUFx.charge;
       hitColor = Color.valueOf("#C6FFC6");
@@ -124,7 +124,7 @@ public class QUBullets implements ContentList {
 	    
 	  };
 	  
-	  windBeam = new ContinuousLaserBulletType(80){{
+	  windBeam = new ContinuousLaserBulletType(327){{
       length = 420f;
       hitEffect = QUFx.charge;
       hitColor = Color.valueOf("#C6FFC6");
