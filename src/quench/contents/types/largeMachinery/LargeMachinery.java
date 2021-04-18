@@ -174,13 +174,15 @@ public class LargeMachinery extends Block{
         
         @Override
         public void update(){
-          time++;
-          if(time>4){
-            time=0;
-            if(index+1>27){
+          if(isMotiveMachine){
+            time++;
+            if(time>4){
+              time=0;
+              if(index+1>27){
               index=0;
-            }else{
-              index++;
+              }else{
+                index++;
+              }
             }
           }
           if(transportable()){
@@ -222,7 +224,7 @@ public class LargeMachinery extends Block{
         
         //可接收动力，动力传输方块传输动力前会执行此方法
         public boolean acceptable(LargeMachineryBuild build){
-          if(build.amount-occupy<0){
+          if(build.amount!=-1&&build.amount-occupy<0){
             return false;
           }
           return build.rotation == rotation;
