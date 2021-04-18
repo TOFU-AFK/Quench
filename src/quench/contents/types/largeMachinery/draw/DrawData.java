@@ -158,10 +158,10 @@ public class DrawData{
       Draw.z(Layer.turret);
       Draw.color(color);
       //Fill.crect(x+offsetX,y+offsetY,width,height);
-      Lines.lineAngle(x+offsetX,y+offsetY,90,height)
-      Lines.lineAngle(x+offsetX+width,y+offsetY,90,height)
-      Lines.lineAngle(x+offsetX,y+offsetY+height,180,width)
-      Lines.lineAngle(x+offsetX,y+offsetY,180,width)
+      Lines.lineAngle(x+offsetX,y+offsetY,90,height);
+      Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
+      Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
+      Lines.lineAngle(x+offsetX,y+offsetY,180,width);
       Draw.reset();
     }
     
