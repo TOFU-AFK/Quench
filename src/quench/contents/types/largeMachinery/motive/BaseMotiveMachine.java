@@ -114,19 +114,20 @@ public class BaseMotiveMachine extends LargeMachinery{
     
     public void updateMotive(){
       if(outputMotive<baseOutputMotive){
+        Log.info("[淬火] consValid()="consValid(),"");
         if(consValid()){
           consumptionInterval-=1;
           if(consumptionInterval<=0){
+            Log.info("[淬火] consumptionInterval归零","");
             consumptionInterval = baseConsumptionInterval;
             consume();
             outputMotive+=quicken;
           }
         }
-      }else{
-        //如果动力超出上限，强制回到上限
-        if(outputMotive>baseOutputMotive){
-          outputMotive=baseOutputMotive;
-        }
+      }
+      //如果动力超出上限，强制回到上限
+      if(outputMotive>baseOutputMotive){
+        outputMotive=baseOutputMotive;
       }
     }
     
