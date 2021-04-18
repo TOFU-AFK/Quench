@@ -73,13 +73,7 @@ public class DrawData{
   
   
   public DrawData(LargeMachineryBuild entity){
-    this.entity = entity;
-    offset = 100;
-    dataColor = Pal.heal;
-    dataLightColor = Color.valueOf("#C6FFC6");
-    width = 12;
-    height = 200;
-    itemArray = new ItemArray();
+    this(entity,8);
   }
   
   public DrawData(LargeMachineryBuild entity,float offset){
@@ -87,8 +81,8 @@ public class DrawData{
     this.offset = offset;
     dataColor = Pal.heal;
     dataLightColor = Color.valueOf("#C6FFC6");
-    width = 12;
-    height = 200;
+    width = 4;
+    height = 24;
     itemArray = new ItemArray();
   }
   
@@ -155,7 +149,7 @@ public class DrawData{
     }
     
     public void draw(float offsetX, float offsetY){
-      Draw.z(Layer.turret);
+      //Draw.z(Layer.turret);
       Draw.color(color);
       //Fill.crect(x+offsetX,y+offsetY,width,height);
       Lines.lineAngle(x+offsetX,y+offsetY,90,height);
