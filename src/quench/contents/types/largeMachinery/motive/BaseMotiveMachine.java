@@ -116,7 +116,6 @@ public class BaseMotiveMachine extends LargeMachinery{
       super.update();
       updateMotive();
       outputMotive();
-      
     }
     
     public void updateMotive(){
@@ -134,6 +133,13 @@ public class BaseMotiveMachine extends LargeMachinery{
       //如果动力超出上限，强制回到上限
       if(outputMotive>baseOutputMotive){
         outputMotive=baseOutputMotive;
+      }
+    }
+    
+    @Override
+    public boolean acceptItem(Building source, Item item){
+      if(item==burn){
+        return true;
       }
     }
     
