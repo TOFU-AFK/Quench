@@ -94,9 +94,9 @@ public class BaseMotiveMachine extends LargeMachinery{
 		super.setBars();
 		  bars.add(Core.bundle.get("MechanicalCore.totalMotive"), 
 			(BaseMotiveMachineBuild entity) -> new Bar(
-				() -> Core.bundle.get("MechanicalCore.totalMotive"),
+				() -> Core.bundle.format("LargeMachinery.motiveForce",entity.outputMotive),
 				() -> Pal.powerBar,
-				() -> entity.outputMotive
+				() -> entity.outputMotive / baseOutputMotive;
 			)
 		);
 	}

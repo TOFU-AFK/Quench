@@ -222,6 +222,9 @@ public class LargeMachinery extends Block{
         
         //可接收动力，动力传输方块传输动力前会执行此方法
         public boolean acceptable(LargeMachineryBuild build){
+          if(build.amount-occupy<0){
+            return false;
+          }
           return build.rotation == rotation;
         }
         
