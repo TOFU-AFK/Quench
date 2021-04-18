@@ -115,7 +115,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     
     public void updateMotive(){
       if(outputMotive<baseOutputMotive){
-        Log.info("[淬火] consValid()="consValid(),"");
+        Log.info("[淬火] consValid()="+consValid(),"");
         if(consValid()){
           consumptionInterval-=1;
           if(consumptionInterval<=0){
