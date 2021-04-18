@@ -141,13 +141,7 @@ public class DrawData{
     float x,y;
     
     public ItemData(String name,float value,float max){
-      this.name = name;
-      this.value = value;
-      this.max = max ;
-      this.color = dataColor;
-      this.lightColor = dataLightColor;
-      x = entity.x;
-      y = entity.y;
+      this(name,value,max,dataColor,dataLightColor);
     }
     
     public ItemData(String name,float value,float max,Color color,Color lightColor){
@@ -163,7 +157,11 @@ public class DrawData{
     public void draw(float offsetX, float offsetY){
       Draw.z(Layer.turret);
       Draw.color(color);
-      Fill.crect(x+offsetX,y+offsetY,width,height);
+      //Fill.crect(x+offsetX,y+offsetY,width,height);
+      Lines.lineAngle(x+offsetX,y+offsetY,90,height)
+      Lines.lineAngle(x+offsetX+width,y+offsetY,90,height)
+      Lines.lineAngle(x+offsetX,y+offsetY+height,180,width)
+      Lines.lineAngle(x+offsetX,y+offsetY,180,width)
       Draw.reset();
     }
     
