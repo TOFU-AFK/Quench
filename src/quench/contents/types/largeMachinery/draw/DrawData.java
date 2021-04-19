@@ -97,8 +97,8 @@ public class DrawData{
   public void draw(){
     //itemArray.draw();
     Draw.z(Layer.turret);
-    Draw.color(color);
-    Fill.crect(x+32,y+32,width,height);
+    Draw.color(dataColor);
+    Fill.crect(entity.x+32,entity.y+32,width,height);
     /*Lines.lineAngle(x+offsetX,y+offsetY,90,height);
     Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
     Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
