@@ -73,7 +73,7 @@ public class DrawData{
   
   
   public DrawData(LargeMachineryBuild entity){
-    this(entity,8);
+    this(entity,12);
   }
   
   public DrawData(LargeMachineryBuild entity,float offset){
@@ -81,7 +81,7 @@ public class DrawData{
     this.offset = offset;
     dataColor = Pal.heal;
     dataLightColor = Color.valueOf("#C6FFC6");
-    width = 2;
+    width = 1;
     height = 16;
     itemArray = new ItemArray();
   }
@@ -95,18 +95,7 @@ public class DrawData{
   }
   
   public void draw(){
-    //itemArray.draw();
-    Draw.z(Layer.turret);
-    Draw.color(dataColor);
-    Fill.crect(entity.x+12,entity.y,width,height);
-    Drawf.light(entity.team, entity.x+12,entity.y,height,dataLightColor,0.6f);
-    Fill.crect(entity.x+12,entity.y,width,height/2);
-    /*Lines.lineAngle(x+offsetX,y+offsetY,90,height);
-    Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
-    Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
-    Lines.lineAngle(x+offsetX,y+offsetY,180,width);*/
-    //QUFx.ray.at(x+offsetX,y,90);
-    Draw.reset();
+    itemArray.draw();
   }
   
   public void update(){
@@ -160,14 +149,12 @@ public class DrawData{
     }
     
     public void draw(float offsetX, float offsetY){
-      //Draw.z(Layer.turret);
+      Draw.z(Layer.turret);
       Draw.color(color);
-      //Fill.crect(x+offsetX,y+offsetY,width,height);
-      Lines.lineAngle(x+offsetX,y+offsetY,90,height);
-      Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
-      Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
-      Lines.lineAngle(x+offsetX,y+offsetY,180,width);
-      //QUFx.ray.at(x+offsetX,y,90);
+      Fill.crect(x+offsetX,y+offsetY,width,height);
+      Draw.color(lightColor);
+      Drawf.light(entity.team, entity.x+offsetX,entity.y+offsetY,height,lightColor,0.6f);
+      Fill.crect(entity.x+offsetX,entity.y+offsetY,width,height/2);
       Draw.reset();
     }
     
