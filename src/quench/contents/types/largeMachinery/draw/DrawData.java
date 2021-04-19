@@ -70,6 +70,7 @@ public class DrawData{
   public float width;
   public float height;
   protected ItemArray itemArray;
+  public float space;
   
   
   public DrawData(LargeMachineryBuild entity){
@@ -84,6 +85,7 @@ public class DrawData{
     width = 1;
     height = 16;
     itemArray = new ItemArray();
+    space = 4; 
   }
   
   public void add(String name,float value,float max){
@@ -119,8 +121,8 @@ public class DrawData{
     
     public void draw(){
       for(int i=0;i<items.size;i++){
-        float offsetX = i*offset;
-        items.get(i).draw(offsetX,0);
+        float offsetX = (i+1)*space;
+        items.get(i).draw(offsetX+offset,0);
       }
     }
     
