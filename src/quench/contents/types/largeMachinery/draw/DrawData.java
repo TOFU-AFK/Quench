@@ -81,8 +81,8 @@ public class DrawData{
     this.offset = offset;
     dataColor = Pal.heal;
     dataLightColor = Color.valueOf("#C6FFC6");
-    width = 4;
-    height = 24;
+    width = 12;
+    height = 48;
     itemArray = new ItemArray();
   }
   
@@ -95,7 +95,16 @@ public class DrawData{
   }
   
   public void draw(){
-    itemArray.draw();
+    //itemArray.draw();
+    Draw.z(Layer.turret);
+    Draw.color(color);
+    Fill.crect(x+32,y+32,width,height);
+    /*Lines.lineAngle(x+offsetX,y+offsetY,90,height);
+    Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
+    Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
+    Lines.lineAngle(x+offsetX,y+offsetY,180,width);*/
+    //QUFx.ray.at(x+offsetX,y,90);
+    Draw.reset();
   }
   
   public void update(){
@@ -151,13 +160,12 @@ public class DrawData{
     public void draw(float offsetX, float offsetY){
       //Draw.z(Layer.turret);
       Draw.color(color);
-      Log.info("[淬火] 已绘制", "");
       //Fill.crect(x+offsetX,y+offsetY,width,height);
       Lines.lineAngle(x+offsetX,y+offsetY,90,height);
       Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
       Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
       Lines.lineAngle(x+offsetX,y+offsetY,180,width);
-      QUFx.ray.at(x+offsetX,y,90);
+      //QUFx.ray.at(x+offsetX,y,90);
       Draw.reset();
     }
     
