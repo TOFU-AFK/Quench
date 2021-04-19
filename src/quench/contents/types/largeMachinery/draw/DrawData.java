@@ -171,7 +171,6 @@ public class DrawData{
       Draw.reset();
       Draw.reset();
     }
-    &&
   }
   
 }
