@@ -81,8 +81,8 @@ public class DrawData{
     this.offset = offset;
     dataColor = Pal.heal;
     dataLightColor = Color.valueOf("#C6FFC6");
-    width = 12;
-    height = 48;
+    width = 2;
+    height = 16;
     itemArray = new ItemArray();
   }
   
@@ -98,7 +98,9 @@ public class DrawData{
     //itemArray.draw();
     Draw.z(Layer.turret);
     Draw.color(dataColor);
-    Fill.crect(entity.x+32,entity.y+32,width,height);
+    Fill.crect(entity.x+12,entity.y,width,height);
+    Drawf.light(entity.team, entity.x+12,entity.y,height,lightColor,0.6f);
+    Fill.crect(entity.x+12,entity.y,width,height/2);
     /*Lines.lineAngle(x+offsetX,y+offsetY,90,height);
     Lines.lineAngle(x+offsetX+width,y+offsetY,90,height);
     Lines.lineAngle(x+offsetX,y+offsetY+height,180,width);
