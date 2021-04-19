@@ -105,7 +105,7 @@ public class DrawData{
   }
   
   public void clear(){
-    ItemArray.clear();
+    itemArray.clear();
   }
   
   public class ItemArray{
