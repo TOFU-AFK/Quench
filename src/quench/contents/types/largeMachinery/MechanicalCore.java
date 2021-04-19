@@ -112,6 +112,7 @@ public class MechanicalCore extends LargeMachinery{
         public TextureRegion condition;//状态贴图，就是核心左上角那对错贴图
         public MechanicalData mechanicalData = new MechanicalData(this,structure);
         public boolean isRead = false;
+        public DrawData drawData = new DrawData(this);
         
         //旋转按钮
         @Override
@@ -156,16 +157,29 @@ public class MechanicalCore extends LargeMachinery{
             if(start){
                 controlStart();
                 mechanicalData.update();
+                setDatas();
                 condition = Core.atlas.find("quench-status-right");
             }else{
                 mechanicalData.initialize();
                 condition = Core.atlas.find("quench-status-mistake");
             }
         }
+        
+        public void setDatas(){
+          drawData.clear();
+          drawData.add("血量",healthf(),maxHealth,Color.valueOf("DC143C"),Color.valueOf("FF0000"));
+        }
+        
+        public void drawDatas(){
+          drawData.draw();
+        }
 
         @Override
         public void draw(){
             super.draw();
+            if(start){
+              drawDatas();
+            }
         }
         
         public boolean construct(){

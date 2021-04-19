@@ -83,7 +83,7 @@ public class DrawData{
     dataColor = Pal.heal;
     dataLightColor = Color.valueOf("#C6FFC6");
     width = 1;
-    height = 16;
+    height = 32;
     itemArray = new ItemArray();
     space = 4; 
   }
@@ -104,11 +104,19 @@ public class DrawData{
     
   }
   
+  public void clear(){
+    ItemArray.clear();
+  }
+  
   public class ItemArray{
     Seq<ItemData> items = new Seq<ItemData>();
     
     public ItemArray(){
       
+    }
+    
+    public void clear(){
+      items.clear();
     }
     
     public void add(String name,float value,float max){
@@ -122,7 +130,8 @@ public class DrawData{
     public void draw(){
       for(int i=0;i<items.size;i++){
         float offsetX = (i+1)*space;
-        items.get(i).draw(offsetX+offset,0);
+        float offsetY = -height/2;
+        items.get(i).draw(offsetX+offset,offsetY);
       }
     }
     
@@ -154,9 +163,11 @@ public class DrawData{
       Draw.z(Layer.turret);
       Draw.color(color);
       Fill.crect(x+offsetX,y+offsetY,width,height);
+      Draw.reset();
       Draw.color(lightColor);
       Drawf.light(entity.team, entity.x+offsetX,entity.y+offsetY,height,lightColor,0.6f);
       Fill.crect(entity.x+offsetX,entity.y+offsetY,width,height/2);
+      Draw.reset();
       Draw.reset();
     }
     

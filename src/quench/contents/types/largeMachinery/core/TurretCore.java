@@ -79,14 +79,6 @@ public class TurretCore extends MechanicalCore{
   public class TurretCoreBuild extends MechanicalCoreBuild{
     public LargeTurret turret = QULargeTurret.motiveTurret;
     public LargeTurretBuild build = QULargeTurret.motiveTurret.build(this);
-    public DrawData drawData;
-    
-    public TurretCoreBuild(){
-      drawData = new DrawData(this);
-      drawData.add("血量",build.healthf,turret.health,Pal.health,Pal.redSpark);
-      drawData.add("冷却",build.coolTime,turret.shootCool);
-      
-    }
     
     @Override
     public void update(){
@@ -100,10 +92,13 @@ public class TurretCore extends MechanicalCore{
     public void draw(){
       super.draw();
       build.draw();
-      drawData.draw();
     }
     
-    
+    @Override
+    public void setDatas(){
+      super.setDatas();
+      drawData.add("冷却",build.coolTime,turret.shootCool,Color.valueOf("00FF7F"),Color.valueOf("00FFFF"));
+    }
     
     @Override
     public void drawConfigure(){
