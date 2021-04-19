@@ -83,7 +83,7 @@ public class DrawData{
     dataColor = Pal.heal;
     dataLightColor = Color.valueOf("#C6FFC6");
     width = 1;
-    height = 32;
+    height = 28;
     itemArray = new ItemArray();
     space = 4; 
   }
@@ -166,7 +166,7 @@ public class DrawData{
       Draw.reset();
       Draw.color(lightColor);
       Drawf.light(entity.team, entity.x+offsetX,entity.y+offsetY,height,lightColor,0.6f);
-      Fill.crect(entity.x+offsetX,entity.y+offsetY,width,height/2);
+      Fill.crect(entity.x+offsetX,entity.y+offsetY,width,value);
       Draw.reset();
       Draw.reset();
     }
