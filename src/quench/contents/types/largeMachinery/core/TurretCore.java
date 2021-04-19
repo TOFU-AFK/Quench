@@ -85,6 +85,7 @@ public class TurretCore extends MechanicalCore{
       drawData = new DrawData(this);
       drawData.add("血量",build.healthf,turret.health,Pal.health,Pal.redSpark);
       drawData.add("冷却",build.coolTime,turret.shootCool);
+      
     }
     
     @Override
