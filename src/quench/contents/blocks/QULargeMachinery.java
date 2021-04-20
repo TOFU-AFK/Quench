@@ -97,7 +97,7 @@ public class QULargeMachinery implements ContentList
 	//在此实例化非核心方块
 	public void instantiation(){
 	    //骨架
-	    basicBlock = new LargeMachinery("basicBlock")
+	   basicBlock = new LargeMachinery("basicBlock")
 		{
 			{
             requirements(Category.effect, with(Items.copper, 25));
@@ -107,10 +107,30 @@ public class QULargeMachinery implements ContentList
 			}
 		};
 		
+		smallTurretBase = new LargeMachinery("smallTurretBase")
+		{
+			{
+      requirements(Category.effect, with(Items.copper, 25));
+			size = 1;
+			health = 50*size*size;
+			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 65),new ItemStack(Items.lead, 45)});
+			}
+		};
+		
+		turretBase = new LargeMachinery("turretBase")
+		{
+			{
+      requirements(Category.effect, with(Items.copper, 25));
+			size = 1;
+			health = 60*size*size;
+			new TechNode(TechTree.get(smallTurretBase), this,new ItemStack[]{new ItemStack(Items.copper, 115),new ItemStack(Items.lead, 85)});
+			}
+		};
+		
 		mediumBasicBlock = new LargeMachinery("mediumBasicBlock")
 		{
 			{
-            requirements(Category.effect, with(Items.copper, 100,Items.lead,25));
+      requirements(Category.effect, with(Items.copper, 100,Items.lead,25));
 			size = 1;
 			health = 80*size*size;
 			new TechNode(TechTree.get(basicBlock), this,new ItemStack[]{new ItemStack(Items.copper, 100),new ItemStack(Items.lead, 25)});

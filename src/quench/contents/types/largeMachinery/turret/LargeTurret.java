@@ -59,6 +59,7 @@ import quench.contents.types.core.TurretCore.TurretCoreBuild;
 import quench.contents.effects.*;
 import quench.contents.bullets.*;
 import quench.contents.types.motive.*;
+import quench.contents.types.draw.*;
 
 import static mindustry.Vars.*; 
 
@@ -91,6 +92,7 @@ public class LargeTurret{
   public final int tilesize = 8;
   public int size = 5;
   public float duration = 0;//射击持续时间
+  public DrawLargeTurret drawer;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -111,6 +113,7 @@ public class LargeTurret{
     bulletOffset = 8;
     chargeTime = 0;
     occupy = 3;
+    drawer = new DrawLargeTurret();
   }
   
   public TextureRegion region(){
@@ -124,6 +127,10 @@ public class LargeTurret{
   
   public void init(TurretCore core){
     if(shootLength < 0) shootLength = size * tilesize / 2f;
+  }
+  
+  public void load(){
+    drawer.load(this);
   }
   
   public class LargeTurretBuild{
@@ -183,7 +190,8 @@ public class LargeTurret{
     
     public void drawRegion(){
       Draw.z(Layer.turret);
-      Draw.rect(region(),core.x,core.y,rotation-90);
+      //Draw.rect(region(),core.x,core.y,rotation-90);
+      drawer.draw();
       Draw.reset();
     }
     

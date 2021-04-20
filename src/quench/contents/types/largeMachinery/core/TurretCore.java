@@ -76,6 +76,12 @@ public class TurretCore extends MechanicalCore{
     occupy = QULargeTurret.motiveTurret.occupy;
   }
   
+  @Override
+  public void load(){
+    super.load();
+    QULargeTurret.motiveTurret.drawer.load();
+  }
+  
   public class TurretCoreBuild extends MechanicalCoreBuild{
     public LargeTurret turret = QULargeTurret.motiveTurret;
     public LargeTurretBuild build = QULargeTurret.motiveTurret.build(this);
