@@ -167,6 +167,11 @@ public class LargeTurret{
       };
     }
     
+    public TextureRegion region(){
+    if(region==null) region = Core.atlas.find(name);
+    return region;
+    }
+    
     public void draw(){
       if(core.start){
         if(land){
@@ -191,7 +196,7 @@ public class LargeTurret{
     public void drawRegion(){
       Draw.z(Layer.turret);
       //Draw.rect(region(),core.x,core.y,rotation-90);
-      drawer.draw();
+      drawer.draw(this);
       Draw.reset();
     }
     

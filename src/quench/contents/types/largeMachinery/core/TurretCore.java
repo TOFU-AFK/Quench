@@ -79,7 +79,7 @@ public class TurretCore extends MechanicalCore{
   @Override
   public void load(){
     super.load();
-    QULargeTurret.motiveTurret.drawer.load();
+    QULargeTurret.motiveTurret.load();
   }
   
   public class TurretCoreBuild extends MechanicalCoreBuild{

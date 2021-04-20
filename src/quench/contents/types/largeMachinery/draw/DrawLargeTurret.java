@@ -12,9 +12,9 @@ import quench.contents.types.turret.LargeTurret.LargeTurretBuild;
 
 public class DrawLargeTurret{
     //public TextureRegion bottom;
-    public void draw(LargeTurret turret,LargeTurretBuild entity){
+    public void draw(LargeTurretBuild entity){
       //Draw.rect(bottom,x,y);
-      Draw.rect(turret.region(),entity.core.x,entity.core.y,rotation-90);
+      Draw.rect(entity.region(),entity.core.x,entity.core.y,entity.rotation-90);
     }
 
     public void load(LargeTurret turret){
