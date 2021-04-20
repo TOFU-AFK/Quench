@@ -97,6 +97,9 @@ public class TurretCore extends MechanicalCore{
     @Override
     public void setDatas(){
       super.setDatas();
+      //护盾
+      drawData.add("护盾",build.healthf,turret.health,Color.white,Pal.shield);
+      //射击冷却
       drawData.add("冷却",build.coolTime,turret.shootCool,Color.valueOf("00FF7F"),Color.valueOf("00FFFF"));
     }
     

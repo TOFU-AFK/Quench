@@ -167,7 +167,13 @@ public class DrawData{
       Draw.color(lightColor);
       float proportion = max/height;
       Drawf.light(entity.team, entity.x+offsetX,entity.y+offsetY,height,lightColor,0.6f);
-      Fill.crect(entity.x+offsetX,entity.y+offsetY,width,value/proportion);
+      float heightValue;
+      if(value/proportion>height){
+        heightValue = height;
+      }else{
+        heightValue = value/proportion;
+      }
+      Fill.crect(entity.x+offsetX,entity.y+offsetY,width,heightValue);
       Draw.reset();
       Draw.reset();
     }

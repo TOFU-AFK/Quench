@@ -167,7 +167,7 @@ public class MechanicalCore extends LargeMachinery{
         
         public void setDatas(){
           drawData.clear();
-          drawData.add("血量",healthf(),maxHealth,Color.valueOf("DC143C"),Color.valueOf("FF0000"));
+          drawData.add("血量",healthf(),health,Color.valueOf("DC143C"),Color.valueOf("FF0000"));
         }
         
         public void drawDatas(){
