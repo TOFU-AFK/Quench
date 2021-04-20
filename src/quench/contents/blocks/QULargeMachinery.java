@@ -45,7 +45,7 @@ import static mindustry.Vars.*;
 
 public class QULargeMachinery implements ContentList
 {
-	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,smallTurretBase,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod,motiveSource,universalBase,firepowerEngine;
+	public static LargeMachinery hydroelectricGeneratorCore,mediumHydroelectricGeneratorCore,basicBlock,smallTurretBase,turretBase,mediumBasicBlock,smallStructureBattery,powerGenerator,waterwheel,powerExport,motiveRod,motiveSource,universalBase,firepowerEngine;
 	
 	@Override
 	public void load()
