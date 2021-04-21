@@ -58,6 +58,7 @@ public class DrawMotiveTurret extends DrawLargeTurret {
 	public float moveLength = 8f;
 	public float time;
 	
+	@Override
   public void draw(LargeTurretBuild entity){
     //Draw.rect(bottom,x,y);
     Draw.rect(bottom,entity.core.x,entity.core.y,entity.rotation-90);
@@ -73,14 +74,16 @@ public class DrawMotiveTurret extends DrawLargeTurret {
       Draw.blend();
     }
   }
-
+  
+  @Override
   public void load(LargeTurret turret){
     bottom = Core.atlas.find(turret.name+"-bottom");
     for(int i=0;i<quantity;i++){
       sprites.add(Core.atlas.find(turret.name + "-plasma-" + i));
     }
   }
-
+  
+  @Override
   public TextureRegion[] icons(LargeTurret turret){
     return new TextureRegion[]{turret.region()};
   }

@@ -64,7 +64,7 @@ public class QULargeTurret implements ContentList
             plasma1 = Pal.heal;
             plasma2 = Color.valueOf("#C6FFC6");
           }
-        }
+        };
       }
     };
   }
