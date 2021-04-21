@@ -150,6 +150,7 @@ public class LargeTurret{
     public float coolTime;
     public boolean charging = false;
     public boolean shooting = false;//正在射击中
+    public LargeTurre turret = LargeTurret.this
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;

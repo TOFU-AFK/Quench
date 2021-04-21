@@ -68,10 +68,10 @@ public class DrawMotiveTurret extends DrawLargeTurret {
     for(int i = 0; i < quantity; i++){
       float r = 5 * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
       Draw.color(plasma1, plasma2, (float)i / quantity);
-      Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * (entity.coolTime/entity.shootCool));
-      Drawf.light(entity.core.team, entity.core.x, entity.core.y, (110f + Mathf.absin(5, 5f)) * (entity.coolTime/entity.shootCool), Tmp.c1.set(plasma2).lerp(plasma1, Mathf.absin(7f, 0.2f)), 0.8f * (entity.coolTime/entity.shootCool));
+      Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * (entity.coolTime/entity.turret.shootCool));
+      Drawf.light(entity.core.team, entity.core.x, entity.core.y, (110f + Mathf.absin(5, 5f)) * (entity.coolTime/entity.turret.shootCool), Tmp.c1.set(plasma2).lerp(plasma1, Mathf.absin(7f, 0.2f)), 0.8f * (entity.coolTime/entity.turret.shootCool));
       Draw.blend(Blending.additive);
-      Draw.rect(sprites.get(i), entity.core.x, entity.core.y, r, r, Time.time * (12 + i * 6f) * (entity.coolTime/entity.shootCool));
+      Draw.rect(sprites.get(i), entity.core.x, entity.core.y, r, r, Time.time * (12 + i * 6f) * (entity.coolTime/entity.turret.shootCool));
       Draw.blend();
     }
     Draw.rect(entity.region(),entity.core.x,entity.core.y,entity.rotation-90);
