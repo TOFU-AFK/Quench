@@ -42,6 +42,8 @@ import quench.contents.types.draw.*;
 import quench.contents.types.motive.*;
 import quench.contents.types.motive.MotiveTransmission.MotiveTransmissionBuild;
 import quench.contents.types.LargeMachinery.LargeMachineryBuild;
+import quench.contents.types.turret.*;
+import quench.contents.types.turret.LargeTurret.LargeTurretBuild;
 
 import java.util.ArrayList;
 
