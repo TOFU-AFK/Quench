@@ -80,6 +80,7 @@ public class DrawMotiveTurret extends DrawLargeTurret {
   @Override
   public void load(LargeTurret turret){
     bottom = Core.atlas.find(turret.name+"-bottom");
+    sprites = ArrayList<TextureRegion>();
     for(int i=0;i<quantity;i++){
       sprites.add(Core.atlas.find(turret.name + "-plasma-" + i));
     }
