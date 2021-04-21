@@ -58,6 +58,13 @@ public class QULargeTurret implements ContentList
         size = 5;
         range = 360;
         shootDuration = 240;
+        drawer = new DrawMotiveTurret(){
+          {
+            time = 40;
+            plasma1 = Pal.heal;
+            plasma2 = Color.valueOf("#C6FFC6");
+          }
+        }
       }
     };
   }
