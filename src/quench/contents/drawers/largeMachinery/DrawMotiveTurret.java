@@ -73,6 +73,7 @@ public class DrawMotiveTurret extends DrawLargeTurret {
       Draw.blend(Blending.additive);
       Draw.rect(sprites.get(i), entity.core.x, entity.core.y, r, r, Time.time * (12 + i * 6f) * (entity.coolTime/entity.turret.shootCool));
       Draw.blend();
+      Draw.reset();
     }
     Draw.rect(entity.region(),entity.core.x,entity.core.y,entity.rotation-90);
   }
