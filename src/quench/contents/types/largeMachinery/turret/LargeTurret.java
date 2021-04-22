@@ -93,6 +93,7 @@ public class LargeTurret{
   public int size = 5;
   public float duration = 0;//射击持续时间
   public DrawLargeTurret drawer;
+  protected LargeTurre largeTurret = this;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
@@ -150,7 +151,7 @@ public class LargeTurret{
     public float coolTime;
     public boolean charging = false;
     public boolean shooting = false;//正在射击中
-    public LargeTurre turret = LargeTurret.this;
+    public LargeTurre turret = largeTurret;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;
