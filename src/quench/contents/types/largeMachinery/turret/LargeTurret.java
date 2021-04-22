@@ -93,7 +93,7 @@ public class LargeTurret{
   public int size = 5;
   public float duration = 0;//射击持续时间
   public DrawLargeTurret drawer;
-  protected LargeTurre largeTurret = this;
+  protected LargeTurret largeTurret = this;
   
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
