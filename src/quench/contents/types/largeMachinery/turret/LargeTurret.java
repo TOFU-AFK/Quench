@@ -95,6 +95,11 @@ public class LargeTurret{
   public DrawLargeTurret drawer;
   protected LargeTurret largeTurret = this;
   
+  //激光炮塔专用
+  public float bulletLife = 0;//子弹存在时间,即激光可持续多久
+  public float firingMoveFract = 0;
+  public float shootDuration = 0;
+  
   public LargeTurret(String name){
     this.name = "quench-largeturret-"+name;
     health = 1200;
@@ -152,6 +157,9 @@ public class LargeTurret{
     public boolean charging = false;
     public boolean shooting = false;//正在射击中
     public LargeTurret turret = largeTurret;
+    
+    //激光炮塔专用
+    public float life = bulletLife;
     
     public LargeTurretBuild(TurretCoreBuild core){
       this.core = core;

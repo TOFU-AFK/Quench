@@ -63,13 +63,12 @@ import quench.contents.types.motive.*;
 import static mindustry.Vars.*; 
 
 public class LargeLaserTurret extends LargeTurret{
-  public float bulletLife;//子弹存在时间,激光可持续多久
-  public float firingMoveFract = 0.25f;
-  public float shootDuration = 100f;
   
   public LargeLaserTurret (String name){
     super(name);
     bulletLife = 120;
+    firingMoveFract = 0.25f;
+    shootDuration = 100f;
   }
   
   @Override
@@ -84,7 +83,6 @@ public class LargeLaserTurret extends LargeTurret{
   
   public class LargeLaserTurretBuild extends LargeTurretBuild{
     Bullet bullet;
-    float life = bulletLife;
     
     public LargeLaserTurretBuild(TurretCoreBuild core){
       super(core);

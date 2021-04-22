@@ -106,7 +106,11 @@ public class TurretCore extends MechanicalCore{
       //护盾
       drawData.add("护盾",build.healthf,turret.health,Color.white,Pal.shield);
       //射击冷却
-      drawData.add("冷却",build.coolTime,turret.shootCool,Color.valueOf("00FF7F"),Color.valueOf("00FFFF"));
+      if(turret.bulletLife>0&&build.life>0){
+        drawData.add("持续",build.life,turret.bulletLife,Color.valueOf("00FF7F"),Color.valueOf("00FFFF"));
+      }else{
+        drawData.add("冷却",build.coolTime,turret.shootCool,Color.valueOf("00FF7F"),Color.valueOf("00FFFF"));
+      }
     }
     
     @Override
