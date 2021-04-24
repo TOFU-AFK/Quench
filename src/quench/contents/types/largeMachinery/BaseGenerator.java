@@ -65,7 +65,7 @@ public class BaseGenerator extends StructuralBattery{
     public BaseGenerator(String name){
         super(name);
         canGenerate = true;
-        occupy = 0.3f;
+        occupy = 2f;
     }
 
     @Override
@@ -93,7 +93,6 @@ public class BaseGenerator extends StructuralBattery{
         @Override
         public void update(){
           super.update();
-          //最后一个条件为判断是否超载
           if(c!=null&&canGenerate&&!c.mechanicalData.overburden){
               generate();
           }

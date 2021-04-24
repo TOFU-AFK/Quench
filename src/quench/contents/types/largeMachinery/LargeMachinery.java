@@ -217,7 +217,7 @@ public class LargeMachinery extends Block{
         }
         
         public float getMotiveAmount(){
-          if(connectors==null){
+          if(connectors.tile==null){
             return 0;
           }else{
             return amount;
