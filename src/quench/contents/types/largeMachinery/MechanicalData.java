@@ -167,14 +167,14 @@ public class MechanicalData{
     
     //得到动力使用
     public float getMotive(){
-        float motive = 0;
+        float motive = core.getOccupy();
         for(int i=0;i<generator.size();i++){
             Tile t = generator.get(i);
             LargeMachinery block = (LargeMachinery) t.block();
             motive+=block.occupy;
         }
         Log.info("[淬火] getMotive:" + motive,"");
-        return motive+core.getOccupy();
+        return motive;
     }
     
     //得到动力总量

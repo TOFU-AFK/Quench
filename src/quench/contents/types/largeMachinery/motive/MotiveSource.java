@@ -112,8 +112,20 @@ public class MotiveSource extends LargeMachinery{
         
         @Override
         public void update(){
-          super.update();
-          amount = -1;
+          if(isMotiveMachine){
+            time++;
+            if(time>4){
+              time=0;
+              if(index+1>27){
+              index=0;
+              }else{
+                index++;
+              }
+            }
+          }
+          if(transportable()){
+            transmit();
+          }
         }
         
         
