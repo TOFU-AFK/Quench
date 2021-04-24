@@ -82,6 +82,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     burn = Items.coal;
     burnAmout = 1;
     group = BlockGroup.transportation;
+    quicken = baseOutputMotive / 5;
   }
   
   @Override
@@ -137,7 +138,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     
     @Override
     public boolean acceptItem(Building source, Item item){
-      if(item==burn&&items.maxAccepted()>0){
+      if(item==burn&&!items.has(burn,itemCapacity)){
         return true;
       }
       return false;
