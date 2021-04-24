@@ -223,7 +223,7 @@ public class LargeMachinery extends Block{
             }else{
               return 0;
             }
-          }catch(Exception e)
+          }catch(Exception e){
             return 0;
           }
           return amount;
