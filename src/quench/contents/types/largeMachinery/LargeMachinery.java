@@ -109,7 +109,7 @@ public class LargeMachinery extends Block{
 		  			(LargeMachineryBuild entity) -> new Bar(
 		  				() -> Core.bundle.get("MechanicalCore.totalMotive"),
 		  				() -> Pal.powerBar,
-		  				() -> entity.amount == -1 ? 0 / 1:entity.amount / occupy)
+		  				() -> entity.amount == -1 ? 0 / 1: occupy / entity.amount)
 		  		);
 		}
 	}
@@ -146,7 +146,9 @@ public class LargeMachinery extends Block{
         @Override
         public void buildConfiguration(Table table){
             Table cont = new Table();
-            cont.add(c!=null ? "核心: x:"+c.tile().x+" y:"+c.tile().y:"核心:null");
+            if(c!=null){
+              cont.add("核心: x:"+c.tile().x+" y:"+c.tile().y);
+            }
             table.add(cont);
         }
         

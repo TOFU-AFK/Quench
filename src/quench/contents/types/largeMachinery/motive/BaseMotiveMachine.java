@@ -137,7 +137,7 @@ public class BaseMotiveMachine extends LargeMachinery{
     
     @Override
     public boolean acceptItem(Building source, Item item){
-      if(item==burn){
+      if(item==burn&&items.maxAccepted()>0){
         return true;
       }
       return false;
