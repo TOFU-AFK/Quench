@@ -220,7 +220,7 @@ public class LargeMachinery extends Block{
           if(connectors==null){
             return 0;
           }else{
-            return amount
+            return amount;
           }
         }
         
