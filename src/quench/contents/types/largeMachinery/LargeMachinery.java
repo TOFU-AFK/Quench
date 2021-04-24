@@ -218,8 +218,12 @@ public class LargeMachinery extends Block{
         
         public float getMotiveAmount(){
           try{
-            if(connectors.tile==null);
-          }catch(Exception e){
+            if(connectors.tile!=null){
+              return amount;
+            }else{
+              return 0;
+            }
+          }catch(Exception e)
             return 0;
           }
           return amount;
