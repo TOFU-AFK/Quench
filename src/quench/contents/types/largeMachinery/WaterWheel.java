@@ -99,7 +99,7 @@ public class WaterWheel extends PowerSupplyMachine{
             liquid = t.floor().liquidDrop;
             }
             if(liquid!=null&&liquid.viscosity<=viscosity){
-                motive = yield * c.mechanicalData.efficiency;
+                amount = yield * c.mechanicalData.efficiency;
             }
         }
 

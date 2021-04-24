@@ -136,7 +136,6 @@ public class LargeMachinery extends Block{
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
-        public float motive = 0;//实际动能产出
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
         public int index = 0;//贴图索引，用于传动杆
@@ -257,6 +256,7 @@ public class LargeMachinery extends Block{
         public void transmit(){
           LargeMachineryBuild build = target();
           if(build!=null&&!overburden()) build.reception(turn,amount,index);
+          amount = 0;
         }
         
         

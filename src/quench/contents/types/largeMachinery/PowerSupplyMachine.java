@@ -91,7 +91,7 @@ public class PowerSupplyMachine extends LargeMachinery{
         }
         
         public void providePower(){
-            motive = yield * c.mechanicalData.efficiency;
+            amount = yield * c.mechanicalData.efficiency;
         }
 
         @Override

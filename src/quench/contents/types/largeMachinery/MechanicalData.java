@@ -182,7 +182,7 @@ public class MechanicalData{
         for(int i=0;i<powerSupply.size();i++){
             Tile t = powerSupply.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            motive+=build.motive;
+            motive+=build.amount;
         }
         return motive;
     }
@@ -211,6 +211,8 @@ public class MechanicalData{
           case powerSupply:
             addPowerSupply(b);
             break;
+          case motive
+            addPowerSupply(b);
           /*case StructureType.motive:
             addMotive(b);*/
         }
