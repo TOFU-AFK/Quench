@@ -151,6 +151,10 @@ public class LargeMachinery extends Block{
             table.add(cont);
         }
         
+        public float getOccupy(){
+          return occupy;
+        }
+        
         //暂时无用
         /*public void showPop(Table table){
           Table titleTable = new Table();

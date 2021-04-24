@@ -113,10 +113,6 @@ public class MechanicalCore extends LargeMachinery{
         public MechanicalData mechanicalData = new MechanicalData(this,structure);
         public boolean isRead = false;
         public DrawData drawData = new DrawData(this);
-        public MechanicalCoreBuild(){
-          super();
-          mechanicalData.addTile(tile());
-        }
         
         //旋转按钮
         @Override
@@ -220,7 +216,6 @@ public class MechanicalCore extends LargeMachinery{
         
         public void controlStart(){
             for(BlockData data:structure.datas){
-              //加1是因为还要加上核心
                 if(structure.datas.length>mechanicalData.getTiles().size()){
                 //先获取地图的tile，再将build强制转换成LargeMachineryBuild，因为前面已经判断了方块的名称，所以不用担心出现问题
                 int r = 0;

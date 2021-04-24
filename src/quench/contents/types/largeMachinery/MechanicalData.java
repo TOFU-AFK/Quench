@@ -174,7 +174,7 @@ public class MechanicalData{
             motive+=block.occupy;
         }
         Log.info("[淬火] getMotive:" + motive,"");
-        return motive;
+        return motive+core.getOccupy();
     }
     
     //得到动力总量
