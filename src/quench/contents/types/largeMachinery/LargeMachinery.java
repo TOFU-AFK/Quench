@@ -141,6 +141,7 @@ public class LargeMachinery extends Block{
         public int index = 0;//贴图索引，用于传动杆
         public boolean startAnimation = false;
         public int time;
+        protected LargeMachineryBuild connectors;
         
         @Override
         public void buildConfiguration(Table table){
@@ -193,7 +194,9 @@ public class LargeMachinery extends Block{
           if(transportable()){
             transmit();
           }
-          amount = 0;
+          if(connectors==null){
+            amount = 0;
+          }
         }
         
         public Tile near(int rotation){
@@ -230,6 +233,7 @@ public class LargeMachinery extends Block{
         
         //可接收动力，动力传输方块传输动力前会执行此方法
         public boolean acceptable(LargeMachineryBuild build){
+          connectors = build;
           if(build.amount<occupy&&build.amount!=-1){
             return false;
           }

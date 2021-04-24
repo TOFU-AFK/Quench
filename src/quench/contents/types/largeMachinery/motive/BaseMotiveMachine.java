@@ -137,6 +137,12 @@ public class BaseMotiveMachine extends LargeMachinery{
     }
     
     @Override
+    public boolean acceptable(LargeMachineryBuild build){
+      //为发动机，不做处理
+      return false;
+    }
+    
+    @Override
     public boolean acceptItem(Building source, Item item){
       if(item==burn&&!items.has(burn,itemCapacity)){
         return true;
