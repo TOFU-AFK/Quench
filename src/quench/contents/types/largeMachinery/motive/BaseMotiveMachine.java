@@ -59,7 +59,7 @@ import quench.contents.types.*;
 import static mindustry.Vars.*;
 
 public class BaseMotiveMachine extends LargeMachinery{
-  public float baseOutputMotive = 3;//基础动力输出
+  public float baseOutputMotive = 64;//基础动力输出
   public float quicken = 1f;//动力增加数量
   public float baseConsumptionInterval = 120;//基础消耗间隔
   public Item burn;//燃烧物品
@@ -120,7 +120,6 @@ public class BaseMotiveMachine extends LargeMachinery{
     
     public void updateMotive(){
       if(outputMotive<baseOutputMotive){
-        Log.info("[淬火] consValid()="+consValid(),"");
         if(consValid()){
           consumptionInterval-=1;
           if(consumptionInterval<=0){

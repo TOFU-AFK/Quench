@@ -179,7 +179,7 @@ public class QULargeMachinery implements ContentList
 		powerExport = new PowerExport("powerExport")
 		{
 			{
-      requirements(Category.effect, with(Items.copper, 25));
+      requirements(Category.power, with(Items.copper, 25));
 			size = 1;
 			health = 40*size*size;
 			drawer = new DrawPowerExport();
@@ -209,6 +209,7 @@ public class QULargeMachinery implements ContentList
 			health = 40*size*size;
 			}
 		};
+		
 		firepowerEngine = new BaseMotiveMachine("firepowerEngine"){
 		  {
 		    requirements(Category.power, with(Items.titanium, 45,Items.silicon,65));
