@@ -191,6 +191,7 @@ public class LargeMachinery extends Block{
               }
             }
           }
+          connectors = null;
           if(transportable()){
             transmit();
           }
