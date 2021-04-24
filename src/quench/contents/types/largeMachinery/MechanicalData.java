@@ -182,7 +182,11 @@ public class MechanicalData{
         for(int i=0;i<powerSupply.size();i++){
             Tile t = powerSupply.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            motive+=build.getMotiveAmount();
+            try{
+              motive+=build.getMotiveAmount();
+            }catch(Exception e){
+              motive+=0;
+            }
         }
         return motive;
     }
