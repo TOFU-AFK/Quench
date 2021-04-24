@@ -216,12 +216,13 @@ public class LargeMachinery extends Block{
           return false;
         }
         
-        public float getMotiveAmount() throws Exception{
-          if(connectors.tile==null){
+        public float getMotiveAmount(){
+          try{
+            if(connectors.tile==null);
+          }catch(Exception e){
             return 0;
-          }else{
-            return amount;
           }
+          return amount;
         }
         
         //当传来动力时
