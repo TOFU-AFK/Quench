@@ -195,9 +195,6 @@ public class LargeMachinery extends Block{
           if(transportable()){
             transmit();
           }
-          if(connectors==null){
-            amount = 0;
-          }
         }
         
         public Tile near(int rotation){
@@ -217,6 +214,14 @@ public class LargeMachinery extends Block{
         public boolean overburden(){
           if(amount<occupy&&amount!=-1) return true;
           return false;
+        }
+        
+        public float getMotiveAmount(){
+          if(connectors==null){
+            return 0;
+          }else{
+            return amount
+          }
         }
         
         //当传来动力时

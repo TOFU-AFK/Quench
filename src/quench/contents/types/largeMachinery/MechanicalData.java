@@ -173,7 +173,6 @@ public class MechanicalData{
             LargeMachinery block = (LargeMachinery) t.block();
             motive+=block.occupy;
         }
-        Log.info("[淬火] getMotive:" + motive,"");
         return motive;
     }
     
@@ -183,9 +182,8 @@ public class MechanicalData{
         for(int i=0;i<powerSupply.size();i++){
             Tile t = powerSupply.get(i);
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
-            motive+=build.amount;
+            motive+=build.getMotiveAmount();
         }
-        Log.info("[淬火] getTotalMotive:" + motive,"");
         return motive;
     }
     
