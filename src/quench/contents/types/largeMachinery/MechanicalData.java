@@ -207,11 +207,14 @@ public class MechanicalData{
         switch(block.getType()){
           case battery:
             addBattery(b);
+            Log.info("[淬火] type: battery","");
             break;
           case powerSupply:
             addPowerSupply(b);
+            Log.info("[淬火] type: powerSupply","");
             break;
           case motive:
+            Log.info("[淬火] type: motive","");
             addPowerSupply(b);
           /*case StructureType.motive:
             addMotive(b);*/
