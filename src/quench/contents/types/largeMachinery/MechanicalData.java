@@ -211,7 +211,7 @@ public class MechanicalData{
           case powerSupply:
             addPowerSupply(b);
             break;
-          case motive
+          case motive:
             addPowerSupply(b);
           /*case StructureType.motive:
             addMotive(b);*/
