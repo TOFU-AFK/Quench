@@ -118,7 +118,7 @@ public class LargeTurret{
     shots = 1;
     bulletOffset = 8;
     chargeTime = 0;
-    occupy = 3;
+    occupy = 20;
     drawer = new DrawLargeTurret();
   }
   
