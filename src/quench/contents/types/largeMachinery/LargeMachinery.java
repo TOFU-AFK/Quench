@@ -226,7 +226,6 @@ public class LargeMachinery extends Block{
           }catch(Exception e){
             return 0;
           }
-          return amount;
         }
         
         //当传来动力时
