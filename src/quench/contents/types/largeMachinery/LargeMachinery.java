@@ -189,6 +189,7 @@ public class LargeMachinery extends Block{
           if(transportable()){
             transmit();
           }
+          amount = 0;
         }
         
         public Tile near(int rotation){
@@ -256,7 +257,6 @@ public class LargeMachinery extends Block{
         public void transmit(){
           LargeMachineryBuild build = target();
           if(build!=null&&!overburden()) build.reception(turn,amount,index);
-          amount = 0;
         }
         
         

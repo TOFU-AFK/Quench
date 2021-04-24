@@ -173,6 +173,7 @@ public class MechanicalData{
             LargeMachinery block = (LargeMachinery) t.block();
             motive+=block.occupy;
         }
+        Log.info("[淬火] getMotive:" + motive,"");
         return motive;
     }
     
@@ -184,6 +185,7 @@ public class MechanicalData{
             LargeMachineryBuild build = (LargeMachineryBuild) t.build;
             motive+=build.amount;
         }
+        Log.info("[淬火] getTotalMotive:" + motive,"");
         return motive;
     }
     
@@ -207,14 +209,11 @@ public class MechanicalData{
         switch(block.getType()){
           case battery:
             addBattery(b);
-            Log.info("[淬火] type: battery","");
             break;
           case powerSupply:
             addPowerSupply(b);
-            Log.info("[淬火] type: powerSupply","");
             break;
           case motive:
-            Log.info("[淬火] type: motive","");
             addPowerSupply(b);
           /*case StructureType.motive:
             addMotive(b);*/
