@@ -135,7 +135,6 @@ public class LargeMachinery extends Block{
     return true;*/
     super.canPlaceOn(tile,team);
     }
-  }
 	 
     public class LargeMachineryBuild extends Building{
         public MechanicalCoreBuild c;
@@ -299,3 +298,4 @@ public class LargeMachinery extends Block{
             }
         }
     }
+  }
