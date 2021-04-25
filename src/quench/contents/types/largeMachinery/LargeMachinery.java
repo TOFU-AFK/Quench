@@ -299,4 +299,3 @@ public class LargeMachinery extends Block{
             }
         }
     }
-}
