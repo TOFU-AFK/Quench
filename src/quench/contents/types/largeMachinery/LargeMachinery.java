@@ -118,7 +118,8 @@ public class LargeMachinery extends Block{
     //在黑名单和白名单同时存在时，将使用黑名单
     @Override
     public boolean canPlaceOn(Tile tile, Team team){
-        if(blacklist!=null&&blacklist.length>0){
+      //无用，注释
+        /*if(blacklist!=null&&blacklist.length>0){
             for(BlockData data:blacklist){
                 if(data.n.equals(tile.block().name)||data.n.equals(tile.floor().name)) return false;
             }
@@ -131,7 +132,8 @@ public class LargeMachinery extends Block{
     }
         }
     }
-    return true;
+    return true;*/
+    super.canPlaceOn(tile,team);
     }
 	 
     public class LargeMachineryBuild extends Building{
@@ -139,9 +141,9 @@ public class LargeMachinery extends Block{
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
         public int index = 0;//贴图索引，用于传动杆
+        int lastIndex = index;
         public boolean startAnimation = false;
         public int time;
-        protected LargeMachineryBuild connectors;
         
         @Override
         public void buildConfiguration(Table table){
@@ -191,7 +193,6 @@ public class LargeMachinery extends Block{
               }
             }
           }
-          connectors = null;
           if(transportable()){
             transmit();
           }
@@ -217,13 +218,9 @@ public class LargeMachinery extends Block{
         }
         
         public float getMotiveAmount(){
-          try{
-            if(connectors.tile!=null){
-              return amount;
-            }else{
-              return 0;
-            }
-          }catch(Exception e){
+          if(index>lastIndex){
+            return amount;
+          }else{
             return 0;
           }
         }
@@ -236,14 +233,15 @@ public class LargeMachinery extends Block{
             this.amount = amount-occupy;
           }else{
             this.amount = -1;
+            
           }
+          lastIndex = this.index;
           this.index = index;
           startAnimation = true;
         }
         
         //可接收动力，动力传输方块传输动力前会执行此方法
         public boolean acceptable(LargeMachineryBuild build){
-          connectors = build;
           if(build.amount<occupy&&build.amount!=-1){
             return false;
           }

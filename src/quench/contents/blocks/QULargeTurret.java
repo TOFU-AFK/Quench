@@ -61,6 +61,7 @@ public class QULargeTurret implements ContentList
         drawer = new DrawMotiveTurret(){
           {
             time = 40;
+            quantity = 5;
             plasma1 = Pal.heal;
             plasma2 = Color.valueOf("#C6FFC6");
           }
