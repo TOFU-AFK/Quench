@@ -66,7 +66,7 @@ public class DrawMotiveTurret extends DrawLargeTurret {
     Draw.rect(bottom,entity.core.x,entity.core.y,entity.rotation-90);
     
     for(int i = 0; i < quantity; i++){
-      float r = 5 * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
+      float r = 3 * tilesize - 3f + Mathf.absin(Time.time, 2f + i * 1f, 5f - i * 0.5f);
       Draw.color(plasma1, plasma2, (float)i / quantity);
       Draw.alpha((0.3f + Mathf.absin(Time.time, 2f + i * 2f, 0.3f + i * 0.05f)) * (entity.coolTime/entity.turret.shootCool));
       Drawf.light(entity.core.team, entity.core.x, entity.core.y, (110f + Mathf.absin(5, 5f)) * (entity.coolTime/entity.turret.shootCool), Tmp.c1.set(plasma2).lerp(plasma1, Mathf.absin(7f, 0.2f)), 0.8f * (entity.coolTime/entity.turret.shootCool));
