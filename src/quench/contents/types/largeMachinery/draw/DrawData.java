@@ -157,6 +157,7 @@ public class DrawData{
       this.lightColor = lightColor;
       x = entity.x;
       y = entity.y;
+      
     }
     
     public void draw(float offsetX, float offsetY){
