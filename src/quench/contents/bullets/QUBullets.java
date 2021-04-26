@@ -44,6 +44,7 @@ public class QUBullets implements ContentList {
       incendSpread = 5f;
       incendAmount = 1;
       pierce = true;
+      status = StatusEffects.none;
       colors = new Color[]{Pal.heal,Color.valueOf("#C6FFC6"),Color.valueOf("#DEFFDE"),Color.white};
     }
     
@@ -133,6 +134,7 @@ public class QUBullets implements ContentList {
       incendSpread = 5f;
       incendAmount = 1;
       pierce = true;
+      status = StatusEffects.none;
       colors = new Color[]{Pal.heal,Color.valueOf("#C6FFC6"),Color.valueOf("#DEFFDE"),Color.white};
     }
 	    

@@ -160,7 +160,7 @@ public class DrawData{
     }
     
     public void draw(float offsetX, float offsetY){
-      Draw.z(Layer.turret);
+      Draw.z(Layer.playerName);
       Draw.color(color);
       Fill.crect(x+offsetX,y+offsetY,width,height);
       Draw.reset();
