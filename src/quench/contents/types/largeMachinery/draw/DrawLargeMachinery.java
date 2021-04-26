@@ -12,7 +12,7 @@ public class DrawLargeMachinery{
     public boolean isLoader = false;
     public void draw(LargeMachineryBuild entity){
         //Draw.rect(bottom,x,y);
-        Draw.rect(entity.block.region,entity.x,entity.y);
+        Draw.rect(entity.block.region,entity.x,entity.y,entity.rotation);
     }
 
     public void load(Block block){

@@ -218,7 +218,7 @@ public class LargeMachinery extends Block{
         }
         
         public float getMotiveAmount(){
-          if(index>lastIndex){
+          if(startAnimation){
             return amount;
           }else{
             return 0;
