@@ -104,7 +104,7 @@ public class MotiveTransmission extends LargeMachinery{
         public void update(){
           super.update();
           if(!startAnimation){
-            amount = false;
+            amount = 0;
           }
         }
         
