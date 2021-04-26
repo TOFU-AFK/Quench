@@ -128,6 +128,10 @@ public class BaseMotiveMachine extends LargeMachinery{
             consume();
             outputMotive+=quicken;
           }
+        }else{
+          if(outputMotive>0){
+            outputMotive-=quicken;
+          }
         }
       }
       //如果动力超出上限，强制回到上限

@@ -141,7 +141,6 @@ public class LargeMachinery extends Block{
         public Motive turn = Motive.left;//动力转向
         public float amount = 0;//动力总数
         public int index = 0;//贴图索引，用于传动杆
-        int lastIndex = index;
         public boolean startAnimation = false;
         public int time;
         
@@ -218,11 +217,7 @@ public class LargeMachinery extends Block{
         }
         
         public float getMotiveAmount(){
-          if(startAnimation){
-            return amount;
-          }else{
-            return 0;
-          }
+          return amount;
         }
         
         //当传来动力时
@@ -235,7 +230,6 @@ public class LargeMachinery extends Block{
             this.amount = -1;
             
           }
-          lastIndex = this.index;
           this.index = index;
           startAnimation = true;
         }
